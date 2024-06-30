@@ -15,3 +15,6 @@ set("n", "<leader>|", "<C-W>v", { desc = "Split right", remap = true })
 -- insert blank lines
 set("n", "<leader>o", "o<esc>", { desc = "Insert line below" })
 set("n", "<leader>O", "O<esc>", { desc = "Insert line above" })
+
+-- open lazy package manager
+set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
