@@ -7,6 +7,9 @@ return {
     wk.register({
       ["<leader>f"] = {
         name = "find",
+      },
+      ["<leader>u"] = {
+        name = "ui",
       }
     })
   end,
