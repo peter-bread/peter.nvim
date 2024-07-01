@@ -10,7 +10,7 @@ return {
       },
       ["<leader>u"] = {
         name = "ui",
-      }
+      },
     })
   end,
 }
