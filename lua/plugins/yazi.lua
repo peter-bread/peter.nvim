@@ -23,5 +23,5 @@ return {
   },
   config = function(_, opts)
     require("yazi").setup(opts)
-  end
+  end,
 }
