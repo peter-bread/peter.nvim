@@ -5,6 +5,12 @@ return {
   config = function(_, opts)
     local wk = require("which-key")
     wk.register({
+      ["g"] = {
+        name = "prefix",
+      },
+      ["gs"] = {
+        name = "surround",
+      },
       ["<leader>f"] = {
         name = "find",
       },
