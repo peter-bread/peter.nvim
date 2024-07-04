@@ -11,7 +11,7 @@ return {
       ["["] = { name = "prev" },
       ["<leader>f"] = { name = "find" },
       ["<leader>u"] = { name = "ui" },
-    }
+    },
   },
   config = function(_, opts)
     local wk = require("which-key")
