@@ -1,22 +1,21 @@
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+    defaults = {
+      mode = { "n", "v" },
+      ["g"] = { name = "goto" },
+      ["gs"] = { name = "surround" },
+      ["z"] = { name = "fold" },
+      ["]"] = { name = "next" },
+      ["["] = { name = "prev" },
+      ["<leader>f"] = { name = "find" },
+      ["<leader>u"] = { name = "ui" },
+    }
+  },
   config = function(_, opts)
     local wk = require("which-key")
-    wk.register({
-      ["g"] = {
-        name = "prefix",
-      },
-      ["gs"] = {
-        name = "surround",
-      },
-      ["<leader>f"] = {
-        name = "find",
-      },
-      ["<leader>u"] = {
-        name = "ui",
-      },
-    })
+    wk.setup(opts)
+    wk.register(opts.defaults)
   end,
 }
