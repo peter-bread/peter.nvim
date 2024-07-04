@@ -7,13 +7,13 @@ return {
   keys = function()
     local yazi = require("yazi")
     return {
-      { "<leader>y", yazi.yazi, desc = "yazi" },
+      { "<leader>y", yazi.yazi, desc = "Yazi" },
       {
         "<leader>Y",
         function()
           yazi.yazi(nil, vim.fn.getcwd())
         end,
-        desc = "yazi (cwd)",
+        desc = "Yazi (cwd)",
       },
     }
   end,
