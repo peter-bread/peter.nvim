@@ -1,6 +1,9 @@
 return {
   "mikavilpas/yazi.nvim",
   lazy = true,
+  cond = function() -- only install/load if yazi is installed on machine
+    return vim.fn.executable("yazi") == 0
+  end,
   keys = function()
     local yazi = require("yazi")
     return {
