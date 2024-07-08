@@ -1,6 +1,6 @@
 {
   "flash.nvim": { "branch": "main", "commit": "ec0bf2842189f65f60fd40bf3557cac1029cc932" },
-  "lazy.nvim": { "branch": "main", "commit": "436d09af7d3d9e1ff39dc2cf51be800a7ab45be9" },
+  "lazy.nvim": { "branch": "main", "commit": "1870238cf9c579c5d7eb8ea8b296f10b81978d34" },
   "mini.indentscope": { "branch": "main", "commit": "1222393d9c5e8d92b913ccab6701a7164b21781c" },
   "mini.pairs": { "branch": "main", "commit": "927d19cbdd0e752ab1c7eed87072e71d2cd6ff51" },
   "mini.surround": { "branch": "main", "commit": "7098744c8d4573a4b32cb172965f6b2ba03465d2" },
