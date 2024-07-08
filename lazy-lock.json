@@ -5,12 +5,12 @@
   "mini.indentscope": { "branch": "main", "commit": "1222393d9c5e8d92b913ccab6701a7164b21781c" },
   "mini.pairs": { "branch": "main", "commit": "927d19cbdd0e752ab1c7eed87072e71d2cd6ff51" },
   "mini.surround": { "branch": "main", "commit": "7098744c8d4573a4b32cb172965f6b2ba03465d2" },
-  "nvim-treesitter": { "branch": "master", "commit": "64f6f0ab4e3f613aa682eb5fe29c5025db500ddd" },
+  "nvim-treesitter": { "branch": "master", "commit": "ebdffa78bdb16af84fb76ff6a75978496d4dcbec" },
   "nvim-web-devicons": { "branch": "master", "commit": "c0cfc1738361b5da1cd0a962dd6f774cc444f856" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "rose-pine": { "branch": "main", "commit": "dded5c15e9d27ac95ad1e803b35a752d80f3f42b" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "which-key.nvim": { "branch": "main", "commit": "af4ded85542d40e190014c732fa051bdbf88be3d" },
-  "yazi.nvim": { "branch": "master", "commit": "a2f7832af7462c79d57777dd8c36ad0edfb84b39" }
+  "yazi.nvim": { "branch": "master", "commit": "b9f393f6b76b68d8a55ed3a8d57419437f84e060" }
 }
