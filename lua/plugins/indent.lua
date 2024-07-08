@@ -26,7 +26,7 @@ return {
       require("mini.indentscope").setup({
         draw = {
           delay = 0,
-          animation = require("mini.indentscope").gen_animation.none(), -- 1*
+          animation = require("mini.indentscope").gen_animation.none(), -- *1
         },
         symbol = "│",
       })
@@ -34,7 +34,7 @@ return {
   },
 }
 
--- 1* Since the module is required during its own setup, it must be done in
+-- *1 Since the module is required during its own setup, it must be done in
 --    the config function as it runs when the plugin is loaded.
 --
 --    (If it were in an external `opts` table, it would attempt to execute
