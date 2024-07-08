@@ -13,7 +13,7 @@ return {
       },
       scope = {
         enabled = false,
-      }
+      },
     },
   },
 
