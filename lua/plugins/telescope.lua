@@ -17,7 +17,7 @@ return {
       enabled = vim.g.have_nerd_font,
     },
   },
-  cmd = { "Telescope" },
+  cmd = "Telescope",
   keys = function()
     local builtin = require("telescope.builtin")
     local colorscheme = function()
