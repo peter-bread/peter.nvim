@@ -1,10 +1,10 @@
 return {
   "echasnovski/mini.pairs",
-  event = { "InsertEnter", "CmdlineEnter" },
+  event = "InsertEnter",
   opts = {
     modes = {
       insert = true,
-      command = true,
+      command = false,
       terminal = false,
     },
     markdown = true,
