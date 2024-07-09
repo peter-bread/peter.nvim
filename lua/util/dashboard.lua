@@ -55,8 +55,10 @@ function M.center()
   }
 end
 
+---@type table Collection of multi-line string logos.
 M.logos = {}
 
+---@type string Cats sitting on ground next to name looking at night sky.
 M.logos.wide_cats = [[
                                      *     ,MMM8&&&.            *                                 
                  '                        MMMM88&&&&&    .                                      ' 
@@ -80,6 +82,9 @@ M.logos.wide_cats = [[
              )_)                                                                                  
 ]]
 
+---@type string Cats sitting on name looking at night sky.
+---
+---WARNING: This logo is too tall for realistic use.
 M.logos.compact_cats = [[
                  *     ,MMM8&&&.            *      
                       MMMM88&&&&&    .             
