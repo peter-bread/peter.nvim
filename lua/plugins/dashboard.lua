@@ -2,57 +2,10 @@ return {
   "nvimdev/dashboard-nvim",
   lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
   opts = function()
-    local logo = [[
-                                     *     ,MMM8&&&.            *                                 
-                 '                        MMMM88&&&&&    .                                      ' 
-*                                        MMMM88&&&&&&&                                            
-                             *           MMM88&&&&&&&&                        *                   
-                                         MMM88&&&&&&&&                                            
-        .                                'MMM88&&&&&&'                                      .     
-                                '          'MMM8&&&'      *                                       
-          |\___/|                                                     '                           
-          )     (       .                       *                                                 
-         =\     /=                                                                        /\     
-           )===(          ██████╗ ███████╗████████╗███████╗██████╗        .        /\_/\  / /     
-          /     \         ██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗               / o o \ \ \    *
-          |     |         ██████╔╝█████╗     ██║   █████╗  ██████╔╝             ===  Y  === /     
-   '     /       \        ██╔═══╝ ██╔══╝     ██║   ██╔══╝  ██╔══██╗             /         \/      
-         \       /        ██║     ███████╗   ██║   ███████╗██║  ██║             \ | | | | /       
-          \__  _/         ╚═╝     ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝.nvim         `|_|-|_|'        
-     ██████( (██████████████████████████████████████████████████████████████████████████████    
-             ) )                                                                                  
-            ( (                                                                                   
-             )_)                                                                                  
-    ]]
+    local util = require("util.dashboard")
+    local logo = util.logos.wide_cats
 
-    --[=[
-    local logo = [[
-                 *     ,MMM8&&&.            *      
-                      MMMM88&&&&&    .             
-                     MMMM88&&&&&&&                 
-         *           MMM88&&&&&&&&                 
-                     MMM88&&&&&&&&                 
-                     'MMM88&&&&&&'                 
-                       'MMM8&&&'      *            
-               |\___/|                             
-               )     (             .              '
-              =\     /=                   /\       
-                )===(       *     /\_/\  / /       
-               /     \           / o o \ \ \       
-               |     |         ===  Y  === /       
-              /       \        /         \/        
-              \       /        \ | | | | /         
-               \__  _/          `|_|-|_|'          
-    ██████╗ █████( (████████╗███████╗██████╗       
-    ██╔══██╗██╔═══) )══██╔══╝██╔════╝██╔══██╗      
-    ██████╔╝█████( (   ██║   █████╗  ██████╔╝      
-    ██╔═══╝ ██╔══╝)_)  ██║   ██╔══╝  ██╔══██╗      
-    ██║     ███████╗   ██║   ███████╗██║  ██║      
-    ╚═╝     ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝.nvim 
-        ]]
-    ]=]
-
-    logo = string.rep("\n", 4) .. logo --.. "\n\n"
+    logo = string.rep("\n", 4) .. logo
 
     local opts = {
       theme = "doom",
@@ -63,22 +16,12 @@ return {
       },
       config = {
         header = vim.split(logo, "\n"),
-        -- stylua: ignore
-        center = {
-          { action = "ene | startinsert",                              desc = " New File",    icon = " ", key = "n" },
-          { action = require("telescope.builtin").find_files,          desc = " Find File",   icon = " ", key = "f" },
-          { action = require("telescope.builtin").live_grep,           desc = " Search File", icon = " ", key = "g" },
-          { action = require("telescope.builtin").oldfiles,            desc = " Recent",      icon = " ", key = "r" },
-          { action = "Lazy",                                           desc = " Lazy",        icon = "󰒲 ", key = "l" },
-          { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit",        icon = " ", key = "q" },
-        },
+        center = util.center(),
         footer = function()
           local stats = require("lazy").stats()
-          local ms = stats.startuptime
           -- stylua: ignore
           return {
-            "loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. " ms",
-            "", -- padding?
+            "loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. stats.startuptime .. " ms",
           }
         end,
       },
