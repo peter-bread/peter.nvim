@@ -14,6 +14,12 @@ return {
       scope = {
         enabled = false,
       },
+      exclude = {
+        filetypes = {
+          "lazy",
+          "dashboard",
+        },
+      },
     },
   },
 
@@ -26,7 +32,6 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
           "help",
-          "alpha",
           "dashboard",
           "neo-tree",
           "Trouble",
