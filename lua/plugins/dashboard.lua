@@ -1,6 +1,6 @@
 return {
   "nvimdev/dashboard-nvim",
-  lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
+  lazy = false,
   opts = function()
     local util = require("util.dashboard")
     local logo = util.logos.wide_cats
@@ -21,6 +21,7 @@ return {
           local stats = require("lazy").stats()
           -- stylua: ignore
           return {
+            "",
             "loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. stats.startuptime .. " ms",
           }
         end,
