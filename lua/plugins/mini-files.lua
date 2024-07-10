@@ -6,11 +6,21 @@ return {
       preview = true,
     },
   },
-  -- stylua: ignore
   keys = {
-    { "<leader>e", function() require("mini.files").open(vim.uv.cwd(), true) end },
-    { "-", function() require("mini.files").open(vim.uv.cwd(), true) end },
-    { "<leader>E", function() require("mini.files").open(vim.api.nvim_buf_get_name(0), true) end },
+    {
+      "<leader>e",
+      function()
+        require("mini.files").open(vim.uv.cwd(), true)
+      end,
+      desc = "Explore files (cwd)",
+    },
+    {
+      "<leader>E",
+      function()
+        require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
+      end,
+      desc = "Explore files (buf)",
+    },
   },
   config = function(_, opts)
     require("mini.files").setup(opts)
