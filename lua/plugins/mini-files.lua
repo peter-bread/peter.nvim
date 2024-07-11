@@ -4,7 +4,9 @@ return {
   opts = {
     windows = {
       preview = true,
-      width_preview = 40,
+      width_focus = 35,
+      width_no_focus = 20,
+      width_preview = 30,
     },
   },
   keys = {
