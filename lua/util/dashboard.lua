@@ -15,7 +15,9 @@ function M.center()
 
   return {
     {
-      action = require("telescope.builtin").find_files,
+      action = function()
+        require("telescope.builtin").find_files()
+      end,
       desc = pad("Find File"),
       icon = " ",
       key = "f",
@@ -27,13 +29,17 @@ function M.center()
       key = "n",
     },
     {
-      action = require("telescope.builtin").live_grep,
+      action = function()
+        require("telescope.builtin").live_grep()
+      end,
       desc = pad("Search Text"),
       icon = "󱎸 ",
       key = "g",
     },
     {
-      action = require("telescope.builtin").oldfiles,
+      action = function()
+        require("telescope.builtin").oldfiles()
+      end,
       desc = pad("Recent Files"),
       icon = " ",
       key = "r",
