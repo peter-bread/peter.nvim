@@ -23,7 +23,7 @@ return {
         theme = "auto",
         globalstatus = vim.o.laststatus == 3,
         disabled_filetypes = { statusline = { "dashboard" } },
-      }
+      },
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
