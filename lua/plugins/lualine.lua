@@ -27,6 +27,14 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
+        lualine_c = {
+
+          -- relative filepath
+          {
+            "filename",
+            path = 1,
+          },
+        }
         lualine_x = {
 
           -- no. of lazy package updates
