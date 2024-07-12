@@ -1,6 +1,7 @@
 {
   "dashboard-nvim": { "branch": "master", "commit": "40ac8bf942895aeb3c1a61e555c1ebc55b35b632" },
   "flash.nvim": { "branch": "main", "commit": "ec0bf2842189f65f60fd40bf3557cac1029cc932" },
+  "gitsigns.nvim": { "branch": "main", "commit": "7178d1a430dcfff8a4c92d78b9e39e0297a779c0" },
   "indent-blankline.nvim": { "branch": "master", "commit": "65e20ab94a26d0e14acac5049b8641336819dfc7" },
   "lazy.nvim": { "branch": "main", "commit": "d1de92dffab5a862332fdd1892889d362369c12f" },
   "mini.ai": { "branch": "main", "commit": "45587078f323eaf41b9f701bbc04f8d1ab008979" },

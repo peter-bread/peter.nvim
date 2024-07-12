@@ -10,6 +10,8 @@ return {
       ["]"] = { name = "next" },
       ["["] = { name = "prev" },
       ["<leader>f"] = { name = "find" },
+      ["<leader>g"] = { name = "git" },
+      ["<leader>gh"] = { name = "hunks", ["_"] = "which_key_ignore" },
       ["<leader>u"] = { name = "ui" },
     },
   },
