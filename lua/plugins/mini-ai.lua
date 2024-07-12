@@ -1,5 +1,6 @@
 return {
   "echasnovski/mini.ai",
+  dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
   event = { "BufReadPost", "BufNewFile" },
   version = false,
   opts = function()
