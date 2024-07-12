@@ -13,6 +13,11 @@ return {
     end
   end,
   opts = function()
+    local lualine_require = require("lualine_require")
+    lualine_require.require = require
+
+    vim.o.laststatus = vim.g.lualine_laststatus
+
     local opts = {
       sections = {
         lualine_a = { "mode" },
