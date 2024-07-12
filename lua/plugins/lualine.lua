@@ -57,7 +57,11 @@ return {
             end,
           },
         },
-      }
+      },
+      extensions = {
+        "lazy",
+        "man",
+      },
     }
     return opts
   end,
