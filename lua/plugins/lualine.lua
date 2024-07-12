@@ -34,7 +34,7 @@ return {
             "filename",
             path = 1,
           },
-        }
+        },
         lualine_x = {
 
           -- no. of lazy package updates
