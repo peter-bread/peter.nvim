@@ -18,3 +18,6 @@ set("n", "<leader>O", "O<esc>", { desc = "Insert line above" })
 
 -- open lazy package manager
 set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+
+-- toggle background
+set("n", "<leader>ut", require("util.ui").toggle_background, { desc = "Toggle background" })
