@@ -15,6 +15,6 @@ return {
     end
   end,
   config = function(_, opts)
-    require('mini.icons').setup(opts)
+    require("mini.icons").setup(opts)
   end,
 }
