@@ -43,56 +43,56 @@ return {
     require("mini.ai").setup(opts)
 
     -- register all text objects with which-key
-    require("util.lazy").on_load("which-key.nvim", function()
-      ---@type table<string, string|table>
-      local i = {
-        [" "] = "Whitespace",
-        ['"'] = 'Balanced "',
-        ["'"] = "Balanced '",
-        ["`"] = "Balanced `",
-        ["("] = "Balanced (",
-        [")"] = "Balanced ) inc. white-space",
-        [">"] = "Balanced > inc. white-space",
-        ["<lt>"] = "Balanced <",
-        ["]"] = "Balanced ] inc. white-space",
-        ["["] = "Balanced [",
-        ["}"] = "Balanced } inc. white-space",
-        ["{"] = "Balanced {",
-        ["?"] = "User Prompt",
-        _ = "Underscore",
-        a = "Argument",
-        b = "Balanced ), ], }",
-        c = "Class",
-        d = "Digit(s)",
-        e = "Word in CamelCase & snake_case",
-        f = "Function",
-        g = "Entire file",
-        i = "Indent",
-        o = "Block, conditional, loop",
-        q = "Quote `, \", '",
-        t = "Tag",
-        u = "Use/call function & method",
-        U = "Use/call without dot in name",
-      }
-
-      local a = vim.deepcopy(i)
-      for k, v in pairs(a) do
-        a[k] = v:gsub(" including.*", "")
-      end
-
-      local ic = vim.deepcopy(i)
-      local ac = vim.deepcopy(a)
-      -- stylua: ignore
-      for key, name in pairs({ n = "Next", l = "Last" }) do
-        i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
-        a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
-      end
-
-      require("which-key").register({
-        mode = { "o", "x" },
-        i = i,
-        a = a,
-      })
-    end)
+    -- require("util.lazy").on_load("which-key.nvim", function()
+    --   ---@type table<string, string|table>
+    --   local i = {
+    --     [" "] = "Whitespace",
+    --     ['"'] = 'Balanced "',
+    --     ["'"] = "Balanced '",
+    --     ["`"] = "Balanced `",
+    --     ["("] = "Balanced (",
+    --     [")"] = "Balanced ) inc. white-space",
+    --     [">"] = "Balanced > inc. white-space",
+    --     ["<lt>"] = "Balanced <",
+    --     ["]"] = "Balanced ] inc. white-space",
+    --     ["["] = "Balanced [",
+    --     ["}"] = "Balanced } inc. white-space",
+    --     ["{"] = "Balanced {",
+    --     ["?"] = "User Prompt",
+    --     _ = "Underscore",
+    --     a = "Argument",
+    --     b = "Balanced ), ], }",
+    --     c = "Class",
+    --     d = "Digit(s)",
+    --     e = "Word in CamelCase & snake_case",
+    --     f = "Function",
+    --     g = "Entire file",
+    --     i = "Indent",
+    --     o = "Block, conditional, loop",
+    --     q = "Quote `, \", '",
+    --     t = "Tag",
+    --     u = "Use/call function & method",
+    --     U = "Use/call without dot in name",
+    --   }
+    --
+    --   local a = vim.deepcopy(i)
+    --   for k, v in pairs(a) do
+    --     a[k] = v:gsub(" including.*", "")
+    --   end
+    --
+    --   local ic = vim.deepcopy(i)
+    --   local ac = vim.deepcopy(a)
+    --   -- stylua: ignore
+    --   for key, name in pairs({ n = "Next", l = "Last" }) do
+    --     i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
+    --     a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
+    --   end
+    --
+    --   require("which-key").register({
+    --     mode = { "o", "x" },
+    --     i = i,
+    --     a = a,
+    --   })
+    -- end)
   end,
 }
