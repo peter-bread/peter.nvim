@@ -30,6 +30,7 @@ require("lazy").setup({
       disabled_plugins = {
         "matchit",
         "matchparen",
+        "tutor",
       },
     },
   },
