@@ -20,4 +20,5 @@ set("n", "<leader>O", "O<esc>", { desc = "Insert line above" })
 set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- toggle background
+-- stylua: ignore
 set("n", "<leader>ut", require("util.ui").toggle_background, { desc = "Toggle background" })
