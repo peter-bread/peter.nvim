@@ -5,11 +5,22 @@ return {
     spec = {
       {
         mode = { "n", "v" },
+
+        -- descriptions
+        { "f", desc = "Find {char}" },
+        { "F", desc = "Find back {char}" },
+        { "t", desc = "Til {char}" },
+        { "T", desc = "Til back {char}" },
+        { ";", desc = "Repeat forward" },
+        { ",", desc = "Repeat backward" },
+
+        -- groups
         { "g", group = "goto" },
         { "gs", group = "surround" },
         { "z", group = "fold" },
         { "]", group = "next" },
         { "[", group = "prev" },
+        { "<leader>", group = "leader" },
         { "<leader>f", group = "find" },
         { "<leader>g", group = "git" },
         { "<leader>gh", group = "hunks" },
