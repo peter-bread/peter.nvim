@@ -1,5 +1,5 @@
 require("config")
 
 pcall(function()
-  vim.cmd([[colorscheme rose-pine-main]])
+  vim.cmd([[colorscheme rose-pine]])
 end)
