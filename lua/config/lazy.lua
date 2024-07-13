@@ -25,4 +25,12 @@ require("lazy").setup({
   ui = {
     icons = {},
   },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "matchit",
+        "matchparen",
+      },
+    },
+  },
 })
