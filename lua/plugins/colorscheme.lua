@@ -7,6 +7,9 @@ return {
     opts = {
       variant = "auto",
       dark_variant = "main",
+      styles = {
+        transparency = true,
+      },
       highlight_groups = {
         TelescopeBorder = { fg = "overlay", bg = "overlay" },
         TelescopeNormal = { fg = "subtle", bg = "overlay" },
