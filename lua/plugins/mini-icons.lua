@@ -3,10 +3,22 @@ return {
   lazy = true,
   -- no event required. will be loaded when another plugin needs it
   opts = {
-    filetype = {
+    style = "glyph",
+    default = {}, -- fallbacks for any other category
+    directory = { -- directory path (basename only)
+      ["config"] = { glyph = "" },
+      ["plugin"] = { glyph = "" },
+      ["plugins"] = { glyph = "" },
+      ["workflows"] = { glyph = "󰄴" },
+    },
+    extension = {}, -- extensions w/o dot prefix
+    file = {}, -- file path (basename only)
+    filetype = { -- filetype
       gleam = { glyph = "󰓎" },
       lua = { hl = "MiniIconsBlue" },
     },
+    lsp = {}, -- "LSP kind" values
+    os = {}, -- operating system
   },
   init = function()
     package.preload["nvim-web-devicons"] = function()
@@ -16,5 +28,17 @@ return {
   end,
   config = function(_, opts)
     require("mini.icons").setup(opts)
+
+    -- local icons = require("mini.icons")
+    -- local get_icon_tbl = function(category, name)
+    --   local icon, hl = icons.get(category, name)
+    --   return { glyph = icon, hl = hl }
+    -- end
+    -- local dockerfile_icon_tbl = get_icon_tbl("filetype", "dockerfile")
+    -- icons.setup({
+    --   file = {
+    --     ["docker-compose.yml"] = dockerfile_icon_tbl,
+    --   },
+    -- })
   end,
 }
