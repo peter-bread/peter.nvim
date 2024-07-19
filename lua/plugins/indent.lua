@@ -47,23 +47,18 @@ return {
         end,
       })
     end,
-    config = function()
-      require("mini.indentscope").setup({
+    opts = function()
+      local ret = {
         draw = {
           delay = 0,
-          animation = require("mini.indentscope").gen_animation.none(), -- *1
+          animation = require("mini.indentscope").gen_animation.none(),
         },
         symbol = "│",
         options = {
           try_as_border = true,
         },
-      })
+      }
+      return ret
     end,
   },
 }
-
--- *1 Since the module is required during its own setup, it must be done in
---    the config function as it runs when the plugin is loaded.
---
---    (If it were in an external `opts` table, it would attempt to execute
---    before the plugin had been loaded so the module would not yet exist).
