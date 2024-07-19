@@ -103,10 +103,10 @@ return {
         if opts.setup[server_name](server_name, server_opts) then
           return
         end
-        -- elseif opts.setup["*"] then
-        --   if opts.setup["*"](server_name, server_opts) then
-        --     return
-        --   end
+        elseif opts.setup["*"] then
+          if opts.setup["*"](server_name, server_opts) then
+            return
+          end
       end
       require("lspconfig")[server_name].setup(server_opts)
     end
