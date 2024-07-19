@@ -95,17 +95,62 @@ function M.create_lsp_keymaps(client, bufnr)
 
   -- stylua: ignore start
   map("<leader>cl", "<cmd>LspInfo<cr>", { desc = "Info" })
-  map("gd", require("telescope.builtin").lsp_definitions, { desc = "Definition", has = "textDocument/definition" })
-  map("gr", require("telescope.builtin").lsp_references, { desc = "References", has = "textDocument/references" })
-  map("gI", require("telescope.builtin").lsp_implementations, { desc = "Implementation", has = "textDocument/implementation" })
-  map("gy", require("telescope.builtin").lsp_type_definitions, { desc = "Type Definition", has = "textDocument/typeDefinition" })
-  map("gD", vim.lsp.buf.declaration, { desc = "Declaration", has = "textDocument/declaration" })
-  map("gK", vim.lsp.buf.signature_help, { desc = "Signature Help", has = "textDocument/signatureHelp" })
-  map("<c-k>", vim.lsp.buf.signature_help, { desc = "Signature Help", mode = "i", has = "textDocument/signatureHelp" })
-  map("<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions", has = "textDocument/codeAction" })
-  map("<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens", mode = { "n", "v" }, has = "textDocument/codeLens" })
-  map("<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh & Display Codelens", has = "textDocument/codeLens" })
-  map("<leader>cr", vim.lsp.buf.rename, { desc = "Rename", has = "textDocument/rename" })
+
+  map("gd", require("telescope.builtin").lsp_definitions, {
+    desc = "Definition",
+    has = "textDocument/definition"
+  })
+
+  map("gr", require("telescope.builtin").lsp_references, {
+    desc = "References",
+    has = "textDocument/references"
+  })
+
+  map("gI", require("telescope.builtin").lsp_implementations, {
+    desc = "Implementation",
+    has = "textDocument/implementation"
+  })
+
+  map("gy", require("telescope.builtin").lsp_type_definitions, {
+    desc = "Type Definition",
+    has = "textDocument/typeDefinition"
+  })
+
+  map("gD", vim.lsp.buf.declaration, {
+    desc = "Declaration",
+    has = "textDocument/declaration"
+  })
+
+  map("gK", vim.lsp.buf.signature_help, {
+    desc = "Signature Help",
+    has = "textDocument/signatureHelp"
+  })
+
+  map("<c-k>", vim.lsp.buf.signature_help, {
+    desc = "Signature Help",
+    mode = "i",
+    has = "textDocument/signatureHelp"
+  })
+
+  map("<leader>ca", vim.lsp.buf.code_action, {
+    desc = "Code Actions",
+    has = "textDocument/codeAction"
+  })
+
+  map("<leader>cc", vim.lsp.codelens.run, {
+    desc = "Run Codelens",
+    mode = { "n", "v"
+    }, has = "textDocument/codeLens" })
+
+  map("<leader>cC", vim.lsp.codelens.refresh, {
+    desc = "Refresh & Display Codelens",
+    has = "textDocument/codeLens"
+  })
+
+  map("<leader>cr", vim.lsp.buf.rename, {
+    desc = "Rename",
+    has = "textDocument/rename"
+  })
   -- stylua: ignore end
 end
 
