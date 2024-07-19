@@ -47,8 +47,7 @@ local nvim_lspconfig_opts = {
   },
   ---@type LspCustomSetup
   setup = {
-    lua_ls = function(server, opts)
-    end,
+    lua_ls = function(server, opts) end,
   },
 }
 

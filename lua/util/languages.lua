@@ -1,5 +1,6 @@
 local M = {}
 
+-- stylua: ignore
 ---Set up packages, LSPs, formatters and linters for a programming language
 ---
 ---(Do not use for languages that have their own plugins which set up everything themselves, e.g. java or haskell)
