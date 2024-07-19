@@ -94,8 +94,6 @@ function M.create_lsp_keymaps(client, bufnr)
     end
   end
 
-  local x = client.capabilities.textDocument
-
   -- stylua: ignore start
   map("<leader>cl", "<cmd>LspInfo<cr>", { desc = "Info" })
   map("gd", require("telescope.builtin").lsp_definitions, { desc = "Definition", has = "textDocument/definition" })
