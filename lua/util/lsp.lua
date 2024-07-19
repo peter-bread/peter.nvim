@@ -75,23 +75,22 @@ function M.create_lsp_keymaps(client, bufnr)
       return
     end
 
-    -- convert to table for processing
+    -- if one capability is required then set keymap
     if type(has) == "string" then
-      has = { has }
+      if client.supports_method(has) then
+        vim.keymap.set(mode, lhs, rhs, opts)
+      end
+      return
     end
 
-    local all_supported = true
-
+    -- check that all required capabilities are suppported
     for _, capability in ipairs(has) do
       if not client.supports_method(capability) then
-        all_supported = false
-        break
+        return
       end
     end
 
-    if all_supported then
-      vim.keymap.set(mode, lhs, rhs, opts)
-    end
+    vim.keymap.set(mode, lhs, rhs, opts)
   end
 
   -- stylua: ignore start
