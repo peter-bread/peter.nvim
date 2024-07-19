@@ -21,6 +21,7 @@ return {
         { "]", group = "next" },
         { "[", group = "prev" },
         { "<leader>", group = "leader" },
+        { "<leader>c", group = "code" },
         { "<leader>f", group = "find" },
         { "<leader>g", group = "git" },
         { "<leader>gh", group = "hunks" },
