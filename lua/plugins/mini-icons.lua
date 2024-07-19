@@ -13,7 +13,9 @@ return {
     },
     extension = {}, -- extensions w/o dot prefix
     file = {}, -- file path (basename only)
-    filetype = {}, -- filetype
+    filetype = { -- filetype
+      lua = { hl = "MiniIconsBlue" },
+    },
     lsp = {}, -- "LSP kind" values
     os = {}, -- operating system
   },
