@@ -13,10 +13,7 @@ return {
     },
     extension = {}, -- extensions w/o dot prefix
     file = {}, -- file path (basename only)
-    filetype = { -- filetype
-      gleam = { glyph = "󰓎" },
-      lua = { hl = "MiniIconsBlue" },
-    },
+    filetype = {}, -- filetype
     lsp = {}, -- "LSP kind" values
     os = {}, -- operating system
   },
