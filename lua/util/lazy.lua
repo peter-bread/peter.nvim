@@ -1,5 +1,8 @@
 local M = {}
 
+-- from:
+-- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/init.lua
+
 ---@param name string
 ---@param fn fun(name:string)
 function M.on_load(name, fn)
