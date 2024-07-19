@@ -28,7 +28,7 @@ return {
         { "<leader>u", group = "ui" },
       },
     },
-    icons = { rules = false },
+    icons = { mappings = false },
   },
   config = function(_, opts)
     local wk = require("which-key")
