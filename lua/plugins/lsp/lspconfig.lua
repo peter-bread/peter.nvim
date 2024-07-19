@@ -18,7 +18,7 @@
 ---   end,
 --- },
 --- ```
----@alias LspCustomSetup table<string, fun(server:string, server:table):boolean|nil>
+---@alias LspCustomSetup table<string, fun(server:string, opts:table):boolean|nil>
 
 return {
   "neovim/nvim-lspconfig",
