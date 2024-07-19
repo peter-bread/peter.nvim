@@ -25,7 +25,10 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch" },
+        lualine_b = {
+          { "branch" },
+          { "diagnostics" },
+        },
         lualine_c = {
 
           -- relative filepath
