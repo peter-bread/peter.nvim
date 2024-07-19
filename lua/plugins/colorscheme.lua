@@ -8,7 +8,7 @@ return {
       variant = "auto",
       dark_variant = "main",
       styles = {
-        transparency = true,
+        transparency = false,
       },
       highlight_groups = {
         TelescopeBorder = { fg = "overlay", bg = "overlay" },
