@@ -12,6 +12,12 @@ set("n", "<C-l>", "<C-w><C-l>", { desc = "Focus right pane" })
 set("n", "<leader>-", "<C-W>s", { desc = "Split below", remap = true })
 set("n", "<leader>|", "<C-W>v", { desc = "Split right", remap = true })
 
+-- resize splits
+set("n", "<M-+>", "<C-w>5>") -- wider
+set("n", "<M-_>", "<C-w>5<") -- narrower
+set("n", "<M-=>", "<C-w>+") -- taller
+set("n", "<M-->", "<C-w>-") -- shorter
+
 -- insert blank lines
 set("n", "<leader>o", "o<esc>", { desc = "Insert line below" })
 set("n", "<leader>O", "O<esc>", { desc = "Insert line above" })
