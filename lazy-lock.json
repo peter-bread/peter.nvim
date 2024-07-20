@@ -24,5 +24,5 @@
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "vim-matchup": { "branch": "master", "commit": "1535a769d5dca851fe7d41b0be95f7c7203a4bef" },
-  "which-key.nvim": { "branch": "main", "commit": "858532c2504f5dcafff96188800a8ec9c4f8f7c4" }
+  "which-key.nvim": { "branch": "main", "commit": "83476a1206b48c9d331084b9fbdb267be050fcc1" }
 }
