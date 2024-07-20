@@ -47,6 +47,7 @@ local nvim_lspconfig_opts = {
   },
   ---@type LspCustomSetup
   setup = {
+    ---@diagnostic disable-next-line: unused-local
     lua_ls = function(server, opts) end,
   },
 }
