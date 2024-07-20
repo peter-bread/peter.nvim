@@ -37,21 +37,33 @@ local M = {}
 ---       }
 ---     }
 ---   ```
----@param conform_opts table `opts` table for `conform.nvim` formatter.
+---@param format_opts table `opts` table for `conform.nvim` formatter.
 ---e.g.
 ---   ```lua
----   conform_opts = {
+---   format_opts = {
+---     -- set formatter(s) for different filetypes
 ---     formatters_by_ft = {
----       lua = { "stylua" },
+---       lua = { "stylua" }, -- single formatter
+---       go = { "goimports", "gofmt" }, -- run sequentially
+---       rust = { "rustfmt", lsp_format = "fallback" }, -- customise options
+---       javascript = { "prettierd", "prettier", stop_after_first = true }, -- run first available
 ---     },
----   },
+---
+---     -- customise individual formatters
+---     formatters = {
+---       stylua = {
+---         command = "...",
+---         args = { "abc", "--def" },
+---       },
+---     },
+---   }
 ---   ```
 ---@return table spec Plugin spec to setup a programming language
 function M.add_language(
   ts_ensure_installed,
   mason_ensure_installed,
   nvim_lspconfig_opts,
-  conform_opts
+  format_opts
 )
   return {
     {
@@ -74,7 +86,7 @@ function M.add_language(
     },
     {
       "stevearc/conform.nvim",
-      opts = conform_opts,
+      opts = format_opts,
     },
   }
 end
