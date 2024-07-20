@@ -1,6 +1,5 @@
 local M = {}
 
--- stylua: ignore
 ---Set up packages, LSPs, formatters and linters for a programming language
 ---
 ---(Do not use for languages that have their own plugins which set up everything themselves, e.g. java or haskell)
@@ -38,8 +37,22 @@ local M = {}
 ---       }
 ---     }
 ---   ```
+---@param conform_opts table `opts` table for `conform.nvim` formatter.
+---e.g.
+---   ```lua
+---   conform_opts = {
+---     formatters_by_ft = {
+---       lua = { "stylua" },
+---     },
+---   },
+---   ```
 ---@return table spec Plugin spec to setup a programming language
-function M.add_language(ts_ensure_installed, mason_ensure_installed, nvim_lspconfig_opts)
+function M.add_language(
+  ts_ensure_installed,
+  mason_ensure_installed,
+  nvim_lspconfig_opts,
+  conform_opts
+)
   return {
     {
       "nvim-treesitter/nvim-treesitter",
@@ -58,6 +71,10 @@ function M.add_language(ts_ensure_installed, mason_ensure_installed, nvim_lspcon
     {
       "neovim/nvim-lspconfig",
       opts = nvim_lspconfig_opts,
+    },
+    {
+      "stevearc/conform.nvim",
+      opts = conform_opts,
     },
   }
 end

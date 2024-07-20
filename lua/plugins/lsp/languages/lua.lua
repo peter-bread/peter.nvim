@@ -52,4 +52,11 @@ local nvim_lspconfig_opts = {
   },
 }
 
-return require("util.languages").add_language(ts, mason, nvim_lspconfig_opts)
+local conform_opts = {
+  formatters_by_ft = {
+    lua = { "stylua" },
+  },
+}
+
+-- stylua: ignore
+return require("util.languages").add_language(ts, mason, nvim_lspconfig_opts, conform_opts)
