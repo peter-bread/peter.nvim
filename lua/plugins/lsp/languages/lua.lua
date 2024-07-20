@@ -52,6 +52,7 @@ local nvim_lspconfig_opts = {
   },
 }
 
+---@type formatOpts
 local format_opts = {
   formatters_by_ft = {
     lua = { "stylua" },

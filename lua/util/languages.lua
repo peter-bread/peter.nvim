@@ -37,7 +37,7 @@ local M = {}
 ---       }
 ---     }
 ---   ```
----@param format_opts table `opts` table for `conform.nvim` formatter.
+---@param format_opts formatOpts [`stevearc/conform.nvim`](https://github.com/stevearc/conform.nvim) opts table. Will be merged with parent specs.
 ---e.g.
 ---   ```lua
 ---   format_opts = {

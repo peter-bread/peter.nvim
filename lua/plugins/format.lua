@@ -7,7 +7,8 @@ return {
     { "<leader>cf", function() require("conform").format({ async = true }) end, mode = "", desc = "Format Buffer" },
   },
   ---@module "conform"
-  ---@type conform.setupOpts
+  ---@alias formatOpts conform.setupOpts
+  ---@type formatOpts
   opts = {
     format_on_save = { timeout_ms = 500 },
   },
