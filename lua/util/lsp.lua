@@ -29,32 +29,19 @@ function M.on_attach(on_attach, name)
   })
 end
 
-function M.setup_inlay_hints(client, bufnr, exclude)
-  if
-    client.supports_method("textDocument/inlayHint")
-    or client.server_capabilities.inlayHintProvider
-  then
-    -- stylua: ignore
-    if
-      vim.api.nvim_buf_is_valid(bufnr)
-      and vim.bo[bufnr].buftype == ""
-      and not vim.tbl_contains(exclude, vim.bo[bufnr].filetype)
-    then
-      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end
-  end
-end
-
----@param client vim.lsp.Client
----@param bufnr integer
-function M.setup_codelens(client, bufnr)
-  if client.supports_method("textDocument/codeLens") then
-    vim.lsp.codelens.refresh()
-    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-      buffer = bufnr,
-      callback = vim.lsp.codelens.refresh,
-    })
-  end
+---Run `fn` when an LSP client attaches if the given `method` is supported.
+---@param method string Method/capability that needs to be supported.
+---@param fn fun(client: vim.lsp.Client, bufnr: integer) Function to run.
+function M.on_supports_method(method, fn)
+  return vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(event)
+      local bufnr = event.buf
+      local client = vim.lsp.get_client_by_id(event.data.client_id)
+      if client and client.supports_method(method) then
+        fn(client, bufnr)
+      end
+    end,
+  })
 end
 
 ---Create LSP keymaps for supported capabilities.

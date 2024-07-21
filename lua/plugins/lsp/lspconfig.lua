@@ -67,15 +67,37 @@ return {
 
     lsp.on_attach(function(client, bufnr)
       lsp.create_lsp_keymaps(client, bufnr)
-
-      if opts.inlay_hints.enabled then
-        lsp.setup_inlay_hints(client, bufnr, opts.inlay_hints.exclude)
-      end
-
-      if opts.codelens.enabled and vim.lsp.codelens then
-        lsp.setup_codelens(client, bufnr)
-      end
     end)
+
+    if opts.inlay_hints.enabled then
+      ---@diagnostic disable-next-line: unused-local
+      lsp.on_supports_method("textDocument/inlayHint", function(client, bufnr)
+        if
+          vim.api.nvim_buf_is_valid(bufnr)
+          and vim.bo[bufnr].buftype == ""
+          and not vim.tbl_contains(
+            opts.inlay_hints.exclude,
+            vim.bo[bufnr].filetype
+          )
+        then
+          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
+      end)
+    end
+
+    if opts.codelens.enabled and vim.lsp.codelens then
+      ---@diagnostic disable-next-line: unused-local
+      lsp.on_supports_method("textDocument/codeLens", function(client, bufnr)
+        vim.lsp.codelens.refresh()
+        vim.api.nvim_create_autocmd(
+          { "BufEnter", "CursorHold", "InsertLeave" },
+          {
+            buffer = bufnr,
+            callback = vim.lsp.codelens.refresh,
+          }
+        )
+      end)
+    end
 
     local signs =
       { Error = " ", Warn = " ", Hint = "󰌶 ", Info = " " }
