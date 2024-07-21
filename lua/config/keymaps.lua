@@ -24,6 +24,20 @@ set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 set("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })
 
+-- Move Lines
+-- from: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+set("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
+set("n", "<M-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
+set("i", "<M-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+set("i", "<M-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+set("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
+set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+
+-- better indenting
+-- from: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+set("v", "<", "<gv")
+set("v", ">", ">gv")
+
 -- insert blank lines
 set("n", "<leader>o", "o<esc>", { desc = "Insert line below" })
 set("n", "<leader>O", "O<esc>", { desc = "Insert line above" })
