@@ -20,11 +20,11 @@ return {
       builtin.colorscheme({ enable_preview = true })
     end
     return {
-      { "<leader>ff", builtin.find_files, mode = "n", desc = "find files" },
-      { "<leader>fg", builtin.live_grep, mode = "n", desc = "live grep" },
-      { "<leader>fr", builtin.oldfiles, mode = "n", desc = "recent files" },
-      { "<leader>fb", builtin.buffers, mode = "n", desc = "find buffers" },
-      { "<leader>uc", colorscheme, mode = "n", desc = "change colorscheme" },
+      { "<leader>ff", builtin.find_files, mode = "n", desc = "Find Files" },
+      { "<leader>fg", builtin.live_grep, mode = "n", desc = "Live Grep" },
+      { "<leader>fr", builtin.oldfiles, mode = "n", desc = "Recent Files" },
+      { "<leader>fb", builtin.buffers, mode = "n", desc = "Find Buffers" },
+      { "<leader>uc", colorscheme, mode = "n", desc = "Change Colorscheme" },
     }
   end,
   opts = {},
