@@ -45,6 +45,18 @@ function M.setup_inlay_hints(client, bufnr, exclude)
   end
 end
 
+---@param client vim.lsp.Client
+---@param bufnr integer
+function M.setup_codelens(client, bufnr)
+  if client.supports_method("textDocument/codeLens") then
+    vim.lsp.codelens.refresh()
+    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+      buffer = bufnr,
+      callback = vim.lsp.codelens.refresh,
+    })
+  end
+end
+
 ---Create LSP keymaps for supported capabilities.
 ---@param client vim.lsp.Client The LSP client.
 ---@param bufnr integer Buffer number.

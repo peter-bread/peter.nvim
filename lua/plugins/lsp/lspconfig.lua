@@ -52,6 +52,9 @@ return {
         enabled = true,
         exclude = {},
       },
+      codelens = {
+        enabled = true,
+      },
       ---@type LspCustomSetup
       setup = {},
     }
@@ -67,6 +70,10 @@ return {
 
       if opts.inlay_hints.enabled then
         lsp.setup_inlay_hints(client, bufnr, opts.inlay_hints.exclude)
+      end
+
+      if opts.codelens.enabled and vim.lsp.codelens then
+        lsp.setup_codelens(client, bufnr)
       end
     end)
 
