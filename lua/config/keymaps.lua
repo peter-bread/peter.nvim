@@ -18,6 +18,12 @@ set("n", "<M-_>", "<C-w>5<") -- narrower
 set("n", "<M-=>", "<C-w>+") -- taller
 set("n", "<M-->", "<C-w>-") -- shorter
 
+-- navigate buffers
+set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+set("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })
+
 -- insert blank lines
 set("n", "<leader>o", "o<esc>", { desc = "Insert line below" })
 set("n", "<leader>O", "O<esc>", { desc = "Insert line above" })
