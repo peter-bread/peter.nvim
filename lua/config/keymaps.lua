@@ -45,10 +45,6 @@ set("n", "<leader>O", "O<esc>", { desc = "Insert line above" })
 -- open lazy package manager
 set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
--- toggle background
--- stylua: ignore
-set("n", "<leader>ut", require("util.ui").toggle_background, { desc = "Toggle background" })
-
 -- diagnostics
 -- stylua: ignore start
 set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
@@ -59,3 +55,19 @@ set("n", "[e", function() vim.diagnostic.goto_prev({ severity = "ERROR" }) end, 
 set("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, { desc = "Next Warning" })
 set("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
 -- stylua: ignore end
+
+-- toggle background
+-- stylua: ignore
+set("n", "<leader>ub", require("util.ui").toggle_background, { desc = "Toggle background" })
+
+-- toggle inlay hints (global)
+set("n", "<leader>uh", function()
+  -- stylua: ignore
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = nil })
+end, { desc = "Toggle Inlay Hints" })
+
+-- toggle inlay hints (current buffer)
+set("n", "<leader>uH", function()
+  -- stylua: ignore
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+end, { desc = "Toggle Inlay Hints (Buf)" })

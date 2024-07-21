@@ -48,6 +48,10 @@ return {
           },
         },
       },
+      inlay_hints = {
+        enabled = true,
+        exclude = {},
+      },
       ---@type LspCustomSetup
       setup = {},
     }
@@ -60,6 +64,10 @@ return {
 
     lsp.on_attach(function(client, bufnr)
       lsp.create_lsp_keymaps(client, bufnr)
+
+      if opts.inlay_hints.enabled then
+        lsp.setup_inlay_hints(client, bufnr, opts.inlay_hints.exclude)
+      end
     end)
 
     local signs =

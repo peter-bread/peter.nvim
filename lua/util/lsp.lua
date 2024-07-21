@@ -29,6 +29,22 @@ function M.on_attach(on_attach, name)
   })
 end
 
+function M.setup_inlay_hints(client, bufnr, exclude)
+  if
+    client.supports_method("textDocument/inlayHint")
+    or client.server_capabilities.inlayHintProvider
+  then
+    -- stylua: ignore
+    if
+      vim.api.nvim_buf_is_valid(bufnr)
+      and vim.bo[bufnr].buftype == ""
+      and not vim.tbl_contains(exclude, vim.bo[bufnr].filetype)
+    then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+  end
+end
+
 ---Create LSP keymaps for supported capabilities.
 ---@param client vim.lsp.Client The LSP client.
 ---@param bufnr integer Buffer number.
