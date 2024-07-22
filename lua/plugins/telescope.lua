@@ -14,19 +14,15 @@ return {
     },
   },
   cmd = "Telescope",
-  keys = function()
-    local builtin = require("telescope.builtin")
-    local colorscheme = function()
-      builtin.colorscheme({ enable_preview = true })
-    end
-    return {
-      { "<leader>ff", builtin.find_files, mode = "n", desc = "Find Files" },
-      { "<leader>fg", builtin.live_grep, mode = "n", desc = "Live Grep" },
-      { "<leader>fr", builtin.oldfiles, mode = "n", desc = "Recent Files" },
-      { "<leader>fb", builtin.buffers, mode = "n", desc = "Find Buffers" },
-      { "<leader>uc", colorscheme, mode = "n", desc = "Change Colorscheme" },
-    }
-  end,
+  keys = {
+    -- stylua: ignore start
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", mode = "n", desc = "Find Files" },
+    { "<leader>fg", "<cmd>Telescope live_grep<cr>", mode = "n", desc = "Live Grep" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", mode = "n", desc = "Recent Files" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", mode = "n", desc = "Find Buffers" },
+    { "<leader>uc", function() require("telescope.builtin").colorscheme({ enable_preview = true }) end },
+    -- stylua: ignore end
+  },
   opts = {},
   config = function(_, opts)
     local telescope = require("telescope")
