@@ -1,7 +1,5 @@
 local M = {}
 
--- { "<leader><space>", require("util.telescope").project_files, mode = "n", desc = "project files" },
-
 local is_inside_work_tree = {}
 
 function M.project_files()
