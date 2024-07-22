@@ -20,6 +20,7 @@ return {
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", mode = "n", desc = "Recent Files" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", mode = "n", desc = "Find Buffers" },
     { "<leader>uc", function() require("telescope.builtin").colorscheme({ enable_preview = true }) end },
+    { "<leader><space>", function() require("util.telescope").project_files() end, desc = "Project Files" },
     -- stylua: ignore end
   },
   opts = {},
