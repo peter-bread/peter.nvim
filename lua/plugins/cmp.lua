@@ -33,26 +33,30 @@ return {
     cmp.setup({
       enabled = function()
         local ctx = require("cmp.config.context")
-        -- keep command mode completion enabled when cursor is in a comment
+
+        -- Always enable completion in command mode
         if vim.api.nvim_get_mode().mode == "c" then
           return true
-        else
-          -- disable completion in comments
-          if
-            ctx.in_treesitter_capture("comment")
-            or ctx.in_syntax_group("Comment")
-          then
-            return false
-          end
         end
-        -- disable completion in prompts (e.g. telescope prompt)
+
+        -- Disable completion in comments
+        if
+          ctx.in_treesitter_capture("comment") or ctx.in_syntax_group("Comment")
+        then
+          return false
+        end
+
+        -- Disable completion in prompt buffers (e.g. telescope prompts)
         if vim.bo.buftype == "prompt" then
           return false
         end
-        -- disable completion when recording or executing macros
+
+        -- Disable completion when recording or executing macros
         if vim.fn.reg_recording() ~= "" or vim.fn.reg_executing() ~= "" then
           return false
         end
+
+        -- Enable completion in all other cases
         return true
       end,
       snippet = {
