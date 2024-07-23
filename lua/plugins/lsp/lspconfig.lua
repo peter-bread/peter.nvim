@@ -26,6 +26,7 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
+    "hrsh7th/cmp-nvim-lsp",
   },
   opts = function()
     local ret = {
@@ -122,11 +123,12 @@ return {
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- capabilities = vim.tbl_deep_extend(
-    --   "force",
-    --   capabilities,
-    --   require("cmp_nvim_lsp").default_capabilities()
-    -- )
+    capabilities = vim.tbl_deep_extend(
+      "force",
+      capabilities, -- default capabilities
+      opts.capabilities or {}, -- global capabilities
+      require("cmp_nvim_lsp").default_capabilities()
+    )
 
     ---Setup an LSP server.
     ---
@@ -141,7 +143,6 @@ return {
         "force",
         {},
         capabilities, -- default capabilities
-        opts.capabilities or {}, -- global capabilities
         server_opts.capabilities or {}
       )
 

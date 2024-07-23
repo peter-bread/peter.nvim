@@ -9,6 +9,9 @@ g.have_nerd_font = true
 
 g.markdown_recommended_style = 0
 
+-- pop up menu height
+o.pumheight = 15
+
 -- set line numbers
 o.number = true
 o.relativenumber = true
