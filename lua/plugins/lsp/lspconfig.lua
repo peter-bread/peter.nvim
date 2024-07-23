@@ -81,6 +81,18 @@ return {
           )
         then
           vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+
+          -- toggle inlay hints (global)
+          vim.keymap.set("n", "<leader>uh", function()
+            -- stylua: ignore
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = nil })
+          end, { desc = "Toggle Inlay Hints" })
+
+          -- toggle inlay hints (current buffer)
+          vim.keymap.set("n", "<leader>uH", function()
+            -- stylua: ignore
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+          end, { desc = "Toggle Inlay Hints (Buf)" })
         end
       end)
     end
