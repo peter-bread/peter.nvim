@@ -141,7 +141,7 @@ function M.create_lsp_keymaps(client, bufnr)
     has = "textDocument/signatureHelp",
   })
 
-  map("<c-k>", vim.lsp.buf.signature_help, {
+  map("<C-k>", vim.lsp.buf.signature_help, {
     desc = "Signature Help",
     mode = "i",
     has = "textDocument/signatureHelp",
