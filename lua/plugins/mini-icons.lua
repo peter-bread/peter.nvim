@@ -4,20 +4,27 @@ return {
   -- no event required. will be loaded when another plugin needs it
   opts = {
     style = "glyph",
-    default = {}, -- fallbacks for any other category
-    directory = { -- directory path (basename only)
+    --fallbacks for any other category
+    default = {},
+    -- directory path (basename only)
+    directory = {
       ["config"] = { glyph = "" },
       ["plugin"] = { glyph = "" },
       ["plugins"] = { glyph = "" },
       ["workflows"] = { glyph = "󰄴" },
     },
-    extension = {}, -- extensions w/o dot prefix
-    file = {}, -- file path (basename only)
-    filetype = { -- filetype
+    -- extensions w/o dot prefix
+    extension = {},
+    -- file path (basename only)
+    file = {},
+    -- filetype
+    filetype = {
       lua = { hl = "MiniIconsBlue" },
     },
-    lsp = {}, -- "LSP kind" values
-    os = {}, -- operating system
+    -- "LSP kind" values
+    lsp = {},
+    -- operating system
+    os = {},
   },
   init = function()
     package.preload["nvim-web-devicons"] = function()
