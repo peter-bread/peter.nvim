@@ -24,8 +24,12 @@ return {
         disabled_filetypes = { statusline = { "dashboard" } },
       },
       sections = {
-        lualine_a = { "mode" },
+        lualine_a = {
+          -- vim mode
+          { "mode" },
+        },
         lualine_b = {
+          -- git branch
           { "branch" },
 
           -- git diff
@@ -50,15 +54,13 @@ return {
           },
         },
         lualine_c = {
-
           -- relative filepath
           {
             "filename",
-            path = 1,
+            path = 0,
           },
         },
         lualine_x = {
-
           -- no. of lazy package updates
           {
             require("lazy.status").updates,
@@ -66,7 +68,16 @@ return {
             color = { fg = "#ff9e64" },
           },
 
+          -- diagnostics
           { "diagnostics" },
+        },
+        lualine_y = {
+          -- progress through file
+          { "progress" },
+        },
+        lualine_z = {
+          -- location in file
+          { "location" },
         },
       },
       extensions = {
