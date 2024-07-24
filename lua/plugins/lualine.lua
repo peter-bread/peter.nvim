@@ -27,24 +27,6 @@ return {
         lualine_a = { "mode" },
         lualine_b = {
           { "branch" },
-          { "diagnostics" },
-        },
-        lualine_c = {
-
-          -- relative filepath
-          {
-            "filename",
-            path = 1,
-          },
-        },
-        lualine_x = {
-
-          -- no. of lazy package updates
-          {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
-            color = { fg = "#ff9e64" },
-          },
 
           -- git diff
           {
@@ -66,6 +48,25 @@ return {
               end
             end,
           },
+        },
+        lualine_c = {
+
+          -- relative filepath
+          {
+            "filename",
+            path = 1,
+          },
+        },
+        lualine_x = {
+
+          -- no. of lazy package updates
+          {
+            require("lazy.status").updates,
+            cond = require("lazy.status").has_updates,
+            color = { fg = "#ff9e64" },
+          },
+
+          { "diagnostics" },
         },
       },
       extensions = {
