@@ -112,6 +112,12 @@ return {
       end
     end, { silent = true, desc = "Snippet Jump Prev" })
 
+    vim.keymap.set({ "i", "s" }, "<C-j>", function()
+      if ls.choice_active() then
+        ls.change_choice(1)
+      end
+    end, { silent = true, desc = "Cycle Snippet Choice" })
+
     -- `/` cmdline setup
     cmp.setup.cmdline("/", {
       mapping = cmp.mapping.preset.cmdline(),
