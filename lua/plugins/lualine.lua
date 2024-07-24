@@ -54,6 +54,9 @@ return {
           },
         },
         lualine_c = {
+          -- diagnostics
+          { "diagnostics" },
+
           -- relative filepath
           {
             "filename",
@@ -67,9 +70,6 @@ return {
             cond = require("lazy.status").has_updates,
             color = { fg = "#ff9e64" },
           },
-
-          -- diagnostics
-          { "diagnostics" },
         },
         lualine_y = {
           -- progress through file
