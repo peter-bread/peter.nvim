@@ -14,6 +14,8 @@ return {
         { ";", desc = "Repeat forward" },
         { ",", desc = "Repeat backward" },
 
+        { "gx", desc = "Open file/link with system app" },
+
         -- groups
         { "g", group = "goto" },
         { "gs", group = "surround" },
