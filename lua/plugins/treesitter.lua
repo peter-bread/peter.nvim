@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = true,
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+    event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     build = ":TSUpdate",
     opts = {
