@@ -58,12 +58,22 @@ local M = {}
 ---     },
 ---   }
 ---   ```
+---@param lint_opts table Options for nvim-lint.
+---e.g.
+---   ```lua
+---   lint_opts = {
+---     linters_by_ft = {
+---       lua = { "selene" },
+---     },
+---   }
+---   ```
 ---@return table spec Plugin spec to setup a programming language
 function M.add_language(
   ts_ensure_installed,
   mason_ensure_installed,
   nvim_lspconfig_opts,
-  format_opts
+  format_opts,
+  lint_opts
 )
   return {
     {
@@ -87,6 +97,10 @@ function M.add_language(
     {
       "stevearc/conform.nvim",
       opts = format_opts,
+    },
+    {
+      "mfussenegger/nvim-lint",
+      opts = lint_opts,
     },
   }
 end

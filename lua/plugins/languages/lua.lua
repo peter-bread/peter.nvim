@@ -59,5 +59,16 @@ local format_opts = {
   },
 }
 
--- stylua: ignore
-return require("util.languages").add_language(ts, mason, nvim_lspconfig_opts, format_opts)
+local lint_opts = {
+  -- linters_by_ft = {
+  --   lua = { "selene" },
+  -- },
+}
+
+return require("util.languages").add_language(
+  ts,
+  mason,
+  nvim_lspconfig_opts,
+  format_opts,
+  lint_opts
+)
