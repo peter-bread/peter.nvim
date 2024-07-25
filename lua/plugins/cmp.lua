@@ -4,7 +4,7 @@
 return {
   "hrsh7th/nvim-cmp",
   lazy = true,
-  event = "InsertEnter",
+  event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
