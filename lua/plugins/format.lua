@@ -10,6 +10,9 @@ return {
   ---@alias formatOpts conform.setupOpts
   ---@type formatOpts
   opts = {
-    format_on_save = { timeout_ms = 500 },
+    format_on_save = {
+      timeout_ms = 500,
+      lsp_format = "fallback",
+    },
   },
 }
