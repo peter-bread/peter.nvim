@@ -27,4 +27,8 @@ return {
     },
   },
   -- add more colorschemes here (using `event = "VeryLazy"` and `lazy = true`)
+  {
+    "rebelot/kanagawa.nvim",
+    opts = {},
+  },
 }
