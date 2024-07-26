@@ -26,12 +26,12 @@ set("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })
 
 -- Move Lines
 -- from: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
-set("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move Down" })
-set("n", "<M-k>", "<cmd>m .-2<cr>==", { desc = "Move Up" })
-set("i", "<M-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-set("i", "<M-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-set("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
-set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
+set("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move Line Down" })
+set("n", "<M-k>", "<cmd>m .-2<cr>==", { desc = "Move Line Up" })
+set("i", "<M-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Line Down" })
+set("i", "<M-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Line Up" })
+set("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move Selected Line(s) Down" })
+set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move Selected Line(s) Up" })
 
 -- better indenting
 -- from: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
