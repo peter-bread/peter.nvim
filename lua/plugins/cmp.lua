@@ -34,6 +34,14 @@ return {
       enabled = function()
         local ctx = require("cmp.config.context")
 
+        if vim.g.cmp_status then
+          if vim.g.cmp_status == "force_enabled" then
+            return true
+          elseif vim.g.cmp_status == "force_disabled" then
+            return false
+          end
+        end
+
         -- Always enable completion in command mode
         if vim.api.nvim_get_mode().mode == "c" then
           return true
@@ -117,6 +125,29 @@ return {
         ls.change_choice(1)
       end
     end, { silent = true, desc = "Cycle Snippet Choice" })
+
+    vim.keymap.set("n", "<leader>cs", function()
+      local status_map = {
+        standard = {
+          next_status = "force_enabled",
+          message = "cmp status: force_enabled",
+        },
+        force_enabled = {
+          next_status = "force_disabled",
+          message = "cmp status: force_disabled",
+        },
+        force_disabled = {
+          next_status = "standard",
+          message = "cmp status: standard",
+        },
+      }
+
+      if vim.g.cmp_status and status_map[vim.g.cmp_status] then
+        local next_state = status_map[vim.g.cmp_status]
+        vim.g.cmp_status = next_state.next_status
+        vim.notify(next_state.message, vim.log.levels.INFO)
+      end
+    end, { desc = "Cycle cmp Status" })
 
     -- `/` cmdline setup
     cmp.setup.cmdline("/", {
