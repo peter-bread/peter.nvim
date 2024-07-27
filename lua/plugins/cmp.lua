@@ -32,8 +32,6 @@ return {
 
     cmp.setup({
       enabled = function()
-        local ctx = require("cmp.config.context")
-
         if vim.g.cmp_status then
           if vim.g.cmp_status == "force_enabled" then
             return true
@@ -41,6 +39,8 @@ return {
             return false
           end
         end
+
+        local ctx = require("cmp.config.context")
 
         -- Always enable completion in command mode
         if vim.api.nvim_get_mode().mode == "c" then
