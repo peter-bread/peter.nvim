@@ -67,11 +67,14 @@ local lint_opts = {
 
 local neotest_spec = {}
 
+local dap_spec = {}
+
 return require("util.languages").add_language(
   ts,
   mason,
   nvim_lspconfig_opts,
   format_opts,
   lint_opts,
-  neotest_spec
+  neotest_spec,
+  dap_spec
 )

@@ -81,6 +81,22 @@ local M = {}
 ---     },
 ---   }
 ---   ```
+---@param dap_spec table Set up DAP
+---e.g.
+---   ```lua
+---   dap_spec = {
+---     dependencies = {
+---       "leoluz/nvim-dap-go",
+---     },
+---     opts = {
+---       handlers = {
+---         delve = function()
+---           require("dap-go").setup()
+---         end,
+---       },
+---     },
+---   }
+---   ```
 ---@return table spec Plugin spec to setup a programming language
 function M.add_language(
   ts_ensure_installed,
@@ -88,7 +104,8 @@ function M.add_language(
   nvim_lspconfig_opts,
   format_opts,
   lint_opts,
-  neotest_spec
+  neotest_spec,
+  dap_spec
 )
   return {
     {
@@ -121,6 +138,11 @@ function M.add_language(
       "nvim-neotest/neotest",
       dependencies = neotest_spec.dependencies,
       opts = neotest_spec.opts,
+    },
+    {
+      "mfussenegger/nvim-dap",
+      dependencies = dap_spec.dependencies,
+      opts = dap_spec.opts,
     },
   }
 end
