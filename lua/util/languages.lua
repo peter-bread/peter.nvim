@@ -67,13 +67,28 @@ local M = {}
 ---     },
 ---   }
 ---   ```
+---@param neotest_spec table Install and register a test runner / adapter.
+---e.g.
+---   ```lua
+---   neotest_spec = {
+---     dependencies = {
+---       "fredrikaverpil/neotest-golang", -- install as a dependency of neotest
+---     },
+---     opts = {
+---       adapters = {
+---         ["neotest-golang"] = {}, -- register with neotest
+---       },
+---     },
+---   }
+---   ```
 ---@return table spec Plugin spec to setup a programming language
 function M.add_language(
   ts_ensure_installed,
   mason_ensure_installed,
   nvim_lspconfig_opts,
   format_opts,
-  lint_opts
+  lint_opts,
+  neotest_spec
 )
   return {
     {
@@ -101,6 +116,11 @@ function M.add_language(
     {
       "mfussenegger/nvim-lint",
       opts = lint_opts,
+    },
+    {
+      "nvim-neotest/neotest",
+      dependencies = neotest_spec.dependencies,
+      opts = neotest_spec.opts,
     },
   }
 end
