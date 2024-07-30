@@ -3,6 +3,7 @@ return {
   dependencies = {
     "nvim-neotest/nvim-nio",
   },
+  cmd = "Neotest",
   keys = {
     -- stylua: ignore start
     { "<leader>t", "", desc = "+test" },
