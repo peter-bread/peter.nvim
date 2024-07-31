@@ -77,4 +77,9 @@ return {
     lazy = true,
     opts = {},
   },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    lazy = true,
+    dependencies = "mason.nvim",
+  },
 }
