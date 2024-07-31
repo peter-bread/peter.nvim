@@ -22,6 +22,8 @@ return {
         theme = "auto",
         globalstatus = vim.o.laststatus == 3,
         disabled_filetypes = { statusline = { "dashboard" } },
+        component_separators = "",
+        section_separators = "",
       },
       sections = {
         lualine_a = {
@@ -77,7 +79,17 @@ return {
         },
         lualine_z = {
           -- location in file
-          { "location" },
+          {
+            "location",
+            padding = 0,
+          },
+
+          -- filetype w/o icon
+          {
+            function()
+              return vim.bo.filetype
+            end,
+          },
         },
       },
       extensions = {
