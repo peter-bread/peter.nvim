@@ -81,6 +81,7 @@ ls.add_snippets(lang, {
       "",
       "}",
       "",
+      "---@type LspCustomSetup",
       "local nvim_lspconfig_opts = {",
       "\tservers = {",
       "\t\t",
@@ -91,9 +92,40 @@ ls.add_snippets(lang, {
     i(4),
     t({ "", "}", "", "local lint_opts = {", "\t" }),
     i(5),
+    t({ "", "}", "", "local neotest_spec = {", "\t" }),
+    i(6),
+    t({ "", "}", "", "local dap_spec = {", "\t" }),
+    i(7),
     t({ "", "}", "", "" }),
     t({
-      'return require("util.languages").add_language(ts, mason, nvim_lspconfig_opts, format_opts, lint_opts)',
+      'return require("util.languages").add_language(ts, mason, nvim_lspconfig_opts, format_opts, lint_opts, neotest_spec, dap_spec)',
     }),
   }),
 })
+
+local ts = {}
+
+local mason = {}
+
+local nvim_lspconfig_opts = {
+  servers = {},
+}
+
+---@type formatOpts
+local format_opts = {}
+
+local lint_opts = {}
+
+local neotest_spec = {}
+
+local dap_spec = {}
+
+return require("util.languages").add_language(
+  ts,
+  mason,
+  nvim_lspconfig_opts,
+  format_opts,
+  lint_opts,
+  neotest_spec,
+  dap_spec
+)
