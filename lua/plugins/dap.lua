@@ -21,23 +21,28 @@ return {
       { "<leader>dr", function() require("dap").restart() end, desc = "Restart"},
       { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
     },
-    opts = {},
     config = function(_, opts)
-      local handlers = {
+      local dap = require("dap")
+      require("mason-nvim-dap").setup()
 
-        -- fallback dap setup
-        function(config)
-          require("mason-nvim-dap").default_setup(config)
-        end,
-      }
-
-      -- add overrides
-      for adapter, handler in pairs(opts.handlers or {}) do
-        handlers[adapter] = handler
+      -- setup user-created adapters
+      for name, adapter in pairs(opts.adapters or {}) do
+        dap.adapters[name] = adapter
       end
 
-      ---@diagnostic disable-next-line: missing-fields
-      require("mason-nvim-dap").setup({ handlers = handlers })
+      -- setup user-created configurations
+      for name, configurations in pairs(opts.configurations or {}) do
+        dap.configurations[name] = configurations
+      end
+
+      -- setup language extensions
+      for _, language_extension in ipairs(opts.language_extensions or {}) do
+        if type(language_extension) == "function" then
+          language_extension()
+        end
+      end
+
+      -- TODO: enable `launch.json` configurations
     end,
   },
   {
