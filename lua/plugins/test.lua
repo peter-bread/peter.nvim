@@ -18,6 +18,8 @@ return {
     { "<leader>tw", function() require("neotest").watch.toggle(vim.fn.expand("%")) end, desc = "Toggle Watch" },
     -- stylua: ignore end
   },
+  ---@type neotest.Config
+  ---@diagnostic disable-next-line: missing-fields
   opts = {},
   config = function(_, opts)
     local adapters = {}
