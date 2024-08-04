@@ -1,8 +1,8 @@
 ---Table of custom LSP setup functions.
 ---Return `true` if LSP setup is complete, i.e. `require("lspconfig")[server_name].setup(server_opts)` is not needed.
 ---Return `false|nil` if LSP setup is not complete, i.e. extra config is done in this function but `require("lspconfig")[server_name].setup(server_opts)` still needs to be used to finish setup.
----Use ["server_name"] for server-specific setups
----Use ["*"] for fallback setup for any server that doesn't have its own custom setup
+---Use ["server_name"] for server-specific setups.
+---Use ["*"] for fallback setup for any server that doesn't have its own custom setup.
 ---e.g.
 --- ```lua
 --- setup = {
@@ -18,7 +18,7 @@
 ---   end,
 --- },
 --- ```
----@alias LspCustomSetup table<string, fun(server:string, opts:table):boolean|nil>
+---@alias CustomLspSetup table<string, fun(server:string, opts:table):boolean|nil>
 
 return {
   "neovim/nvim-lspconfig",
@@ -56,7 +56,7 @@ return {
       codelens = {
         enabled = true,
       },
-      ---@type LspCustomSetup
+      ---@type CustomLspSetup
       setup = {},
     }
     return ret

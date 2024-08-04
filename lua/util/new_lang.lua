@@ -101,7 +101,7 @@ function M.mason(packages)
 end
 
 ---@alias server table<string, table>
----@alias setup LspCustomSetup
+---@alias setup CustomLspSetup
 ---@alias lspOpts {servers:server, setup?:setup}
 
 ---Set up LSP.
