@@ -71,3 +71,11 @@ ls.add_snippets(lang, {
     i(0),
   }),
 })
+
+ls.add_snippets(lang, {
+  s("addlang", {
+    t({ 'local L = require("util.new_lang")', "", "return {", "\t" }),
+    i(1),
+    t({ "", "}" }),
+  }),
+})
