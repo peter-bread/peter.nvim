@@ -11,6 +11,7 @@
 ---Create a file in your plugins folder `lua/plugins/languages/lua.lua`.
 ---This relies on merging `opts` tables wiht parent specs via the Lazy plugin manager.
 ---For this reason, it is important that the plugins are loaded as a separate spec:
+---
 --- ```lua
 --- -- lazy plugin manager setup:
 --- require("lazy").setup({
@@ -19,6 +20,7 @@
 ---     { import = "plugins.languages" },
 ---   },
 --- ```
+---
 --- ```lua
 --- -- lua/plugins/languages/lua.lua:
 --- local L = require("util.new_lang")
@@ -51,7 +53,8 @@ local M = {}
 ---Add treesitter parsers that need to be installed.
 ---@param parsers string[] List of parser names.
 ---@return table [`treesitter`](nvim-treesitter/nvim-treesitter) Lazy plugin spec.
---- Usage:
+---# Usage
+---
 --- ```lua
 --- treesitter({
 ---   "go",
@@ -77,7 +80,8 @@ end
 ---Add mason packages that need to be installed.
 ---@param packages string[] List of package names.
 ---@return table [`mason-tool-installer`](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) Lazy plugin spec.
---- Usage:
+---# Usage
+---
 --- ```lua
 --- mason({
 ---   "gopls", -- lsp
@@ -107,7 +111,8 @@ end
 ---Set up LSP.
 ---@param opts lspOpts Server settings and optional function for additional setup.
 ---@return table [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) Lazy plugin spec.
----Usage:
+---# Usage
+---
 --- ```lua
 --- lspconfig({
 ---   -- standard server settings/configuration
@@ -139,7 +144,8 @@ end
 ---Set up formatting.
 ---@param opts conform.setupOpts Options to set up conform.nvim.
 ---@return table [`conform`](https://github.com/stevearc/conform.nvim) Lazy plugin spec.
----Usage
+---# Usage
+---
 --- ```lua
 --- format({
 ---   -- set up formatters to run on filetype
@@ -174,7 +180,8 @@ end
 ---Set up linting.
 ---@param opts table Opts table. See `:h nvim-lint-usage`.
 ---@return table [`nvim-lint`](https://github.com/mfussenegger/nvim-lint) Lazy plugin spec.
---- Usage:
+---# Usage
+---
 --- ```lua
 --- lint({
 ---   -- linters to run by filetype
@@ -202,7 +209,8 @@ end
 ---Set up testing.
 ---@param config {dep:string,opts:neotest.Config} Adapter dependencies and registration.
 ---@return table
---- Usage:
+---# Usage
+---
 --- ```lua
 --- test({
 ---   -- add adapter for test runner as plugin dependency
@@ -231,9 +239,10 @@ end
 ---Setup DAP.
 ---@param params {adapters:CustomDapAdapter,configurations:CustomDapConfiguration}|{deps:CustomDapDeps,setup:fun()} Table used to set up DAP. Can either be `adapters` *and* `configurations` for manual setup ***or*** `dep` *and* `setup` for automatic setup via a plugin.
 ---@return table [`nvim-dap`](https://github.com/mfussenegger/nvim-dap) Lazy plugin spec.
---- # Usage:
+---# Usage
 ---
---- ## Manual DAP Setup
+---## Manual DAP Setup
+---
 --- ```lua
 --- dap({
 ---   -- add debug adapters:
@@ -269,7 +278,8 @@ end
 --- })
 --- ```
 ---
---- ## Auto DAP Setup (via plugin(s))
+---## Auto DAP Setup (via plugin(s))
+---
 --- ```lua
 --- dap({
 ---   -- Add dependencies for the DAP setup. This can be:
