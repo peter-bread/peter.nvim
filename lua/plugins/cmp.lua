@@ -104,6 +104,12 @@ return {
             return math.floor(0.45 * vim.o.columns)
           end,
           ellipsis_char = "...",
+          menu = {
+            nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
+            buffer = "[Buffer]",
+            path = "[Path]",
+          },
         }),
       },
     })
