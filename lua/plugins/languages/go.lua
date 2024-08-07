@@ -86,6 +86,8 @@ return {
     },
   }),
 
+  ---@module "conform"
+
   L.format({
     formatters_by_ft = {
       go = { "goimports", "gofumpt" },
