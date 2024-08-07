@@ -1,4 +1,4 @@
-std = "vim"
+std = ".vim"
 
 [config]
 empty_if = { comments_count = true }
