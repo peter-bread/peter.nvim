@@ -1,11 +1,5 @@
 # peter.nvim
 
-<!--toc:start-->
-
-- [peter.nvim](#peternvim)
-  - [Install](#install) - [Dotfiles](#dotfiles) - [Standalone](#standalone)
-  <!--toc:end-->
-
 My first proper attempt at making a Neovim Personal Develepment Environment
 (PDE).
 
