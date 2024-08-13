@@ -10,7 +10,6 @@ return {
     "marksman", -- lsp
     "prettier", -- formatter
     "markdownlint-cli2", -- formatter/linter
-    "markdown-toc", -- formatter (for Table of Contents)
   }),
 
   L.lspconfig({
@@ -23,8 +22,8 @@ return {
 
   L.format({
     formatters_by_ft = {
-      markdown = { "prettier", "markdownlint-cli2", "markdown-toc", "injected" },
-      ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+      markdown = { "prettier", "markdownlint-cli2" },
+      ["markdown.mdx"] = { "prettier", "markdownlint-cli2" },
     },
   }),
 
