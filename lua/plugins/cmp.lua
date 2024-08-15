@@ -132,7 +132,7 @@ return {
       end
     end, { silent = true, desc = "Cycle Snippet Choice" })
 
-    vim.keymap.set("n", "<leader>cs", function()
+    vim.keymap.set("n", "<leader>cS", function()
       local status_map = {
         standard = {
           next_status = "force_enabled",
