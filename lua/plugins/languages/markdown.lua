@@ -48,4 +48,21 @@ return {
     },
     ft = { "markdown", "norg", "rmd", "org" },
   },
+
+  --
+  -- {
+  --   "peter-bread/md-toc.nvim",
+  --   ft = { "markdown" },
+  --   ---@type TocOpts
+  --   opts = {},
+  -- },
+
+  ---@module "toc"
+
+  {
+    dir = "/Users/petersheehan/Developer/peter-bread/nvim-plugins/md-toc.nvim",
+    ft = { "markdown" },
+    ---@type TocOpts
+    opts = {},
+  },
 }
