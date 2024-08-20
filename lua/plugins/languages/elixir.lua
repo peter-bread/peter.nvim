@@ -23,6 +23,8 @@ return {
     },
   }),
 
+  ---@module "neotest"
+
   L.test({
     dep = "jfpedroza/neotest-elixir",
     ---@diagnostic disable-next-line: missing-fields

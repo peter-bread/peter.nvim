@@ -100,6 +100,8 @@ return {
     },
   }),
 
+  ---@module "neotest"
+
   L.test({
     dep = "fredrikaverpil/neotest-golang",
     ---@diagnostic disable-next-line: missing-fields
