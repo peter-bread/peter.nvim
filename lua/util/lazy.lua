@@ -22,4 +22,21 @@ function M.on_load(name, fn)
   end
 end
 
+function M.get_plugin(name)
+  return require("lazy.core.config").spec.plugins[name]
+end
+
+function M.get_prop(name, prop)
+  local plugin = M.get_plugin(name)
+  if not plugin then
+    return {}
+  end
+  local Plugin = require("lazy.core.plugin")
+  return Plugin.values(plugin, prop)
+end
+
+function M.opts(name)
+  return M.get_prop(name, "opts")
+end
+
 return M
