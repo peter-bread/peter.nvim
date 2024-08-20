@@ -33,6 +33,7 @@
 ---       lua_ls = {},
 ---     },
 ---   }),
+---   ---@module "conform"
 ---   L.format({
 ---     formatters_by_ft = {
 ---       lua = { "stylua" },
@@ -147,6 +148,9 @@ end
 ---# Usage
 ---
 --- ```lua
+---
+--- ---@module "conform"
+---
 --- format({
 ---   -- set up formatters to run on filetype
 ---   formatters_by_ft = {
@@ -212,6 +216,9 @@ end
 ---# Usage
 ---
 --- ```lua
+---
+--- ---@module "neotest"
+---
 --- test({
 ---   -- add adapter for test runner as plugin dependency
 ---   dep = "fredrikaverpil/neotest-golang",
