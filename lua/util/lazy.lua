@@ -1,6 +1,6 @@
 local M = {}
 
--- from:
+-- most functions here are from or inspired by LazyVim:
 -- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/init.lua
 
 ---@param name string
