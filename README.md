@@ -1,7 +1,9 @@
 # peter.nvim
 
-My first proper attempt at making a Neovim Personal Develepment Environment
-(PDE).
+My first proper Neovim config.
+
+> [!NOTE]
+> Intended for use on MacOS and Linux.
 
 ## Install
 
