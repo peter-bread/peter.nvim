@@ -6,8 +6,9 @@ return {
   }),
 
   L.mason({
-    "yamlls",
-    "yamlfmt",
+    "yamlls", -- lsp
+    "yamlfmt", -- formatter
+    "actionlint", -- linter for github actions
   }),
 
   L.lspconfig({
@@ -41,6 +42,13 @@ return {
   L.format({
     formatters_by_ft = {
       yaml = { "yamlfmt" },
+    },
+  }),
+
+  -- linter for github actions
+  L.lint({
+    linters_by_ft = {
+      yaml = { "actionlint" },
     },
   }),
 }
