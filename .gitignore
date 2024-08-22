@@ -1,1 +1,6 @@
+# markdown lsp config file
 .marksman.toml
+
+# temporary files or directories
+temp/
+temp.*
