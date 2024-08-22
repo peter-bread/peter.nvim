@@ -67,4 +67,4 @@ o.clipboard:append("unnamedplus")
 
 o.scrolloff = 16
 
--- o.statuscolumn = [[%!v:lua.require'util.ui'.statuscolumn()]]
+o.statuscolumn = "%=%{v:relnum == 0 ? v:lnum : v:relnum} %s"
