@@ -1,11 +1,10 @@
 local M = {}
 
 function M.toggle_background()
-  local o = vim.opt
-  if o.background:get() == "light" then
-    o.background = "dark"
+  if vim.opt.background:get() == "light" then
+    vim.opt.background = "dark"
   else
-    o.background = "light"
+    vim.opt.background = "light"
   end
 end
 
