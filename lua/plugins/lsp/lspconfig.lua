@@ -83,16 +83,40 @@ return {
         then
           vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
-          -- toggle inlay hints (global)
+          ---Toggle inlay hints.
+          ---@param global boolean True: all buffers. False: current buffer.
+          local function toggle_inlay_hints(global)
+            -- Determine the buffer number: `nil` for global, `0` for current buffer
+            local buf
+
+            if global then
+              buf = nil
+            else
+              buf = 0
+            end
+
+            -- Toggle LSP inlay hints
+            vim.lsp.inlay_hint.enable(
+              not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }),
+              { bufnr = buf }
+            )
+
+            -- Attempt to toggle clangd_extensions inlay hints
+            local ok, inlay_hints =
+              pcall(require, "clangd_extensions.inlay_hints")
+            if ok then
+              inlay_hints.toggle_inlay_hints()
+            end
+          end
+
+          -- Toggle inlay hints (global)
           vim.keymap.set("n", "<leader>uh", function()
-            -- stylua: ignore
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = nil })
+            toggle_inlay_hints(true)
           end, { desc = "Toggle Inlay Hints", buffer = bufnr })
 
-          -- toggle inlay hints (current buffer)
+          -- Toggle inlay hints (current buffer)
           vim.keymap.set("n", "<leader>uH", function()
-            -- stylua: ignore
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })
+            toggle_inlay_hints(false)
           end, { desc = "Toggle Inlay Hints (Buf)", buffer = bufnr })
         end
       end)
