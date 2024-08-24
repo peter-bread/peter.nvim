@@ -1,5 +1,13 @@
 local L = require("util.new_lang")
 
+-- create filetypes so actionlint doesn't run on all yaml files
+vim.filetype.add({
+  pattern = {
+    [".*/.github/workflows/.*%.yml"] = "yaml.ghaction",
+    [".*/.github/workflows/.*%.yaml"] = "yaml.ghaction",
+  },
+})
+
 return {
   L.treesitter({
     "yaml",
@@ -14,6 +22,15 @@ return {
   L.lspconfig({
     servers = {
       yamlls = {
+        filetypes = {
+          -- defaults (https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#yamlls)
+          "yaml",
+          "yaml.docker-compose",
+          "yaml.gitlab",
+
+          -- custom
+          "yaml.ghaction",
+        },
         settings = {
           redhat = {
             telemetry = {
@@ -48,7 +65,7 @@ return {
   -- linter for github actions
   L.lint({
     linters_by_ft = {
-      yaml = { "actionlint" },
+      ghaction = { "actionlint" },
     },
   }),
 }
