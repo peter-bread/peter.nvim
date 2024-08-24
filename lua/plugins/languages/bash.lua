@@ -15,9 +15,7 @@ return {
 
   L.lspconfig({
     servers = {
-      bashls = {
-        filetypes = { "sh", "zsh" },
-      },
+      bashls = {},
     },
   }),
 
@@ -26,7 +24,6 @@ return {
   L.format({
     formatters_by_ft = {
       sh = { "shfmt", "shellharden" },
-      zsh = { "shfmt", "shellharden" },
     },
   }),
 }
