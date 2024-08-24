@@ -53,7 +53,13 @@ o.splitright = true
 o.splitbelow = true
 
 o.list = true
--- opt.listchars = { tab = "", trail = "", nbsp = "" }
+
+o.listchars = {
+  nbsp = "+",
+  eol = "󱞥",
+  trail = "·",
+  tab = "  ",
+}
 
 o.inccommand = "split"
 
