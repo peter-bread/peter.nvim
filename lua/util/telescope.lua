@@ -46,7 +46,16 @@ M.config.plugins = function()
   local plugin_dir = config_dir .. "/lua/plugins"
   require("telescope.builtin").find_files({
     cwd = plugin_dir,
-    find_command = { "fd", "-I", "-t", "f", "-E", "*languages*" },
+
+    -- fd -I -t f -E *languages*
+    find_command = {
+      "fd",
+      "--no-ignore",
+      "--type",
+      "file",
+      "--exclude",
+      "*languages*",
+    },
   })
 end
 
