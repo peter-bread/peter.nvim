@@ -4,3 +4,5 @@
 # temporary files or directories
 temp/
 temp.*
+*.temp.*
+*.temp
