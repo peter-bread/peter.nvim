@@ -26,13 +26,37 @@ M.config = {}
 local config_dir = vim.fn.stdpath("config")
 
 ---Find language files.
+---
+---This displays a list of configured languages to choose from.
+---The `.lua` extensions have been removed to make it clearer and to make
+---searching easier.
 M.config.languages = function()
+  local utils = require("telescope.utils")
+
+  local function strip_extension(filename)
+    return filename:gsub("%.%w+$", "")
+  end
+
   local lang_dir = config_dir .. "/lua/plugins/languages"
+
+  -- Custom entry maker that strips the extensions
+  local function custom_entry_maker(entry)
+    local tail = utils.path_tail(entry)
+    local filename_without_ext = strip_extension(tail)
+    return {
+      value = lang_dir .. "/" .. entry,
+      display = filename_without_ext, -- text being displayed
+      ordinal = filename_without_ext, -- text for filtering
+    }
+  end
+
   require("telescope.builtin").find_files(
     require("telescope.themes").get_dropdown({
+      prompt_title = "Language Config Files",
       cwd = lang_dir,
       previewer = false,
-      layout_config = { height = 0.65 },
+      layout_config = { height = 0.65, width = 0.2 },
+      entry_maker = custom_entry_maker,
     })
   )
 end
