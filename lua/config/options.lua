@@ -52,6 +52,15 @@ o.timeoutlen = 300
 o.splitright = true
 o.splitbelow = true
 
+-- o.fillchars = {
+--   foldopen = "",
+--   foldclose = "",
+--   fold = " ",
+--   foldsep = " ",
+--   diff = "╱",
+--   eob = " ",
+-- }
+
 o.list = true
 
 o.listchars = {
