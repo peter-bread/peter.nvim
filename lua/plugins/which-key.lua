@@ -28,6 +28,7 @@ return {
         { "<leader>f", group = "find" },
         { "<leader>g", group = "git" },
         { "<leader>gh", group = "hunks" },
+        { "<leader>s", group = "search" },
         { "<leader>u", group = "ui" },
       },
     },
