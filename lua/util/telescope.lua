@@ -3,7 +3,7 @@ local M = {}
 local is_inside_work_tree = {}
 
 ---Use git files if in git directory, else use `find_files`.
-function M.project_files()
+M.project_files = function()
   local opts = {} -- define opts here
 
   local cwd = vim.fn.getcwd()
