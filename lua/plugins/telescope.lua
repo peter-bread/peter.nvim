@@ -21,6 +21,8 @@ return {
     { "<leader>fb", "<cmd>Telescope buffers<cr>", mode = "n", desc = "Find Buffers" },
     { "<leader>uc", function() require("telescope.builtin").colorscheme({ enable_preview = true }) end, mode = "n", desc = "Change Colorscheme" },
     { "<leader>fp", function() require("util.telescope").project_files() end, mode = "n", desc = "Project Files" },
+    { "<leader>nl", function() require("util.telescope").config.languages() end, mode = "n", desc = "Languages" },
+    { "<leader>np", function() require("util.telescope").config.plugins() end, mode = "n", desc = "Plugins" },
     -- stylua: ignore end
   },
   opts = {},
