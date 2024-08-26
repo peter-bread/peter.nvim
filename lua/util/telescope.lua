@@ -85,6 +85,13 @@ M.config.plugins = function()
     cwd = plugin_dir,
     entry_maker = entry_makers.remove_file_extensions(plugin_dir, "lua"),
 
+    layout_config = {
+      horizontal = {
+        results_width = 0.3,
+        preview_width = 0.7,
+      },
+    },
+
     -- fd -I -t f -E *languages*
     find_command = {
       "fd",
