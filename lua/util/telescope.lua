@@ -2,7 +2,7 @@ local M = {}
 
 local is_inside_work_tree = {}
 
----Use git files if in git directory, else use `find_files`.
+---Use `git_files` if in git directory, else fallback to `find_files`.
 M.project_files = function()
   local opts = {} -- define opts here
 
@@ -26,13 +26,33 @@ M.config = {}
 local config_dir = vim.fn.stdpath("config")
 
 ---Find language files.
+---
+---This displays a list of configured languages to choose from.
+---The `.lua` extensions have been removed to make it clearer and to make
+---searching easier.
 M.config.languages = function()
+  local utils = require("telescope.utils")
   local lang_dir = config_dir .. "/lua/plugins/languages"
+
+  -- Custom entry maker that strips the extensions
+  local function custom_entry_maker(entry)
+    local tail = utils.path_tail(entry)
+    local absolute_path = lang_dir .. "/" .. tail
+    local filename_without_ext = require("util.files").strip_extension(tail)
+    return {
+      value = absolute_path,
+      display = filename_without_ext, -- text being displayed
+      ordinal = filename_without_ext, -- text for filtering
+    }
+  end
+
   require("telescope.builtin").find_files(
     require("telescope.themes").get_dropdown({
+      prompt_title = "Language Config Files",
       cwd = lang_dir,
       previewer = false,
-      layout_config = { height = 0.65 },
+      layout_config = { height = 0.65, width = 0.2 },
+      entry_maker = custom_entry_maker,
     })
   )
 end
@@ -43,7 +63,9 @@ M.config.plugins = function()
     -- TODO: make backup find_command, maybe using `find` or `git ls-files`
     return
   end
+
   local plugin_dir = config_dir .. "/lua/plugins"
+
   require("telescope.builtin").find_files({
     cwd = plugin_dir,
 
