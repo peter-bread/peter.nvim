@@ -1,10 +1,8 @@
 local M = {}
 
-local utils = require("telescope.utils")
-
 local is_inside_work_tree = {}
 
----Use git files if in git directory, else use `find_files`.
+---Use `git_files` if in git directory, else fallback to `find_files`.
 M.project_files = function()
   local opts = {} -- define opts here
 
@@ -58,6 +56,7 @@ M.config.languages = function()
     return filename:gsub(pattern, "")
   end
 
+  local utils = require("telescope.utils")
   local lang_dir = config_dir .. "/lua/plugins/languages"
 
   -- Custom entry maker that strips the extensions
