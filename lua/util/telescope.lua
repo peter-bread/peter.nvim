@@ -40,9 +40,11 @@ entry_makers.remove_file_extensions = function(cwd, ext)
   return function(entry)
     local absolute_path = cwd .. "/" .. entry
     local filename = require("telescope.utils").path_tail(entry)
+    local escaped_filenamne = filename:gsub("([%^%$%(%)%%[%]_%+%-%?])", "%%%1")
     local filename_without_ext =
-      require("util.files").strip_extension(filename, ext)
-    local relative_path = entry:gsub(filename .. "$", filename_without_ext)
+      require("util.files").strip_extension(escaped_filenamne, ext)
+    local relative_path =
+      entry:gsub(escaped_filenamne .. "$", filename_without_ext)
     return {
       value = absolute_path, -- Full absolute path for opening the file
       display = relative_path, -- Display path with the filename's extension removed
