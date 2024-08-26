@@ -31,31 +31,6 @@ local config_dir = vim.fn.stdpath("config")
 ---The `.lua` extensions have been removed to make it clearer and to make
 ---searching easier.
 M.config.languages = function()
-  ---@param filename string
-  ---@param extension? string
-  ---@return string
-  ---@return _ ignore_this
-  ---
-  --- Remove extension from filename.
-  --- If `extension` is given, only remove that extension.
-  ---
-  --- # Usage
-  ---
-  ---```lua
-  --- strip_extension("hello.lua") -- "hello"
-  --- strip_extension("bye.toml") -- "bye"
-  ---
-  --- strip_extension("hello.lua", "lua") -- "hello"
-  --- strip_extension("bye.toml", "lua") -- "bye.toml"
-  --- ```
-  local function strip_extension(filename, extension)
-    if not extension then
-      return filename:gsub("%.%w+$", "")
-    end
-    local pattern = "%." .. extension .. "$"
-    return filename:gsub(pattern, "")
-  end
-
   local utils = require("telescope.utils")
   local lang_dir = config_dir .. "/lua/plugins/languages"
 
@@ -63,7 +38,7 @@ M.config.languages = function()
   local function custom_entry_maker(entry)
     local tail = utils.path_tail(entry)
     local absolute_path = lang_dir .. "/" .. tail
-    local filename_without_ext = strip_extension(tail)
+    local filename_without_ext = require("util.files").strip_extension(tail)
     return {
       value = absolute_path,
       display = filename_without_ext, -- text being displayed
