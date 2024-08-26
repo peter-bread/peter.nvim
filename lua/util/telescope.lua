@@ -102,6 +102,12 @@ M.config.plugins = function()
       "file",
       "--exclude",
       "*languages*",
+      "--exclude",
+      "*.temp",
+      "--exclude",
+      "*.temp.*",
+      "--exclude",
+      "temp.*",
     },
   })
 end
