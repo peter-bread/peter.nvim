@@ -95,6 +95,7 @@ M.config.plugins = function()
     -- fd -I -t f -E *languages*
     find_command = {
       "fd",
+      "--color=never",
       "--no-ignore",
       "--type",
       "file",
