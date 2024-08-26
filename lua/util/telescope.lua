@@ -1,5 +1,7 @@
 local M = {}
 
+local utils = require("telescope.utils")
+
 local is_inside_work_tree = {}
 
 ---Use git files if in git directory, else use `find_files`.
@@ -31,10 +33,29 @@ local config_dir = vim.fn.stdpath("config")
 ---The `.lua` extensions have been removed to make it clearer and to make
 ---searching easier.
 M.config.languages = function()
-  local utils = require("telescope.utils")
-
-  local function strip_extension(filename)
-    return filename:gsub("%.%w+$", "")
+  ---@param filename string
+  ---@param extension? string
+  ---@return string
+  ---@return _ ignore_this
+  ---
+  --- Remove extension from filename.
+  --- If `extension` is given, only remove that extension.
+  ---
+  --- # Usage
+  ---
+  ---```lua
+  --- strip_extension("hello.lua") -- "hello"
+  --- strip_extension("bye.toml") -- "bye"
+  ---
+  --- strip_extension("hello.lua", "lua") -- "hello"
+  --- strip_extension("bye.toml", "lua") -- "bye.toml"
+  --- ```
+  local function strip_extension(filename, extension)
+    if not extension then
+      return filename:gsub("%.%w+$", "")
+    end
+    local pattern = "%." .. extension .. "$"
+    return filename:gsub(pattern, "")
   end
 
   local lang_dir = config_dir .. "/lua/plugins/languages"
@@ -68,7 +89,9 @@ M.config.plugins = function()
     -- TODO: make backup find_command, maybe using `find` or `git ls-files`
     return
   end
+
   local plugin_dir = config_dir .. "/lua/plugins"
+
   require("telescope.builtin").find_files({
     cwd = plugin_dir,
 
