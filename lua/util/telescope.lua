@@ -25,26 +25,37 @@ M.config = {}
 
 local config_dir = vim.fn.stdpath("config")
 
+---@class CustomEntryMakers
+---Table of custom entry makers.
+---Some are actual entry maker functions,
+---others are wrappers that return entry maker functions.
+local entry_makers = {}
+
+---(Wrapper) Creates an entry maker that ignores file extensions.
+---@param cwd string Same as `cwd` in e.g. `builtin.find_files`.
+---@param ext? string Extension to ignore. If `nil` then applies to any extension.
+---@return fun(entry:string):table
+---@type fun(cwd:string, ext?:string):fun(entry:string)
+entry_makers.remove_file_extensions = function(cwd, ext)
+  return function(entry)
+    local absolute_path = cwd .. "/" .. entry
+    local filepath_without_ext =
+      require("util.files").strip_extension(entry, ext)
+    return {
+      value = absolute_path,
+      display = filepath_without_ext, -- text being displayed
+      ordinal = filepath_without_ext, -- text for filtering
+    }
+  end
+end
+
 ---Find language files.
 ---
 ---This displays a list of configured languages to choose from.
 ---The `.lua` extensions have been removed to make it clearer and to make
 ---searching easier.
 M.config.languages = function()
-  local utils = require("telescope.utils")
   local lang_dir = config_dir .. "/lua/plugins/languages"
-
-  -- Custom entry maker that strips the extensions
-  local function custom_entry_maker(entry)
-    local tail = utils.path_tail(entry)
-    local absolute_path = lang_dir .. "/" .. tail
-    local filename_without_ext = require("util.files").strip_extension(tail)
-    return {
-      value = absolute_path,
-      display = filename_without_ext, -- text being displayed
-      ordinal = filename_without_ext, -- text for filtering
-    }
-  end
 
   require("telescope.builtin").find_files(
     require("telescope.themes").get_dropdown({
@@ -52,7 +63,7 @@ M.config.languages = function()
       cwd = lang_dir,
       previewer = false,
       layout_config = { height = 0.65, width = 0.2 },
-      entry_maker = custom_entry_maker,
+      entry_maker = entry_makers.remove_file_extensions(lang_dir, "lua"),
     })
   )
 end
@@ -68,6 +79,7 @@ M.config.plugins = function()
 
   require("telescope.builtin").find_files({
     cwd = plugin_dir,
+    entry_maker = entry_makers.remove_file_extensions(plugin_dir, "lua"),
 
     -- fd -I -t f -E *languages*
     find_command = {
