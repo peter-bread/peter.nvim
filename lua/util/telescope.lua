@@ -42,9 +42,10 @@ M.config.languages = function()
   -- Custom entry maker that strips the extensions
   local function custom_entry_maker(entry)
     local tail = utils.path_tail(entry)
+    local absolute_path = lang_dir .. "/" .. tail
     local filename_without_ext = strip_extension(tail)
     return {
-      value = lang_dir .. "/" .. entry,
+      value = absolute_path,
       display = filename_without_ext, -- text being displayed
       ordinal = filename_without_ext, -- text for filtering
     }
