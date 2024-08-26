@@ -82,6 +82,7 @@ M.config.plugins = function()
   local plugin_dir = config_dir .. "/lua/plugins"
 
   require("telescope.builtin").find_files({
+    prompt_title = "Plugin Files",
     cwd = plugin_dir,
     entry_maker = entry_makers.remove_file_extensions(plugin_dir, "lua"),
 
