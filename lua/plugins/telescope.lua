@@ -23,6 +23,7 @@ return {
     { "<leader>fp", function() require("util.telescope").project_files() end, mode = "n", desc = "Project Files" },
     { "<leader>nl", function() require("util.telescope").config.languages() end, mode = "n", desc = "Languages" },
     { "<leader>np", function() require("util.telescope").config.plugins() end, mode = "n", desc = "Plugins" },
+    { "<leader>nt", function() require("util.telescope").config.temps() end, mode = "n", desc = "Temporary Files" },
     -- stylua: ignore end
   },
   opts = {},

@@ -106,4 +106,32 @@ M.config.plugins = function()
   })
 end
 
+M.config.temps = function()
+  require("telescope.builtin").find_files({
+    cwd = config_dir,
+    prompt_title = "Temp Files",
+    find_command = {
+      "rg",
+      "--files",
+      "--hidden",
+      "--no-ignore",
+      "--glob",
+      "temp/*",
+      "--glob",
+      "temp.*",
+      "--glob",
+      "*.temp.*",
+      "--glob",
+      "*.temp",
+    },
+
+    layout_config = {
+      horizontal = {
+        results_width = 0.5,
+        preview_width = 0.5,
+      },
+    },
+  })
+end
+
 return M
