@@ -3,7 +3,6 @@ local M = {}
 ---@param filename string
 ---@param extension? string
 ---@return string
----@return _ ignore_this
 ---
 --- Remove extension from filename.
 --- If `extension` is given, only remove that extension.
@@ -18,11 +17,8 @@ local M = {}
 --- strip_extension("bye.toml", "lua") -- "bye.toml"
 --- ```
 M.strip_extension = function(filename, extension)
-  if not extension then
-    return filename:gsub("%.%w+$", "")
-  end
-  local pattern = "%." .. extension .. "$"
-  return filename:gsub(pattern, "")
+  local pattern = extension and ("%." .. extension .. "$") or "%.%w+$"
+  return (filename:gsub(pattern, "")) -- only return first value
 end
 
 return M
