@@ -15,16 +15,23 @@ local dap_configurations = {
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
   },
-  -- {
-  --   name = "Use Make (no args)",
-  --   type = "codelldb",
-  --   request = "launch",
-  --   program = function()
-  --     -- TODO: check if makefile exists
-  --     vim.fn.system("make")
-  --     return vim.fn.getcwd() .. "/main"
-  --   end,
-  -- },
+  {
+    name = "Use Make (no args, root level)",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      local root = vim.fs.root(0, "Makefile")
+      if root then
+        local cwd = vim.fn.getcwd()
+        vim.cmd.lcd(root)
+        vim.fn.system("make")
+        vim.cmd.lcd(cwd)
+        return vim.fn.input("Path to executable: ", root .. "/", "file")
+      else
+        return nil
+      end
+    end,
+  },
   {
     name = "Attach to process",
     type = "codelldb",
