@@ -1,3 +1,4 @@
+---@class CustomTelescopePickers
 local M = {}
 
 local is_inside_work_tree = {}
@@ -21,6 +22,8 @@ M.project_files = function()
   end
 end
 
+---@class CustomTelescopeConfigPickers
+---Table of telescope picker categories that search inside neovim config directory.
 M.config = {}
 
 local config_dir = vim.fn.stdpath("config")
@@ -53,8 +56,11 @@ entry_makers.remove_file_extensions = function(cwd, ext)
   end
 end
 
+---@class CustomTelescopeConfigFilePickers
+---Table of telescope pickers to find files in neovim config directory.
 M.config.find_files = {}
 
+---Find files in neovim config directory.
 M.config.find_files.find_files = function()
   require("telescope.builtin").find_files({
     prompt_title = "Config Files",
@@ -62,7 +68,7 @@ M.config.find_files.find_files = function()
   })
 end
 
----Find language files.
+---Find language files in neovim config directory.
 ---
 ---This displays a list of configured languages to choose from.
 ---The `.lua` extensions have been removed to make it clearer and to make
@@ -81,7 +87,7 @@ M.config.find_files.languages = function()
   )
 end
 
----Find plugin files (exc. language files).
+---Find plugin files (exc. language files) in neovim config directory.
 M.config.find_files.plugins = function()
   if vim.fn.executable("fd") == 0 then
     -- TODO: make backup find_command, maybe using `find` or `git ls-files`
@@ -102,7 +108,6 @@ M.config.find_files.plugins = function()
       },
     },
 
-    -- fd -I -t f -E *languages*
     find_command = {
       "fd",
       "--color=never",
@@ -121,6 +126,7 @@ M.config.find_files.plugins = function()
   })
 end
 
+---Find temporary files in neovim config directory.
 M.config.find_files.temps = function()
   require("telescope.builtin").find_files({
     cwd = config_dir,
@@ -149,6 +155,7 @@ M.config.find_files.temps = function()
   })
 end
 
+---Find files in `after/ftplugin` in neovim config directory.
 M.config.find_files.after_ftplugin = function()
   local ftplugin_dir = config_dir .. "/after/ftplugin"
 
