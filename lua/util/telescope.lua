@@ -53,6 +53,13 @@ entry_makers.remove_file_extensions = function(cwd, ext)
   end
 end
 
+M.config.find_files = function()
+  require("telescope.builtin").find_files({
+    prompt_title = "Config Files",
+    cwd = config_dir,
+  })
+end
+
 ---Find language files.
 ---
 ---This displays a list of configured languages to choose from.
