@@ -170,4 +170,47 @@ function M.create_lsp_keymaps(client, bufnr)
   -- stylua: ignore end
 end
 
+---Delete LSP keymaps for a client when it detaches.
+---@param client vim.lsp.Client The LSP client.
+---@param bufnr integer Buffer number.
+function M.delete_lsp_keymaps(client, bufnr)
+  local function unmap(lhs, opts)
+    local mode = opts and opts.mode or "n"
+    pcall(function()
+      vim.api.nvim_buf_del_keymap(bufnr, mode, lhs)
+    end)
+  end
+
+  -- Define all keymaps that need to be removed. These should match the ones set in create_lsp_keymaps.
+  unmap("<leader>cl")
+  unmap("gd")
+  unmap("gr")
+  unmap("gI")
+  unmap("gy")
+  unmap("gD")
+  unmap("gK")
+  unmap("<C-k>", { mode = "i" })
+  unmap("<leader>ca")
+  unmap("<leader>cc")
+  unmap("<leader>cC")
+  unmap("<leader>cr")
+  unmap("<leader>uh")
+  unmap("<leader>uH")
+end
+
+---Creates an autocmd that runs an `on_detach` function on `LspDetach` events.
+---@param on_detach fun(client: vim.lsp.Client, bufnr: integer):nil Function to be invoked when an LSP server client detaches from a buffer.
+---@return integer Autocmd_ID returned by `vim.api.nvim_create_autocmd`.
+function M.on_detach(on_detach)
+  return vim.api.nvim_create_autocmd("LspDetach", {
+    callback = function(event)
+      local bufnr = event.buf
+      local client = vim.lsp.get_client_by_id(event.data.client_id)
+      if client then
+        on_detach(client, bufnr)
+      end
+    end,
+  })
+end
+
 return M

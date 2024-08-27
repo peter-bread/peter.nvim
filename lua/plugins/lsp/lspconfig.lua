@@ -70,6 +70,10 @@ return {
       lsp.create_lsp_keymaps(client, bufnr)
     end)
 
+    lsp.on_detach(function(client, bufnr)
+      lsp.delete_lsp_keymaps(client, bufnr)
+    end)
+
     if opts.inlay_hints.enabled then
       ---@diagnostic disable-next-line: unused-local
       lsp.on_supports_method("textDocument/inlayHint", function(client, bufnr)
