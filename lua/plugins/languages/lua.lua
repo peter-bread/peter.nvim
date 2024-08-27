@@ -17,34 +17,45 @@ return {
   L.lspconfig({
     servers = {
       lua_ls = {
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = {
-                "vim",
+        on_init = function(client)
+          local path = client.workspace_folders[1].name
+          if
+            vim.loop.fs_stat(path .. "/.luarc.json")
+            or vim.loop.fs_stat(path .. "/.luarc.jsonc")
+          then
+            return
+          end
+          client.config.settings.Lua =
+            vim.tbl_deep_extend("force", client.config.settings.Lua, {
+              diagnostics = {
+                globals = {
+                  "vim",
+                },
               },
-            },
-            workspace = {
-              checkThirdParty = false,
-            },
-            codeLens = {
-              enable = true,
-            },
-            completion = {
-              callSnippet = "Replace",
-            },
-            doc = {
-              privateName = { "^_" },
-            },
-            hint = {
-              enable = true,
-              setType = false,
-              paramType = true,
-              paramName = "Disable",
-              semicolon = "Disable",
-              arrayIndex = "Disable",
-            },
-          },
+              workspace = {
+                checkThirdParty = false,
+              },
+              codeLens = {
+                enable = true,
+              },
+              completion = {
+                callSnippet = "Replace",
+              },
+              doc = {
+                privateName = { "^_" },
+              },
+              hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = "Disable",
+                semicolon = "Disable",
+                arrayIndex = "Disable",
+              },
+            })
+        end,
+        settings = {
+          Lua = {},
         },
       },
     },
