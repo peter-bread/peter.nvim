@@ -1,4 +1,5 @@
 ---@class CustomTelescopePickers
+---Lua module containing custom telescope pickers.
 local M = {}
 
 local is_inside_work_tree = {}
