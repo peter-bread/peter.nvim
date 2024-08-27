@@ -53,7 +53,9 @@ entry_makers.remove_file_extensions = function(cwd, ext)
   end
 end
 
-M.config.find_files = function()
+M.config.find_files = {}
+
+M.config.find_files.find_files = function()
   require("telescope.builtin").find_files({
     prompt_title = "Config Files",
     cwd = config_dir,
@@ -65,7 +67,7 @@ end
 ---This displays a list of configured languages to choose from.
 ---The `.lua` extensions have been removed to make it clearer and to make
 ---searching easier.
-M.config.languages = function()
+M.config.find_files.languages = function()
   local lang_dir = config_dir .. "/lua/plugins/languages"
 
   require("telescope.builtin").find_files(
@@ -80,7 +82,7 @@ M.config.languages = function()
 end
 
 ---Find plugin files (exc. language files).
-M.config.plugins = function()
+M.config.find_files.plugins = function()
   if vim.fn.executable("fd") == 0 then
     -- TODO: make backup find_command, maybe using `find` or `git ls-files`
     return
@@ -119,7 +121,7 @@ M.config.plugins = function()
   })
 end
 
-M.config.temps = function()
+M.config.find_files.temps = function()
   require("telescope.builtin").find_files({
     cwd = config_dir,
     prompt_title = "Temp Files",
@@ -147,7 +149,7 @@ M.config.temps = function()
   })
 end
 
-M.config.after_ftplugin = function()
+M.config.find_files.after_ftplugin = function()
   local ftplugin_dir = config_dir .. "/after/ftplugin"
 
   require("telescope.builtin").find_files({
