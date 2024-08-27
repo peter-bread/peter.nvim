@@ -24,6 +24,7 @@ return {
     { "<leader>nl", function() require("util.telescope").config.languages() end, mode = "n", desc = "Languages" },
     { "<leader>np", function() require("util.telescope").config.plugins() end, mode = "n", desc = "Plugins" },
     { "<leader>nt", function() require("util.telescope").config.temps() end, mode = "n", desc = "Temporary Files" },
+    { "<leader>nF", function() require("util.telescope").config.after_ftplugin() end, mode = "n", desc = "after/ftplugin" },
     -- stylua: ignore end
   },
   opts = {},

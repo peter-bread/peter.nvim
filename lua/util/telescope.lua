@@ -140,4 +140,21 @@ M.config.temps = function()
   })
 end
 
+M.config.after_ftplugin = function()
+  local ftplugin_dir = config_dir .. "/after/ftplugin"
+
+  require("telescope.builtin").find_files({
+    prompt_title = "`after/ftplugin` Files",
+    cwd = ftplugin_dir,
+    entry_maker = entry_makers.remove_file_extensions(ftplugin_dir, "lua"),
+
+    layout_config = {
+      horizontal = {
+        results_width = 0.3,
+        preview_width = 0.7,
+      },
+    },
+  })
+end
+
 return M
