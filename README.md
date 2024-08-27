@@ -7,29 +7,6 @@ My first proper Neovim config.
 
 ## Install
 
-### Dotfiles
-
-> [!CAUTION]
->
-> This is not yet supported.
->
-> Working on it though!!!
-
-This can be installed automatically with the rest of my [`dotfiles`](https://github.com/peter-bread/.dotfiles)
-using [this script](https://github.com/peter-bread/bootstrap/blob/main/bootstrap.sh).
-
-Run the following command:
-
-<!-- markdownlint-disable MD013 -->
-
-```bash
-curl -sL https://raw.githubusercontent.com/peter-bread/bootstrap/main/bootstrap.sh | bash
-```
-
-<!-- markdownlint-restore -->
-
-### Standalone
-
 Clone the repository.
 
 ```sh
