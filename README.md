@@ -34,7 +34,7 @@ Programming languages are configured in two places:
 
 <!-- markdownlint-restore -->
 
-You can use `require("util.new_lang)` to access a wrapper module that simplifies
+You can use `require("util.new_lang")` to access a wrapper module that simplifies
 some plugin setup for progamming languages.
 
 It is useful for:
