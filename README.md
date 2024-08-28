@@ -7,8 +7,12 @@ My first proper Neovim config.
 
 ## Requirements
 
+<!-- markdownlint-disable MD013 -->
+
 - neovim (+ it's dependencies)
 - [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep) (for telescope)
+
+<!-- markdownlint-restore -->
 
 ## Install
 
