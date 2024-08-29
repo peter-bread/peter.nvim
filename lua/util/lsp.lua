@@ -31,14 +31,14 @@ end
 
 ---Run `fn` when an LSP client attaches if the given `method` is supported.
 ---@param method string Method/capability that needs to be supported.
----@param fn fun(client: vim.lsp.Client, bufnr: integer) Function to run.
-function M.on_supports_method(method, fn)
+---@param func fun(client: vim.lsp.Client, bufnr: integer) Function to run.
+function M.on_supports_method(method, func)
   return vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
       local bufnr = event.buf
       local client = vim.lsp.get_client_by_id(event.data.client_id)
       if client and client.supports_method(method) then
-        fn(client, bufnr)
+        func(client, bufnr)
       end
     end,
   })
