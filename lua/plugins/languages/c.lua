@@ -65,11 +65,11 @@ return {
     },
     setup = {
       clangd = function(server, opts)
-        local ok, ce = pcall(require, "clangd_extensions")
+        local ok, clangd_extensions = pcall(require, "clangd_extensions")
         if not ok then
           return
         end
-        ce.setup({
+        clangd_extensions.setup({
           inlay_hints = {
             inline = false,
           },
