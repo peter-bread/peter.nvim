@@ -29,6 +29,25 @@ function M.on_attach(on_attach, name)
   })
 end
 
+M._method_cache = {}
+
+---Check if an LSP client supports a method (with caching).
+---@param client vim.lsp.Client
+---@param method string
+---@return boolean
+local supports_method = function(client, method)
+  local key = client.name
+  M._method_cache[key] = M._method_cache[key] or {}
+  local is_supported = M._method_cache[key][method]
+
+  if is_supported == nil then
+    is_supported = client.supports_method(method)
+    M._method_cache[key][method] = is_supported
+  end
+
+  return is_supported
+end
+
 ---Run `fn` when an LSP client attaches if the given `method` is supported.
 ---@param method string Method/capability that needs to be supported.
 ---@param fn fun(client: vim.lsp.Client, bufnr: integer) Function to run.
@@ -37,7 +56,7 @@ function M.on_supports_method(method, fn)
     callback = function(event)
       local bufnr = event.buf
       local client = vim.lsp.get_client_by_id(event.data.client_id)
-      if client and client.supports_method(method) then
+      if client and supports_method(client, method) then
         fn(client, bufnr)
       end
     end,
@@ -92,7 +111,7 @@ function M.create_lsp_keymaps(client, bufnr)
 
     -- if one capability is required then set keymap
     if type(has) == "string" then
-      if client.supports_method(has) then
+      if supports_method(client, has) then
         vim.keymap.set(mode, lhs, rhs, opts)
       end
       return
@@ -100,7 +119,7 @@ function M.create_lsp_keymaps(client, bufnr)
 
     -- check that all required capabilities are suppported
     for _, capability in ipairs(has) do
-      if not client.supports_method(capability) then
+      if not supports_method(client, capability) then
         return
       end
     end
