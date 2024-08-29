@@ -116,19 +116,14 @@ return {
       end)
     end
 
-    if opts.codelens.enabled and vim.lsp.codelens then
-      ---@diagnostic disable-next-line: unused-local
-      lsp.on_supports_method("textDocument/codeLens", function(client, bufnr)
-        vim.lsp.codelens.refresh()
-        vim.api.nvim_create_autocmd(
-          { "BufEnter", "CursorHold", "InsertLeave" },
-          {
-            buffer = bufnr,
-            callback = vim.lsp.codelens.refresh,
-          }
-        )
-      end)
-    end
+    ---@diagnostic disable-next-line: unused-local
+    lsp.on_supports_method("textDocument/codeLens", function(client, bufnr)
+      vim.lsp.codelens.refresh()
+      vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+        buffer = bufnr,
+        callback = vim.lsp.codelens.refresh,
+      })
+    end)
 
     local signs =
       { Error = " ", Warn = " ", Hint = "󰌶 ", Info = " " }
