@@ -59,3 +59,8 @@ set("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, {
 -- toggle background
 -- stylua: ignore
 set("n", "<leader>ub", require("util.ui").toggle_background, { desc = "Toggle background" })
+
+set("n", "<leader>nc", function()
+  vim.cmd.cd(vim.fn.stdpath("config"))
+  vim.cmd("e")
+end, { desc = "cd to config" })
