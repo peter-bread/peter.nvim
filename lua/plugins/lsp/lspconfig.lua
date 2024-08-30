@@ -77,12 +77,12 @@ return {
 
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend(
+    local capabilities = vim.tbl_deep_extend(
       "force",
-      capabilities, -- default capabilities
+      {},
+      vim.lsp.protocol.make_client_capabilities(), -- default capabilities
       opts.capabilities or {}, -- global capabilities
-      require("cmp_nvim_lsp").default_capabilities()
+      require("cmp_nvim_lsp").default_capabilities() -- lsp cmp capabilities
     )
 
     ---Setup an LSP server.
