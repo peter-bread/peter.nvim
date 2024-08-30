@@ -47,9 +47,15 @@ return {
               enable = false,
               url = "",
             },
-            schemas = require("schemastore").yaml.schemas(),
           },
         },
+        on_new_config = function(new_config, new_root_dir)
+          new_config.settings.yaml.schemas = vim.tbl_deep_extend(
+            "force",
+            new_config.settings.yaml.schemas or {},
+            require("schemastore").yaml.schemas()
+          )
+        end,
       },
     },
   }),

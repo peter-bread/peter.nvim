@@ -19,12 +19,18 @@ return {
             format = {
               enable = true,
             },
-            schemas = require("schemastore").json.schemas(),
             validate = {
               enable = true,
             },
           },
         },
+        on_new_config = function(new_config, new_root_dir)
+          new_config.settings.json.schemas = vim.tbl_deep_extend(
+            "force",
+            new_config.settings.json.schemas or {},
+            require("schemastore").json.schemas()
+          )
+        end,
       },
     },
   }),
