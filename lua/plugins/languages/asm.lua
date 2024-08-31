@@ -6,7 +6,7 @@ return {
   }),
 
   L.mason({
-    "asm-lsp",
+    "asm_lsp",
   }),
 
   L.lspconfig({
