@@ -90,11 +90,6 @@ end
 
 ---Find plugin files (exc. language files) in neovim config directory.
 M.config.find_files.plugins = function()
-  if vim.fn.executable("fd") == 0 then
-    -- TODO: make backup find_command, maybe using `find` or `git ls-files`
-    return
-  end
-
   local plugin_dir = config_dir .. "/lua/plugins"
 
   require("telescope.builtin").find_files({
@@ -110,19 +105,20 @@ M.config.find_files.plugins = function()
     },
 
     find_command = {
-      "fd",
-      "--color=never",
+      "rg",
+      "--color",
+      "never",
+      "--files",
+      "--hidden",
       "--no-ignore",
-      "--type",
-      "file",
-      "--exclude",
-      "*languages*",
-      "--exclude",
-      "*.temp",
-      "--exclude",
-      "*.temp.*",
-      "--exclude",
-      "temp.*",
+      "--glob",
+      "!*languages*",
+      "--glob",
+      "!*.temp",
+      "--glob",
+      "!*.temp.*",
+      "--glob",
+      "!temp.*",
     },
   })
 end
