@@ -134,6 +134,8 @@ M.config.find_files.temps = function()
     prompt_title = "Temp Files",
     find_command = {
       "rg",
+      "--color",
+      "never",
       "--files",
       "--hidden",
       "--no-ignore",
