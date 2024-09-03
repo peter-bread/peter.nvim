@@ -49,7 +49,73 @@ return {
     },
   }),
 
-  -- TODO: DAP
+  L.dap({
+    deps = "mfussenegger/nvim-dap-python",
+    setup = function()
+      local path = vim.fn.getcwd() .. "/.venv/bin/python"
+      require("dap-python").setup(path)
+      -- add additional configurations here
+      vim.list_extend(require("dap").configurations.python, {
+        {
+          type = "python",
+          request = "launch",
+          name = "PLEASE",
+          program = "${file}",
+          console = "integratedTerminal",
+          env = {
+            PYTHONPATH = "${workspaceFolder}:${workspaceFolder}/src",
+          },
+        },
+      })
+    end,
+  }),
+
+  -- L.dap({
+  --   adapters = {
+  --     python = function()
+  --       local path = vim.fn.getcwd() .. "/.venv/bin/python"
+  --       return function(callback, config)
+  --         if config.request == "attach" then
+  --           ---@diagnostic disable-next-line: undefined-field
+  --           local port = (config.connect or config).port
+  --           ---@diagnostic disable-next-line: undefined-field
+  --           local host = (config.connect or config).host or "127.0.0.1"
+  --           callback({
+  --             type = "server",
+  --             port = assert(
+  --               port,
+  --               "`connect.port` is required for a python `attach` configuration"
+  --             ),
+  --             host = host,
+  --             options = {
+  --               source_filetype = "python",
+  --             },
+  --           })
+  --         else
+  --           callback({
+  --             type = "executable",
+  --             command = path,
+  --             args = { "-m", "debugpy.adapter" },
+  --             options = {
+  --               source_filetype = "python",
+  --             },
+  --           })
+  --         end
+  --       end
+  --     end,
+  --   },
+  --   configurations = {
+  --     python = {
+  --       {
+  --         type = "python",
+  --         request = "launch",
+  --         name = "Launch File",
+  --
+  --         program = "${file}",
+  --       },
+  --     },
+  --   },
+  -- }),
 
   {
     "linux-cultist/venv-selector.nvim",

@@ -239,7 +239,7 @@ function M.test(config)
   }
 end
 
----@alias CustomDapAdapter table<string,table|fun():table>
+---@alias CustomDapAdapter table<string,table|fun():table|fun(callback:fun(adapter_table:table), config:table)>
 ---@alias CustomDapConfiguration table<string,table[]>
 ---@alias CustomDapDeps string|string[]
 
