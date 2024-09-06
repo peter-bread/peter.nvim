@@ -21,6 +21,7 @@ return {
     { "<leader>fb", "<cmd>Telescope buffers<cr>", mode = "n", desc = "Find Buffers" },
     { "<leader>uc", function() require("telescope.builtin").colorscheme({ enable_preview = true }) end, mode = "n", desc = "Change Colorscheme" },
     { "<leader>fp", function() require("util.telescope").project_files() end, mode = "n", desc = "Project Files" },
+    { "<leader>fF", function() require("util.telescope").find_all_files() end, mode = "n", desc = "Find All Files" },
     { "<leader>nf", function() require("util.telescope").config.find_files.find_files() end, mode = "n", desc = "Config Files" },
     { "<leader>nl", function() require("util.telescope").config.find_files.languages() end, mode = "n", desc = "Languages" },
     { "<leader>np", function() require("util.telescope").config.find_files.plugins() end, mode = "n", desc = "Plugins" },
@@ -28,7 +29,14 @@ return {
     { "<leader>nF", function() require("util.telescope").config.find_files.after_ftplugin() end, mode = "n", desc = "after/ftplugin" },
     -- stylua: ignore end
   },
-  opts = {},
+  opts = {
+    defaults = {
+      file_ignore_patterns = {
+        "^.git/",
+        "node_modules",
+      },
+    },
+  },
   config = function(_, opts)
     local telescope = require("telescope")
     telescope.setup(opts)

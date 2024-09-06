@@ -23,6 +23,12 @@ M.project_files = function()
   end
 end
 
+M.find_all_files = function()
+  require("telescope.builtin").find_files({
+    hidden = true,
+  })
+end
+
 ---@class CustomTelescopeConfigPickers
 ---Table of telescope picker categories that search inside neovim config directory.
 M.config = {}
