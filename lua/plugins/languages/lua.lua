@@ -4,8 +4,6 @@ return {
   L.treesitter({
     "lua",
     "luadoc",
-    "luau",
-    "luap",
   }),
 
   L.mason({
