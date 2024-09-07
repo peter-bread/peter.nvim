@@ -29,14 +29,7 @@ return {
     { "<leader>nF", function() require("util.telescope").config.find_files.after_ftplugin() end, mode = "n", desc = "after/ftplugin" },
     -- stylua: ignore end
   },
-  opts = {
-    defaults = {
-      file_ignore_patterns = {
-        "^.git/",
-        "node_modules",
-      },
-    },
-  },
+  opts = {},
   config = function(_, opts)
     local telescope = require("telescope")
     telescope.setup(opts)
