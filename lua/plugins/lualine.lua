@@ -73,10 +73,7 @@ return {
             color = { fg = "#ff9e64" },
           },
         },
-        lualine_y = {
-          -- progress through file
-          { "progress" },
-        },
+        lualine_y = {},
         lualine_z = {
           -- location in file
           {
