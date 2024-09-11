@@ -44,7 +44,7 @@ o.hlsearch = true
 o.incsearch = true
 
 o.signcolumn = "yes"
-o.colorcolumn = "80"
+o.colorcolumn = "80,120"
 
 o.timeoutlen = 300
 
