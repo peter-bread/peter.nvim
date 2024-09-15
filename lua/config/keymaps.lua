@@ -56,6 +56,20 @@ set("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, {
 set("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
 -- stylua: ignore end
 
+set("n", "<leader>ud", function()
+  vim.diagnostic.enable(
+    not vim.diagnostic.is_enabled({ bufnr = 0 }),
+    { bufnr = nil }
+  )
+end, { desc = "Toggle Diagnostics (Buf)" })
+
+set("n", "<leader>uD", function()
+  vim.diagnostic.enable(
+    not vim.diagnostic.is_enabled({ bufnr = 0 }),
+    { bufnr = 0 }
+  )
+end, { desc = "Toggle Diagnostics (Buf)" })
+
 -- toggle background
 -- stylua: ignore
 set("n", "<leader>ub", require("util.ui").toggle_background, { desc = "Toggle background" })
