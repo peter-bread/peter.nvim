@@ -3,7 +3,7 @@ local o = vim.opt
 
 -- set leader key
 g.mapleader = " "
-g.maplocalleader = " "
+g.maplocalleader = "\\"
 
 g.have_nerd_font = true
 
