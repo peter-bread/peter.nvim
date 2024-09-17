@@ -19,7 +19,7 @@ return {
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", mode = "n", desc = "Live Grep" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", mode = "n", desc = "Recent Files" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", mode = "n", desc = "Find Buffers" },
-    { "<leader>uc", function() require("telescope.builtin").colorscheme({ enable_preview = true }) end, mode = "n", desc = "Change Colorscheme" },
+    { "<leader>uC", function() require("telescope.builtin").colorscheme({ enable_preview = true }) end, mode = "n", desc = "Change Colorscheme" },
     { "<leader>fp", function() require("util.telescope").project_files() end, mode = "n", desc = "Project Files" },
     { "<leader>fF", function() require("util.telescope").find_all_files() end, mode = "n", desc = "Find All Files" },
     { "<leader>nf", function() require("util.telescope").config.find_files.find_files() end, mode = "n", desc = "Config Files" },
