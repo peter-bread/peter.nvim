@@ -78,3 +78,11 @@ set("n", "<leader>nc", function()
   vim.cmd.cd(vim.fn.stdpath("config"))
   vim.cmd("e")
 end, { desc = "cd to config" })
+
+set("n", "<leader>uc", function()
+  if vim.o.conceallevel == 0 then
+    vim.o.conceallevel = 2
+  else
+    vim.o.conceallevel = 0
+  end
+end, { desc = "Toggle Conceal Level" })
