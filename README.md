@@ -5,15 +5,6 @@ My first proper Neovim config.
 > [!NOTE]
 > Intended for use on MacOS and Linux.
 
-<!-- <div style="display: flex; justify-content: space-between;">
-  <img src="https://github.com/user-attachments/assets/ff34bc6c-7e95-424c-87cd-594cc20a2707" width="49%" alt="Screenshot 2024-09-19 at 00 20 07">
-  <img src="https://github.com/user-attachments/assets/1f354be7-3fda-4515-badd-0bb6c93243f9" width="49%" alt="Screenshot 2024-09-19 at 00 22 11">
-</div> -->
-
-
-<img width="1697" alt="Screenshot 2024-09-19 at 00 20 07" src="https://github.com/user-attachments/assets/ff34bc6c-7e95-424c-87cd-594cc20a2707">  
-<img width="1697" alt="Screenshot 2024-09-19 at 00 22 11" src="https://github.com/user-attachments/assets/1f354be7-3fda-4515-badd-0bb6c93243f9">
-
 ## Requirements
 
 <!-- markdownlint-disable MD013 -->
@@ -61,3 +52,8 @@ It is useful for:
 - dap (set up debugging)
 
 On top of that, you can include other plugins, but you need to set them up manually.
+
+## Showcase
+
+<img width="1697" alt="Screenshot 2024-09-19 at 00 20 07" src="https://github.com/user-attachments/assets/ff34bc6c-7e95-424c-87cd-594cc20a2707">  
+<img width="1697" alt="Screenshot 2024-09-19 at 00 22 11" src="https://github.com/user-attachments/assets/1f354be7-3fda-4515-badd-0bb6c93243f9">
