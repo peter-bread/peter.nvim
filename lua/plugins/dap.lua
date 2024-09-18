@@ -25,6 +25,9 @@ return {
       local dap = require("dap")
       require("mason-nvim-dap").setup()
 
+      -- enable .vscode/launch.json configurations
+      require("dap.ext.vscode").load_launchjs()
+
       -- setup user-created adapters
       for name, adapter in pairs(opts.adapters or {}) do
         dap.adapters[name] = adapter
@@ -41,8 +44,6 @@ return {
           language_extension()
         end
       end
-
-      -- TODO: enable `launch.json` configurations
     end,
   },
   {
