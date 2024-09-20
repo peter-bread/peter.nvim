@@ -74,13 +74,6 @@ return {
             inline = false,
           },
         })
-
-        -- configure clangd_extensions when lsp attaches
-        require("util.lsp").on_attach(function(client, bufnr)
-          local inlay_hints = require("clangd_extensions.inlay_hints")
-          inlay_hints.setup_autocmd()
-          inlay_hints.set_inlay_hints()
-        end, "clangd")
       end,
     },
   }),

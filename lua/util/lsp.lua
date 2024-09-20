@@ -186,12 +186,6 @@ function M.create_lsp_keymaps(client, bufnr)
       not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }),
       { bufnr = buf }
     )
-
-    -- Attempt to toggle clangd_extensions inlay hints
-    local ok, inlay_hints = pcall(require, "clangd_extensions.inlay_hints")
-    if ok then
-      inlay_hints.toggle_inlay_hints()
-    end
   end
 
   -- stylua: ignore start
