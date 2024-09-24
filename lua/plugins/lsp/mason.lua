@@ -23,8 +23,28 @@ return {
       run_on_start = false,
     },
     config = function(_, opts)
+      local hash = {}
+      local packages = {}
+
+      -- remove duplicates from list
+      for _, v in ipairs(opts.ensure_installed or {}) do
+        if not hash[v] then
+          packages[#packages + 1] = v
+          hash[v] = true
+        end
+      end
+
+      opts.ensure_installed = packages or {}
+
       require("mason-tool-installer").setup(opts)
-      vim.cmd([[MasonToolsInstall]])
+
+      -- install synchronously if in headless mode
+      -- install async if running with UI
+      if #vim.api.nvim_list_uis() == 0 then
+        vim.cmd([[MasonToolsInstallSync]])
+      else
+        vim.cmd([[MasonToolsInstall]])
+      end
     end,
   },
 }
