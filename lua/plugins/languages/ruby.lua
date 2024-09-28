@@ -28,13 +28,5 @@ return {
     },
   }),
 
-  ---@module "conform"
-
-  L.format({
-    formatters_by_ft = {
-      ruby = { fmt },
-    },
-  }),
-
-  -- TODO: lint, test, dap
+  -- TODO: test, dap
 }
