@@ -3,6 +3,7 @@
 
 return {
   "iguanacucumber/magazine.nvim",
+  name = "nvim-cmp",
   lazy = true,
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
