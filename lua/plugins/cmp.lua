@@ -2,7 +2,7 @@
 -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
 
 return {
-  "hrsh7th/nvim-cmp",
+  "iguanacucumber/magazine.nvim",
   lazy = true,
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
