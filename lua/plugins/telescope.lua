@@ -19,6 +19,7 @@ return {
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", mode = "n", desc = "Live Grep" },
     { "<leader>fr", "<cmd>Telescope oldfiles<cr>", mode = "n", desc = "Recent Files" },
     { "<leader>fb", "<cmd>Telescope buffers<cr>", mode = "n", desc = "Find Buffers" },
+    { "<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", mode = "n", desc = "Find LSP Symbols" },
     { "<leader>uC", function() require("telescope.builtin").colorscheme({ enable_preview = true }) end, mode = "n", desc = "Change Colorscheme" },
     { "<leader>fp", function() require("util.telescope").project_files() end, mode = "n", desc = "Project Files" },
     { "<leader>fF", function() require("util.telescope").find_all_files() end, mode = "n", desc = "Find All Files" },
