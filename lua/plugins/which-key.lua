@@ -31,6 +31,8 @@ return {
         { "<leader>n", group = "neovim" },
         { "<leader>s", group = "search" },
         { "<leader>u", group = "ui" },
+
+        { "<localleader>", group = "local leader" },
       },
     },
     icons = { mappings = false },
