@@ -58,7 +58,7 @@ return {
     ft = "python",
     keys = {
       {
-        "<leader>cv",
+        "<localleader>v",
         "<cmd>VenvSelect<cr>",
         desc = "Select VirtualEnv",
         ft = "python",
