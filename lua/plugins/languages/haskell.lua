@@ -1,12 +1,11 @@
 local L = require("util.new_lang")
 
-return {
+local ret = {
   L.treesitter({
     "haskell",
   }),
 
   L.mason({
-    "hls",
     -- "haskell-debug-adapter",
   }),
 
@@ -15,3 +14,11 @@ return {
     version = "^4", -- Recommended
   },
 }
+
+-- only install haskell language server if not already installed
+-- (on my systems it should be installed through ghcup)
+if vim.fn.exepath("haskell-language-server-wrapper") == "" then
+  L.mason({ "hls" })
+end
+
+return ret
