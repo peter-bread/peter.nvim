@@ -103,6 +103,16 @@ return {
     },
     config = function(_, opts)
       require("gitsigns").setup(opts)
+      vim.api.nvim_set_hl(
+        0,
+        "GitSignsAddPreview",
+        { fg = "#7cabc9", bg = "#15223a" }
+      )
+      vim.api.nvim_set_hl(
+        0,
+        "GitSignsDeletePreview",
+        { fg = "#b57b6d", bg = "#2d1e1b" }
+      )
     end,
   },
 }
