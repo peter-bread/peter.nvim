@@ -65,4 +65,13 @@ return {
     ---@type TocOpts
     opts = {},
   },
+
+  {
+    "bullets-vim/bullets.vim",
+    ft = { "markdown" },
+    config = function()
+      -- TODO: add config options here using global variables
+      -- vim.g.
+    end,
+  },
 }
