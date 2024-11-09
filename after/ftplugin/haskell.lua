@@ -2,6 +2,10 @@ local ht = require("haskell-tools")
 local bufnr = vim.api.nvim_get_current_buf()
 
 local set = vim.keymap.set
+
+---Generate `opts` table for `vim.keymap.set` with default values and custom `desc` value
+---@param desc string Description for keymap
+---@return table vim.keymap.set.Opts Keymap opts table
 local opts = function(desc)
   return {
     desc = desc,
@@ -11,10 +15,13 @@ local opts = function(desc)
   }
 end
 
+-- hoogle
 set("n", "<localleader>s", ht.hoogle.hoogle_signature, opts("Search Hoogle"))
 
+-- codelens
 set("n", "<localleader>c", ht.lsp.buf_eval_all, opts("LSP Run All Codelens"))
 
+-- repl
 set("n", "<localleader>r", ht.repl.toggle, opts("Toggle GHCi repl (pkg)"))
 
 set("n", "<localleader>R", function()
