@@ -7,10 +7,10 @@ return {
   lazy = true,
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
+    "iguanacucumber/mag-nvim-lsp",
     "hrsh7th/cmp-path",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-cmdline",
+    "iguanacucumber/mag-buffer",
+    "iguanacucumber/mag-cmdline",
     {
       "L3MON4D3/LuaSnip",
       version = "v2.*",
