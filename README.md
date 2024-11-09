@@ -7,10 +7,22 @@ My first proper Neovim config.
 
 ## Requirements
 
+> [!NOTE]
+> I don't think this list is exhaustive right now, hopefully one day it will be!
+
 <!-- markdownlint-disable MD013 -->
 
+- git
+- lua
 - neovim (+ it's dependencies)
 - [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep) (for telescope)
+- any tools needed to install or run tools from mason:
+  - node
+  - cargo
+  - python
+  - go
+  - ruby
+  - java
 
 <!-- markdownlint-restore -->
 
@@ -22,7 +34,7 @@ Clone the repository.
 git clone https://github.com/peter-bread/peter.nvim.git ~/.config/nvim
 ```
 
-> [!NOTE]
+> [!TIP]
 > Be sure to back up any existing Neovim files.
 
 ## Structure
