@@ -1,6 +1,10 @@
 -- for more sources:
 -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
 
+if true then
+  return {}
+end
+
 return {
   "iguanacucumber/magazine.nvim",
   name = "nvim-cmp",
