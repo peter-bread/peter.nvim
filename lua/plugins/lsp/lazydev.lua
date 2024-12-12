@@ -9,4 +9,16 @@ return {
     },
   },
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  {
+    "saghen/blink.cmp",
+    opts = {
+      sources = {
+        providers = {
+          lsp = { fallback_for = { "lazydev" } },
+          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+        },
+      },
+      opts_extend = { "lazydev" },
+    },
+  },
 }
