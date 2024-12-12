@@ -68,6 +68,12 @@ return {
         selection = "preselect",
       },
 
+      accept = {
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+
       menu = {
         winblend = vim.o.pumblend,
         padding = 2,
@@ -93,22 +99,6 @@ return {
         auto_show_delay_ms = 200,
       },
     },
-
-    accept = {
-      auto_brackets = {
-        enabled = true,
-      },
-    },
-
-    trigger = {
-      signature_help = {
-        enabled = true,
-      },
-    },
-
-    -- signature = {
-    --   enabled = true,
-    -- },
 
     sources = {
       completion = {
