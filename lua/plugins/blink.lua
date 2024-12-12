@@ -61,7 +61,6 @@ return {
     completion = {
       trigger = {
         show_on_accept_on_trigger_character = false,
-        -- show_on_blocked_trigger_characters = { " ", "\n", "\t", "," },
         show_on_x_blocked_trigger_characters = { "," },
       },
 
@@ -70,6 +69,7 @@ return {
       },
 
       menu = {
+        min_width = 40,
         winblend = vim.o.pumblend,
       },
 
