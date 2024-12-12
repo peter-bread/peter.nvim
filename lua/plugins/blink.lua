@@ -15,7 +15,7 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
       end,
     },
-    { "L3MON4D3/LuaSnip", version = "v2.0" },
+    { "L3MON4D3/LuaSnip", version = "v2.*" },
   },
 
   ---@module "blink.cmp"
@@ -60,9 +60,9 @@ return {
 
     completion = {
       trigger = {
-        -- show_on_insert_on_trigger_character = false, -- don't show on InsertEnter
-        -- show_in_snippet = false,
         show_on_accept_on_trigger_character = false,
+        -- show_on_blocked_trigger_characters = { " ", "\n", "\t", "," },
+        show_on_x_blocked_trigger_characters = { "," },
       },
 
       list = {
