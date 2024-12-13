@@ -59,7 +59,11 @@ return {
           PmenuThumb = { bg = theme.ui.bg_p2 },
 
           -- snacks dashboard
-          -- SnacksDashboardHeader = { fg = palette.autumnRed },
+          SnacksDashboardHeader = { fg = palette.autumnRed },
+          SnacksDashboardFooter = { fg = palette.autumnGreen },
+          SnacksDashboardSpecial = { fg = palette.autumnYellow },
+          SnacksDashboardDesc = { fg = palette.oldWhite },
+          SnacksDashboardIcon = { fg = palette.autumnYellow },
         }
       end,
     },
