@@ -86,7 +86,7 @@ local M = {
   sections = {
     { section = "header" },
     { section = "keys", gap = 1, padding = 2 },
-    { section = "startup" },
+    { section = "startup" }, -- TODO: format this (remove icons)
   },
 }
 
