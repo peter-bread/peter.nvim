@@ -31,19 +31,25 @@ local keys = {
     icon = " ",
     key = "f",
     desc = "Find File",
-    action = require("telescope.builtin").find_files,
+    action = function()
+      require("telescope.builtin").find_files()
+    end,
   },
   {
     icon = "󱎸 ",
     key = "g",
     desc = "Search Text",
-    action = require("telescope.builtin").live_grep,
+    action = function()
+      require("telescope.builtin").live_grep()
+    end,
   },
   {
     icon = " ",
     key = "r",
     desc = "Recent Files",
-    action = require("telescope.builtin").oldfiles,
+    action = function()
+      require("telescope.builtin").oldfiles()
+    end,
   },
   {
     icon = "󰒲 ",
