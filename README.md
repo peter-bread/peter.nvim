@@ -1,6 +1,15 @@
 # peter.nvim
 
-[![GitHub Issues or Pull Requests by label](https://img.shields.io/github/issues/peter-bread/peter.nvim/P0?style=for-the-badge&label=Priorities)](https://github.com/peter-bread/peter.nvim/issues?q=is%3Aissue+is%3Aopen+label%3AP0)
+<!-- markdownlint-disable MD033 -->
+
+<div style="text-align: center;">
+  <a href="https://github.com/peter-bread/peter.nvim/issues?q=is%3Aissue+is%3Aopen+label%3AP0">
+    <img alt="GitHub Issues or Pull Requests by label"
+    src="https://img.shields.io/github/issues/peter-bread/peter.nvim/P0?style=for-the-badge&label=Priorities">
+  </a>
+</div>
+
+<!-- markdownlint-restore -->
 
 ---
 
