@@ -31,23 +31,19 @@ local keys = {
     icon = " ",
     key = "f",
     desc = "Find File",
-    action = ":lua Snacks.dashboard.pick('files')",
+    action = require("telescope.builtin").find_files,
   },
   {
     icon = "󱎸 ",
     key = "g",
     desc = "Search Text",
-    action = function()
-      require("telescope.builtin").live_grep()
-    end,
+    action = require("telescope.builtin").live_grep,
   },
   {
     icon = " ",
     key = "r",
     desc = "Recent Files",
-    action = function()
-      require("telescope.builtin").oldfiles()
-    end,
+    action = require("telescope.builtin").oldfiles,
   },
   {
     icon = "󰒲 ",
@@ -60,9 +56,7 @@ local keys = {
     icon = " ",
     key = "q",
     desc = "Quit",
-    action = function()
-      vim.api.nvim_input("<cmd>qa<cr>")
-    end,
+    action = ":qa",
   },
 }
 
