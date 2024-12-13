@@ -66,12 +66,6 @@ local keys = {
   },
 }
 
--- local colours = require("kanagawa.colors").setup()
--- local palette = colours.palette
--- local theme = colours.theme
--- --
--- vim.api.nvim_set_hl(0, "SnacksDashboardHeader", { fg = palette.autumnRed })
-
 ---@type snacks.dashboard.Config
 local M = {
   enabled = true,
