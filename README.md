@@ -11,8 +11,6 @@
 
 <!-- markdownlint-restore -->
 
----
-
 My first proper Neovim config.
 
 > [!NOTE]
