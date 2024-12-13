@@ -1,5 +1,9 @@
 # peter.nvim
 
+![GitHub Issues or Pull Requests by label](https://img.shields.io/github/issues/peter-bread/peter.nvim/P0?style=for-the-badge&label=Priorities&link=https%3A%2F%2Fgithub.com%2Fpeter-bread%2Fpeter.nvim%2Fissues%3Fq%3Dis%253Aissue%2Bis%253Aopen%2Blabel%253AP0)
+
+---
+
 My first proper Neovim config.
 
 > [!NOTE]
