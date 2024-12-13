@@ -18,6 +18,7 @@ return {
         filetypes = {
           "lazy",
           "dashboard",
+          "snacks_dashboard",
         },
       },
     },
@@ -33,6 +34,7 @@ return {
         pattern = {
           "help",
           "dashboard",
+          "snacks_dashboard",
           "neo-tree",
           "Trouble",
           "trouble",
