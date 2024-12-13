@@ -67,7 +67,7 @@ local keys = {
 }
 
 ---@type snacks.dashboard.Config
-local M = {
+local Config = {
   enabled = true,
   width = 40,
   row = nil,
@@ -84,4 +84,4 @@ local M = {
   },
 }
 
-return M
+return Config
