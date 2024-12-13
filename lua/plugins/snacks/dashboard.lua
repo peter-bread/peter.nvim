@@ -79,8 +79,8 @@ local M = {
   },
   sections = {
     { section = "header" },
-    { section = "keys", gap = 1, padding = 2 },
-    { section = "startup", icon = "" }, -- TODO: see if i can update text; might have to write code explicitly
+    { section = "keys", gap = 1 },
+    { section = "startup", icon = "", padding = { 0, 4 } }, -- TODO: see if i can update text; might have to write code explicitly
   },
 }
 
