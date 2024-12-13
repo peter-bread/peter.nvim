@@ -20,7 +20,7 @@ return {
   dependencies = {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "iguanacucumber/mag-nvim-lsp",
+    "saghen/blink.cmp",
   },
   opts = {
     diagnostics = {
@@ -82,7 +82,7 @@ return {
       {},
       vim.lsp.protocol.make_client_capabilities(), -- default capabilities
       opts.capabilities or {}, -- global capabilities
-      require("cmp_nvim_lsp").default_capabilities() -- lsp cmp capabilities
+      require("blink.cmp").get_lsp_capabilities() -- lsp cmp capabilities
     )
 
     ---Setup an LSP server.

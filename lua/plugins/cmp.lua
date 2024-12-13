@@ -3,6 +3,12 @@
 
 return {
   "iguanacucumber/magazine.nvim",
+
+  -- WARN: this plugin spec is currently disabled.
+  -- I'm just keeping this here until I am sure I won't need it,
+  -- i.e. blink.cmp is stable.
+  enabled = false,
+
   name = "nvim-cmp",
   lazy = true,
   event = { "InsertEnter", "CmdlineEnter" },
