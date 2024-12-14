@@ -15,6 +15,7 @@ return {
     ---@type snacks.Config
     opts = {
       dashboard = get("dashboard"),
+      notifier = get("notifier"),
     },
   },
 }
