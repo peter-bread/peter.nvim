@@ -17,6 +17,7 @@ return {
       dashboard = get("dashboard"),
       notifier = get("notifier"),
       indent = get("indent"),
+      scope = get("scope"),
     },
   },
 }
