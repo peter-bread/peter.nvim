@@ -16,6 +16,7 @@ return {
     opts = {
       dashboard = get("dashboard"),
       notifier = get("notifier"),
+      indent = get("indent"),
     },
   },
 }
