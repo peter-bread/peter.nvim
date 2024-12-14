@@ -76,7 +76,10 @@ set("n", "<leader>ub", require("util.ui").toggle_background, { desc = "Toggle ba
 
 set("n", "<leader>nc", function()
   vim.cmd.cd(vim.fn.stdpath("config"))
-  vim.cmd("e")
+  if vim.bo.buftype == "" then
+    -- refresh if in a buffer
+    vim.cmd("e")
+  end
 end, { desc = "cd to config" })
 
 set("n", "<leader>uc", function()
