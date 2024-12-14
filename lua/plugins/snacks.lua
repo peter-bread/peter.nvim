@@ -18,6 +18,25 @@ return {
       notifier = get("notifier"),
       indent = get("indent"),
       scope = get("scope"),
+      words = get("words"),
+    },
+    keys = {
+      {
+        "]]",
+        function()
+          require("snacks").words.jump(vim.v.count1)
+        end,
+        desc = "Next Reference",
+        mode = { "n", "t" },
+      },
+      {
+        "[[",
+        function()
+          require("snacks").words.jump(-vim.v.count1)
+        end,
+        desc = "Prev Reference",
+        mode = { "n", "t" },
+      },
     },
   },
 }
