@@ -58,6 +58,8 @@ set("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, {
 set("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
 -- stylua: ignore end
 
+-- toggles (mostly using snacks)
+-- from: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 Snacks.toggle.diagnostics():map("<leader>ud")
 
 Snacks.toggle
