@@ -19,6 +19,7 @@ return {
       notifier = get("notifier"),
       scope = get("scope"),
       words = get("words"),
+      toggle = { enabled = true },
     },
     keys = {
       {

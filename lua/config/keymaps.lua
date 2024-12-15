@@ -1,3 +1,5 @@
+--# selene: allow(multiple_statements)
+
 -- abbreviated
 local set = vim.keymap.set
 
@@ -56,33 +58,28 @@ set("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, {
 set("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
 -- stylua: ignore end
 
-set("n", "<leader>ud", function()
-  vim.diagnostic.enable(
-    not vim.diagnostic.is_enabled({ bufnr = 0 }),
-    { bufnr = nil }
-  )
-end, { desc = "Toggle Diagnostics (Buf)" })
+Snacks.toggle.diagnostics():map("<leader>ud")
 
-set("n", "<leader>uD", function()
-  vim.diagnostic.enable(
-    not vim.diagnostic.is_enabled({ bufnr = 0 }),
-    { bufnr = 0 }
+Snacks.toggle
+  .option(
+    "background",
+    { off = "light", on = "dark", name = "Dark Background", notify = false }
   )
-end, { desc = "Toggle Diagnostics (Buf)" })
+  :map("<leader>ub")
 
--- toggle background
--- stylua: ignore
-set("n", "<leader>ub", require("util.ui").toggle_background, { desc = "Toggle background" })
+Snacks.toggle
+  .option("conceallevel", {
+    off = 0,
+    on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2,
+    name = "Conceal Level",
+  })
+  :map("<leader>uc")
+
+if vim.lsp.inlay_hint then
+  Snacks.toggle.inlay_hints():map("<leader>uh")
+end
 
 set("n", "<leader>nc", function()
   vim.cmd.cd(vim.fn.stdpath("config"))
   vim.cmd("e")
 end, { desc = "cd to config" })
-
-set("n", "<leader>uc", function()
-  if vim.o.conceallevel == 0 then
-    vim.o.conceallevel = 2
-  else
-    vim.o.conceallevel = 0
-  end
-end, { desc = "Toggle Conceal Level" })
