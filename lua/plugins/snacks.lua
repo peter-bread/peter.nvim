@@ -15,11 +15,12 @@ return {
     ---@type snacks.Config
     opts = {
       dashboard = get("dashboard"),
+      dim = get("dim"),
       indent = get("indent"),
       notifier = get("notifier"),
       scope = get("scope"),
-      words = get("words"),
       toggle = { enabled = true },
+      words = get("words"),
     },
     keys = {
       {

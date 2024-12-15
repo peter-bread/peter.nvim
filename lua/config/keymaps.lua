@@ -75,6 +75,8 @@ Snacks.toggle
   })
   :map("<leader>uc")
 
+Snacks.toggle.dim():map("<leader>uD")
+
 if vim.lsp.inlay_hint then
   Snacks.toggle.inlay_hints():map("<leader>uh")
 end
