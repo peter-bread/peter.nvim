@@ -15,8 +15,8 @@ return {
     ---@type snacks.Config
     opts = {
       dashboard = get("dashboard"),
-      notifier = get("notifier"),
       indent = get("indent"),
+      notifier = get("notifier"),
       scope = get("scope"),
       words = get("words"),
     },
