@@ -19,7 +19,7 @@ return {
       indent = get("indent"),
       notifier = get("notifier"),
       scope = get("scope"),
-      toggle = { enabled = true },
+      toggle = get("toggle"),
       words = get("words"),
     },
     keys = {
