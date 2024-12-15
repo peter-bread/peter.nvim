@@ -17,6 +17,7 @@ return {
       dashboard = get("dashboard"),
       dim = get("dim"),
       indent = get("indent"),
+      lazygit = get("lazygit"),
       notifier = get("notifier"),
       scope = get("scope"),
       terminal = get("terminal"),

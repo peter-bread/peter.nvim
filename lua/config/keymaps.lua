@@ -91,3 +91,7 @@ end, { desc = "cd to config" })
 set("n", "<leader>,", function()
   Snacks.terminal()
 end, { desc = "Terminal (cwd)" })
+
+set("n", "<leader>gg", function()
+  Snacks.lazygit()
+end, { desc = "Lazygit" })
