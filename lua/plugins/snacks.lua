@@ -19,6 +19,7 @@ return {
       indent = get("indent"),
       notifier = get("notifier"),
       scope = get("scope"),
+      terminal = get("terminal"),
       toggle = get("toggle"),
       words = get("words"),
     },

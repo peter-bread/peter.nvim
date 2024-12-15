@@ -87,3 +87,7 @@ set("n", "<leader>nc", function()
   vim.cmd.cd(vim.fn.stdpath("config"))
   vim.cmd("e")
 end, { desc = "cd to config" })
+
+set("n", "<leader>,", function()
+  Snacks.terminal()
+end, { desc = "Terminal (cwd)" })
