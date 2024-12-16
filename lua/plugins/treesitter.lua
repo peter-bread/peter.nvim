@@ -7,17 +7,15 @@ return {
     build = ":TSUpdate",
     opts = {
       ensure_installed = {
-        -- INFO: c, query, lua, vim, vimdoc should ALWAYS be installed
+        -- INFO: c, query, lua, vim, vimdoc, markdown, markdown_inline should ALWAYS be installed
         "c",
         "query",
         "regex",
-
-        -- TODO: (maybe) move to vim language file
         "vim",
         "vimdoc",
-
-        -- TODO: (maybe) move to lua language file
         "lua",
+        "markdown",
+        "markdown_inline",
       },
 
       -- don't auto install parsers when entering buffer
