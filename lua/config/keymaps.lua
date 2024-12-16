@@ -1,3 +1,5 @@
+--# selene: allow(multiple_statements)
+
 -- abbreviated
 local set = vim.keymap.set
 
@@ -56,23 +58,30 @@ set("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, {
 set("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
 -- stylua: ignore end
 
-set("n", "<leader>ud", function()
-  vim.diagnostic.enable(
-    not vim.diagnostic.is_enabled({ bufnr = 0 }),
-    { bufnr = nil }
-  )
-end, { desc = "Toggle Diagnostics (Buf)" })
+-- toggles (mostly using snacks)
+-- from: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+Snacks.toggle.diagnostics():map("<leader>ud")
 
-set("n", "<leader>uD", function()
-  vim.diagnostic.enable(
-    not vim.diagnostic.is_enabled({ bufnr = 0 }),
-    { bufnr = 0 }
+Snacks.toggle
+  .option(
+    "background",
+    { off = "light", on = "dark", name = "Dark Background", notify = false }
   )
-end, { desc = "Toggle Diagnostics (Buf)" })
+  :map("<leader>ub")
 
--- toggle background
--- stylua: ignore
-set("n", "<leader>ub", require("util.ui").toggle_background, { desc = "Toggle background" })
+Snacks.toggle
+  .option("conceallevel", {
+    off = 0,
+    on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2,
+    name = "Conceal Level",
+  })
+  :map("<leader>uc")
+
+Snacks.toggle.dim():map("<leader>uD")
+
+if vim.lsp.inlay_hint then
+  Snacks.toggle.inlay_hints():map("<leader>uh")
+end
 
 set("n", "<leader>nc", function()
   vim.cmd.cd(vim.fn.stdpath("config"))
@@ -82,10 +91,32 @@ set("n", "<leader>nc", function()
   end
 end, { desc = "cd to config" })
 
-set("n", "<leader>uc", function()
-  if vim.o.conceallevel == 0 then
-    vim.o.conceallevel = 2
+-- toggle terminal: attempt to open at git root but fallback to cwd
+set("n", "<C-/>", function()
+  local root = vim.fs.root(0, ".git")
+  if root then
+    Snacks.terminal(nil, { cwd = root })
   else
-    vim.o.conceallevel = 0
+    Snacks.terminal()
   end
-end, { desc = "Toggle Conceal Level" })
+end, { desc = "Terminal" })
+
+-- toggle terminal: cwd
+set("n", "<M-/>", function()
+  Snacks.terminal()
+end, { desc = "Terminal (cwd)" })
+
+set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+set("t", "<M-/>", "<cmd>quit<cr>", { desc = "Kill Terminal" })
+
+set("n", "<leader>gg", function()
+  local root = vim.fs.root(0, ".git")
+  if root then
+    ---@diagnostic disable-next-line: missing-fields
+    Snacks.lazygit({ cwd = root })
+  end
+end, { desc = "Lazygit" })
+
+set("n", "<leader>gG", function()
+  Snacks.lazygit()
+end, { desc = "Lazygit (cwd)" })

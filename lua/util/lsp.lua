@@ -168,37 +168,6 @@ function M.create_lsp_keymaps(client, bufnr)
     has = "textDocument/rename",
   })
   -- stylua: ignore end
-
-  ---Toggle inlay hints.
-  ---@param global boolean True: all buffers. False: current buffer.
-  local function toggle_inlay_hints(global)
-    -- Determine the buffer number: `nil` for global, `0` for current buffer
-    local buf
-
-    if global then
-      buf = nil
-    else
-      buf = 0
-    end
-
-    -- Toggle LSP inlay hints
-    vim.lsp.inlay_hint.enable(
-      not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }),
-      { bufnr = buf }
-    )
-  end
-
-  -- stylua: ignore start
-  map("<leader>uh", function() toggle_inlay_hints(true) end, {
-    desc = "Toggle Inlay Hints",
-    has = "textDocument/inlayHint",
-  })
-
-  map("<leader>uH", function() toggle_inlay_hints(false) end, {
-    desc = "Toggle Inlay Hints (Buf)",
-    has = "textDocument/inlayHint",
-  })
-  -- stylua: ignore end
 end
 
 return M

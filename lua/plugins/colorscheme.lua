@@ -33,6 +33,11 @@ return {
     priority = 1000,
     opts = {
       overrides = function(colors)
+        ---@module "kanagawa.colors"
+
+        ---@type PaletteColors
+        local palette = colors.palette
+        ---@type ThemeColors
         local theme = colors.theme
 
         return {
@@ -52,6 +57,13 @@ return {
           PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
           PmenuSbar = { bg = theme.ui.bg_m1 },
           PmenuThumb = { bg = theme.ui.bg_p2 },
+
+          -- snacks dashboard
+          SnacksDashboardHeader = { fg = palette.autumnRed },
+          SnacksDashboardFooter = { fg = palette.autumnGreen },
+          SnacksDashboardSpecial = { fg = palette.autumnYellow },
+          SnacksDashboardDesc = { fg = palette.oldWhite },
+          SnacksDashboardIcon = { fg = palette.autumnYellow },
         }
       end,
     },
