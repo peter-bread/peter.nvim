@@ -9,7 +9,7 @@
 ---
 ---Say we want to add basic support for Lua.
 ---Create a file in your plugins folder `lua/plugins/languages/lua.lua`.
----This relies on merging `opts` tables wiht parent specs via the Lazy plugin manager.
+---This relies on merging `opts` tables with parent specs via the Lazy plugin manager.
 ---For this reason, it is important that the plugins are loaded as a separate spec:
 ---
 --- ```lua
