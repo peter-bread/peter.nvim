@@ -23,18 +23,8 @@ return {
       run_on_start = false,
     },
     config = function(_, opts)
-      local hash = {}
-      local packages = {}
-
-      -- remove duplicates from list
-      for _, v in ipairs(opts.ensure_installed or {}) do
-        if not hash[v] then
-          packages[#packages + 1] = v
-          hash[v] = true
-        end
-      end
-
-      opts.ensure_installed = packages or {}
+      opts.ensure_installed =
+        require("util.lists").remove_duplicates(opts.ensure_installed or {})
 
       require("mason-tool-installer").setup(opts)
 
