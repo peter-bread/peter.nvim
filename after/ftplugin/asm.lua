@@ -1,5 +1,11 @@
+---@diagnostic disable-next-line: unused-local
 require("util.lsp").on_attach(function(client, bufnr)
-  local root = require("lspconfig").util.find_git_ancestor(vim.fn.expand("%:p"))
+  local root = vim.fs.root(0, ".git")
+
+  if not root then
+    vim.notify("Couldn't find git root", vim.log.levels.WARN)
+    return
+  end
 
   local conf_files =
     vim.fs.find(".asm-lsp.toml", { type = "file", path = root })
