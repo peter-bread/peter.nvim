@@ -5,7 +5,7 @@
 ---@type snacks.notifier.Config
 local Config = {
   enabled = true,
-  style = "compact",
+  style = "minimal",
 }
 
 return Config
