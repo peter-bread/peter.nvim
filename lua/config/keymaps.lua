@@ -88,9 +88,23 @@ set("n", "<leader>nc", function()
   vim.cmd("e")
 end, { desc = "cd to config" })
 
-set("n", "<leader>,", function()
+-- toggle terminal: attempt to open at git root but fallback to cwd
+set("n", "<C-/>", function()
+  local root = vim.fs.root(0, ".git")
+  if root then
+    Snacks.terminal(nil, { cwd = root })
+  else
+    Snacks.terminal()
+  end
+end, { desc = "Terminal" })
+
+-- toggle terminal: cwd
+set("n", "<M-/>", function()
   Snacks.terminal()
 end, { desc = "Terminal (cwd)" })
+
+set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+set("t", "<M-/>", "<cmd>quit<cr>", { desc = "Kill Terminal" })
 
 set("n", "<leader>gg", function()
   Snacks.lazygit()
