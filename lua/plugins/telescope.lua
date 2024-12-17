@@ -1,19 +1,20 @@
 return {
-  "nvim-telescope/telescope.nvim",
-  lazy = true,
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      lazy = true,
-      build = "make",
-      cond = function()
-        return vim.fn.executable("make") == 1
-      end,
+  {
+    "nvim-telescope/telescope.nvim",
+    lazy = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        lazy = true,
+        build = "make",
+        cond = function()
+          return vim.fn.executable("make") == 1
+        end,
+      },
     },
-  },
-  cmd = "Telescope",
-  keys = {
+    cmd = "Telescope",
+    keys = {
     -- stylua: ignore start
     { "<leader>ff", "<cmd>Telescope find_files<cr>", mode = "n", desc = "Find Files" },
     { "<leader>fg", "<cmd>Telescope live_grep<cr>", mode = "n", desc = "Live Grep" },
@@ -28,12 +29,13 @@ return {
     { "<leader>np", function() require("util.telescope").config.find_files.plugins() end, mode = "n", desc = "Plugins" },
     { "<leader>nt", function() require("util.telescope").config.find_files.temps() end, mode = "n", desc = "Temporary Files" },
     { "<leader>nF", function() require("util.telescope").config.find_files.after_ftplugin() end, mode = "n", desc = "after/ftplugin" },
-    -- stylua: ignore end
+      -- stylua: ignore end
+    },
+    opts = {},
+    config = function(_, opts)
+      local telescope = require("telescope")
+      telescope.setup(opts)
+      pcall(telescope.load_extension("fzf"))
+    end,
   },
-  opts = {},
-  config = function(_, opts)
-    local telescope = require("telescope")
-    telescope.setup(opts)
-    pcall(telescope.load_extension("fzf"))
-  end,
 }

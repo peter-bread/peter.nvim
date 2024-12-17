@@ -1,4 +1,6 @@
 return {
-  "andymass/vim-matchup",
-  event = { "BufReadPost", "BufNewFile" },
+  {
+    "andymass/vim-matchup",
+    event = { "BufReadPost", "BufNewFile" },
+  },
 }
