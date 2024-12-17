@@ -9,6 +9,7 @@ g.have_nerd_font = true
 
 g.markdown_recommended_style = 0
 
+-- TODO: remove this when deleting cmp spec
 ---@type "standard"|"force_enabled"|"force_disabled"
 g.cmp_status = "standard"
 
