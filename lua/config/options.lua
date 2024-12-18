@@ -11,7 +11,7 @@ vim.g.markdown_recommended_style = 0
 vim.g.cmp_status = "standard"
 
 -- WARN: `vim.opt` will be deprecated. Will need to switch to `vim.o`.
--- https://github.com/neovim/neovim/issues/30383
+-- https://github.com/neovim/neovim/issues/20107
 
 -- pop up menu height
 vim.opt.pumheight = 15
