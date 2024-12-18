@@ -1,59 +1,56 @@
-local g = vim.g
-local o = vim.opt
-
 -- set leader key
-g.mapleader = " "
-g.maplocalleader = "\\"
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-g.have_nerd_font = true
+vim.g.have_nerd_font = true
 
-g.markdown_recommended_style = 0
+vim.g.markdown_recommended_style = 0
 
 -- TODO: remove this when deleting cmp spec
 ---@type "standard"|"force_enabled"|"force_disabled"
-g.cmp_status = "standard"
+vim.g.cmp_status = "standard"
 
 -- pop up menu height
-o.pumheight = 15
+vim.opt.pumheight = 15
 
 -- set line numbers
-o.number = true
-o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- tabs and indentation
-o.autoindent = true
-o.expandtab = true
-o.shiftwidth = 2
-o.tabstop = 2
-o.smarttab = true
-o.shiftround = true
+vim.opt.autoindent = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.smarttab = true
+vim.opt.shiftround = true
 
-o.wrap = false
+vim.opt.wrap = false
 
-o.breakindent = true
+vim.opt.breakindent = true
 
-o.confirm = true
+vim.opt.confirm = true
 
-o.spelllang = { "en" }
+vim.opt.spelllang = { "en" }
 
-o.undofile = true
+vim.opt.undofile = true
 
 -- search options
-o.ignorecase = true
-o.smartcase = true
-o.hlsearch = true
-o.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 
-o.signcolumn = "yes"
-o.colorcolumn = "80,120"
+vim.opt.signcolumn = "yes"
+vim.opt.colorcolumn = "80,120"
 
-o.timeoutlen = 300
+vim.opt.timeoutlen = 300
 
 -- split windows
-o.splitright = true
-o.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
--- o.fillchars = {
+-- vim.opt.fillchars = {
 --   foldopen = "",
 --   foldclose = "",
 --   fold = " ",
@@ -62,27 +59,27 @@ o.splitbelow = true
 --   eob = " ",
 -- }
 
-o.list = true
+vim.opt.list = true
 
-o.listchars = {
+vim.opt.listchars = {
   nbsp = "+",
   eol = "󱞥",
   trail = "·",
   tab = "  ",
 }
 
-o.inccommand = "split"
+vim.opt.inccommand = "split"
 
-o.cursorline = true
-o.termguicolors = true
-o.background = "dark"
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
 
-o.backspace = "indent,eol,start"
+vim.opt.backspace = "indent,eol,start"
 
-o.clipboard:append("unnamedplus")
+vim.opt.clipboard:append("unnamedplus")
 
-o.scrolloff = 16
+vim.opt.scrolloff = 16
 
-o.exrc = true
+vim.opt.exrc = true
 
-o.statuscolumn = "%=%{v:relnum == 0 ? v:lnum : v:relnum} %s"
+vim.opt.statuscolumn = "%=%{v:relnum == 0 ? v:lnum : v:relnum} %s"
