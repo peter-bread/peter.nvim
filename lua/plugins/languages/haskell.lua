@@ -18,7 +18,7 @@ local ret = {
 -- only install haskell language server if not already installed
 -- (on my systems it should be installed through ghcup)
 if vim.fn.exepath("haskell-language-server-wrapper") == "" then
-  L.mason({ "hls" })
+  vim.list_extend(ret, L.mason({ "hls" }))
 end
 
 return ret
