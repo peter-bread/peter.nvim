@@ -1,1 +1,1 @@
-require("snippets.go")
+pcall(require, "snippets.go")

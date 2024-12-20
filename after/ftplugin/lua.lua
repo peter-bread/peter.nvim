@@ -1,1 +1,1 @@
-require("snippets.lua")
+pcall(require, "snippets.lua")
