@@ -1,0 +1,10 @@
+{
+  "module": {
+    "prefix": "m",
+    "body": ["local M = {}", "", "$1", "", "return M"],
+    "description": "create module",
+    "luasnip": {
+      "priority": 2000
+    }
+  }
+}

@@ -10,13 +10,8 @@ return {
     -- build = "cargo +nightly build --release",
 
     dependencies = {
-      {
-        "rafamadriz/friendly-snippets",
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end,
-      },
-      { "L3MON4D3/LuaSnip", version = "v2.*" },
+      { "rafamadriz/friendly-snippets", lazy = true },
+      { "L3MON4D3/LuaSnip", lazy = true },
     },
 
     ---@module "blink.cmp"

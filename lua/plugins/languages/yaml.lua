@@ -1,13 +1,5 @@
 local L = require("util.new_lang")
 
--- create filetypes so actionlint doesn't run on all yaml files
-vim.filetype.add({
-  pattern = {
-    [".*/.github/workflows/.*%.yml"] = "yaml.ghaction",
-    [".*/.github/workflows/.*%.yaml"] = "yaml.ghaction",
-  },
-})
-
 return {
   L.treesitter({
     "yaml",
