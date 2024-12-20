@@ -5,7 +5,7 @@ end
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight on yank",
-  group = augroup("highlight_yank"),
+  group = augroup("UserHighlightYank"),
   callback = function()
     vim.highlight.on_yank()
   end,
