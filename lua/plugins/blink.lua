@@ -77,9 +77,8 @@ return {
 
         menu = {
           winblend = vim.o.pumblend,
-          padding = 2,
           draw = {
-            treesitter = true,
+            treesitter = { "lsp" },
             columns = {
               { "label", "label_description", gap = 1 },
               { "kind_icon", "kind", gap = 1 },
@@ -102,9 +101,7 @@ return {
       },
 
       sources = {
-        completion = {
-          enabled_providers = { "lsp", "luasnip", "path" },
-        },
+        default = { "lsp", "luasnip", "path" },
       },
     },
   },

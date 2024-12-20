@@ -15,11 +15,16 @@ return {
     opts = {
       sources = {
         providers = {
-          lsp = { fallback_for = { "lazydev" } },
-          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+ --         lsp = { fallback_for = { "lazydev" } },
+  --        lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
         },
       },
-      opts_extend = { "lazydev" },
+      -- opts_extend = { "lazydev" },
     },
   },
 }
