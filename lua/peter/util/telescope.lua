@@ -1,3 +1,6 @@
+local Constants = require("peter.constants")
+local Paths = Constants.paths
+
 ---@class CustomTelescopePickers
 ---Lua module containing custom telescope pickers.
 local M = {}
@@ -32,8 +35,6 @@ end
 ---@class CustomTelescopeConfigPickers
 ---Table of telescope picker categories that search inside neovim config directory.
 M.config = {}
-
-local config_dir = vim.fn.stdpath("config")
 
 ---@class CustomEntryMakers
 ---Table of custom entry makers.
@@ -71,7 +72,7 @@ M.config.find_files = {}
 M.config.find_files.find_files = function()
   require("telescope.builtin").find_files({
     prompt_title = "Config Files",
-    cwd = config_dir,
+    cwd = Paths.config,
   })
 end
 
@@ -81,7 +82,7 @@ end
 ---The `.lua` extensions have been removed to make it clearer and to make
 ---searching easier.
 M.config.find_files.languages = function()
-  local lang_dir = config_dir .. "/lua/plugins/languages"
+  local lang_dir = Paths.languages
 
   require("telescope.builtin").find_files(
     require("telescope.themes").get_dropdown({
@@ -96,7 +97,7 @@ end
 
 ---Find plugin files (exc. language files) in neovim config directory.
 M.config.find_files.plugins = function()
-  local plugin_dir = config_dir .. "/lua/plugins"
+  local plugin_dir = Paths.plugins
 
   require("telescope.builtin").find_files({
     prompt_title = "Plugin Files",
@@ -132,7 +133,7 @@ end
 ---Find temporary files in neovim config directory.
 M.config.find_files.temps = function()
   require("telescope.builtin").find_files({
-    cwd = config_dir,
+    cwd = Paths.config,
     prompt_title = "Temp Files",
     find_command = {
       "rg",
@@ -162,7 +163,7 @@ end
 
 ---Find files in `after/ftplugin` in neovim config directory.
 M.config.find_files.after_ftplugin = function()
-  local ftplugin_dir = config_dir .. "/after/ftplugin"
+  local ftplugin_dir = Paths.config .. "/after/ftplugin"
 
   require("telescope.builtin").find_files({
     prompt_title = "`after/ftplugin` Files",
