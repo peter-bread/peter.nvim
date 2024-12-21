@@ -75,7 +75,10 @@ vim.opt.background = "dark"
 
 vim.opt.backspace = "indent,eol,start"
 
-vim.opt.clipboard:append("unnamedplus")
+-- do not use system keyboard on WSL
+if vim.uv.os_uname().release:find("WSL") ~= nil then
+  vim.opt.clipboard:append("unnamedplus")
+end
 
 vim.opt.scrolloff = 16
 
