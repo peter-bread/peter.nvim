@@ -75,7 +75,9 @@ vim.opt.background = "dark"
 
 vim.opt.backspace = "indent,eol,start"
 
--- do not use system keyboard on WSL
+-- do not use system clipboard on WSL
+-- argument that system clipboard should never be used in (neo)vim
+-- https://github.com/peter-bread/peter.nvim/issues/31
 if not vim.uv.os_uname().release:find("WSL") then
   vim.opt.clipboard:append("unnamedplus")
 end
