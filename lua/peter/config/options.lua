@@ -6,10 +6,6 @@ vim.g.have_nerd_font = true
 
 vim.g.markdown_recommended_style = 0
 
--- TODO: remove this when deleting cmp spec
----@type "standard"|"force_enabled"|"force_disabled"
-vim.g.cmp_status = "standard"
-
 -- WARN: `vim.opt` will be deprecated. Will need to switch to `vim.o`.
 -- https://github.com/neovim/neovim/issues/20107
 
