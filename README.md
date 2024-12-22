@@ -78,4 +78,5 @@ On top of that, you can include other plugins, but you need to set them up manua
 
 ---
 
-\* Snippets can also be set in `.vscode/*.code-snippets`.
+\* Snippets can also be set in `snippets/snippets/<language>.json` (global) and
+`.vscode/*.code-snippets` (project-specific.)
