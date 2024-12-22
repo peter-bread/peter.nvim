@@ -56,10 +56,10 @@ Programming languages are configured in two places:
 
 <!-- markdownlint-disable MD013 -->
 
-- [`lua/plugins/languages`](https://github.com/peter-bread/peter.nvim/tree/main/lua/plugins/languages): plugin configuration
-- [`after/ftplugin`](https://github.com/peter-bread/peter.nvim/tree/main/after/ftplugin): extra configuration (e.g. `vim.bo`, snippets)
+- [`lua/plugins/languages`](https://github.com/peter-bread/peter.nvim/tree/main/lua/peter/plugins/languages): plugin configuration
+- [`after/ftplugin`](https://github.com/peter-bread/peter.nvim/tree/main/after/ftplugin): extra configuration (e.g. `vim.bo`, snippets\*)
 
-You can use [`require("peter.util.new_lang")`](https://github.com/peter-bread/peter.nvim/blob/main/lua/util/new_lang.lua) to access a wrapper module that simplifies
+You can use [`require("peter.util.new_lang")`](https://github.com/peter-bread/peter.nvim/blob/main/lua/peter/util/new_lang.lua) to access a wrapper module that simplifies
 some plugin setup for progamming languages.
 
 <!-- markdownlint-restore -->
@@ -75,3 +75,7 @@ It is useful for:
 - dap (set up debugging)
 
 On top of that, you can include other plugins, but you need to set them up manually.
+
+---
+
+\* Snippets can also be set in `.vscode/*.code-snippets`.
