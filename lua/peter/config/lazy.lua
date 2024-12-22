@@ -16,6 +16,7 @@ require("lazy").setup({
     { import = "peter.plugins" },
     { import = "peter.plugins.lsp" },
     { import = "peter.plugins.languages" },
+    { import = "peter.plugins.snacks" },
   },
   checker = {
     enabled = true,
