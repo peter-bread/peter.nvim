@@ -1,5 +1,20 @@
-# markdown lsp config file
-.marksman.toml
+# env
+.env
+
+# MacOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# private local mise config
+.mise.local.toml
+
+# project-specific local nvim settings
+.nvim.lua
+.nvimrc
+.exrc
 
 # temporary files or directories
 temp/
