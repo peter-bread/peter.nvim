@@ -80,7 +80,26 @@ local Config = {
   sections = {
     { section = "header" },
     { section = "keys", gap = 1 },
-    { section = "startup", icon = "", padding = { 0, 4 } }, -- TODO: see if i can update text; might have to write code explicitly
+
+    -- { section = "startup", icon = "", padding = { 0, 4 } },
+
+    function()
+      local stats = require("lazy.stats").stats()
+
+      local ms = math.floor(stats.startuptime * 100 + 0.5) / 100
+
+      ---@type snacks.dashboard.Section
+      return {
+        align = "center",
+        text = {
+          { "loaded ", hl = "footer" },
+          { stats.loaded .. "/" .. stats.count, hl = "special" },
+          { " plugins in ", hl = "footer" },
+          { ms .. " ms", hl = "special" },
+        },
+        padding = { 0, 4 },
+      }
+    end,
   },
 }
 
