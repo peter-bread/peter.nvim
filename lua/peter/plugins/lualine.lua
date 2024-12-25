@@ -63,7 +63,7 @@ return {
             -- relative filepath
             {
               "filename",
-              path = 0,
+              path = 1,
             },
           },
           lualine_x = {
