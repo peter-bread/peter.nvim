@@ -33,6 +33,8 @@ return {
         ["<C-h>"] = { "snippet_backward", "fallback" },
       },
 
+      signature = { enabled = true },
+
       appearance = {
         use_nvim_cmp_as_default = true,
       },
@@ -51,6 +53,7 @@ return {
         jump = function(direction)
           require("luasnip").jump(direction)
           require("blink.cmp.completion.list").hide()
+          require("blink.cmp.signature.trigger").show()
         end,
       },
 
