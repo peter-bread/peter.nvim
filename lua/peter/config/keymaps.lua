@@ -15,8 +15,8 @@ set("n", "<leader>-", "<C-W>s", { desc = "Split below", remap = true })
 set("n", "<leader>|", "<C-W>v", { desc = "Split right", remap = true })
 
 -- resize splits
-set("n", "<M-+>", "<C-w>5>") -- wider
-set("n", "<M-_>", "<C-w>5<") -- narrower
+set("n", "<M-S-=>", "<C-w>5>") -- wider
+set("n", "<M-S-->", "<C-w>5<") -- narrower
 set("n", "<M-=>", "<C-w>+") -- taller
 set("n", "<M-->", "<C-w>-") -- shorter
 
