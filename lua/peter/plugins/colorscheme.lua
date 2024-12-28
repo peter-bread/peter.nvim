@@ -64,6 +64,11 @@ return {
           SnacksDashboardSpecial = { fg = palette.autumnYellow },
           SnacksDashboardDesc = { fg = palette.oldWhite },
           SnacksDashboardIcon = { fg = palette.autumnYellow },
+
+          -- stylua: ignore start
+          MiniFilesBorder = { fg = theme.ui.float.bg_border, bg = theme.ui.float.bg_border },
+          MiniFilesBorderModified = { fg = theme.diag.warning, bg = theme.ui.float.bg_border },
+          -- stylua: ignore end
         }
       end,
     },
