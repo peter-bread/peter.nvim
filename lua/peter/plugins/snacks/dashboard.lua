@@ -32,7 +32,7 @@ local keys = {
     key = "f",
     desc = "Find File",
     action = function()
-      require("telescope.builtin").find_files()
+      Snacks.dashboard.pick("files")
     end,
   },
   {
@@ -40,7 +40,7 @@ local keys = {
     key = "g",
     desc = "Search Text",
     action = function()
-      require("telescope.builtin").live_grep()
+      Snacks.dashboard.pick("live_grep")
     end,
   },
   {
@@ -48,7 +48,7 @@ local keys = {
     key = "r",
     desc = "Recent Files",
     action = function()
-      require("telescope.builtin").oldfiles()
+      Snacks.dashboard.pick("oldfiles")
     end,
   },
   {
