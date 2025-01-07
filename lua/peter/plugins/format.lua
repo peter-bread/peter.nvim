@@ -32,6 +32,13 @@ return {
         lsp_format = "fallback",
       },
       format_on_save = {},
+
+      -- only use .prettierignore (do NOT use .gitignore)
+      formatters = {
+        prettier = {
+          prepend_args = { "--ignore-path", ".prettierignore" },
+        },
+      },
     },
   },
 }
