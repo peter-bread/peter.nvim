@@ -35,23 +35,7 @@ return {
 
       signature = { enabled = true },
 
-      snippets = {
-        expand = function(snippet)
-          require("luasnip").lsp_expand(snippet)
-          -- require("blink.cmp.completion.list").hide()
-        end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require("luasnip").jumpable(filter.direction)
-          end
-          return require("luasnip").in_snippet()
-        end,
-        jump = function(direction)
-          require("luasnip").jump(direction)
-          require("blink.cmp.completion.list").hide()
-          require("blink.cmp.signature.trigger").show()
-        end,
-      },
+      snippets = { preset = "luasnip" },
 
       completion = {
         trigger = {
@@ -60,13 +44,11 @@ return {
         },
 
         list = {
-          selection = "preselect",
+          selection = { preselect = true, auto_insert = false },
         },
 
         accept = {
-          auto_brackets = {
-            enabled = true,
-          },
+          auto_brackets = { enabled = true },
         },
 
         menu = {
@@ -95,7 +77,7 @@ return {
       },
 
       sources = {
-        default = { "lsp", "luasnip", "path" },
+        default = { "lsp", "snippets", "path" },
       },
     },
   },
