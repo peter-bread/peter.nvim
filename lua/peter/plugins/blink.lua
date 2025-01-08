@@ -35,10 +35,6 @@ return {
 
       signature = { enabled = true },
 
-      appearance = {
-        use_nvim_cmp_as_default = true,
-      },
-
       snippets = {
         expand = function(snippet)
           require("luasnip").lsp_expand(snippet)
