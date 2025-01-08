@@ -69,8 +69,7 @@ return {
           MiniFilesBorder = { fg = theme.ui.float.bg_border, bg = theme.ui.float.bg_border },
           MiniFilesBorderModified = { fg = theme.diag.warning, bg = theme.ui.float.bg_border },
 
-          MiniIconsGrey = { fg = palette.katanaGray}
-,
+          MiniIconsGrey = { fg = palette.katanaGray},
           -- stylua: ignore end
         }
       end,
