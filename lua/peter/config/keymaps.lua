@@ -15,10 +15,18 @@ set("n", "<leader>-", "<C-W>s", { desc = "Split below", remap = true })
 set("n", "<leader>|", "<C-W>v", { desc = "Split right", remap = true })
 
 -- resize splits
-set("n", "<M-S-=>", "<C-w>5>") -- wider
-set("n", "<M-S-->", "<C-w>5<") -- narrower
 set("n", "<M-=>", "<C-w>+") -- taller
 set("n", "<M-->", "<C-w>-") -- shorter
+
+local term = vim.fn.getenv("TERM_PROGRAM")
+
+if term == "ghostty" then
+  set("n", "<M-S-=>", "<C-w>5>") -- wider
+  set("n", "<M-S-->", "<C-w>5<") -- narrower
+else
+  set("n", "<M-+>", "<C-w>5>") -- wider
+  set("n", "<M-_>", "<C-w>5<") -- narrower
+end
 
 -- navigate buffers
 set("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
