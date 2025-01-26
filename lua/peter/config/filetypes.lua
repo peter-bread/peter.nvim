@@ -15,5 +15,7 @@ vim.filetype.add({
     -- create filetypes so actionlint doesn't run on all yaml files
     [".*/.github/workflows/.*%.yml"] = "yaml.ghaction",
     [".*/.github/workflows/.*%.yaml"] = "yaml.ghaction",
+
+    ["~/.ssh/config.d/.*"] = "sshconfig",
   },
 })
