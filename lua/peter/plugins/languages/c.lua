@@ -69,11 +69,7 @@ return {
         if not ok then
           return
         end
-        clangd_extensions.setup({
-          inlay_hints = {
-            inline = false,
-          },
-        })
+        clangd_extensions.setup({})
       end,
     },
   }),
