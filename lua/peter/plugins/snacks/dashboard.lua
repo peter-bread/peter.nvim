@@ -32,7 +32,7 @@ local keys = {
     key = "f",
     desc = "Find File",
     action = function()
-      Snacks.dashboard.pick("files")
+      require("snacks").dashboard.pick("files")
     end,
   },
   {
@@ -40,7 +40,7 @@ local keys = {
     key = "g",
     desc = "Search Text",
     action = function()
-      Snacks.dashboard.pick("live_grep")
+      require("snacks").dashboard.pick("live_grep")
     end,
   },
   {
@@ -48,7 +48,7 @@ local keys = {
     key = "r",
     desc = "Recent Files",
     action = function()
-      Snacks.dashboard.pick("oldfiles")
+      require("snacks").dashboard.pick("oldfiles")
     end,
   },
   {
