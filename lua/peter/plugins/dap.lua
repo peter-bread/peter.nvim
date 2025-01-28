@@ -26,6 +26,7 @@ return {
       require("mason-nvim-dap").setup()
 
       -- enable .vscode/launch.json configurations
+      -- WARN: deprecated
       require("dap.ext.vscode").load_launchjs()
 
       -- setup user-created adapters
