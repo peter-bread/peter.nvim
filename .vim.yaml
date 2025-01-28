@@ -4,7 +4,3 @@ base: lua51
 globals:
   vim:
     any: true
-  Snacks:
-    any: true
-  MiniFiles:
-    any: true
