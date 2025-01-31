@@ -71,8 +71,7 @@ return {
         )
       end)
 
-      local signs =
-        { Error = " ", Warn = " ", Hint = "󰌶 ", Info = " " }
+      local signs = require("peter.util.icons").diagnostics.fill
 
       for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type

@@ -38,12 +38,7 @@ return {
             -- git diff
             {
               "diff",
-              symbols = {
-                -- nf-oct-diff-
-                added = " ",
-                removed = " ",
-                modified = " ",
-              },
+              symbols = require("peter.util.icons").git,
               source = function()
                 local gs = vim.b.gitsigns_status_dict
                 if gs then

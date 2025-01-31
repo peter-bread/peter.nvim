@@ -22,8 +22,7 @@ return {
         always_show_bufferline = false,
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(_, _, diag, _)
-          local icons =
-            { Error = " ", Warn = " ", Hint = "󰌶 ", Info = " " }
+          local icons = require("peter.util.icons").diagnostics.fill
 
           local ret = (diag.error and icons.Error .. diag.error .. " " or "")
             .. (diag.warning and icons.Warn .. diag.warning or "")
