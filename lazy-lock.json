@@ -1,7 +1,7 @@
 {
   "LuaSnip": { "branch": "master", "commit": "03c8e67eb7293c404845b3982db895d59c0d1538" },
   "SchemaStore.nvim": { "branch": "main", "commit": "085d1a9c4f30de56e312931582e80805f0ed3621" },
-  "blink.cmp": { "branch": "main", "commit": "f2710804fd17211c18468100367ce2d3a230ed2e" },
+  "blink.cmp": { "branch": "main", "commit": "326723ce55a2abbf11e2dd74a5e44596b9e80b25" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
   "bullets.vim": { "branch": "master", "commit": "2253f970e54320dbd76fd6bb4f5a0bf2436ce232" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "db28f29be928d18cbfb86fbfb9f83f584f658feb" },

@@ -37,9 +37,16 @@ return {
 
         ["<C-l>"] = { "snippet_forward", "fallback" },
         ["<C-h>"] = { "snippet_backward", "fallback" },
+
+        ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
       },
 
-      signature = { enabled = true },
+      signature = {
+        enabled = true,
+        window = {
+          show_documentation = false,
+        },
+      },
 
       snippets = { preset = "luasnip" },
 
