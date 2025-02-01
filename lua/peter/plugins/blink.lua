@@ -9,6 +9,8 @@ return {
     -- TODO: revert to version after f0f34c318af019b44fc8ea347895dcf92b682122
     -- is included in a versioned release
     -- This should be the next release after v0.11.0
+    -- Keeping this pinned to not accidentally introduce breaking changes
+    commit = "326723c",
 
     branch = "main",
 
