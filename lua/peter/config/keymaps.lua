@@ -117,14 +117,16 @@ end, { desc = "Terminal (cwd)" })
 set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 set("t", "<M-/>", "<cmd>quit<cr>", { desc = "Kill Terminal" })
 
-set("n", "<leader>gg", function()
-  local root = vim.fs.root(0, ".git")
-  if root then
-    ---@diagnostic disable-next-line: missing-fields
-    require("snacks").lazygit({ cwd = root })
-  end
-end, { desc = "Lazygit" })
+if vim.fn.exepath("lazygit") then
+  set("n", "<leader>gg", function()
+    local root = vim.fs.root(0, ".git")
+    if root then
+      ---@diagnostic disable-next-line: missing-fields
+      require("snacks").lazygit({ cwd = root })
+    end
+  end, { desc = "Lazygit" })
 
-set("n", "<leader>gG", function()
-  require("snacks").lazygit()
-end, { desc = "Lazygit (cwd)" })
+  set("n", "<leader>gG", function()
+    require("snacks").lazygit()
+  end, { desc = "Lazygit (cwd)" })
+end
