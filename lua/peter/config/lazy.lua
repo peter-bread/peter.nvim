@@ -18,6 +18,9 @@ require("lazy").setup({
     { import = "peter.plugins.languages" },
     { import = "peter.plugins.snacks" },
   },
+  install = {
+    colorscheme = { "kanagawa", "default" },
+  },
   checker = {
     enabled = true,
     notify = false,
