@@ -1,11 +1,11 @@
-local function augroup(name)
-  return vim.api.nvim_create_augroup(name, { clear = true })
-end
+local autocmd = vim.api.nvim_create_autocmd
+
+local augroup = require("peter.util.autocmd").augroup
 
 -- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
+autocmd("TextYankPost", {
   desc = "Highlight on yank",
-  group = augroup("UserHighlightYank"),
+  group = augroup("HighlightYank"),
   callback = function()
     vim.highlight.on_yank()
   end,

@@ -13,7 +13,7 @@ return {
       vim.api.nvim_create_autocmd(
         { "BufEnter", "BufWritePost", "InsertLeave" },
         {
-          group = vim.api.nvim_create_augroup("lint", { clear = true }),
+          group = require("peter.util.autocmd").augroup("Lint"),
           callback = function()
             lint.try_lint()
           end,
