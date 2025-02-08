@@ -4,21 +4,21 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {},
     config = function(_, opts)
+      local autocmd = vim.api.nvim_create_autocmd
+      local augroup = require("peter.util.autocmd").augroup
+
       local lint = require("lint")
 
       -- register linters
       lint.linters_by_ft = opts.linters_by_ft or {}
 
       -- autocmd to trigger linting
-      vim.api.nvim_create_autocmd(
-        { "BufEnter", "BufWritePost", "InsertLeave" },
-        {
-          group = require("peter.util.autocmd").augroup("Lint"),
-          callback = function()
-            lint.try_lint()
-          end,
-        }
-      )
+      autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+        group = augroup("Lint"),
+        callback = function()
+          lint.try_lint()
+        end,
+      })
 
       -- customise linters
       if opts.linters then
