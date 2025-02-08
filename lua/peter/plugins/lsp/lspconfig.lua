@@ -49,6 +49,7 @@ return {
       require("mason-lspconfig").setup()
 
       local lsp = require("peter.util.lsp")
+      local icons = require("peter.util.icons")
 
       lsp.on_attach(function(client, bufnr)
         lsp.create_lsp_keymaps(client, bufnr)
@@ -71,7 +72,7 @@ return {
         )
       end)
 
-      local signs = require("peter.util.icons").diagnostics.fill
+      local signs = icons.diagnostics.fill
 
       for type, icon in pairs(signs) do
         local hl = "DiagnosticSign" .. type

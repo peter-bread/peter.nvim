@@ -22,10 +22,11 @@ return {
         always_show_bufferline = false,
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(_, _, diag, _)
-          local icons = require("peter.util.icons").diagnostics.fill
+          local icons = require("peter.util.icons")
+          local signs = icons.diagnostics.fill
 
-          local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-            .. (diag.warning and icons.Warn .. diag.warning or "")
+          local ret = (diag.error and signs.Error .. diag.error .. " " or "")
+            .. (diag.warning and signs.Warn .. diag.warning or "")
 
           return vim.trim(ret)
         end,
