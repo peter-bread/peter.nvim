@@ -1,5 +1,7 @@
+local lsp = require("peter.util.lsp")
+
 ---@diagnostic disable-next-line: unused-local
-require("peter.util.lsp").on_attach(function(client, bufnr)
+lsp.on_attach(function(client, bufnr)
   local root = vim.fs.root(0, ".git")
 
   if not root then
