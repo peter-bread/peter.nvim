@@ -108,30 +108,31 @@ function M.create_lsp_keymaps(client, bufnr)
     vim.keymap.set(mode, lhs, rhs, opts)
   end
 
-  -- stylua: ignore start
-  map("<leader>cl", "<cmd>LspInfo<cr>", { desc = "Info" })
+  map("<leader>cl", "<cmd>checkhealth lspconfig<cr>", { desc = "Info" })
 
-  -- map("gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, {
-  --   desc = "Definition",
-  --   has = "textDocument/definition",
-  -- })
-  --
-  -- map("gr", require("telescope.builtin").lsp_references, {
-  --   desc = "References",
-  --   has = "textDocument/references",
-  -- })
-  --
-  -- map("gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, {
-  --   desc = "Implementation",
-  --   has = "textDocument/implementation",
-  -- })
-  --
-  -- map("gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, {
-  --   desc = "Type Definition",
-  --   has = "textDocument/typeDefinition",
-  -- })
+  -- TODO: maybe move snacks keymaps to lua/peter/plugins/snacks/picker.lua
 
-  map("gD", vim.lsp.buf.declaration, {
+  map("gd", require("snacks").picker.lsp_definitions, {
+    desc = "Definition",
+    has = "textDocument/definition",
+  })
+
+  map("gr", require("snacks").picker.lsp_references, {
+    desc = "References",
+    has = "textDocument/references",
+  })
+
+  map("gI", require("snacks").picker.lsp_implementations, {
+    desc = "Implementation",
+    has = "textDocument/implementation",
+  })
+
+  map("gy", require("snacks").picker.lsp_type_definitions, {
+    desc = "Type Definition",
+    has = "textDocument/typeDefinition",
+  })
+
+  map("gD", require("snacks").picker.lsp_declarations, {
     desc = "Declaration",
     has = "textDocument/declaration",
   })
@@ -161,7 +162,6 @@ function M.create_lsp_keymaps(client, bufnr)
     desc = "Rename",
     has = "textDocument/rename",
   })
-  -- stylua: ignore end
 end
 
 return M
