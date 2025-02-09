@@ -22,12 +22,12 @@ return {
         desc = "Prev todo comment",
         mode = "n",
       },
-      {
-        "<leader>ft",
-        "<cmd>TodoTelescope<cr>",
-        desc = "Todos",
-        mode = "n",
-      },
+      -- {
+      --   "<leader>ft",
+      --   "<cmd>TodoTelescope<cr>",
+      --   desc = "Todos",
+      --   mode = "n",
+      -- },
     },
     opts = {},
   },
