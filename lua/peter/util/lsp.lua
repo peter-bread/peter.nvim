@@ -111,25 +111,25 @@ function M.create_lsp_keymaps(client, bufnr)
   -- stylua: ignore start
   map("<leader>cl", "<cmd>LspInfo<cr>", { desc = "Info" })
 
-  map("gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, {
-    desc = "Definition",
-    has = "textDocument/definition",
-  })
-
-  map("gr", require("telescope.builtin").lsp_references, {
-    desc = "References",
-    has = "textDocument/references",
-  })
-
-  map("gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, {
-    desc = "Implementation",
-    has = "textDocument/implementation",
-  })
-
-  map("gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, {
-    desc = "Type Definition",
-    has = "textDocument/typeDefinition",
-  })
+  -- map("gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, {
+  --   desc = "Definition",
+  --   has = "textDocument/definition",
+  -- })
+  --
+  -- map("gr", require("telescope.builtin").lsp_references, {
+  --   desc = "References",
+  --   has = "textDocument/references",
+  -- })
+  --
+  -- map("gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, {
+  --   desc = "Implementation",
+  --   has = "textDocument/implementation",
+  -- })
+  --
+  -- map("gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, {
+  --   desc = "Type Definition",
+  --   has = "textDocument/typeDefinition",
+  -- })
 
   map("gD", vim.lsp.buf.declaration, {
     desc = "Declaration",
