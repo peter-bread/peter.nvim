@@ -1,4 +1,4 @@
----@diagnostic disable: missing-fields
+---@diagnostic disable: missing-fields, unused-local
 
 ---@module "snacks"
 
@@ -62,6 +62,9 @@ local pick = function(source, opts)
   end
 end
 
+local constants = require("peter.constants")
+local paths = constants.paths
+
 return {
   {
     "folke/snacks.nvim",
@@ -72,8 +75,55 @@ return {
     },
 
     keys = {
+      -- stylua: ignore start
+
+      -- find files
       { "<leader>ff", pick("files"), desc = "Find Files" },
+      { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "Find All Files" },
       { "<leader>fr", pick("recent"), desc = "Recent Files" },
+      { "<leader>fb", pick("buffers"), desc = "Find Buffers" },
+
+      -- search
+      { "<leader>sg", pick("grep"), desc = "Grep" },
+
+      -- neovim pickers
+      { "<leader>nf", pick("files", { cwd = paths.config[1] }), desc = "Config Files" },
+      { "<leader>np", pick("files", { cwd = paths.plugins }), desc = "Plugins" },
+      -- stylua: ignore end
+
+      {
+        "<leader>nl",
+        pick("files", {
+          cwd = paths.languages,
+          layout = function(source)
+            ---@type snacks.picker.layout.Config
+            return {
+              preset = "select",
+              layout = {
+                width = 0.2,
+                height = 0.65,
+                min_width = 30,
+                border = "solid",
+              },
+            }
+          end,
+
+          ---@return snacks.picker.finder.Item
+          transform = function(item, ctx)
+            local files = require("peter.util.files")
+            item.text = files.strip_extension(item.text, "lua")
+            return item
+          end,
+
+          format = function(item, picker)
+            local files = require("peter.util.files")
+            return {
+              { files.strip_extension(item.file, "lua"), "SnacksPickerFile" },
+            }
+          end,
+        }),
+        desc = "Languages",
+      },
     },
   },
 }
