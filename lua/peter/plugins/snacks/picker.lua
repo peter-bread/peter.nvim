@@ -16,7 +16,7 @@ local Config = {
         backdrop = false,
         width = 0.9,
         height = 0.9,
-        border = "none",
+        border = "solid",
         {
           box = "vertical",
           {
@@ -36,7 +36,7 @@ local Config = {
         {
           win = "preview",
           title = "{preview:Preview}",
-          width = 0.45,
+          width = 0.55,
           border = "solid",
           title_pos = "center",
         },
