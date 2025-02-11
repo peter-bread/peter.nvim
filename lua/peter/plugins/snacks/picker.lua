@@ -43,14 +43,6 @@ local Config = {
       },
     },
   },
-  win = {
-    input = {
-      keys = {
-        -- exit on ESC without first going to normal mode
-        ["<Esc>"] = { "close", mode = { "n", "i" } },
-      },
-    },
-  },
 }
 
 ---Wrapper function to make config a bit cleaner
