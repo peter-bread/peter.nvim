@@ -68,6 +68,7 @@ return {
 
   {
     "bullets-vim/bullets.vim",
+    cond = false, -- disable for now to make sure snacks.picker works
     ft = { "markdown" },
     config = function()
       -- This is necessary for snacks.picker to always work

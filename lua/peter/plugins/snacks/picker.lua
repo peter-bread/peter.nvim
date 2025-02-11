@@ -52,6 +52,7 @@ local Config = {
     },
   },
 }
+
 ---Wrapper function to make config a bit cleaner
 ---@param source string Picker to use
 ---@param opts? snacks.picker.Config Picker options
@@ -64,6 +65,8 @@ end
 
 local constants = require("peter.constants")
 local paths = constants.paths
+
+local pickers = require("peter.util.snacks.pickers")
 
 return {
   {
@@ -78,52 +81,21 @@ return {
       -- stylua: ignore start
 
       -- find files
-      { "<leader>ff", pick("files"), desc = "Find Files" },
-      { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "Find All Files" },
-      { "<leader>fr", pick("recent"), desc = "Recent Files" },
-      { "<leader>fb", pick("buffers"), desc = "Find Buffers" },
+      { "<leader>ff", pick("files"), desc = "Files" },
+      { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "All Files" },
+      { "<leader>fr", pick("recent"), desc = "Recent" },
+      { "<leader>fb", pick("buffers"), desc = "Buffers" },
 
       -- search
       { "<leader>sg", pick("grep"), desc = "Grep" },
 
+      { "<leader>uC", pickers.colorscheme_picker, desc = "Colorschemes" },
+
       -- neovim pickers
-      { "<leader>nf", pick("files", { cwd = paths.config[1] }), desc = "Config Files" },
+      { "<leader>nf", pick("files", { cwd = paths.config }), desc = "Config" },
       { "<leader>np", pick("files", { cwd = paths.plugins }), desc = "Plugins" },
+      { "<leader>nl", pickers.neovim_language_picker, desc = "Languages" },
       -- stylua: ignore end
-
-      {
-        "<leader>nl",
-        pick("files", {
-          cwd = paths.languages,
-          layout = function(source)
-            ---@type snacks.picker.layout.Config
-            return {
-              preset = "select",
-              layout = {
-                width = 0.2,
-                height = 0.65,
-                min_width = 30,
-                border = "solid",
-              },
-            }
-          end,
-
-          ---@return snacks.picker.finder.Item
-          transform = function(item, ctx)
-            local files = require("peter.util.files")
-            item.text = files.strip_extension(item.text, "lua")
-            return item
-          end,
-
-          format = function(item, picker)
-            local files = require("peter.util.files")
-            return {
-              { files.strip_extension(item.file, "lua"), "SnacksPickerFile" },
-            }
-          end,
-        }),
-        desc = "Languages",
-      },
     },
   },
 }
