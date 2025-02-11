@@ -22,6 +22,7 @@ local M = {}
 ---The `.lua` extensions have been removed to make searching clearer.
 M.neovim_language_picker = function()
   pick("files", {
+    title = "Languages",
     cwd = paths.languages,
     layout = function(source)
       ---@type snacks.picker.layout.Config
@@ -47,6 +48,27 @@ M.neovim_language_picker = function()
       return {
         -- don't show extensions in item list
         { files.strip_extension(item.file, "lua"), "SnacksPickerFile" },
+      }
+    end,
+  })
+end
+
+M.neovim_plugin_picker = function()
+  pick("files", {
+    title = "Plugins",
+    cwd = paths.plugins,
+
+    ---@return snacks.picker.finder.Item
+    transform = function(item, ctx)
+      -- don't use extensions when matching
+      item.text = files.strip_extension(item.text, "lua")
+      return item
+    end,
+
+    format = function(item, picker)
+      return {
+        -- don't show extensions in item list
+        { files.strip_extension(item.file, "lua") },
       }
     end,
   })

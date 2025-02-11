@@ -85,7 +85,7 @@ return {
 
       -- neovim pickers
       { "<leader>nf", pick("files", { cwd = paths.config }), desc = "Config" },
-      { "<leader>np", pick("files", { cwd = paths.plugins }), desc = "Plugins" },
+      { "<leader>np", pickers.neovim_plugin_picker, desc = "Plugins" },
       { "<leader>nl", pickers.neovim_language_picker, desc = "Languages" },
       -- stylua: ignore end
     },
