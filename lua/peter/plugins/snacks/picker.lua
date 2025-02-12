@@ -82,9 +82,6 @@ return {
       { "<leader>sg", pick("grep"), desc = "Grep" },
       { "<leader>ss", pickers.search.lsp_symbols, desc = "LSP Symbols" },
 
-      -- stylua: ignore
-      { "<leader>sS", pick("lsp_workspace_symbols"), desc = "LSP Workspace Symbols" },
-
       { "<leader>uC", pickers.neovim.colorschemes, desc = "Colorschemes" },
 
       -- neovim pickers
