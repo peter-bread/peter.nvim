@@ -11,10 +11,10 @@ return {
   {
     "folke/snacks.nvim",
 
-    ---@param opts snacks.Config
-    opts = function(_, opts)
-      opts.words = Config
-    end,
+    ---@type snacks.Config
+    opts = {
+      words = Config,
+    },
 
     keys = {
       {

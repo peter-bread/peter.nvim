@@ -107,9 +107,9 @@ return {
   {
     "folke/snacks.nvim",
 
-    ---@param opts snacks.Config
-    opts = function(_, opts)
-      opts.dashboard = Config
-    end,
+    ---@type snacks.Config
+    opts = {
+      dashboard = Config,
+    },
   },
 }
