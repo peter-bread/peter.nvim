@@ -10,17 +10,40 @@ local paths = constants.paths
 local pick = require("snacks").picker.pick
 
 ---@class PeterSnacksPickers
----@field neovim_language_picker fun() Find language files in neovim config
----@field neovim_plugin_picker fun() Find plugin files in neovim config
----@field colorscheme_picker fun()
+---@field file PeterSnacksFilePickers
+---@field neovim PeterSnacksNeovimPickers
+
+---@class PeterSnacksFilePickers
+---@field all_files fun()
+
+---@class PeterSnacksNeovimPickers
+---@field config_files fun()
+---@field languages fun()
+---@field plugins fun()
+---@field colorschemes fun()
 
 ---@class PeterSnacksPickers
 ---Custom snacks pickers.
 local M = {}
 
+---@class PeterSnacksFilePickers
+M.file = {}
+
+M.file.all_files = function()
+  pick("files", { hidden = true, ignored = true })
+end
+
+---@class PeterSnacksNeovimPickers
+---Custom neovim snacks pickers
+M.neovim = {}
+
+M.neovim.config_files = function()
+  pick("files", { cwd = paths.config })
+end
+
 ---This displays a list of configured languages to choose from.
 ---The `.lua` extensions have been removed to make searching clearer.
-M.neovim_language_picker = function()
+M.neovim.languages = function()
   pick("files", {
     title = "Languages",
     cwd = paths.languages,
@@ -53,7 +76,7 @@ M.neovim_language_picker = function()
   })
 end
 
-M.neovim_plugin_picker = function()
+M.neovim.plugins = function()
   pick("files", {
     title = "Plugins",
     cwd = paths.plugins,
@@ -74,7 +97,7 @@ M.neovim_plugin_picker = function()
   })
 end
 
-M.colorscheme_picker = function()
+M.neovim.colorschemes = function()
   pick("colorschemes", {
     confirm = function(picker, item, action)
       picker:close()

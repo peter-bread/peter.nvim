@@ -72,21 +72,21 @@ return {
     keys = {
       -- stylua: ignore start
 
-      -- find files
+      -- find
       { "<leader>ff", pick("files"), desc = "Files" },
-      { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "All Files" },
+      { "<leader>fF", pickers.file.all_files, desc = "All Files" },
       { "<leader>fr", pick("recent"), desc = "Recent" },
       { "<leader>fb", pick("buffers"), desc = "Buffers" },
 
       -- search
       { "<leader>sg", pick("grep"), desc = "Grep" },
 
-      { "<leader>uC", pickers.colorscheme_picker, desc = "Colorschemes" },
+      { "<leader>uC", pickers.neovim.colorschemes, desc = "Colorschemes" },
 
       -- neovim pickers
-      { "<leader>nf", pick("files", { cwd = paths.config }), desc = "Config" },
-      { "<leader>np", pickers.neovim_plugin_picker, desc = "Plugins" },
-      { "<leader>nl", pickers.neovim_language_picker, desc = "Languages" },
+      { "<leader>nf", pickers.neovim.config_files, desc = "Config" },
+      { "<leader>np", pickers.neovim.plugins, desc = "Plugins" },
+      { "<leader>nl", pickers.neovim.languages, desc = "Languages" },
       -- stylua: ignore end
     },
   },
