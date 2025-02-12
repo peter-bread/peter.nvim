@@ -11,10 +11,14 @@ local pick = require("snacks").picker.pick
 
 ---@class PeterSnacksPickers
 ---@field file PeterSnacksFilePickers
+---@field search PeterSnacksSearchPickers
 ---@field neovim PeterSnacksNeovimPickers
 
 ---@class PeterSnacksFilePickers
 ---@field all_files fun()
+
+---@class PeterSnacksSearchPickers
+---@field lsp_symbols fun()
 
 ---@class PeterSnacksNeovimPickers
 ---@field config_files fun()
@@ -31,6 +35,13 @@ M.file = {}
 
 M.file.all_files = function()
   pick("files", { hidden = true, ignored = true })
+end
+
+---@class PeterSnacksSearchPickers
+M.search = {}
+
+M.search.lsp_symbols = function()
+  pick("lsp_symbols", { tree = false })
 end
 
 ---@class PeterSnacksNeovimPickers
