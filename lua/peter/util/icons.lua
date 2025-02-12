@@ -13,6 +13,12 @@ M.diagnostics = {
     Hint = "󰌶 ",
     Info = " ",
   },
+  -- other = {
+  --   Error = " ",
+  --   Warn = " ",
+  --   Hint = " ",
+  --   Info = " ",
+  -- },
 }
 
 M.git = {

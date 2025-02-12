@@ -68,10 +68,12 @@ return {
 
   {
     "bullets-vim/bullets.vim",
+    cond = false, -- disable for now to make sure snacks.picker works
     ft = { "markdown" },
     config = function()
-      -- TODO: add config options here using global variables
-      -- vim.g.
+      -- This is necessary for snacks.picker to always work
+      -- https://github.com/folke/snacks.nvim/issues/812#issuecomment-2628819060
+      vim.g.bullets_enable_in_empty_buffers = 0
     end,
   },
 }

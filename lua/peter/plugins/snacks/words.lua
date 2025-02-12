@@ -16,25 +16,23 @@ return {
       opts.words = Config
     end,
 
-    keys = function(_, keys)
-      vim.list_extend(keys, {
-        {
-          "]]",
-          function()
-            require("snacks").words.jump(vim.v.count1)
-          end,
-          desc = "Next Reference",
-          mode = { "n", "t" },
-        },
-        {
-          "[[",
-          function()
-            require("snacks").words.jump(-vim.v.count1)
-          end,
-          desc = "Prev Reference",
-          mode = { "n", "t" },
-        },
-      })
-    end,
+    keys = {
+      {
+        "]]",
+        function()
+          require("snacks").words.jump(vim.v.count1)
+        end,
+        desc = "Next Reference",
+        mode = { "n", "t" },
+      },
+      {
+        "[[",
+        function()
+          require("snacks").words.jump(-vim.v.count1)
+        end,
+        desc = "Prev Reference",
+        mode = { "n", "t" },
+      },
+    },
   },
 }

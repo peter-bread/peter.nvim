@@ -24,7 +24,9 @@ return {
       },
       {
         "<leader>ft",
-        "<cmd>TodoTelescope<cr>",
+        function()
+          require("snacks").picker.pick("todo_comments")
+        end,
         desc = "Todos",
         mode = "n",
       },
