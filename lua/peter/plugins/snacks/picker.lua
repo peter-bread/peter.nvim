@@ -70,8 +70,6 @@ return {
     },
 
     keys = {
-      -- stylua: ignore start
-
       -- find
       { "<leader>ff", pick("files"), desc = "Files" },
       { "<leader>fF", pickers.file.all_files, desc = "All Files" },
@@ -87,7 +85,6 @@ return {
       { "<leader>nf", pickers.neovim.config_files, desc = "Config" },
       { "<leader>np", pickers.neovim.plugins, desc = "Plugins" },
       { "<leader>nl", pickers.neovim.languages, desc = "Languages" },
-      -- stylua: ignore end
     },
   },
 }
