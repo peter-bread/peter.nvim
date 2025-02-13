@@ -204,6 +204,7 @@ end
 function M.lint(opts)
   return {
     "mfussenegger/nvim-lint",
+    optional = true,
     opts = opts,
   }
 end
@@ -234,6 +235,7 @@ end
 function M.test(config)
   return {
     "nvim-neotest/neotest",
+    optional = true,
     dependencies = config.dep,
     opts = config.opts,
   }
@@ -313,6 +315,7 @@ function M.dap(params)
   -- base plugin spec
   local spec = {
     "mfussenegger/nvim-dap",
+    optional = true,
   }
 
   -- manual DAP setup
