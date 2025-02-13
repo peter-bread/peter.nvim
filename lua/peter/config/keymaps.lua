@@ -66,67 +66,9 @@ set("n", "]w", function() vim.diagnostic.goto_next({ severity = "WARN" }) end, {
 set("n", "[w", function() vim.diagnostic.goto_prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
 -- stylua: ignore end
 
--- toggles (mostly using snacks)
--- from: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
-require("snacks").toggle.diagnostics():map("<leader>ud")
-
-require("snacks").toggle
-  .option(
-    "background",
-    { off = "light", on = "dark", name = "Dark Background", notify = false }
-  )
-  :map("<leader>ub")
-
-require("snacks").toggle
-  .option("conceallevel", {
-    off = 0,
-    on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2,
-    name = "Conceal Level",
-  })
-  :map("<leader>uc")
-
-require("snacks").toggle.dim():map("<leader>uD")
-
-if vim.lsp.inlay_hint then
-  require("snacks").toggle.inlay_hints():map("<leader>uh")
-end
-
 set("n", "<leader>nc", function()
   vim.cmd.cd(vim.fn.stdpath("config"))
   if vim.bo.buftype == "" then
-    -- refresh if in a buffer
-    vim.cmd("e")
+    vim.cmd("e") -- refresh if in a buffer
   end
 end, { desc = "cd to config" })
-
--- toggle terminal: attempt to open at git root but fallback to cwd
-set("n", "<C-/>", function()
-  local root = vim.fs.root(0, ".git")
-  if root then
-    require("snacks").terminal(nil, { cwd = root })
-  else
-    require("snacks").terminal()
-  end
-end, { desc = "Terminal" })
-
--- toggle terminal: cwd
-set("n", "<M-/>", function()
-  require("snacks").terminal()
-end, { desc = "Terminal (cwd)" })
-
-set("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-set("t", "<M-/>", "<cmd>quit<cr>", { desc = "Kill Terminal" })
-
-if vim.fn.exepath("lazygit") then
-  set("n", "<leader>gg", function()
-    local root = vim.fs.root(0, ".git")
-    if root then
-      ---@diagnostic disable-next-line: missing-fields
-      require("snacks").lazygit({ cwd = root })
-    end
-  end, { desc = "Lazygit" })
-
-  set("n", "<leader>gG", function()
-    require("snacks").lazygit()
-  end, { desc = "Lazygit (cwd)" })
-end
