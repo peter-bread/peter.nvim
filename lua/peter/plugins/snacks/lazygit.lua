@@ -29,6 +29,11 @@ return {
           local root = vim.fs.root(0, ".git")
           if root then
             require("snacks").lazygit()
+          else
+            vim.notify(
+              "Need to be in git repo to use lazygit",
+              vim.log.levels.WARN
+            )
           end
         end,
         desc = "Lazygit",
