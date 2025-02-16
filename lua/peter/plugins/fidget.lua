@@ -2,6 +2,12 @@ return {
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
-    opts = {},
+    opts = {
+      notification = {
+        window = {
+          winblend = 100,
+        },
+      },
+    },
   },
 }
