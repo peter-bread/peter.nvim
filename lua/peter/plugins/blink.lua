@@ -1,5 +1,12 @@
 ---@diagnostic disable: missing-fields
 
+local constants = require("peter.constants")
+local paths = constants.paths
+local sensitive = paths.sensitive
+
+local patterns = require("peter.util.patterns")
+local matches_all = patterns.matches_all
+
 return {
   {
     "saghen/blink.cmp",
@@ -95,6 +102,38 @@ return {
 
       sources = {
         default = { "lsp", "snippets", "path" },
+        providers = {
+          path = {
+            transform_items = function(_, items)
+              local Kind = require("blink.cmp.types").CompletionItemKind
+              for _, item in ipairs(items) do
+                ---@type string
+                local path = item.data.full_path
+
+                if
+                  matches_all(path, sensitive.ssh.match, sensitive.ssh.exclude)
+                  and item.kind == Kind.File
+                then
+                  item.documentation =
+                    { value = "SSH FILES HIDDEN FOR SECURITY REASONS" }
+                end
+
+                if
+                  matches_all(
+                    path,
+                    sensitive.gh_cli.match,
+                    sensitive.gh_cli.exclude
+                  )
+                  and item.kind == Kind.File
+                then
+                  item.documentation =
+                    { value = "GH HOSTS HIDDEN FOR SECURITY REASONS" }
+                end
+              end
+              return items
+            end,
+          },
+        },
       },
     },
   },
