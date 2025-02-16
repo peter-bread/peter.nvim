@@ -11,18 +11,10 @@ return {
   {
     "saghen/blink.cmp",
     event = "InsertEnter",
-    -- version = "v0.*",
-
-    -- TODO: revert to version after f0f34c318af019b44fc8ea347895dcf92b682122
-    -- is included in a versioned release
-    -- This should be the next release after v0.11.0
-    -- Keeping this pinned to not accidentally introduce breaking changes
-    commit = "326723c",
-
-    branch = "main",
+    version = "v0.*",
 
     -- WARN: build from main (be careful of breaking changes)
-    build = "cargo +nightly build --release",
+    -- build = "cargo +nightly build --release",
 
     dependencies = {
       { "rafamadriz/friendly-snippets", lazy = true },
