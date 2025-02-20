@@ -8,6 +8,15 @@ local Config = {
   layout = {
     preset = "telescope",
   },
+  win = {
+    preview = {
+      wo = {
+        foldcolumn = "0",
+        relativenumber = false,
+        signcolumn = "no",
+      },
+    },
+  },
   layouts = {
     telescope = {
       reverse = true,
