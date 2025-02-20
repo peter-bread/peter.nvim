@@ -8,6 +8,17 @@ local Config = {
   layout = {
     preset = "telescope",
   },
+  -- TODO: use delta for git diff
+  -- previewers = {
+  --   diff = {
+  --     builtin = false,
+  --     cmd = { "delta" },
+  --   },
+  --   git = {
+  --     builtin = false,
+  --     native = true,
+  --   },
+  -- },
   win = {
     preview = {
       wo = {
