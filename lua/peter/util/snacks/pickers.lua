@@ -109,7 +109,31 @@ M.neovim.plugins = function()
 end
 
 M.neovim.colorschemes = function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local n = vim.api.nvim_buf_get_name(bufnr)
   pick("colorschemes", {
+    preview = function(ctx)
+      if n ~= "" then
+        ctx.item.file = n
+      end
+      if not ctx.preview.state.colorscheme then
+        ctx.preview.state.colorscheme = vim.g.colors_name or "default"
+        ctx.preview.state.background = vim.o.background
+        ctx.preview.win:on("WinClosed", function()
+          vim.schedule(function()
+            if not ctx.preview.state.colorscheme then
+              return
+            end
+            vim.cmd("colorscheme " .. ctx.preview.state.colorscheme)
+            vim.o.background = ctx.preview.state.background
+          end)
+        end, { win = true })
+      end
+      vim.schedule(function()
+        vim.cmd("colorscheme " .. ctx.item.text)
+      end)
+      require("snacks").picker.preview.file(ctx)
+    end,
     confirm = function(picker, item, action)
       picker:close()
       if item then
