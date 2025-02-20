@@ -38,9 +38,10 @@ return {
       },
     },
     config = function(_, opts)
-      opts.ensure_installed = require("peter.util.lists").remove_duplicates(
-        opts.ensure_installed or {}
-      )
+      local lists = require("peter.util.lists")
+      opts.ensure_installed =
+        lists.remove_duplicates(opts.ensure_installed or {})
+
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
