@@ -138,11 +138,9 @@ M.neovim.colorschemes = function()
       picker:close()
       if item then
         picker.preview.state.colorscheme = nil
-        -- TODO: show current file instead of colorscheme file
 
         -- HACK: don't use `vim.schedule`
         -- This ensures lualine colours update properly
-        -- vim.cmd.colorscheme(item.text)
 
         vim.schedule_wrap(function()
           vim.cmd.colorscheme(item.text)
