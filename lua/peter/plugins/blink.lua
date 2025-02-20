@@ -1,5 +1,7 @@
 ---@diagnostic disable: missing-fields
 
+---@module "blink.cmp"
+
 local constants = require("peter.constants")
 local paths = constants.paths
 local sensitive = paths.sensitive
@@ -21,7 +23,6 @@ return {
       { "L3MON4D3/LuaSnip", lazy = true },
     },
 
-    ---@module "blink.cmp"
     ---@type blink.cmp.Config
     opts = {
 

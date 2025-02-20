@@ -1,9 +1,11 @@
+---@module "blink.cmp"
+---@module "lazydev"
+
 return {
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
 
-    ---@module "lazydev"
     ---@type lazydev.Config
     opts = {
       library = {
@@ -20,8 +22,6 @@ return {
   },
   {
     "saghen/blink.cmp",
-
-    ---@module "blink.cmp"
 
     ---Extend `opts` table
     ---@param _ any

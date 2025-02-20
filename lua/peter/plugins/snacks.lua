@@ -1,10 +1,11 @@
+---@module "snacks"
+
 return {
   {
     "folke/snacks.nvim",
     priority = 950,
     lazy = false,
 
-    ---@module "snacks"
     ---@type snacks.Config
     ---@diagnostic disable-next-line: missing-fields
     opts = {},

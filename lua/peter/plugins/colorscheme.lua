@@ -1,3 +1,5 @@
+---@module "kanagawa.colors"
+
 return {
   {
     "rose-pine/neovim",
@@ -33,8 +35,6 @@ return {
     priority = 1000,
     opts = {
       overrides = function(colors)
-        ---@module "kanagawa.colors"
-
         ---@type PaletteColors
         local palette = colors.palette
         ---@type ThemeColors
