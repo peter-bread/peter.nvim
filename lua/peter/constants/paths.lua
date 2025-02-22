@@ -36,6 +36,12 @@ M.sensitive = {
     },
     exclude = {},
   },
+
+  -- TODO: work out how to define .env files
+  env = {
+    match = { "%.env(%..+)?$" },
+    exclude = {},
+  },
 }
 
 return M
