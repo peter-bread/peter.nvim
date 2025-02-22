@@ -14,9 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     { import = "peter.plugins" },
+    { import = "peter.plugins.mini" },
+    { import = "peter.plugins.snacks" },
     { import = "peter.plugins.lsp" },
     { import = "peter.plugins.languages" },
-    { import = "peter.plugins.snacks" },
   },
   install = {
     colorscheme = { "kanagawa", "default" },
