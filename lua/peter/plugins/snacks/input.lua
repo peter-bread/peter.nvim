@@ -8,6 +8,18 @@ local Config = {
   prompt_pos = "title",
 }
 
+---@type snacks.win.Config
+local Style = {
+  relative = "cursor",
+  row = -3,
+  col = 0,
+  width = 30,
+  border = "solid",
+  wo = {
+    winhighlight = "NormalFloat:StatusLine",
+  },
+}
+
 return {
   {
     "folke/snacks.nvim",
@@ -16,16 +28,7 @@ return {
     opts = {
       input = Config,
       styles = {
-        input = {
-          relative = "cursor",
-          row = -3,
-          col = 0,
-          width = 30,
-          border = "solid",
-          wo = {
-            winhighlight = "NormalFloat:StatusLine",
-          },
-        },
+        input = Style,
       },
     },
   },
