@@ -6,6 +6,7 @@
 local Config = {
   enabled = true,
   style = "minimal",
+  sort = { "added" },
 }
 
 return {
