@@ -15,7 +15,7 @@ return {
       lint.linters_by_ft = opts.linters_by_ft or {}
 
       -- autocmd to trigger linting
-      autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+      autocmd({ "BufWritePost" }, {
         group = augroup("Lint"),
         callback = function()
           lint.try_lint()
