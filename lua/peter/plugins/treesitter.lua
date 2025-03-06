@@ -42,6 +42,8 @@ return {
       opts.ensure_installed =
         lists.remove_duplicates(opts.ensure_installed or {})
 
+      -- NOTE: this parser was only needed for patterns.nvim
+
       local parser_configs =
         require("nvim-treesitter.parsers").get_parser_configs()
 
