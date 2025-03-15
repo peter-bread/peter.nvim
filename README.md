@@ -26,7 +26,7 @@ My first proper Neovim config.
 - git
 - lua
 - neovim (+ it's dependencies)
-- [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep) (for telescope)
+- [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep) (for snacks.picker)
 - any tools needed to install or run tools from mason:
   - node
   - cargo
