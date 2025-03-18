@@ -90,6 +90,15 @@ return {
     },
 
     keys = {
+
+      -- all
+      {
+        "<leader>S",
+        "<cmd>lua Snacks.picker()<cr>",
+        mode = "n",
+        desc = "Search",
+      },
+
       -- find
       { "<leader>ff", pick("files"), desc = "Files" },
       { "<leader>fF", pickers.file.all_files, desc = "All Files" },
