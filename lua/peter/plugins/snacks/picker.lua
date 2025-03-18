@@ -109,6 +109,7 @@ return {
       { "<leader>sb", pick("lines"), desc = "Buffer Lines" },
       { "<leader>sB", pick("grep_buffers"), desc = "Grep Open Buffers" },
       { "<leader>sg", pick("grep"), desc = "Grep" },
+      { "<leader>sk", pick("keymaps"), desc = "Keymaps" },
       { "<leader>ss", pickers.search.lsp_symbols, desc = "LSP Symbols" },
 
       { "<leader>uC", pickers.neovim.colorschemes, desc = "Colorschemes" },
