@@ -94,7 +94,9 @@ return {
       -- all
       {
         "<leader>S",
-        "<cmd>lua Snacks.picker()<cr>",
+        function()
+          require("snacks").picker()
+        end,
         mode = "n",
         desc = "Search",
       },
