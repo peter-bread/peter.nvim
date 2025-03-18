@@ -4,7 +4,7 @@
 local set = vim.keymap.set
 
 -- clear search highlighting in normal mode with ESC
-set("n", "<esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search hl" })
+set("n", "<S-esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search hl" })
 
 -- navigate splits
 set("n", "<C-h>", "<C-w><C-h>", { desc = "Focus left pane" })
