@@ -33,8 +33,13 @@ return {
     },
   }),
 
+  ---@module "render-markdown"
+
   {
     "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "norg", "rmd", "org" },
+
+    ---@type render.md.MarkOpts
     opts = {
       file_types = { "markdown", "norg", "rmd", "org" },
       code = {
@@ -45,8 +50,8 @@ return {
       heading = {
         sign = false,
       },
+      completions = { blink = { enabled = true } },
     },
-    ft = { "markdown", "norg", "rmd", "org" },
   },
 
   --
