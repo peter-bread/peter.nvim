@@ -22,6 +22,7 @@ M.sensitive = {
   ssh = {
     match = { vim.fn.getenv("HOME") .. "/.ssh/" },
     exclude = { "%.pub$", "%.md$" },
+    message = "SSH FILES HIDDEN FOR SECURITY REASONS",
   },
   gh_cli = {
     match = {
@@ -35,13 +36,14 @@ M.sensitive = {
       }) .. "$",
     },
     exclude = {},
+    message = "GH HOSTS HIDDEN FOR SECURITY REASONS",
   },
 
   -- TODO: work out how to define `.env` files
-  env = {
-    match = { "%.env(%..+)?$" },
-    exclude = {},
-  },
+  -- env = {
+  --   match = { "%.env(%..+)?$" },
+  --   exclude = {},
+  -- },
 }
 
 return M

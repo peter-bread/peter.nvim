@@ -8,6 +8,7 @@ local sensitive = paths.sensitive
 
 local patterns = require("peter.util.patterns")
 local matches_all = patterns.matches_all
+local get_sensitive_message = patterns.get_sensitive_message
 
 return {
   {
@@ -104,28 +105,9 @@ return {
                   ---@type string
                   local path = item.data.full_path
 
-                  if
-                    matches_all(
-                      path,
-                      sensitive.ssh.match,
-                      sensitive.ssh.exclude
-                    )
-                    and item.kind == Kind.File
-                  then
-                    item.documentation =
-                      { value = "SSH FILES HIDDEN FOR SECURITY REASONS" }
-                  end
-
-                  if
-                    matches_all(
-                      path,
-                      sensitive.gh_cli.match,
-                      sensitive.gh_cli.exclude
-                    )
-                    and item.kind == Kind.File
-                  then
-                    item.documentation =
-                      { value = "GH HOSTS HIDDEN FOR SECURITY REASONS" }
+                  local message = get_sensitive_message(path)
+                  if message and item.kind == Kind.File then
+                    item.documentation = { value = message }
                   end
                 end
               end

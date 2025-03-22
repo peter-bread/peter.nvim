@@ -27,4 +27,14 @@ M.matches_all = function(string, match_patterns, exclude_patterns)
   return true
 end
 
+M.get_sensitive_message = function(path)
+  local sensitive = require("peter.constants").paths.sensitive
+  for _, value in pairs(sensitive) do
+    if M.matches_all(path, value.match, value.exclude) then
+      return value.message
+    end
+  end
+  return nil
+end
+
 return M

@@ -29,6 +29,7 @@ local Config = {
 
     local patterns = require("peter.util.patterns")
     local matches_all = patterns.matches_all
+    local get_sensitive_message = patterns.get_sensitive_message
     if
       ctx.item.buf
       and not ctx.item.file
@@ -130,34 +131,22 @@ local Config = {
         end
 
         -- NOTE: custom logic to not show senstive files
-
-        local clear_win = function()
-          ctx.preview:wo({
-            number = false,
-            relativenumber = false,
-            cursorline = false,
-            foldcolumn = "0",
-            signcolumn = "no",
-            statuscolumn = "",
-          })
-        end
-
-        if not vim.g.hide_sensitive_files then
-          ctx.preview:set_lines(lines)
-        else
-          if matches_all(path, sensitive.ssh.match, sensitive.ssh.exclude) then
-            ctx.preview:set_lines({ "SSH FILES HIDDEN FOR SECURITY REASONS" })
-            clear_win()
-          elseif
-            matches_all(path, sensitive.gh_cli.match, sensitive.gh_cli.exclude)
-          then
-            ctx.preview:set_lines({ "GH HOSTS HIDDEN FOR SECURITY REASONS" })
-            clear_win()
-          else
-            -- NOTE: default behaviour
-            ctx.preview:set_lines(lines)
+        if vim.g.hide_sensitive_files then
+          local message = get_sensitive_message(path)
+          if message then
+            lines = { message }
+            ctx.preview:wo({
+              number = false,
+              relativenumber = false,
+              cursorline = false,
+              foldcolumn = "0",
+              signcolumn = "no",
+              statuscolumn = "",
+            })
           end
         end
+
+        ctx.preview:set_lines(lines)
 
         ctx.preview:highlight({
           file = path,
