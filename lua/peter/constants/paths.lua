@@ -15,13 +15,13 @@ M.plugins = M.config .. "/lua/peter/plugins"
 
 M.languages = M.plugins .. "/languages"
 
--- TODO: add documentation
+-- TODO: add documentation and type annotations
 
 ---Paths to sensitive information
 M.sensitive = {
   ssh = {
     match = { vim.fn.getenv("HOME") .. "/.ssh/" },
-    exclude = { "%.pub$" },
+    exclude = { "%.pub$", "%.md$" },
   },
   gh_cli = {
     match = {
@@ -37,7 +37,7 @@ M.sensitive = {
     exclude = {},
   },
 
-  -- TODO: work out how to define .env files
+  -- TODO: work out how to define `.env` files
   env = {
     match = { "%.env(%..+)?$" },
     exclude = {},
