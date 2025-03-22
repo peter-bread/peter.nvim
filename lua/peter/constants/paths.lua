@@ -24,6 +24,7 @@ M.sensitive = {
     exclude = { "%.pub$", "%.md$" },
     message = "SSH FILES HIDDEN FOR SECURITY REASONS",
   },
+
   gh_cli = {
     match = {
       files.safe_concat_path({
@@ -39,11 +40,13 @@ M.sensitive = {
     message = "GH HOSTS HIDDEN FOR SECURITY REASONS",
   },
 
-  -- TODO: work out how to define `.env` files
-  -- env = {
-  --   match = { "%.env(%..+)?$" },
-  --   exclude = {},
-  -- },
+  env = {
+    match = {
+      "%.env$", -- *.env
+      "%.env%..+$", -- *.env.*
+    },
+    exclude = {},
+  },
 }
 
 return M
