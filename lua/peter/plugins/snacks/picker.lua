@@ -128,7 +128,7 @@ local Config = {
           })
         end
 
-        -- NOTE: custom logic to not show senstive files
+        -- NOTE: custom logic to not show sensitive files
         if vim.g.hide_sensitive_files then
           local message = get_sensitive_message(path)
           if message then

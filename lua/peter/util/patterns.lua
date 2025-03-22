@@ -1,6 +1,6 @@
 local M = {}
 
----Check that a string matches a list of patterns and doesn't match another list of patterns
+---Check that a string matches a list of patterns and doesn't match another list of patterns.
 ---@param string string String to match
 ---@param match_patterns string[] Patterns that `string` should match
 ---@param exclude_patterns string[] Patterns that `string` should *NOT* match
