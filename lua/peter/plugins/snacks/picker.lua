@@ -142,17 +142,21 @@ local Config = {
           })
         end
 
-        if matches_all(path, sensitive.ssh.match, sensitive.ssh.exclude) then
-          ctx.preview:set_lines({ "SSH FILES HIDDEN FOR SECURITY REASONS" })
-          clear_win()
-        elseif
-          matches_all(path, sensitive.gh_cli.match, sensitive.gh_cli.exclude)
-        then
-          ctx.preview:set_lines({ "GH HOSTS HIDDEN FOR SECURITY REASONS" })
-          clear_win()
-        else
-          -- NOTE: default behaviour
+        if not vim.g.hide_sensitive_files then
           ctx.preview:set_lines(lines)
+        else
+          if matches_all(path, sensitive.ssh.match, sensitive.ssh.exclude) then
+            ctx.preview:set_lines({ "SSH FILES HIDDEN FOR SECURITY REASONS" })
+            clear_win()
+          elseif
+            matches_all(path, sensitive.gh_cli.match, sensitive.gh_cli.exclude)
+          then
+            ctx.preview:set_lines({ "GH HOSTS HIDDEN FOR SECURITY REASONS" })
+            clear_win()
+          else
+            -- NOTE: default behaviour
+            ctx.preview:set_lines(lines)
+          end
         end
 
         ctx.preview:highlight({

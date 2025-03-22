@@ -72,3 +72,20 @@ set("n", "<leader>nc", function()
     vim.cmd("e") -- refresh if in a buffer
   end
 end, { desc = "cd to config" })
+
+require("which-key").add({
+  "<leader>uS",
+  function()
+    local state = vim.g.hide_sensitive_files or false
+    vim.g.hide_sensitive_files = not state
+    if state then
+      vim.notify("Showing Sensitive Files", vim.log.levels.WARN)
+    else
+      vim.notify("Hiding Sensitive Files", vim.log.levels.INFO)
+    end
+  end,
+  desc = function()
+    return vim.g.hide_sensitive_files and "Show Sensitive Files"
+      or "Hide Sensitive Files"
+  end,
+})

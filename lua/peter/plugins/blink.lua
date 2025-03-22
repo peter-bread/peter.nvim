@@ -98,29 +98,35 @@ return {
         providers = {
           path = {
             transform_items = function(_, items)
-              local Kind = require("blink.cmp.types").CompletionItemKind
-              for _, item in ipairs(items) do
-                ---@type string
-                local path = item.data.full_path
+              if vim.g.hide_sensitive_files then
+                local Kind = require("blink.cmp.types").CompletionItemKind
+                for _, item in ipairs(items) do
+                  ---@type string
+                  local path = item.data.full_path
 
-                if
-                  matches_all(path, sensitive.ssh.match, sensitive.ssh.exclude)
-                  and item.kind == Kind.File
-                then
-                  item.documentation =
-                    { value = "SSH FILES HIDDEN FOR SECURITY REASONS" }
-                end
+                  if
+                    matches_all(
+                      path,
+                      sensitive.ssh.match,
+                      sensitive.ssh.exclude
+                    )
+                    and item.kind == Kind.File
+                  then
+                    item.documentation =
+                      { value = "SSH FILES HIDDEN FOR SECURITY REASONS" }
+                  end
 
-                if
-                  matches_all(
-                    path,
-                    sensitive.gh_cli.match,
-                    sensitive.gh_cli.exclude
-                  )
-                  and item.kind == Kind.File
-                then
-                  item.documentation =
-                    { value = "GH HOSTS HIDDEN FOR SECURITY REASONS" }
+                  if
+                    matches_all(
+                      path,
+                      sensitive.gh_cli.match,
+                      sensitive.gh_cli.exclude
+                    )
+                    and item.kind == Kind.File
+                  then
+                    item.documentation =
+                      { value = "GH HOSTS HIDDEN FOR SECURITY REASONS" }
+                  end
                 end
               end
               return items
