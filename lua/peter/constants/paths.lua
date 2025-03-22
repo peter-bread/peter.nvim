@@ -40,13 +40,14 @@ M.sensitive = {
     message = "GH HOSTS HIDDEN FOR SECURITY REASONS",
   },
 
-  env = {
-    match = {
-      "%.env$", -- *.env
-      "%.env%..+$", -- *.env.*
-    },
-    exclude = {},
-  },
+  -- TODO: need to match ANY, not ALL (I think)
+  -- env = {
+  --   match = {
+  --     "%.env$", -- *.env
+  --     "%.env%..+$", -- *.env.*
+  --   },
+  --   exclude = {},
+  -- },
 }
 
 return M
