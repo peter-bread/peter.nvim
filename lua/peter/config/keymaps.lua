@@ -78,6 +78,10 @@ require("which-key").add({
   function()
     local state = vim.g.hide_sensitive_files or false
     vim.g.hide_sensitive_files = not state
+    vim.api.nvim_exec_autocmds("User", {
+      pattern = "ToggleSensitiveFiles",
+      data = vim.g.hide_sensitive_files,
+    })
     if state then
       vim.notify("Showing Sensitive Files", vim.log.levels.WARN)
     else

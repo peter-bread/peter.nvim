@@ -27,5 +27,17 @@ return {
         desc = "Explore files (buf)",
       },
     },
+    config = function(_, opts)
+      require("mini.files").setup(opts)
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "ToggleSensitiveFiles",
+        group = require("peter.util.autocmds").augroup("ToggleSensitiveFiles"),
+        callback = function(ev)
+          MiniFiles.config.windows.preview = not ev.data
+          MiniFiles.close()
+          MiniFiles.refresh({})
+        end,
+      })
+    end,
   },
 }
