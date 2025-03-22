@@ -2,12 +2,7 @@
 
 ---@module "blink.cmp"
 
-local constants = require("peter.constants")
-local paths = constants.paths
-local sensitive = paths.sensitive
-
 local patterns = require("peter.util.patterns")
-local matches_all = patterns.matches_all
 local get_sensitive_message = patterns.get_sensitive_message
 
 return {

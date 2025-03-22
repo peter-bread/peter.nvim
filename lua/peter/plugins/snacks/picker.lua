@@ -24,12 +24,10 @@ local Config = {
   preview = function(ctx)
     local uv = vim.uv or vim.loop
     local preview = require("snacks.picker.preview")
-    local constants = require("peter.constants")
-    local sensitive = constants.paths.sensitive
 
     local patterns = require("peter.util.patterns")
-    local matches_all = patterns.matches_all
     local get_sensitive_message = patterns.get_sensitive_message
+
     if
       ctx.item.buf
       and not ctx.item.file
