@@ -69,7 +69,17 @@ return {
               color = { fg = "#ff9e64" },
             },
           },
-          lualine_y = {},
+          lualine_y = {
+            -- whether or not privacy mode is enabled
+            {
+              function()
+                return "󰗹"
+              end,
+              cond = function()
+                return vim.g.hide_sensitive_files
+              end,
+            },
+          },
           lualine_z = {
             -- location in file
             {
