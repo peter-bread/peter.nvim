@@ -5,7 +5,6 @@ return {
     version = false,
     opts = {
       windows = {
-        preview = true,
         width_focus = 35,
         width_no_focus = 20,
         width_preview = 30,
@@ -28,6 +27,10 @@ return {
       },
     },
     config = function(_, opts)
+      opts = opts or {}
+      opts.windows = opts.windows or {}
+      opts.windows.preview = not vim.g.private_mode_enabled
+
       require("mini.files").setup(opts)
       vim.api.nvim_create_autocmd("User", {
         pattern = "TogglePrivateMode",
