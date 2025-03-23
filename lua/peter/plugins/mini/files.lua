@@ -30,8 +30,8 @@ return {
     config = function(_, opts)
       require("mini.files").setup(opts)
       vim.api.nvim_create_autocmd("User", {
-        pattern = "ToggleSensitiveFiles",
-        group = require("peter.util.autocmds").augroup("ToggleSensitiveFiles"),
+        pattern = "TogglePrivateMode",
+        group = require("peter.util.autocmds").augroup("TogglePrivateMode"),
         callback = function(ev)
           MiniFiles.config.windows.preview = not ev.data
           MiniFiles.close()

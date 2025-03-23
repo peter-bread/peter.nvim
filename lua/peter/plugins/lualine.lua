@@ -76,7 +76,7 @@ return {
                 return "󰗹"
               end,
               cond = function()
-                return vim.g.hide_sensitive_files
+                return vim.g.private_mode_enabled
               end,
             },
           },

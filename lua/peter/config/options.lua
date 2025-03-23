@@ -6,7 +6,7 @@ vim.g.have_nerd_font = true
 
 vim.g.markdown_recommended_style = 0
 
-vim.g.hide_sensitive_files = false
+vim.g.private_mode_enabled = false
 
 -- WARN: `vim.opt` will be deprecated. Will need to switch to `vim.o`.
 -- https://github.com/neovim/neovim/issues/20107

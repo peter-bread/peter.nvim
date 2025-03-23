@@ -129,7 +129,7 @@ local Config = {
         end
 
         -- NOTE: custom logic to not show sensitive files
-        if vim.g.hide_sensitive_files then
+        if vim.g.private_mode_enabled then
           local message = get_sensitive_message(path)
           if message then
             lines = { message }

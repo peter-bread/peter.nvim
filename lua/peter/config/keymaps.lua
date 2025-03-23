@@ -73,23 +73,26 @@ set("n", "<leader>nc", function()
   end
 end, { desc = "cd to config" })
 
-require("which-key").add({
-  "<leader>uS",
-  function()
-    local state = vim.g.hide_sensitive_files or false
-    vim.g.hide_sensitive_files = not state
-    vim.api.nvim_exec_autocmds("User", {
-      pattern = "ToggleSensitiveFiles",
-      data = vim.g.hide_sensitive_files,
-    })
-    if state then
-      vim.notify("Showing Sensitive Files", vim.log.levels.WARN)
-    else
-      vim.notify("Hiding Sensitive Files", vim.log.levels.INFO)
-    end
-  end,
-  desc = function()
-    return vim.g.hide_sensitive_files and "Show Sensitive Files"
-      or "Hide Sensitive Files"
-  end,
-})
+-- delay so which key is loaded slightly later
+vim.schedule(function()
+  require("which-key").add({
+    "<leader>uS",
+    function()
+      local state = vim.g.private_mode_enabled or false
+      vim.g.private_mode_enabled = not state
+      vim.api.nvim_exec_autocmds("User", {
+        pattern = "TogglePrivateMode",
+        data = vim.g.private_mode_enabled,
+      })
+      if state then
+        vim.notify("Private Mode Disabled", vim.log.levels.WARN)
+      else
+        vim.notify("Private Mode Enabled", vim.log.levels.INFO)
+      end
+    end,
+    desc = function()
+      return vim.g.private_mode_enabled and "Disable Private Mode"
+        or "Enable Private Mode"
+    end,
+  })
+end)

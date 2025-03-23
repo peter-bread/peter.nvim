@@ -94,7 +94,7 @@ return {
         providers = {
           path = {
             transform_items = function(_, items)
-              if vim.g.hide_sensitive_files then
+              if vim.g.private_mode_enabled then
                 local Kind = require("blink.cmp.types").CompletionItemKind
                 for _, item in ipairs(items) do
                   ---@type string
