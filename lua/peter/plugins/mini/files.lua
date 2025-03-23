@@ -5,9 +5,9 @@ return {
     version = false,
     opts = {
       windows = {
-        width_focus = 35,
-        width_no_focus = 20,
-        width_preview = 30,
+        width_focus = 40,
+        width_nofocus = 25,
+        width_preview = 45,
       },
     },
     keys = {
