@@ -73,7 +73,7 @@ set("n", "<leader>nc", function()
   end
 end, { desc = "cd to config" })
 
--- delay so which key is loaded slightly later
+-- HACK: delay so which key is loaded slightly later
 vim.schedule(function()
   require("which-key").add({
     "<leader>uS",
