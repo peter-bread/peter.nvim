@@ -69,7 +69,7 @@ It is useful for:
 - treesitter (installing parsers)
 - mason (package manager for external editor tooling, e.g. lsp, formatters, etc.)
 - lspconfig (setting up LSP)
-- format (setting up formating)
+- format (setting up formatting)
 - lint (setting up linting)
 - test (set up testing)
 - dap (set up debugging)
