@@ -84,15 +84,14 @@ vim.schedule(function()
         pattern = "TogglePrivateMode",
         data = vim.g.private_mode_enabled,
       })
-      if state then
-        vim.notify("Private Mode Disabled", vim.log.levels.WARN)
-      else
-        vim.notify("Private Mode Enabled", vim.log.levels.INFO)
-      end
+      vim.notify(
+        (state and "Dis" or "En") .. "abled **Private Mode**",
+        vim.log.levels[state and "WARN" or "INFO"]
+      )
     end,
     desc = function()
-      return vim.g.private_mode_enabled and "Disable Private Mode"
-        or "Enable Private Mode"
+      return (vim.g.private_mode_enabled and "Dis" or "En")
+        .. "able Private Mode"
     end,
   })
 end)
