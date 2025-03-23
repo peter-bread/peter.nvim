@@ -51,6 +51,12 @@ If you carefully manage environment variables:
 git clone https://github.com/peter-bread/peter.nvim.git "$XDG_CONFIG_HOME/$NVIM_APPNAME"
 ```
 
+If you use `gh` CLI for cloning (for some reason):
+
+```sh
+gh repo clone peter-bread/peter.nvim /path/to/config/location
+```
+
 > [!TIP]
 > Be sure to back up any existing Neovim files.
 
