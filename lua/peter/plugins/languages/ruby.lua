@@ -1,14 +1,5 @@
 local L = require("peter.util.new_lang")
 
----@alias lsp "ruby_lsp"|"solargraph"
----@alias fmt "rubocop"|"standardrb"
-
----@type lsp
-local lsp = "ruby_lsp"
-
----@type fmt
-local fmt = "standardrb"
-
 -- TODO: add support for eruby
 
 return {
@@ -17,16 +8,26 @@ return {
   }),
 
   L.mason({
-    lsp,
-    fmt,
+    "ruby_lsp",
+    "standardrb",
   }),
 
   L.lspconfig({
     servers = {
-      [lsp] = {},
-      [fmt] = {},
+      ruby_lsp = {},
+      standardrb = {},
     },
   }),
 
-  -- TODO: test, dap
+  ---@module "conform"
+
+  -- WARNING: Untested.
+  -- Might be better to let lsp handle formatting???
+  L.format({
+    formatters_by_ft = {
+      ruby = { "standardrb" },
+    },
+  }),
+
+  -- TODO: dap, (test)
 }

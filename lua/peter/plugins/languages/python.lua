@@ -1,23 +1,18 @@
 local L = require("peter.util.new_lang")
 
----@alias pyright_type "pyright"|"basedpyright"
-
----@type pyright_type
-local pyright = "basedpyright"
-
 return {
   L.treesitter({
     "python",
   }),
 
   L.mason({
-    pyright, -- lsp
+    "basedpyright", -- lsp
     "ruff", -- lsp/linter
   }),
 
   L.lspconfig({
     servers = {
-      [pyright] = {},
+      basedpyright = {},
       ruff = {},
     },
     setup = {
