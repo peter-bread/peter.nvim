@@ -132,19 +132,6 @@ M.neovim.colorschemes = function()
       end)
       require("snacks").picker.preview.file(ctx)
     end,
-    confirm = function(picker, item, action)
-      picker:close()
-      if item then
-        picker.preview.state.colorscheme = nil
-
-        -- HACK: don't use `vim.schedule`
-        -- This ensures lualine colours update properly
-
-        vim.schedule_wrap(function()
-          vim.cmd.colorscheme(item.text)
-        end)
-      end
-    end,
   })
 end
 
