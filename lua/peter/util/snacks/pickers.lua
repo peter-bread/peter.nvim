@@ -116,6 +116,7 @@ M.neovim.colorschemes = function()
       if n ~= "" then
         ctx.item.file = n
       end
+      -- FIX: respect private mode
       if not ctx.preview.state.colorscheme then
         ctx.preview.state.colorscheme = vim.g.colors_name or "default"
         ctx.preview.state.background = vim.o.background
