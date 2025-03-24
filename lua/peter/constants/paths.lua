@@ -17,6 +17,8 @@ M.languages = M.plugins .. "/languages"
 
 -- TODO: add documentation and type annotations
 
+-- FIX: restructure how patterns are defined
+
 ---Paths to sensitive information
 M.sensitive = {
   ssh = {
