@@ -128,9 +128,10 @@ local Config = {
           })
         end
 
+        -- NOTE: custom logic to not show sensitive files
+
         ft = ctx.picker.opts.previewers.file.ft
 
-        -- NOTE: custom logic to not show sensitive files
         if vim.g.private_mode_enabled then
           local message = get_sensitive_message(path)
           if message then
