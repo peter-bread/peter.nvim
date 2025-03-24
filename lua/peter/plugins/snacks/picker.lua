@@ -128,6 +128,8 @@ local Config = {
           })
         end
 
+        ft = ctx.picker.opts.previewers.file.ft
+
         -- NOTE: custom logic to not show sensitive files
         if vim.g.private_mode_enabled then
           local message = get_sensitive_message(path)
@@ -141,6 +143,7 @@ local Config = {
               signcolumn = "no",
               statuscolumn = "",
             })
+            ft = "text"
           end
         end
 
@@ -148,7 +151,7 @@ local Config = {
 
         ctx.preview:highlight({
           file = path,
-          ft = ctx.picker.opts.previewers.file.ft,
+          ft = ft,
           buf = ctx.buf,
         })
       end
