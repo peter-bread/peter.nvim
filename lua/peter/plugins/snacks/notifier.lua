@@ -5,7 +5,8 @@
 ---@type snacks.notifier.Config
 local Config = {
   enabled = true,
-  style = "minimal",
+  timeout = 5000,
+  style = "compact",
   sort = { "added" },
 }
 
