@@ -6,6 +6,9 @@ return {
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     build = ":TSUpdate",
     opts_extend = { "ensure_installed" },
+
+    ---@type TSConfig
+    ---@diagnostic disable-next-line: missing-fields
     opts = {
       ensure_installed = {
         -- INFO: c, query, lua, vim, vimdoc, markdown, markdown_inline should ALWAYS be installed
