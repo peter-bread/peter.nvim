@@ -22,22 +22,17 @@ return {
   },
   {
     "saghen/blink.cmp",
-
-    ---Extend `opts` table
-    ---@param _ any
-    ---@param opts blink.cmp.Config
-    opts = function(_, opts)
-      opts.sources.default =
-        vim.list_extend({ "lazydev" }, opts.sources.default or {})
-
-      opts.sources.providers =
-        vim.tbl_extend("force", opts.sources.providers or {}, {
+    opts = {
+      sources = {
+        default = { "lazydev" },
+        providers = {
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
             score_offset = 100,
           },
-        })
-    end,
+        },
+      },
+    },
   },
 }

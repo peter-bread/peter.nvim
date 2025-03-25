@@ -19,6 +19,8 @@ return {
       { "L3MON4D3/LuaSnip", lazy = true },
     },
 
+    opts_extend = { "sources.default" },
+
     ---@type blink.cmp.Config
     opts = {
 
