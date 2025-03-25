@@ -75,6 +75,7 @@ end, { desc = "cd to config" })
 
 -- HACK: delay so which key is loaded slightly later
 vim.schedule(function()
+  local name = "Private Mode"
   require("which-key").add({
     "<leader>uS",
     function()
@@ -85,13 +86,13 @@ vim.schedule(function()
         data = vim.g.private_mode_enabled,
       })
       vim.notify(
-        (state and "Dis" or "En") .. "abled **Private Mode**",
-        vim.log.levels[state and "WARN" or "INFO"]
+        (state and "Dis" or "En") .. "abled **" .. name .. "**",
+        vim.log.levels[state and "WARN" or "INFO"],
+        { title = name }
       )
     end,
     desc = function()
-      return (vim.g.private_mode_enabled and "Dis" or "En")
-        .. "able Private Mode"
+      return (vim.g.private_mode_enabled and "Dis" or "En") .. "able " .. name
     end,
   })
 end)
