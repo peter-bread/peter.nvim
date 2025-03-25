@@ -26,8 +26,8 @@
 --- local L = require("peter.util.new_lang")
 ---
 --- return {
----   L.treesitter({ "lua", "luadoc" }),
----   L.mason({ "lua_ls", "stylua" }),
+---   L.treesitter2({ "lua", "luadoc" }),
+---   L.mason2({ "lua_ls", "stylua" }),
 ---   L.lspconfig({
 ---     servers = {
 ---       lua_ls = {},
@@ -54,6 +54,8 @@ local M = {}
 ---Add treesitter parsers that need to be installed.
 ---@param parsers string[] List of parser names.
 ---@return table [`treesitter`](nvim-treesitter/nvim-treesitter) Lazy plugin spec.
+---@deprecated
+---**Deprecated**. Use `treesitter2` instead.
 ---# Usage
 ---
 --- ```lua
@@ -78,9 +80,36 @@ function M.treesitter(parsers)
   }
 end
 
+---Add treesitter parsers that need to be installed.
+---This version only works when using `opts_extend = { "ensure_installed" }` in
+---your Lazy plugin spec.
+---@param parsers string[] List of parser names.
+---@return table [`treesitter`](nvim-treesitter/nvim-treesitter) Lazy plugin spec.
+---# Usage
+---
+--- ```lua
+--- treesitter2({
+---   "go",
+---   "gomod",
+---   "gosum",
+---   "gotmpl",
+---   "gowork",
+--- })
+--- ```
+function M.treesitter2(parsers)
+  return {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = parsers or {},
+    },
+  }
+end
+
 ---Add mason packages that need to be installed.
 ---@param packages string[] List of package names.
 ---@return table [`mason-tool-installer`](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) Lazy plugin spec.
+---@deprecated
+---**Deprecated**. Use `mason2` instead.
 ---# Usage
 ---
 --- ```lua
@@ -102,6 +131,31 @@ function M.mason(packages)
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, packages)
     end,
+  }
+end
+
+---Add mason packages that need to be installed.
+---This version only works when using `opts_extend = { "ensure_installed" }` in
+---your Lazy plugin spec.
+---@param packages string[] List of package names.
+---@return table [`mason-tool-installer`](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) Lazy plugin spec.
+---# Usage
+---
+--- ```lua
+--- mason2({
+---   "gopls", -- lsp
+---   "gofumpt", -- formatter
+---   "goimports", -- formatter
+---   "golangci-lint", -- linter
+---   "delve", -- dap
+--- })
+--- ```
+function M.mason2(packages)
+  return {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = {
+      ensure_installed = packages or {},
+    },
   }
 end
 

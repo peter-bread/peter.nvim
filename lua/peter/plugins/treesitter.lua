@@ -5,6 +5,7 @@ return {
     event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     build = ":TSUpdate",
+    opts_extend = { "ensure_installed" },
     opts = {
       ensure_installed = {
         -- INFO: c, query, lua, vim, vimdoc, markdown, markdown_inline should ALWAYS be installed

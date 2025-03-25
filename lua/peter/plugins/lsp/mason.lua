@@ -16,6 +16,7 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     event = "VeryLazy",
+    opts_extend = { "ensure_installed" },
     opts = {
       integrations = {
         ["mason-null-ls"] = false,
