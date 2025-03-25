@@ -9,7 +9,7 @@ return {
   {
     "saghen/blink.cmp",
     event = "InsertEnter",
-    version = "v0.*",
+    version = "v1.*",
 
     -- WARN: build from main (be careful of breaking changes)
     -- build = "cargo +nightly build --release",
