@@ -1,14 +1,14 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "javascript",
     "jsdoc",
     "typescript",
     "tsx",
   }),
 
-  L.mason({
+  L.mason2({
     "vtsls", -- lsp
     "prettier", -- formatter
     "eslint-lsp", -- lsp (formatter/linter)

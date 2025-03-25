@@ -1,12 +1,12 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "json",
     "json5",
   }),
 
-  L.mason({
+  L.mason2({
     "jsonls", -- lsp
     "prettier", -- formatter
   }),

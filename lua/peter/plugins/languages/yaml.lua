@@ -1,11 +1,11 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "yaml",
   }),
 
-  L.mason({
+  L.mason2({
     "yamlls", -- lsp
     "yamlfmt", -- formatter
     "actionlint", -- linter for github actions

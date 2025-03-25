@@ -1,7 +1,7 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.mason({
+  L.mason2({
     "ansiblels",
     "ansible-lint",
   }),

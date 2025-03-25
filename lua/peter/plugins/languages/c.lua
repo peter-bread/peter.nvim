@@ -44,12 +44,12 @@ local dap_configurations = {
 }
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "c",
     "cpp",
   }),
 
-  L.mason({
+  L.mason2({
     "clangd", -- lsp
     "codelldb", -- dap
   }),

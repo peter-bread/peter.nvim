@@ -3,11 +3,11 @@ local L = require("peter.util.new_lang")
 -- TODO: add support for eruby
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "ruby",
   }),
 
-  L.mason({
+  L.mason2({
     "ruby_lsp",
     "standardrb",
   }),

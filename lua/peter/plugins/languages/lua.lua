@@ -1,12 +1,12 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "lua",
     "luadoc",
   }),
 
-  L.mason({
+  L.mason2({
     "lua_ls", -- lsp
     "stylua", -- formatter
     "selene", -- linter

@@ -1,13 +1,13 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "elixir",
     "heex",
     "eex",
   }),
 
-  L.mason({
+  L.mason2({
     "elixirls",
   }),
 

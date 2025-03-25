@@ -1,11 +1,11 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "bash",
   }),
 
-  L.mason({
+  L.mason2({
     "bashls", -- lsp
     "shellcheck", -- linter (used by lsp so nvim-lint not needed)
     "shellharden", -- formatter

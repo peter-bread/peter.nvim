@@ -1,9 +1,13 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({ "xml" }),
+  L.treesitter2({
+    "xml",
+  }),
 
-  L.mason({ "lemminx" }),
+  L.mason2({
+    "lemminx",
+  }),
 
   L.lspconfig({
     servers = {

@@ -1,11 +1,11 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "java",
   }),
 
-  L.mason({
+  L.mason2({
     "jdtls",
     -- "java-debug-adapter",
     -- "java-test",

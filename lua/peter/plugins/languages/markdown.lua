@@ -1,12 +1,12 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "markdown",
     "markdown_inline",
   }),
 
-  L.mason({
+  L.mason2({
     "marksman", -- lsp
     "prettier", -- formatter
     "markdownlint-cli2", -- formatter/linter

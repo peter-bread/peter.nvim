@@ -1,11 +1,11 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "asm",
   }),
 
-  L.mason({
+  L.mason2({
     "asm_lsp",
   }),
 

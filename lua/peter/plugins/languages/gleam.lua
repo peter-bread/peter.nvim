@@ -1,7 +1,7 @@
 local L = require("peter.util.new_lang")
 
 return {
-  L.treesitter({
+  L.treesitter2({
     "gleam",
   }),
 

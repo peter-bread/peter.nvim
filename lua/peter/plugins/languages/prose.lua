@@ -18,7 +18,7 @@ local fileDictPath = files.safe_concat_path({
 })
 
 return {
-  L.mason({
+  L.mason2({
     "harper_ls",
   }),
 
