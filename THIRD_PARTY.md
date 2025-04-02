@@ -15,4 +15,4 @@ being it works.
   - `lua/peter/config/keymaps.lua`
 
 The original Apache-2.0 License applies to these portions. A copy of the license
-can be found [here](./LICENSES/apache-2.0).
+can be found [here](./COPYING.Apache-2.0).
