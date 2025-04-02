@@ -88,6 +88,12 @@ It is useful for:
 
 On top of that, you can include other plugins, but you need to set them up manually.
 
+## License
+
+Licensed under [MIT](./LICENSE), feel free to use any parts you like.
+
+Code taken from other external projects is detailed [here](./THIRD_PARTY.md).
+
 ---
 
 \* Snippets can also be set in `snippets/snippets/<language>.json` (global) and
