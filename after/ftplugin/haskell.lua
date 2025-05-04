@@ -1,6 +1,10 @@
 local ht = require("haskell-tools")
 local bufnr = vim.api.nvim_get_current_buf()
 
+-- Disable vim-matchup in Haskell files until this issue is resolved
+-- https://github.com/andymass/vim-matchup/issues/348
+vim.b.matchup_matchparen_enabled = 0
+
 local set = vim.keymap.set
 
 ---Generate `opts` table for `vim.keymap.set` with default values and custom `desc` value
