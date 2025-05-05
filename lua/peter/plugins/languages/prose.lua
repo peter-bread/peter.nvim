@@ -1,6 +1,10 @@
 -- https://writewithharper.com/docs/integrations/neovim
 -- https://writewithharper.com/docs/integrations/language-server#Configuration
 
+if true then
+  return {}
+end
+
 local L = require("peter.util.new_lang")
 
 local files = require("peter.util.files")
