@@ -1,10 +1,10 @@
--- Utility functions for autocmds
-
+---@class peter.util.autocmds
+---@field augroup fun(name:string):integer Create an augroup in the "Peter" namespace.
 local M = {}
 
----Create augroup with "Peter" as a prefix
+---Create an augroup in the "Peter" namespace.
 ---@param name string Name of augroup
----@return integer id id of the created group
+---@return integer id ID of the created group
 function M.augroup(name)
   return vim.api.nvim_create_augroup("Peter" .. name, { clear = true })
 end
