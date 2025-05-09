@@ -3,8 +3,8 @@
 local M = {}
 
 ---Check if a buffer is editable.
----@param bufnr? peter.core.bufnr Buffer to check.
----@return boolean editable
+---@param bufnr? peter.core.bufnr Buffer to check. If no value is provided, the current buffer is used.
+---@return boolean is_editable
 function M.can_edit(bufnr)
   bufnr = bufnr or 0
   return vim.bo[bufnr].buftype == ""
