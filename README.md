@@ -1,5 +1,11 @@
 # peter.nvim
 
+> [!WARNING]
+> Currently undergoing a rewrite.
+> None of the information on this page can be considered accurate.
+
+---
+
 <!-- markdownlint-disable MD033 -->
 
 <div align="center">
