@@ -44,20 +44,7 @@ My first proper Neovim config.
 
 ## Install
 
-For me:
-
-```sh
-git clone https://github.com/peter-bread/peter.nvim.git "$XDG_CONFIG_HOME/$NVIM_APPNAME"
-```
-
-```sh
-gh repo clone peter.nvim "$XDG_CONFIG_HOME/$NVIM_APPNAME"
-```
-
-<details>
-<summary>Anyone else</summary>
-<br>
-Clone the repository.
+Clone the repository:
 
 ```sh
 git clone https://github.com/peter-bread/peter.nvim.git ~/.config/nvim
@@ -69,7 +56,7 @@ If you carefully manage environment variables:
 git clone https://github.com/peter-bread/peter.nvim.git "$XDG_CONFIG_HOME/$NVIM_APPNAME"
 ```
 
-If you use `gh` CLI for cloning (for some reason):
+If you use `gh` CLI:
 
 ```sh
 gh repo clone peter-bread/peter.nvim ~/.config/nvim
@@ -81,7 +68,6 @@ gh repo clone peter-bread/peter.nvim "$XDG_CONFIG_HOME/$NVIM_APPNAME"
 
 > [!TIP]
 > Be sure to back up any existing Neovim files.
-</details>
 
 ## Structure
 
