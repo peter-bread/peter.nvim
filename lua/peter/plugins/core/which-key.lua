@@ -2,7 +2,6 @@
 -- https://github.com/folke/which-key.nvim
 
 -- TODO: finish `opts`
--- TODO: work out how to deal with `mini.nvim` so I can get icons
 
 return {
   {
@@ -13,7 +12,28 @@ return {
     opts = {
       preset = "modern",
       win = { border = "none" },
-      spec = {},
+      icons = { mappings = false },
+      spec = {
+        {
+          mode = { "n", "v" },
+
+          -- descriptions
+          { "f", desc = "Find next {char}" },
+          { "F", desc = "Find prev {char}" },
+          { "t", desc = "Till next {char}" },
+          { "T", desc = "Till prev {char}" },
+          { "q", desc = "Record macro" },
+          { "gx", desc = "Open file/link with system handler" },
+
+          -- groups
+          { "g", group = "goto" },
+          { "z", group = "fold" },
+          { "]", group = "next" },
+          { "[", group = "prev" },
+          { "<leader>", group = "leader" },
+          { "<localleader>", group = "local leader" },
+        },
+      },
     },
   },
 }
