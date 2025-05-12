@@ -71,39 +71,73 @@ gh repo clone peter-bread/peter.nvim "$XDG_CONFIG_HOME/$NVIM_APPNAME"
 
 ## Structure
 
+### General
+
+The entry point is the top-level `init.lua`.
+
+The majority of configuration can be found in `lua/peter/`.
+
+There is additional configuration in `after/`.
+
+```text
+lua/peter/
+|-- config/
+|   |-- autocmds.lua
+|   |-- filetypes.lua
+|   |-- init.lua
+|   |-- keymaps.lua
+|   |-- lazy.lua
+|   |-- options.lua
+|-- languages/ (not done yet. more detail will be in Languages section)
+|-- plugins/
+|   |-- core/
+|   |-- mini/
+|   |-- lsp/
+|-- util/
+|-- types.lua
+```
+
+```text
+after/
+|-- ftplugin/
+|-- lsp/
+```
+
 ### Languages
 
-Programming languages are configured in two places:
+TODO
 
-<!-- markdownlint-disable MD013 -->
-
-- [`lua/plugins/languages`](https://github.com/peter-bread/peter.nvim/tree/main/lua/peter/plugins/languages): plugin configuration
-- [`after/ftplugin`](https://github.com/peter-bread/peter.nvim/tree/main/after/ftplugin): extra configuration (e.g. `vim.bo`, snippets\*)
-
-You can use [`require("peter.util.new_lang")`](https://github.com/peter-bread/peter.nvim/blob/main/lua/peter/util/new_lang.lua) to access a wrapper module that simplifies
-some plugin setup for progamming languages.
-
-<!-- markdownlint-restore -->
-
-It is useful for:
-
-- treesitter (installing parsers)
-- mason (package manager for external editor tooling, e.g. lsp, formatters, etc.)
-- lspconfig (setting up LSP)
-- format (setting up formatting)
-- lint (setting up linting)
-- test (set up testing)
-- dap (set up debugging)
-
-On top of that, you can include other plugins, but you need to set them up manually.
-
-## License
-
-Licensed under [MIT](./LICENSE), feel free to use any parts you like.
-
-Code taken from other external projects is detailed [here](./THIRD_PARTY.md).
-
----
-
-\* Snippets can also be set in `snippets/snippets/<language>.json` (global) and
-`.vscode/*.code-snippets` (project-specific.)
+<!-- Programming languages are configured in two places: -->
+<!---->
+<!-- <!-- markdownlint-disable MD013 --> -->
+<!---->
+<!-- - [`lua/plugins/languages`](https://github.com/peter-bread/peter.nvim/tree/main/lua/peter/plugins/languages): plugin configuration -->
+<!-- - [`after/ftplugin`](https://github.com/peter-bread/peter.nvim/tree/main/after/ftplugin): extra configuration (e.g. `vim.bo`, snippets\*) -->
+<!---->
+<!-- You can use [`require("peter.util.new_lang")`](https://github.com/peter-bread/peter.nvim/blob/main/lua/peter/util/new_lang.lua) to access a wrapper module that simplifies -->
+<!-- some plugin setup for progamming languages. -->
+<!---->
+<!-- <!-- markdownlint-restore --> -->
+<!---->
+<!-- It is useful for: -->
+<!---->
+<!-- - treesitter (installing parsers) -->
+<!-- - mason (package manager for external editor tooling, e.g. lsp, formatters, etc.) -->
+<!-- - lspconfig (setting up LSP) -->
+<!-- - format (setting up formatting) -->
+<!-- - lint (setting up linting) -->
+<!-- - test (set up testing) -->
+<!-- - dap (set up debugging) -->
+<!---->
+<!-- On top of that, you can include other plugins, but you need to set them up manually. -->
+<!---->
+<!-- ## License -->
+<!---->
+<!-- Licensed under [MIT](./LICENSE), feel free to use any parts you like. -->
+<!---->
+<!-- Code taken from other external projects is detailed [here](./THIRD_PARTY.md). -->
+<!---->
+<!-- --- -->
+<!---->
+<!-- \* Snippets can also be set in `snippets/snippets/<language>.json` (global) and -->
+<!-- `.vscode/*.code-snippets` (project-specific.) -->
