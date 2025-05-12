@@ -30,7 +30,6 @@ My first proper Neovim config.
 <!-- markdownlint-disable MD013 -->
 
 - git
-- lua
 - neovim (+ it's dependencies)
 - [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep) (for snacks.picker)
 - any tools needed to install or run tools from mason:
@@ -45,6 +44,19 @@ My first proper Neovim config.
 
 ## Install
 
+For me:
+
+```sh
+git clone https://github.com/peter-bread/peter.nvim.git "$XDG_CONFIG_HOME/$NVIM_APPNAME"
+```
+
+```sh
+gh repo clone peter.nvim "$XDG_CONFIG_HOME/$NVIM_APPNAME"
+```
+
+<details>
+<summary>Anyone else</summary>
+<br>
 Clone the repository.
 
 ```sh
@@ -60,11 +72,16 @@ git clone https://github.com/peter-bread/peter.nvim.git "$XDG_CONFIG_HOME/$NVIM_
 If you use `gh` CLI for cloning (for some reason):
 
 ```sh
-gh repo clone peter-bread/peter.nvim /path/to/config/location
+gh repo clone peter-bread/peter.nvim ~/.config/nvim
+```
+
+```sh
+gh repo clone peter-bread/peter.nvim "$XDG_CONFIG_HOME/$NVIM_APPNAME"
 ```
 
 > [!TIP]
 > Be sure to back up any existing Neovim files.
+</details>
 
 ## Structure
 
