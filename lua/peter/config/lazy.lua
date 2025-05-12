@@ -27,7 +27,7 @@ vim.opt.rtp:prepend(lazypath)
 -- setup and configure
 require("lazy").setup({
   spec = {
-    import = "peter.plugins.core",
+    { import = "peter.plugins.core" },
   },
   install = {
     colorscheme = { "kanagawa", "default" },
