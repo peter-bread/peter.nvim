@@ -7,9 +7,9 @@ local M = {}
 ---@return boolean is_editable
 function M.can_edit(bufnr)
   bufnr = bufnr or 0
-  return vim.bo[bufnr].buftype == ""
-    and vim.api.nvim_buf_get_name(bufnr) ~= ""
-    and vim.api.nvim_get_option_value("modifiable", { buf = bufnr })
+  return vim.api.nvim_buf_get_name(bufnr) ~= ""
+    and vim.bo[bufnr].buftype == ""
+    and vim.bo[bufnr].modifiable
 end
 
 return M
