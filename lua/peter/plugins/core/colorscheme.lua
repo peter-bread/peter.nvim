@@ -1,5 +1,10 @@
+---@module "lazy"
 ---@diagnostic disable: missing-fields, unused-local
 
+-- colorscheme
+-- https://github.com/rebelot/kanagawa.nvim
+
+---@type LazyPluginSpec[]
 return {
   {
     "rebelot/kanagawa.nvim",

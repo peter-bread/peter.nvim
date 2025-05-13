@@ -1,8 +1,12 @@
+---@module "lazy"
+---@module "which-key"
+
 -- show available keymaps in a popup as you type
 -- https://github.com/folke/which-key.nvim
 
 -- TODO: finish `opts`
 
+---@type LazyPluginSpec[]
 return {
   {
     "folke/which-key.nvim",

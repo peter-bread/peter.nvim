@@ -1,3 +1,9 @@
+---@module "lazy"
+
+-- icon provider
+-- https://github.com/echasnovski/mini.icons
+
+---@type LazyPluginSpec[]
 return {
   {
     "echasnovski/mini.icons",

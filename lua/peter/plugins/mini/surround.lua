@@ -1,3 +1,8 @@
+---@module "lazy"
+
+-- surround actions
+-- https://github.com/echasnovski/mini.surround
+
 -- stylua: ignore
 local mappings = {
   add             = "gsa", -- add surrounding
@@ -9,6 +14,7 @@ local mappings = {
   update_n_lines  = "gsn", -- update `n_lines`
 }
 
+---@type LazyPluginSpec[]
 return {
   {
     "echasnovski/mini.surround",
