@@ -1,4 +1,5 @@
 ---@module "lazy"
+---@module "which-key"
 
 -- surround actions
 -- https://github.com/echasnovski/mini.surround
@@ -30,6 +31,18 @@ return {
       { mappings.highlight,       desc = "Highlight Surrounding" },
       { mappings.replace,         desc = "Replace Surrounding Surrounding" },
       { mappings.update_n_lines,  desc = "Delete Surrounding" },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    ---@type wk.Opts
+    opts = {
+      spec = {
+        {
+          mode = { "n", "v" },
+          { "gs", group = "surround" },
+        },
+      },
     },
   },
 }
