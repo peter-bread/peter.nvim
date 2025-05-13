@@ -63,8 +63,8 @@ set("v", ">", ">gv")
 local diagnostic = require("peter.util.diagnostic")
 
 -- stylua: ignore start
-set("n", "]d", diagnostic.next , { desc = "Next Diagnostic" })
-set("n", "[d", diagnostic.prev , { desc = "Prev Diagnostic" })
+set("n", "]d", diagnostic.next, { desc = "Next Diagnostic" })
+set("n", "[d", diagnostic.prev, { desc = "Prev Diagnostic" })
 set("n", "]e", function() diagnostic.next({ severity = "ERROR" }) end, { desc = "Next Error" })
 set("n", "[e", function() diagnostic.prev({ severity = "ERROR" }) end, { desc = "Prev Error" })
 set("n", "]w", function() diagnostic.next({ severity = "WARN" }) end, { desc = "Next Warning" })
