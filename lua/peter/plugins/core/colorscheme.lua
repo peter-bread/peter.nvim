@@ -23,9 +23,10 @@ return {
         },
       },
 
+      ---@param colors KanagawaColors
       overrides = function(colors)
-        local palette = colors.palette ---@type PaletteColors
-        local theme = colors.theme ---@type ThemeColors
+        local palette = colors.palette
+        local theme = colors.theme
 
         return {
           -- dark popup menus
