@@ -9,9 +9,9 @@ return {
     "echasnovski/mini.icons",
     lazy = true,
     init = function()
-      -- TODO: only enable this if I use a plugin that requires nvim_web_devicons
-      -- for icons
-      -- require("mini.icons").mock_nvim_web_devicons()
+      if vim.g.needs_nvim_web_devicons then
+        require("mini.icons").mock_nvim_web_devicons()
+      end
     end,
     opts = {
       style = vim.g.have_nerd_font and "glyph" or "ascii",

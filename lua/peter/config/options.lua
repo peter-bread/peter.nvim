@@ -9,6 +9,8 @@ vim.g.have_nerd_font = true     -- used for plugins that might need icons
 
 vim.g.markdown_recommended_style = 0 -- fix markdown indentation settings
 
+vim.g.needs_nvim_web_devicons = false -- used to tell mini.icons if it needs to export nvim_web_devicons functions
+
 -- options =====================================================================
 
 -- WARN: `vim.opt` will be deprecated.
