@@ -15,7 +15,6 @@ return {
     ---@diagnostic disable-next-line: missing-fields
     opts = {},
     keys = {},
-    init = function()
-    end,
+    init = function() end,
   },
 }
