@@ -17,5 +17,5 @@ return {
     keys = {},
     init = function()
     end,
-  }
+  },
 }

@@ -27,7 +27,7 @@ return {
 
     ---@type snacks.Config
     opts = {
-      picker = cfg
+      picker = cfg,
     },
 
     keys = {
