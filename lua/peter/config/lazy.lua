@@ -29,6 +29,7 @@ require("lazy").setup({
   spec = {
     { import = "peter.plugins.core" },
     { import = "peter.plugins.mini" },
+    { import = "peter.plugins.snacks" },
   },
   install = {
     colorscheme = { "kanagawa", "default" },
