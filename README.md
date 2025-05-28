@@ -29,16 +29,24 @@ My first proper Neovim config.
 
 <!-- markdownlint-disable MD013 -->
 
-- git
-- neovim (+ it's dependencies)
-- [fd](https://github.com/sharkdp/fd), [ripgrep](https://github.com/BurntSushi/ripgrep) (for snacks.picker)
-- any tools needed to install or run tools from mason:
+- [`git`](https://git-scm.com/)
+- Neovim 0.11+ (and it's dependencies)
+- Fuzzy finding ([snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md)):
+  - [`fd`](https://github.com/sharkdp/fd)
+  - [`ripgrep`](https://github.com/BurntSushi/ripgrep)
+- Any tools needed to install or run tools from mason:
   - node
   - cargo
   - python
   - go
   - ruby
   - java
+- [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/tree/main) dependencies:
+  - `tar`
+  - `curl`
+  - [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.25.0+)
+  - a C compiler
+  - `node` (23.0.0+)
 
 <!-- markdownlint-restore -->
 
