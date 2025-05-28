@@ -8,9 +8,10 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    lazy = false, -- plugin does *not* support lazy-loading
+    event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
     branch = "main", -- eventually this will become the default branch
     build = ":TSUpdate",
+
     opts_extend = { "custom.ensure_installed" },
 
     ---@type {plugin:TSConfig,custom:table}
@@ -40,8 +41,37 @@ return {
 
     config = function(_, opts)
       local ts = require("nvim-treesitter")
+      local ts_config = require("nvim-treesitter.config")
+      local list = require("peter.util.list")
+
       ts.setup(opts.plugin)
-      ts.install(opts.custom.ensure_installed)
+
+      local ensure_installed = list.uniq(opts.custom.ensure_installed or {})
+
+      local already_installed = ts_config.installed_parsers()
+
+      local to_install = vim
+        .iter(ensure_installed)
+        :filter(function(parser)
+          return not vim.tbl_contains(already_installed, parser)
+        end)
+        :totable()
+
+      -- stylua: ignore
+      if #to_install > 0 then ts.install(to_install) end
+
+      -- enable treesitter highlighting if available
+      local autocmds = require("peter.util.autocmds")
+
+      vim.api.nvim_create_autocmd({ "FileType" }, {
+        group = autocmds.augroup("EnableTreesitterHighlighting"),
+        pattern = "*",
+        callback = function()
+          pcall(function()
+            vim.treesitter.start()
+          end)
+        end,
+      })
     end,
   },
 }
