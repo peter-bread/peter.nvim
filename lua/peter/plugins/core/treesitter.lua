@@ -65,6 +65,7 @@ return {
 
       vim.api.nvim_create_autocmd({ "FileType" }, {
         group = autocmds.augroup("EnableTreesitterHighlighting"),
+        desc = "Try to enable tree-sitter syntax highlighting",
         pattern = "*",
         callback = function()
           pcall(function()
