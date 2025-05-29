@@ -41,14 +41,13 @@ return {
 
     config = function(_, opts)
       local ts = require("nvim-treesitter")
-      local ts_config = require("nvim-treesitter.config")
       local list = require("peter.util.list")
 
       ts.setup(opts.plugin)
 
       local ensure_installed = list.uniq(opts.custom.ensure_installed or {})
 
-      local already_installed = ts_config.installed_parsers()
+      local already_installed = ts.get_installed()
 
       local to_install = vim
         .iter(ensure_installed)
