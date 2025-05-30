@@ -8,6 +8,8 @@ local M = {}
 ---
 --- Remove extension from filename.
 --- If `extension` is given, only remove that extension.
+--- If the filename does not contain an extension, or does not contain
+--- the given `extention`, the function will just return `filename`.
 ---
 --- # Usage
 ---
@@ -18,9 +20,10 @@ local M = {}
 --- strip_extension("hello.lua", "lua") -- "hello"
 --- strip_extension("bye.toml", "lua") -- "bye.toml"
 --- ```
-M.strip_extension = function(filename, extension)
+function M.strip_extension(filename, extension)
   local pattern = extension and ("%." .. extension .. "$") or "%.%w+$"
-  return (filename:gsub(pattern, "")) -- only return first value
+  local new_filename = filename:gsub(pattern, "")
+  return new_filename
 end
 
 return M
