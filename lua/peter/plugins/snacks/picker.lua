@@ -24,6 +24,7 @@ end
 return {
   {
     "folke/snacks.nvim",
+    optional = true,
 
     ---@type snacks.Config
     opts = {
@@ -38,6 +39,7 @@ return {
   },
   {
     "folke/which-key.nvim",
+    optional = true,
     ---@type wk.Opts
     opts = {
       spec = {

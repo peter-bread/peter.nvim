@@ -35,6 +35,7 @@ return {
   },
   {
     "folke/which-key.nvim",
+    optional = true,
     ---@type wk.Opts
     opts = {
       spec = {
