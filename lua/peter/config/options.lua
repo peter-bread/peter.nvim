@@ -9,7 +9,33 @@ vim.g.have_nerd_font = true     -- used for plugins that might need icons
 
 vim.g.markdown_recommended_style = 0 -- fix markdown indentation settings
 
-vim.g.needs_nvim_web_devicons = false -- used to tell mini.icons if it needs to export nvim_web_devicons functions
+--[[
+Used to tell mini.icons if it needs to export nvim_web_devicons functions.
+
+Default: `false`.
+
+This option can be set in two places:
+  1. in `lua/peter/config/options.lua`
+  2. in a plugin file **BEFORE** the spec is returned. (recommended for modularity)
+
+      Example:
+        ```lua
+        -- lua/peter/plugins/core/some-plugin.lua
+
+        vim.g.needs_nvim_web_devicons = true
+
+        ---@type LazyPluginSpec[]
+        return {
+          {
+            "someone/some-plugin",
+            opts = {...},
+            ...
+          },
+        }
+        ```
+]]
+---@type boolean
+vim.g.needs_nvim_web_devicons = false
 
 -- options =====================================================================
 
