@@ -67,9 +67,7 @@ return {
         desc = "Try to enable tree-sitter syntax highlighting",
         pattern = "*",
         callback = function()
-          pcall(function()
-            vim.treesitter.start()
-          end)
+          pcall(vim.treesitter.start)
         end,
       })
     end,
