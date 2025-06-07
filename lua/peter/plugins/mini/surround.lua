@@ -15,6 +15,8 @@ local mappings = {
   update_n_lines  = "gsn", -- update `n_lines`
 }
 
+local P = require("peter.util.plugins.plugins")
+
 ---@type LazyPluginSpec[]
 return {
   {
@@ -33,17 +35,8 @@ return {
       { mappings.update_n_lines,  desc = "Delete Surrounding" },
     },
   },
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    ---@type wk.Opts
-    opts = {
-      spec = {
-        {
-          mode = { "n", "v" },
-          { "gs", group = "surround" },
-        },
-      },
-    },
-  },
+  P.which_key({
+    mode = { "n", "v" },
+    { "gs", group = "surround" },
+  }),
 }

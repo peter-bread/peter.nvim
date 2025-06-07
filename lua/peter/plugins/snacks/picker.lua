@@ -20,6 +20,8 @@ local function pick(source, opts)
   end
 end
 
+local P = require("peter.util.plugins.plugins")
+
 ---@type LazyPluginSpec[]
 return {
   {
@@ -37,17 +39,8 @@ return {
       { "<leader>fr", pick("recent"), desc = "Recent" },
     },
   },
-  {
-    "folke/which-key.nvim",
-    optional = true,
-    ---@type wk.Opts
-    opts = {
-      spec = {
-        {
-          mode = { "n" },
-          { "<leader>f", group = "find" },
-        },
-      },
-    },
-  },
+  P.which_key({
+    mode = { "n" },
+    { "<leader>f", group = "find" },
+  })
 }
