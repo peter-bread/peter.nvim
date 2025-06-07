@@ -42,5 +42,5 @@ return {
   P.which_key({
     mode = { "n" },
     { "<leader>f", group = "find" },
-  })
+  }),
 }
