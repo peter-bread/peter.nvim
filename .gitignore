@@ -12,6 +12,7 @@
 .mise.local.toml
 
 # project-specific local nvim settings
+.nvim/
 .nvim.lua
 .nvimrc
 .exrc
