@@ -21,6 +21,6 @@ return {
 
     init = function()
       vim.g.matchup_treesitter_enabled = true
-    end
+    end,
   },
 }
