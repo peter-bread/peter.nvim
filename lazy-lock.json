@@ -7,6 +7,6 @@
   "nvim-autopairs": { "branch": "master", "commit": "4d74e75913832866aa7de35e4202463ddf6efd1b" },
   "nvim-treesitter": { "branch": "main", "commit": "ce903fde5d36d7955d34faaf0b812a186417e746" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
-  "vim-matchup": { "branch": "master", "commit": "ea2ff43e09e68b63fc6d9268fc5d82d82d433cb3" },
+  "vim-matchup": { "branch": "update-treesitter", "commit": "a60ea03019ad6c14ee2c737b74a180063e57dc71" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
