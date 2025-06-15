@@ -16,28 +16,27 @@ set("n", "<leader>-", "<C-W>s", { desc = "Split below" })
 set("n", "<leader>|", "<C-W>v", { desc = "Split right" })
 
 -- resize splits ---------------------------------------------------------------
+do
+  -- height
+  set("n", "<M-=>", "<cmd>resize +2<cr>", { desc = "Increase height" }) -- taller
+  set("n", "<M-->", "<cmd>resize -2<cr>", { desc = "Decrease height" }) -- shorter
 
--- height
-set("n", "<M-=>", "<cmd>resize +2<cr>", { desc = "Increase height" }) -- taller
-set("n", "<M-->", "<cmd>resize -2<cr>", { desc = "Decrease height" }) -- shorter
+  -- width
+  -- HACK: does not work the same with all terminal emulators
+  -- I think this is due to xterm-ghostty vs xterm-256screen terminfo entries
+  local split_width_lhs
 
--- width
--- HACK: does not work the same with all terminal emulators
--- I think this is due to xterm-ghostty vs xterm-256screen terminfo entries
-local split_width_lhs
+  if vim.list_contains({ "ghostty" }, vim.env.TERM_PROGRAM) then
+    split_width_lhs = { inc = "<M-S-=>", dec = "<M-S-->" }
+  else
+    split_width_lhs = { inc = "<M-+>", dec = "<M-_>" }
+  end
 
-if vim.list_contains({ "ghostty" }, vim.env.TERM_PROGRAM) then
-  split_width_lhs = { inc = "<M-S-=>", dec = "<M-S-->" }
-else
-  split_width_lhs = { inc = "<M-+>", dec = "<M-_>" }
+  -- stylua: ignore start
+  set("n", split_width_lhs.inc, "<cmd>vertical resize +2<cr>", { desc = "Increase width" }) -- wider
+  set("n", split_width_lhs.dec, "<cmd>vertical resize -2<cr>", { desc = "Decrease width" }) -- narrower
+  -- stylua: ignore end
 end
-
--- stylua: ignore start
-set("n", split_width_lhs.inc, "<cmd>vertical resize +2<cr>", { desc = "Increase width" }) -- wider
-set("n", split_width_lhs.dec, "<cmd>vertical resize -2<cr>", { desc = "Decrease width" }) -- narrower
--- stylua: ignore end
-
-split_width_lhs = nil
 
 -- buffers =====================================================================
 
