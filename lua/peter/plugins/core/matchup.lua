@@ -9,7 +9,10 @@ return {
     -- TODO: revert to main plugin once treesitter PR is merged. See below.
     -- "andymass/vim-matchup",
 
-    -- HACK: `vim-matchup` still depends on nvim-treesitter#master.
+    -- HACK: Latest release and main branch of vim-matchup still depend on
+    -- nvim-treesitter/nvim-treesitter@master. Currently I am using main and not
+    -- master, so these plugins are incompatible.
+    --
     -- This fork has removed that dependency.
     -- See:
     -- - https://github.com/andymass/vim-matchup/pull/390
