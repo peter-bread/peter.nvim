@@ -122,4 +122,7 @@ vim.o.confirm         = true      -- confirm saved changes before exiting buffer
 -- backspace over autoindent, line breaks and start of insert
 vim.o.backspace       = "indent,eol,start"
 
+-- enables project-local configuration
+vim.o.exrc            = true
+
 -- stylua: ignore end
