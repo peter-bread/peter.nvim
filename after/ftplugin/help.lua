@@ -1,4 +1,4 @@
--- smaller scrolloff as help usually viewed in a vertical split
+-- smaller scrolloff as help usually viewed in a horizontal split
 vim.wo.scrolloff = 4
 
 -- use `q` to close help page
