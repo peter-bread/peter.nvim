@@ -113,7 +113,46 @@ after/
 
 ### Languages
 
-TODO
+Programming languages are managed in `lua/peter/languages/<language>.lua`. Each
+of these files should return a table of type `peter.lang.config`. The type is
+defined below:
+
+```lua
+---@class peter.lang.config
+---@field lsp? string[] List of LSP servers to be enabled.
+---@field plugins? LazyPluginSpec[] Plugins to be installed.
+---@field ftplugin? peter.lang.config.ftplugin Buffer-specific options and config.
+
+---@class peter.lang.config.ftplugin
+---@field ft string|string[] Filetype(s) to run `callback` on.
+---@field callback fun(args: vim.api.keyset.create_autocmd.callback_args)
+```
+
+There is also still the option to use `after/ftplugin/<filetype>.lua` to set
+buffer-specific options.
+
+When populating the `plugins` field, it will be useful to use the accompanying
+utility functions, found in `lua/peter/util/plugins/languages.lua`. These remove
+some of the boilerplate code for extending the options of commonly used plugins.
+
+Language configs are processed in `lua/peter/languages/init.lua`. This creates
+a table which maps language name to its configuration. This table can be accessed
+with:
+
+```lua
+-- whole table
+require("peter.languages")
+
+-- just lua config
+require("peter.languages").lua
+
+-- or
+require("peter.languages")["lua"]
+```
+
+To make working with this table easier, utility functions are provided in
+`lua/peter/util/languages.lua`.
+
 
 <!-- Programming languages are configured in two places: -->
 <!---->
