@@ -5,8 +5,8 @@ local icons = {
   diagnostics = {
     Error = " ",
     Warn  = " ",
-    Hint  = " ",
-    -- Hint  = " ",
+    -- Hint  = " ",
+    Hint  = " ",
     Info  = " ",
   },
 
