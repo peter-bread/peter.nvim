@@ -12,9 +12,9 @@ local cfg = {
     telescope = {
       layout = {
          -- TODO: solid borders
-      }
-    }
-  }
+      },
+    },
+  },
 }
 
 ---Wrapper function to make config cleaner.
