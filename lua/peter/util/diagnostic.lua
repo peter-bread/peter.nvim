@@ -2,6 +2,7 @@
 ---@field jump fun(opts:vim.diagnostic.JumpOpts):(vim.Diagnostic?) Move to diagnostic.
 ---@field next fun(opts:vim.diagnostic.JumpOpts):(vim.Diagnostic?) Move to next diagnostic.
 ---@field prev fun(opts:vim.diagnostic.JumpOpts):(vim.Diagnostic?) Move to previous diagnostic.
+---@field current_line fun():vim.Diagnostic[]
 local M = {}
 
 ---@class peter.util.diagnostic.hidden
@@ -40,5 +41,14 @@ end
 function H.jump_opts(count, opts)
   return vim.tbl_extend("force", { count = count }, opts or {})
 end
+
+---Get diagnostics for current line.
+---@return vim.Diagnostic[]
+function M.current_line()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local line = vim.api.nvim_win_get_cursor(0)[1] - 1
+  return vim.diagnostic.get(bufnr, { lnum = line })
+end
+
 
 return M
