@@ -1,9 +1,9 @@
 ---@class peter.util.buffer
----@field can_edit fun(bufnr?:peter.core.bufnr):boolean
+---@field can_edit fun(bufnr?:integer):boolean
 local M = {}
 
 ---Check if a buffer is editable.
----@param bufnr? peter.core.bufnr Buffer to check. If no value is provided, the current buffer is used.
+---@param bufnr? integer Buffer to check. If no value is provided, the current buffer is used.
 ---@return boolean is_editable
 function M.can_edit(bufnr)
   bufnr = bufnr or 0
