@@ -50,5 +50,4 @@ function M.current_line()
   return vim.diagnostic.get(bufnr, { lnum = line })
 end
 
-
 return M
