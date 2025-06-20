@@ -61,16 +61,77 @@ set("v", ">", ">gv")
 
 -- diagnostics ==================================================================
 
-local diagnostic = require("peter.util.diagnostic")
+do
+  local diagnostic = require("peter.util.diagnostic")
 
--- stylua: ignore start
-set("n", "]d", diagnostic.next, { desc = "Next Diagnostic" })
-set("n", "[d", diagnostic.prev, { desc = "Prev Diagnostic" })
-set("n", "]e", function() diagnostic.next({ severity = "ERROR" }) end, { desc = "Next Error" })
-set("n", "[e", function() diagnostic.prev({ severity = "ERROR" }) end, { desc = "Prev Error" })
-set("n", "]w", function() diagnostic.next({ severity = "WARN" }) end, { desc = "Next Warning" })
-set("n", "[w", function() diagnostic.prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
--- stylua: ignore end
+  do
+    local virtual_lines_active = false
+    local virtual_text_config
+
+    -- inspiration:
+    -- https://www.reddit.com/r/neovim/comments/1jm5atz/replacing_vimdiagnosticopen_float_with_virtual
+    --
+    -- This is a 2-stage keymap.
+    --
+    -- First press:
+    --  - disable virtual text
+    --  - enable virtual lines
+    --
+    -- Second press:
+    --  - disable virtual lines
+    --  - re-enable virtual text (with correct settings)
+    --  - open and focus diagnostic float
+    set("n", "<leader>cd", function()
+      if vim.bo.buftype == "nofile" then
+        return
+      end
+
+      if virtual_lines_active then
+        -- state 2: focus float
+        vim.diagnostic.config({
+          virtual_lines = false,
+          virtual_text = virtual_text_config,
+        })
+
+        vim.diagnostic.open_float() -- open
+        vim.diagnostic.open_float() -- focus
+
+        virtual_lines_active = false
+      else
+        if vim.tbl_isempty(diagnostic.current_line()) then
+          return
+        end
+
+        virtual_text_config = vim.diagnostic.config().virtual_text
+
+        vim.diagnostic.config({
+          virtual_lines = { current_line = true },
+          virtual_text = false,
+        })
+
+        vim.api.nvim_create_autocmd("CursorMoved", {
+          group = require("peter.util.autocmds").augroup("LineDiagnostics"),
+          callback = function()
+            vim.diagnostic.config({ virtual_lines = false, virtual_text = virtual_text_config })
+            virtual_lines_active = false
+            return true
+          end,
+        })
+        virtual_lines_active = true
+      end
+    end, { desc = "Line Diagnostics" })
+  end
+
+  -- stylua: ignore start
+  set("n", "]d", diagnostic.next, { desc = "Next Diagnostic" })
+  set("n", "[d", diagnostic.prev, { desc = "Prev Diagnostic" })
+  set("n", "]e", function() diagnostic.next({ severity = "ERROR" }) end, { desc = "Next Error" })
+  set("n", "[e", function() diagnostic.prev({ severity = "ERROR" }) end, { desc = "Prev Error" })
+  set("n", "]w", function() diagnostic.next({ severity = "WARN" }) end, { desc = "Next Warning" })
+  set("n", "[w", function() diagnostic.prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
+  -- stylua: ignore end
+
+end
 
 -- general =====================================================================
 
