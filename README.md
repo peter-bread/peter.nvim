@@ -184,3 +184,27 @@ return {
   },
 }
 ```
+
+If you prefer to use `after/ftplugin`, you can split this config into two files:
+
+```lua
+-- lua/peter/languages/lua.lua
+
+local L = require("peter.util.plugins.languages")
+
+---@type peter.lang.config
+return {
+  lsp = { "lua_ls" }, -- enable lua language server
+
+  plugins = {
+    L.treesitter({ "lua", "luadoc" }), -- install parsers
+    L.mason({ "lua_ls", "stylua" }),   -- install LSP and formatter
+  },
+}
+```
+
+```lua
+-- after/ftplugin/lua.lua
+
+vim.bo.shiftwidth = 4
+```
