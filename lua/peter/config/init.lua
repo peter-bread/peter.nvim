@@ -1,6 +1,7 @@
 require("peter.config.globals")
 require("peter.config.options")
 require("peter.config.filetypes")
+require("peter.config.diagnostic")
 require("peter.config.lazy")
 require("peter.config.keymaps")
 require("peter.config.autocmds")
