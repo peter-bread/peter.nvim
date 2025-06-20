@@ -98,6 +98,7 @@ do
 
         virtual_lines_active = false
       else
+        -- state 1: switch to virtual lines if there are diagnostics on current line
         if vim.tbl_isempty(diagnostic.current_line()) then
           return
         end
