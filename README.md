@@ -160,38 +160,27 @@ require("peter.languages")["lua"]
 To make working with this table easier, utility functions are provided in
 `lua/peter/util/languages.lua`.
 
+Example config to set up the Lua programming language:
 
-<!-- Programming languages are configured in two places: -->
-<!---->
-<!-- <!-- markdownlint-disable MD013 --> -->
-<!---->
-<!-- - [`lua/plugins/languages`](https://github.com/peter-bread/peter.nvim/tree/main/lua/peter/plugins/languages): plugin configuration -->
-<!-- - [`after/ftplugin`](https://github.com/peter-bread/peter.nvim/tree/main/after/ftplugin): extra configuration (e.g. `vim.bo`, snippets\*) -->
-<!---->
-<!-- You can use [`require("peter.util.new_lang")`](https://github.com/peter-bread/peter.nvim/blob/main/lua/peter/util/new_lang.lua) to access a wrapper module that simplifies -->
-<!-- some plugin setup for progamming languages. -->
-<!---->
-<!-- <!-- markdownlint-restore --> -->
-<!---->
-<!-- It is useful for: -->
-<!---->
-<!-- - treesitter (installing parsers) -->
-<!-- - mason (package manager for external editor tooling, e.g. lsp, formatters, etc.) -->
-<!-- - lspconfig (setting up LSP) -->
-<!-- - format (setting up formatting) -->
-<!-- - lint (setting up linting) -->
-<!-- - test (set up testing) -->
-<!-- - dap (set up debugging) -->
-<!---->
-<!-- On top of that, you can include other plugins, but you need to set them up manually. -->
-<!---->
-<!-- ## License -->
-<!---->
-<!-- Licensed under [MIT](./LICENSE), feel free to use any parts you like. -->
-<!---->
-<!-- Code taken from other external projects is detailed [here](./THIRD_PARTY.md). -->
-<!---->
-<!-- --- -->
-<!---->
-<!-- \* Snippets can also be set in `snippets/snippets/<language>.json` (global) and -->
-<!-- `.vscode/*.code-snippets` (project-specific.) -->
+```lua
+-- lua/peter/languages/lua.lua
+
+local L = require("peter.util.plugins.languages")
+
+---@type peter.lang.config
+return {
+  lsp = { "lua_ls" }, -- enable lua language server
+
+  plugins = {
+    L.treesitter({ "lua", "luadoc" }), -- install parsers
+    L.mason({ "lua_ls", "stylua" }),   -- install LSP and formatter
+  },
+
+  ftplugin = {
+    ft = "lua", -- run on lua files
+    callback = function() -- function to be executed for each lua file
+      vim.bo.shiftwidth = 4
+    end,
+  },
+}
+```
