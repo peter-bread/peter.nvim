@@ -42,23 +42,12 @@ My first proper Neovim config.
     - `tar` (or `gtar`)
     - `gzip`
   - External language runtimes & package managers:
-    - [ruby](https://www.ruby-lang.org/en/)
-      - `ruby`
-      - `gem`
-    - [go](https://go.dev/)
-      - `go`
-    - [java](https://openjdk.org/)
-      - `java`
-      - `javac`
-    - [python](https://www.python.org/)
-      - `python`
-      - `pip`
-      - `venv`
-    - [rust](https://www.rust-lang.org/)
-      - `cargo`
-    - [node.js](https://nodejs.org/en)
-      - `node`
-      - `npm`
+    - [ruby](https://www.ruby-lang.org/en/): `ruby`, `gem`
+    - [go](https://go.dev/): `go`
+    - [java](https://openjdk.org/): `java`, `javac`
+    - [python](https://www.python.org/): `python`, `pip`, `venv`
+    - [rust](https://www.rust-lang.org/): `cargo`
+    - [node.js](https://nodejs.org/en): `node`, `npm`
 - [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/tree/main)):
   - `tar`
   - `curl`
