@@ -29,25 +29,23 @@ end
 
 local P = require("peter.util.plugins.plugins")
 
----@type LazyPluginSpec[]
 return {
-  {
-    "folke/snacks.nvim",
-    optional = true,
+  P.snacks({ picker = cfg }, {
+    -- general
+    { "<leader>S", function() require("snacks").picker() end, desc = "Search" },
 
-    ---@type snacks.Config
-    opts = {
-      picker = cfg,
-    },
+    -- find
+    { "<leader>ff", pick("files"), desc = "Files" },
+    { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "Files" },
+    { "<leader>fr", pick("recent"), desc = "Recent" },
 
-    keys = {
-      -- find
-      { "<leader>ff", pick("files"), desc = "Files" },
-      { "<leader>fr", pick("recent"), desc = "Recent" },
-    },
-  },
+    -- search
+    { "<leader>sg", pick("grep"), desc = "Grep" },
+  }),
+
   P.which_key({
     mode = { "n" },
     { "<leader>f", group = "find" },
+    { "<leader>s", group = "search" },
   }),
 }

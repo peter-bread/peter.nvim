@@ -1,4 +1,5 @@
 ---@module "which-key"
+---@module "snacks"
 
 ---@class peter.util.plugins.plugins
 ---@field which_key fun(spec:wk.Spec):LazyPluginSpec
@@ -28,6 +29,39 @@ function M.which_key(spec)
     opts = {
       spec = { spec },
     },
+  }
+end
+
+---Add snacks module.
+---Plugin: [snacks.nvim](https://github.com/folke/snacks.nvim)
+---
+---Usage:
+---
+---```lua
+--- local P = require("peter.util.plugins.plugins")
+---
+--- ---@type snacks.notifier.Config
+--- local cfg = {
+---   enabled = true,
+---   timeout = 5000,
+---   style = "compact",
+---   sort = { "added" },
+--- }
+--- 
+--- return {
+---   P.snacks({ notifier = cfg })
+--- }
+---```
+---@param opts snacks.Config
+---@param keys? LazyKeysSpec[]
+---@return LazyPluginSpec
+function M.snacks(opts, keys)
+  ---@type LazyPluginSpec
+  return {
+    "folke/snacks.nvim",
+    optional = true,
+    opts = opts,
+    keys = keys,
   }
 end
 
