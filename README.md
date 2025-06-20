@@ -34,18 +34,36 @@ My first proper Neovim config.
 - Fuzzy finding ([snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md)):
   - [`fd`](https://github.com/sharkdp/fd)
   - [`ripgrep`](https://github.com/BurntSushi/ripgrep)
-- Any tools needed to install or run tools from mason:
-  - node
-  - cargo
-  - python
-  - go
-  - ruby
-  - java
-- [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/tree/main) dependencies:
+- Installing dev tools ([mason.nvim](https://github.com/mason-org/mason.nvim)):
+  - General:
+    - `git`
+    - `curl` or `GNU wget`
+    - `unzip`
+    - `tar` (or `gtar`)
+    - `gzip`
+  - External language runtimes & package managers:
+    - [ruby](https://www.ruby-lang.org/en/)
+      - `ruby`
+      - `gem`
+    - [go](https://go.dev/)
+      - `go`
+    - [java](https://openjdk.org/)
+      - `java`
+      - `javac`
+    - [python](https://www.python.org/)
+      - `python`
+      - `pip`
+      - `venv`
+    - [rust](https://www.rust-lang.org/)
+      - `cargo`
+    - [node.js](https://nodejs.org/en)
+      - `node`
+      - `npm`
+- [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/tree/main)):
   - `tar`
   - `curl`
   - [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.25.0+)
-  - a C compiler
+  - a C compiler (e.g. `cc`, `gcc`, `clang`)
   - `node` (23.0.0+)
 
 <!-- markdownlint-restore -->
