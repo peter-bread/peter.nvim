@@ -22,14 +22,14 @@ end
 ---@param opts? vim.diagnostic.JumpOpts
 ---@return (vim.Diagnostic)?
 function M.next(opts)
-  return M.jump(H.jump_opts(1, opts))
+  return M.jump(H.jump_opts(vim.v.count1, opts))
 end
 
 ---Move to previous diagnostic.
 ---@param opts? vim.diagnostic.JumpOpts
 ---@return (vim.Diagnostic)?
 function M.prev(opts)
-  return M.jump(H.jump_opts(-1, opts))
+  return M.jump(H.jump_opts(-vim.v.count1, opts))
 end
 
 ---Set `JumpOpts` for `vim.diagnostic.jump`.
