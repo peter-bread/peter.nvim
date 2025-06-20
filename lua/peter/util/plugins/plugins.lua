@@ -47,7 +47,7 @@ end
 ---   style = "compact",
 ---   sort = { "added" },
 --- }
---- 
+---
 --- return {
 ---   P.snacks({ notifier = cfg })
 --- }
