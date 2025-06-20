@@ -15,8 +15,8 @@ local icons = {
     modified  = " ",
     removed   = " ",
 
-    ignored = " ",
-    renamed = " ",
+    ignored   = " ",
+    renamed   = " ",
   },
 
   kinds = {},
