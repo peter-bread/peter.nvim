@@ -208,3 +208,8 @@ return {
 
 vim.bo.shiftwidth = 4
 ```
+
+Allowing both methods gives most flexibilty to users.
+
+Either put it in all in one file to be more centralised or split and conform to
+historic (Neo)vim conventions.
