@@ -48,7 +48,7 @@ My first proper Neovim config.
     - [python](https://www.python.org/): `python`, `pip`, `venv`
     - [rust](https://www.rust-lang.org/): `cargo`
     - [node.js](https://nodejs.org/en): `node`, `npm`
-- [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/tree/main)):
+- Language Parsers ([`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/tree/main)):
   - `tar`
   - `curl`
   - [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.25.0+)
