@@ -213,3 +213,20 @@ Allowing both methods gives most flexibilty to users.
 
 Either put it in all in one file to be more centralised or split and conform to
 historic (Neo)vim conventions.
+
+### LSP
+
+LSP servers are configured separately. LSP configuration is done in one of two
+places:
+
+1. `after/lsp/<lsp_server>.lua`
+2. `.nvim/lsp/<lsp_server>.lua` (for project-local config, if `exrc` is enabled)
+
+In the second case, make sure `vim.o.exrc = true` and that you also create
+`.nvim.lua` with the following code:
+
+```lua
+-- .nvim.lua
+
+vim.cmd([[set runtimepath+=.nvim]])
+```
