@@ -40,6 +40,7 @@ require("lazy").setup({
     { import = "peter.plugins.core" },
     { import = "peter.plugins.mini" },
     { import = "peter.plugins.snacks" },
+    { import = "peter.plugins.lsp" },
     { lang_plugins },
   },
   install = {
