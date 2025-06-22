@@ -276,23 +276,21 @@ function M.set_default_keymaps(client, bufnr)
   -- stylua: ignore end
 
   if client:supports_method("textDocument/rename") then
-    local ok, wk = pcall(require, "which-key")
-    if ok then
-      wk.add({
+    require("peter.util.lazy").on_load("which-key.nvim", function()
+      require("which-key").add({
         mode = { "n" },
         { "<leader>c", group = "code" },
       })
-    end
+    end)
   end
 
   if client:supports_method("textDocument/codeAction") then
-    local ok, wk = pcall(require, "which-key")
-    if ok then
-      wk.add({
+    require("peter.util.lazy").on_load("which-key.nvim", function()
+      require("which-key").add({
         mode = { "n", "v" },
         { "<leader>c", group = "code" },
       })
-    end
+    end)
   end
 end
 
@@ -301,7 +299,7 @@ end
 --[[ ---------- END OF API FUNCTIONS. START OF HELPER FUNCTIONS. ---------- ]]
 --
 --[[ ---------------------------------------------------------------------- ]]
---
+
 
 ---Check LSP method support.
 ---@param client vim.lsp.Client
