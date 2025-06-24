@@ -16,9 +16,7 @@ local P = require("peter.util.plugins.plugins")
 return {
   {
     "mason-org/mason.nvim",
-    event = "VeryLazy",
     lazy = true,
-    cmd = "Mason",
     keys = {
       { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
     },
