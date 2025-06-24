@@ -136,7 +136,10 @@ defined below:
 ```
 
 There is also still the option to use `after/ftplugin/<filetype>.lua` to set
-buffer-specific options.
+buffer-specific options. However, it can be easier to use the table approach
+above as `ftplugin.ft` *can* be a list, so you can apply the same options to
+multiple filetypes while only writing the code once, for example Haskell and
+Cabal files.
 
 When populating the `plugins` field, it will be useful to use the accompanying
 utility functions, found in `lua/peter/util/plugins/languages.lua`. These remove
