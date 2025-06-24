@@ -7,6 +7,8 @@
 --
 -- I only need mason-lspconfig.nvim for lspconfig mappings for mason-tool-installer.nvim,
 -- but I can get these directly using mason.nvim.
+--
+-- EDIT: mason-lspconfig.nvim also provides auto generated filetype mappings.
 
 local P = require("peter.util.plugins.plugins")
 
