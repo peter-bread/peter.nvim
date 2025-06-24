@@ -71,9 +71,11 @@ return {
 
       -- install async when using UI (default)
       -- install synchronously when in headless mode (scripting)
-      local headless = #vim.api.nvim_list_uis() == 0
-      local cmd = headless and "MasonToolsInstallSync" or "MasonToolsInstall"
-      vim.schedule(function() vim.cmd(cmd) end)
+      local is_headless = #vim.api.nvim_list_uis() == 0
+
+      vim.schedule(function()
+        require("mason-tool-installer").check_install(false, is_headless)
+      end)
     end,
   },
 }
