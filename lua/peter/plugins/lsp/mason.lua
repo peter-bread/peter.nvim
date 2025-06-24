@@ -21,7 +21,15 @@ return {
       { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
     },
     build = ":MasonUpdate",
-    opts = {},
+    opts = {
+      ui = {
+        icons = {
+          package_installed = "󰸞 ",
+          package_pending = "󱥸 ",
+          package_uninstalled = "󱎘 ",
+        },
+      },
+    },
   },
   P.which_key({
     mode = { "n" },
