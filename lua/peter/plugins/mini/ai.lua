@@ -7,6 +7,13 @@
 return {
   {
     "echasnovski/mini.ai",
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        branch = "main",
+        lazy = true
+      },
+    },
     event = { "BufReadPost", "BufNewFile" },
 
     -- TODO: finish configuring
