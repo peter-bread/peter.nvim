@@ -12,6 +12,6 @@
   "nvim-lspconfig": { "branch": "master", "commit": "036885e8e5456d3907626b634693234f628afef6" },
   "nvim-treesitter": { "branch": "main", "commit": "ce903fde5d36d7955d34faaf0b812a186417e746" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
-  "vim-matchup": { "branch": "update-treesitter", "commit": "a60ea03019ad6c14ee2c737b74a180063e57dc71" },
+  "vim-matchup": { "branch": "update-treesitter", "commit": "9abb3579b268ff5694af0dd877b423f57f111d24" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
