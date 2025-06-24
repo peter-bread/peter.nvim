@@ -1,6 +1,6 @@
 ---@module "lazy"
 
--- better text-objects
+-- better a/i text-objects
 --
 
 ---@type LazyPluginSpec[]
