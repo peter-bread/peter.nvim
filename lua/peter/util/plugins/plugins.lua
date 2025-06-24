@@ -8,17 +8,40 @@ local M = {}
 ---Add which-key keymap groups.
 ---Plugin: [which-key.nvim](https://github.com/folke/which-key.nvim).
 ---
+---Use this when the groups being added are part of lazy-loading keymaps,
+---i.e. the plugin spec uses the `keys` field. This is because the group
+---descriptions should be availble *before* the plugin loads.
+---
+---
 ---Usage:
 ---
 ---```lua
 --- local P = require("peter.util.plugins.plugins")
 ---
 --- return {
+---   {
+---     "some/plugin.nvim",
+---     keys = {
+---       { "<leader>cz", ... },
+---     },
+---   },
 ---   P.which_key({
 ---     mode = { "n" },
 ---     { "<leader>c", group = "code" },
 ---   }),
 --- }
+---```
+---
+---If groups or descriptions should only appear *after* a plugin is loaded,
+---use the following snippet in that plugin's `config` field:
+---
+---```lua
+--- require("peter.util.lazy").on_load("plugin.nvim", function()
+---   require("which-key").add({
+---     mode = { ... },
+---     { ... },
+---   })
+--- end)
 ---```
 ---@param spec wk.Spec
 ---@return LazyPluginSpec
