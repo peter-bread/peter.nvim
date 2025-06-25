@@ -41,6 +41,7 @@ return {
 
     -- search
     { "<leader>sg", pick("grep"), desc = "Grep" },
+    { "<leader>ss", pick("lsp_symbols"), desc = "LSP Symbols" },
   }),
 
   P.which_key({
