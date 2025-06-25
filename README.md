@@ -243,7 +243,7 @@ can overwrite or extend these configurations in `after/lsp/<lsp_server>.lua`.
 >
 > See [here](https://github.com/neovim/nvim-lspconfig/issues/3705) for LSP servers
 > that are not (yet) compatible with `vim.lsp.{enable,config}`. These servers need
-> to be set up with `require("lspconfig)[server_name].setup(server_cgf)`.
+> to be set up with `require("lspconfig)[server_name].setup(server_cfg)`.
 > Currently, this is not supported in this Neovim config. This will only
 > be supported if I ever need to use one of these LSP servers, which is
 > unlikely.
