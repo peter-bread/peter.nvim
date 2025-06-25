@@ -36,7 +36,7 @@ return {
 
     -- find
     { "<leader>ff", pick("files"), desc = "Files" },
-    { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "Files" },
+    { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "All Files" },
     { "<leader>fr", pick("recent"), desc = "Recent" },
 
     -- search
