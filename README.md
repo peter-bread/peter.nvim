@@ -235,8 +235,8 @@ vim.cmd([[set runtimepath+=.nvim]])
 ```
 
 These files should return a table of type `vim.lsp.Config`.
-The [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) is used to
-provide sane default configurations for all language servers. As a user, you
+The [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) plugin is used
+to provide sane default configurations for all language servers. As a user, you
 can overwrite or extend these configurations in `after/lsp/<lsp_server>.lua`.
 
 > [!WARNING]
