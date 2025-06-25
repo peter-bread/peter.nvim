@@ -53,6 +53,7 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     event = "VeryLazy",
+    dependencies = { "mason.nvim", "mason-lspconfig.nvim" },
     opts_extend = { "ensure_installed" },
     opts = {
       integrations = {
