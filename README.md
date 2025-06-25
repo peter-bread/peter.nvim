@@ -234,8 +234,16 @@ In the second case, make sure `vim.o.exrc = true` and that you also create
 vim.cmd([[set runtimepath+=.nvim]])
 ```
 
-In most cases, these files should return a table of type `vim.lsp.Config`. See
-[here](https://github.com/neovim/nvim-lspconfig/issues/3705) for exceptions.
+These files should return a table of type `vim.lsp.Config`.
 The [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) is used to
 provide sane default configurations for all language servers. As a user, you
 can overwrite or extend these configurations in `after/lsp/<lsp_server>.lua`.
+
+> [!WARNING]
+>
+> See [here](https://github.com/neovim/nvim-lspconfig/issues/3705) for LSP servers
+> that are not (yet) compatible with `vim.lsp.{enable,config}`. These servers need
+> to be set up with `require("lspconfig)[server_name].setup(server_cgf)`.
+> Currently, this is not supported in this Neovim config. This will only
+> be supported if I ever need to use one of these LSP servers, which is
+> unlikely.
