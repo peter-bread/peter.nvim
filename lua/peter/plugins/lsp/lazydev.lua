@@ -1,5 +1,7 @@
 ---@module "lazydev"
 
+local P = require("peter.util.plugins.plugins")
+
 ---@type LazyPluginSpec[]
 return {
   {
@@ -28,7 +30,8 @@ return {
               .. root
               .. ".\nPrioritising `.lazydev_enabled`."
               .. "\nConsider removing one of these files.",
-            vim.log.levels.WARN)
+            vim.log.levels.WARN
+          )
           return true
         end
 
@@ -56,4 +59,14 @@ return {
       end,
     },
   },
+  P.blink({
+    default = { "lazydev" },
+    providers = {
+      lazydev = {
+        name = "LazyDev",
+        module = "lazydev.integrations.blink",
+        score_offset = 100,
+      },
+    },
+  }),
 }

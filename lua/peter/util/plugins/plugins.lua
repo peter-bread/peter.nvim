@@ -1,5 +1,6 @@
 ---@module "which-key"
 ---@module "snacks"
+---@module "blink-cmp"
 
 ---@class peter.util.plugins.plugins
 ---@field which_key fun(spec:wk.Spec):LazyPluginSpec
@@ -85,6 +86,18 @@ function M.snacks(opts, keys)
     optional = true,
     opts = opts,
     keys = keys,
+  }
+end
+
+---Add completion sources.
+---Plugin: [blink.cmp](https://github.com/Saghen/blink.cmp).
+---@param sources blink.cmp.SourceConfigPartial
+---@return LazyPluginSpec
+function M.blink(sources)
+  return {
+    "Saghen/blink.cmp",
+    optional = true,
+    opts = { sources = sources or {} },
   }
 end
 
