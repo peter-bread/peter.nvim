@@ -13,6 +13,7 @@ return {
     opts = function()
       local ai = require("mini.ai")
       return {
+        -- stylua: ignore
         custom_textobjects = {
           -- use builtin text-objects as they seem to handle escaped characters
           -- better.
@@ -38,14 +39,14 @@ return {
 
       require("peter.util.lazy").on_load("which-key.nvim", function()
         local objects = {
-          { "(", desc = "balanced ()" },
-          { ")", desc = "balanced () with ws" },
-          { "[", desc = "balanced []" },
-          { "]", desc = "balanced [] with ws" },
-          { "{", desc = "balanced {}" },
-          { "}", desc = "balanced {} with ws" },
-          { "<", desc = "balanced <" },
-          { ">", desc = "balanced > with ws" },
+          { "(", desc = "() block" },
+          { ")", desc = "() block with ws" },
+          { "[", desc = "[] block" },
+          { "]", desc = "[] block with ws" },
+          { "{", desc = "{} block" },
+          { "}", desc = "{} block with ws" },
+          { "<", desc = "< block" },
+          { ">", desc = "> block with ws" },
 
           { '"', desc = 'balanced "' },
           { "'", desc = "balanced '" },
@@ -54,7 +55,7 @@ return {
           { "?", desc = "user prompt" },
 
           { "a", desc = "argument" },
-          { "b", desc = "balanced )]}" },
+          { "b", desc = ")]} block" },
           { "c", desc = "class" },
           { "f", desc = "function" },
           { "F", desc = "function call" },
@@ -90,7 +91,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     branch = "main",
-    lazy = true
+    lazy = true,
     -- NOTE: if this plugin ever needs its own config, consider moving to its
     -- own file.
   },
