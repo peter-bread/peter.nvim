@@ -30,6 +30,19 @@ return {
         },
       },
     },
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "mason",
+        callback = function(ev)
+          require("peter.util.lazy").on_load("which-key.nvim", function()
+            require("which-key").add({
+              mode = { "n" },
+              { "g?", desc = "Toggle Mason Help", buffer = ev.buf },
+            })
+          end)
+        end,
+      })
+    end,
   },
   P.which_key({
     mode = { "n" },
