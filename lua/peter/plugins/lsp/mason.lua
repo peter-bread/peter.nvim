@@ -56,10 +56,11 @@ return {
     dependencies = { "mason.nvim", "mason-lspconfig.nvim" },
     opts_extend = { "ensure_installed" },
     opts = {
+      -- stylua: ignore
       integrations = {
         ["mason-lspconfig"] = true,
-        ["mason-null-ls"] = false,
-        ["mason-nvim-dap"] = false,
+        ["mason-null-ls"]   = false,
+        ["mason-nvim-dap"]  = false,
       },
       run_on_start = false,
     },
