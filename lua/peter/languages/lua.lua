@@ -7,5 +7,6 @@ return {
   plugins = {
     L.treesitter({ "lua", "luadoc" }),
     L.mason({ "lua_ls", "stylua" }),
+    L.format({ lua = { "stylua" } }),
   },
 }
