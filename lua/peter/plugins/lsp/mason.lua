@@ -32,6 +32,7 @@ return {
     },
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
+        group = require("peter.util.autocmds").augroup("MasonKeymapDesc"),
         pattern = "mason",
         callback = function(ev)
           require("peter.util.lazy").on_load("which-key.nvim", function()
