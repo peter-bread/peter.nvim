@@ -177,6 +177,7 @@ return {
   plugins = {
     L.treesitter({ "lua", "luadoc" }), -- install parsers
     L.mason({ "lua_ls", "stylua" }),   -- install LSP and formatter
+    L.format({ lua = { "stylua" } }),  -- register formatter
   },
 
   ftplugin = {
@@ -202,6 +203,7 @@ return {
   plugins = {
     L.treesitter({ "lua", "luadoc" }), -- install parsers
     L.mason({ "lua_ls", "stylua" }),   -- install LSP and formatter
+    L.format({ lua = { "stylua" } }),  -- register formatter
   },
 }
 ```
