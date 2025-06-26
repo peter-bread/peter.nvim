@@ -30,11 +30,11 @@ My first proper Neovim config.
 <!-- markdownlint-disable MD013 -->
 
 - [`git`](https://git-scm.com/)
-- Neovim 0.11+ (and it's dependencies)
-- Fuzzy finding ([snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md)):
+- [Neovim](https://neovim.io/) 0.11+ (and it's dependencies)
+- Fuzzy finding ([`snacks.picker`](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md)):
   - [`fd`](https://github.com/sharkdp/fd)
   - [`ripgrep`](https://github.com/BurntSushi/ripgrep)
-- Installing dev tools ([mason.nvim](https://github.com/mason-org/mason.nvim)):
+- Installing dev tools ([`mason.nvim`](https://github.com/mason-org/mason.nvim)):
   - General:
     - `git`
     - `curl` or `GNU wget`
