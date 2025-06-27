@@ -1,6 +1,12 @@
 ---@class peter.util.strings
 local M = {}
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Capitalise a word.
 ---First letter will be uppercase, all others lowercase.
 ---@param word string

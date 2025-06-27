@@ -1,6 +1,12 @@
 ---@class peter.util.table
 local M = {}
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Return a copy of `tbl` with `keys` removed.
 ---@param tbl table Original table.
 ---@param keys string[] Keys to be removed.

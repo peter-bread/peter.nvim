@@ -1,6 +1,12 @@
 ---@class peter.util.buffer
 local M = {}
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Check if a buffer is editable.
 ---@param bufnr? integer Buffer to check. If no value is provided, the current buffer is used.
 ---@return boolean is_editable

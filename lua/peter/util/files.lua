@@ -1,6 +1,12 @@
 ---@class peter.util.files
 local M = {}
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Remove extension from filename.
 ---
 ---If `extension` is given, only remove that extension.

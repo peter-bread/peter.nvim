@@ -1,6 +1,12 @@
 ---@class peter.util.list
 local M = {}
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Remove duplicate elements from a list.
 ---@param list any[] List to remove duplicates from.
 ---@return any[] new_list List with duplicates removed.

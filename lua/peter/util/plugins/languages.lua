@@ -7,6 +7,12 @@
 ---@class peter.util.plugins.lang
 local M = {}
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Add treesitter parsers to be installed.
 ---Plugin: [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/tree/main).
 ---@param parsers string[] List of parser names.

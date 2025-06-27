@@ -5,6 +5,12 @@
 ---@class peter.util.plugins.plugins
 local M = {}
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Add which-key keymap groups.
 ---Plugin: [which-key.nvim](https://github.com/folke/which-key.nvim).
 ---

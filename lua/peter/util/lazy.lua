@@ -5,6 +5,12 @@ local M = {}
 -- local x = require("lazy.core.config").plugins[plugin]
 -- local y = require("lazy.core.config").spec.plugins[plugin]
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Check whether a `plugin` has been loaded by lazy.nvim.
 ---@param plugin string
 ---@return ({ [string]: string }|{ time: number }) | nil

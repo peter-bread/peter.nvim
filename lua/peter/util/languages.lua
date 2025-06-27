@@ -1,6 +1,12 @@
 ---@class peter.util.languages
 local M = {}
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Run `fn` on all language configs.
 ---@param fn fun(name:string, cfg:peter.lang.config) Function to run for each language.
 function M.for_each(fn)

@@ -1,6 +1,12 @@
 ---@class peter.util.autocmds
 local M = {}
 
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
 ---Create an augroup in the "Peter" namespace.
 ---@param name string Name of augroup
 ---@return integer id ID of the created group
