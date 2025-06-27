@@ -88,7 +88,7 @@ gh repo clone peter-bread/peter.nvim "$XDG_CONFIG_HOME/$NVIM_APPNAME"
 
 ### General
 
-The entry point is the top-level `init.lua`.
+The entry point is the top-level [`init.lua`](./init.lua).
 
 The majority of configuration can be found in `lua/peter/`.
 
