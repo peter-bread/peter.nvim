@@ -19,6 +19,8 @@
 
 My modular, relatively minimal Neovim config for MacOS and Linux.
 
+---
+
 ## Requirements
 
 <!-- markdownlint-disable MD013 -->
