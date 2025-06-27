@@ -19,7 +19,6 @@ lsp.on_attach(function(client, bufnr)
       callback = vim.lsp.codelens.refresh,
     })
   end
-
 end)
 
 do
@@ -39,8 +38,12 @@ do
 
       local value = ev.data.params.value
       local token = ev.data.params.token
-      if not (value and token) then return end
 
+      if not (value and token) then
+        return
+      end
+
+      -- stylua: ignore
       active_tokens_by_client[client_id] = active_tokens_by_client[client_id] or {}
 
       -- active tokens for the current client
@@ -53,7 +56,9 @@ do
 
         -- check if all tokens are done
         for _, active in pairs(active_tokens) do
-          if active then return end
+          if active then
+            return
+          end
         end
 
         -- no more progress, we're idle

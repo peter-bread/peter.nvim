@@ -11,7 +11,7 @@ local cfg = {
   layouts = {
     telescope = {
       layout = {
-         -- TODO: solid borders
+        -- TODO: solid borders
       },
     },
   },
@@ -30,9 +30,10 @@ end
 local P = require("peter.util.plugins.plugins")
 
 return {
+  -- stylua: ignore
   P.snacks({ picker = cfg }, {
     -- general
-    { "<leader>S", function() require("snacks").picker() end, desc = "Search" },
+    { "<leader>S", require("snacks").picker.pick, desc = "Search" },
 
     -- find
     { "<leader>ff", pick("files"), desc = "Files" },

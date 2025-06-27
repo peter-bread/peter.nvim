@@ -23,7 +23,7 @@ return {
         setType     = false,      -- show inferred types at assignment
       },
       hover = {
-        previewFields = 1000
+        previewFields = 1000,
       },
       workspace = {
         checkThirdParty = false,

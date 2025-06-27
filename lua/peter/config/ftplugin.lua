@@ -2,7 +2,6 @@ local languages = require("peter.util.languages")
 
 ---@param ftplugin peter.lang.config.ftplugin
 local function create_ft_autocmd(ftplugin)
-
   ---@type string
   local name
 
@@ -14,9 +13,11 @@ local function create_ft_autocmd(ftplugin)
   local augroup = require("peter.util.autocmds").augroup
 
   if type(ftplugin.ft) == "string" then
-    name = capitalise(ftplugin.ft --[[@as string]])
+    ---@diagnostic disable-next-line: param-type-mismatch
+    name = capitalise(ftplugin.ft)
   else
-    name = table.concat(vim.tbl_map(capitalise, ftplugin.ft --[[@as table<string>]]))
+    ---@diagnostic disable-next-line: param-type-mismatch
+    name = table.concat(vim.tbl_map(capitalise, ftplugin.ft))
   end
 
   vim.api.nvim_create_autocmd("FileType", {

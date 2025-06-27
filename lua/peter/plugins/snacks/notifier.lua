@@ -12,5 +12,5 @@ local cfg = {
 }
 
 return {
-  P.snacks({ notifier = cfg })
+  P.snacks({ notifier = cfg }),
 }
