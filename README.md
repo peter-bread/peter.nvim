@@ -100,7 +100,7 @@ lua/peter/
 │   ├── filetypes.lua           - Add custom filetypes
 │   ├── ftplugin.lua            - Set up filetype-specific behaviour (from language config)
 │   ├── globals.lua             - Global functions for debugging only
-│   ├── init.lua                - Entry point for config module; requires all other modules in config
+│   ├── init.lua                - Entry point for config module
 │   ├── keymaps.lua             - Set keymaps
 │   ├── lazy.lua                - Bootstrap and configure lazy.nvim plugin manager
 │   ├── lsp.lua                 - Set up LSP (from language config)
