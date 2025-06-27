@@ -143,6 +143,7 @@ set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- super esc
 set({ "n", "i", "s" }, "<esc>", function()
+  vim.snippet.stop() -- exit current snippet (native snippets only)
   vim.cmd("noh") -- clear search
   return "<esc>" -- standard esc behaviour
 end, { expr = true, desc = "Escape+" }) -- expr to make sure "<esc>" is actually evaluated
