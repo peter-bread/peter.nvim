@@ -113,7 +113,10 @@ do
         vim.api.nvim_create_autocmd("CursorMoved", {
           group = require("peter.util.autocmds").augroup("LineDiagnostics"),
           callback = function()
-            vim.diagnostic.config({ virtual_lines = false, virtual_text = virtual_text_config })
+            vim.diagnostic.config({
+              virtual_lines = false,
+              virtual_text = virtual_text_config,
+            })
             virtual_lines_active = false
             return true
           end,
@@ -131,7 +134,6 @@ do
   set("n", "]w", function() diagnostic.next({ severity = "WARN" }) end, { desc = "Next Warning" })
   set("n", "[w", function() diagnostic.prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
   -- stylua: ignore end
-
 end
 
 -- general =====================================================================
