@@ -120,9 +120,10 @@ after/
 
 ### Languages
 
-Programming languages are managed in `lua/peter/languages/<language>.lua`. Each
-of these files should return a table of type `peter.lang.config`. The type is
-defined below:
+Programming languages are managed in [`lua/peter/languages/<language>.lua`](./lua/peter/languages/).
+Each of these files should return a table of type `peter.lang.config`. The type
+is defined in [`lua/peter/languages/init.lua`](./lua/peter/languages/init.lua)
+and shown below:
 
 ```lua
 ---@class (exact) peter.lang.config
@@ -135,33 +136,33 @@ defined below:
 ---@field callback fun(args: vim.api.keyset.create_autocmd.callback_args)
 ```
 
-There is also still the option to use `after/ftplugin/<filetype>.lua` to set
-buffer-specific options. However, it can be easier to use the table approach
+There is also still the option to use [`after/ftplugin/<filetype>.lua`](./after/ftplugin/)
+to set buffer-specific options. However, it can be easier to use the table approach
 above as `ftplugin.ft` *can* be a list, so you can apply the same options to
 multiple filetypes while only writing the code once, for example [Haskell and
 Cabal files](https://github.com/mrcjkb/haskell-tools.nvim#zap-quick-setup).
 
-When populating the `plugins` field, it will be useful to use the accompanying
-utility functions, found in `lua/peter/util/plugins/languages.lua`. These remove
-some of the boilerplate code for extending the options of commonly used plugins.
+When populating the `plugins` field, it is useful to use the accompanying
+utility functions, found in [`lua/peter/util/plugins/languages.lua`](./lua/peter/util/plugins/languages.lua).
+These remove some of the boilerplate code for extending the options of commonly
+used plugins.
 
-Language configs are processed in `lua/peter/languages/init.lua`. This creates
-a table which maps language name to its configuration. This table can be accessed
-with:
+Language configs are processed in [`lua/peter/languages/init.lua`](./lua/peter/languages/init.lua).
+This builds and exposes a table which maps language names to configurations.
+This table can be accessed with:
 
 ```lua
 -- whole table
-require("peter.languages")
+local languages = require("peter.languages")
 
 -- just lua config
-require("peter.languages").lua
+local lua_config = require("peter.languages").lua
+local lua_config = require("peter.languages")["lua"]
 
--- or
-require("peter.languages")["lua"]
 ```
 
 To make working with this table easier, utility functions are provided in
-`lua/peter/util/languages.lua`.
+[`lua/peter/util/languages.lua`](./lua/peter/util/languages.lua).
 
 Example config to set up the Lua programming language:
 
@@ -223,7 +224,7 @@ more traditional structure.
 LSP servers are configured separately. LSP configuration is done in one of two
 places:
 
-1. `after/lsp/<lsp_server>.lua`
+1. [`after/lsp/<lsp_server>.lua`](./after/lsp/)
 2. `.nvim/lsp/<lsp_server>.lua` (for project-local config, if `exrc` is enabled)
 
 In the second case, make sure `vim.o.exrc = true` and that you also create
