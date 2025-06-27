@@ -1,23 +1,69 @@
 local languages = require("peter.util.languages")
 
+local function validate(ft)
+  if type(ft) ~= "string" and type(ft) ~= "table" then
+    vim.notify(
+      "Skipping FileType autocmd: `type(ft) = "
+        .. type(ft)
+        .. "`. It should be `string` or `table`.",
+      vim.log.levels.ERROR,
+      { title = "ftplugin" }
+    )
+    return false
+  end
+
+  if type(ft) == "string" then
+    if ft == "" then
+      vim.notify(
+        "Skipping FileType autocmd: empty filetype provided",
+        vim.log.levels.ERROR,
+        { title = "ftplugin" }
+      )
+      return false
+    end
+  else
+    for _, f in ipairs(ft) do
+      if f == "" then
+        vim.notify(
+          "Skipping FileType autocmd: empty filetype found in list",
+          vim.log.levels.ERROR,
+          { title = "ftplugin" }
+        )
+        return false
+      end
+    end
+  end
+
+  return true
+end
+
 ---@param ftplugin peter.lang.config.ftplugin
 local function create_ft_autocmd(ftplugin)
-  ---@type string
-  local name
+  local ft = ftplugin.ft
 
-  if type(ftplugin.ft) ~= "string" or type(ftplugin.ft) ~= "table" then
+  if not validate(ft) then
     return
   end
 
   local capitalise = require("peter.util.strings").capitalise
   local augroup = require("peter.util.autocmds").augroup
 
-  if type(ftplugin.ft) == "string" then
-    ---@diagnostic disable-next-line: param-type-mismatch
-    name = capitalise(ftplugin.ft)
+  ---@type string
+  local name
+
+  if type(ft) == "string" then
+    name = capitalise(ft)
   else
-    ---@diagnostic disable-next-line: param-type-mismatch
-    name = table.concat(vim.tbl_map(capitalise, ftplugin.ft))
+    name = table.concat(vim.tbl_map(capitalise, ft))
+  end
+
+  if name == "" then
+    vim.notify(
+      "Skipping FileType autocmd: empty augroup name",
+      vim.log.levels.WARN,
+      { title = "ftplugin" }
+    )
+    return
   end
 
   vim.api.nvim_create_autocmd("FileType", {
