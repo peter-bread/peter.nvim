@@ -5,13 +5,43 @@
 ---@type snacks.picker.Config
 local cfg = {
   enabled = true,
-  layout = {
-    preset = "telescope",
-  },
+
+  ---@diagnostic disable-next-line: unused-local
+  layout = function(source)
+    -- TODO: dynamic layouts based on size (vim.o.columns)
+    return "general"
+  end,
+
+  -- TODO: make more layouts for other sizes
   layouts = {
-    telescope = {
+    general = {
       layout = {
-        -- TODO: solid borders
+        box = "horizontal",
+        width = 0.9,
+        min_width = 120,
+        height = 0.75,
+        border = "solid",
+        [1] = {
+          box = "vertical",
+          border = "solid",
+          title = "{title} {live} {flags}",
+          title_pos = "center",
+          [1] = { win = "input", height = 1, border = "bottom" },
+          [2] = { win = "list", border = "solid", wo = { scrolloff = 4 } },
+        },
+        [2] = {
+          win = "preview",
+          title = "{preview}",
+          title_pos = "center",
+          border = "solid",
+          width = 0.6,
+          wo = {
+            relativenumber = false,
+            foldcolumn = "0",
+            signcolumn = "no",
+            statuscolumn = "%{v:lnum}",
+          },
+        },
       },
     },
   },
