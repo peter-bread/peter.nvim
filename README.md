@@ -214,10 +214,9 @@ return {
 vim.bo.shiftwidth = 4
 ```
 
-Allowing both methods gives most flexibilty to users.
-
-Either put it in all in one file to be more centralised or split and conform to
-historic (Neo)vim conventions.
+Allowing both methods provides the most flexibilty. The first approach enables
+proper centralisation of language configuration. The second approach follows a
+more traditional structure.
 
 ### LSP
 
@@ -236,7 +235,7 @@ In the second case, make sure `vim.o.exrc = true` and that you also create
 vim.cmd([[set runtimepath+=.nvim]])
 ```
 
-These files should return a table of type `vim.lsp.Config`.
+These files should each return a table of type `vim.lsp.Config`.
 The [`nvim-lspconfig`](https://github.com/neovim/nvim-lspconfig) plugin is used
 to provide sane default configurations for all language servers. As a user, you
 can overwrite or extend these configurations in `after/lsp/<lsp_server>.lua`.
