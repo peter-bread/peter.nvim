@@ -92,30 +92,36 @@ The entry point is the top-level [`init.lua`](./init.lua).
 
 The majority of configuration can be found in [`lua/peter/`](./lua/peter/).
 
+```text
+lua/peter/
+├── config/                   # Main configuration module
+│   ├── autocmds.lua            - General autocmds
+│   ├── diagnostic.lua          - Diagnostic settings and icons
+│   ├── filetypes.lua           - Add custom filetypes
+│   ├── ftplugin.lua            - Set up filetype-specific behaviour (from language config)
+│   ├── globals.lua             - Global functions for debugging only.
+│   ├── init.lua                - Entry point. Requires all other modules in config
+│   ├── keymaps.lua             - Set keymaps
+│   ├── lazy.lua                - Bootstrap and configure lazy.nvim plugin manager
+│   ├── lsp.lua                 - Set up LSP (from language config)
+│   └── options.lua             - Set global variables and options
+├── languages/                # Language configs
+│   ├── init.lua                - Builds table that maps languages to configs
+│   └── lua.lua                 - Lua config
+├── plugins/                  # Plugins
+│   ├── core                    - General plugins
+│   ├── lsp                     - LSP related plugins
+│   ├── mini                    - Plugins from mini.nvim
+│   └── snacks                  - Modules from snacks.nvim
+└── util/                     # Utility functions
+```
+
 There is additional configuration in [`after/`](./after/).
 
 ```text
-lua/peter/
-|-- config/
-|   |-- autocmds.lua
-|   |-- filetypes.lua
-|   |-- init.lua
-|   |-- keymaps.lua
-|   |-- lazy.lua
-|   |-- options.lua
-|-- languages/ (not done yet. more detail will be in Languages section)
-|-- plugins/
-|   |-- core/
-|   |-- mini/
-|   |-- lsp/
-|-- util/
-|-- types.lua
-```
-
-```text
 after/
-|-- ftplugin/
-|-- lsp/
+├── ftplugin/                 # Filetype-specific behaviour (NOT from language config)
+└── lsp/                      # LSP server configurations
 ```
 
 ### Languages
