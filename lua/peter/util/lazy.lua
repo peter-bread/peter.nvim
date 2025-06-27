@@ -5,6 +5,9 @@ local M = {}
 -- local x = require("lazy.core.config").plugins[plugin]
 -- local y = require("lazy.core.config").spec.plugins[plugin]
 
+---Check whether a `plugin` has been loaded by lazy.nvim.
+---@param plugin string
+---@return ({ [string]: string }|{ time: number }) | nil
 function M.is_loaded(plugin)
   local config = require("lazy.core.config")
   return config.plugins[plugin] and config.plugins[plugin]._.loaded

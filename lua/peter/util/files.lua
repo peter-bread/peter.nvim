@@ -1,6 +1,4 @@
 ---@class peter.util.files
----@field strip_extension fun(filename:string,extension?:string):string Remove extension from filename.
----@field get_extension fun(filename:string,extension?:string):string|nil Get extension from filename.
 local M = {}
 
 ---Remove extension from filename.

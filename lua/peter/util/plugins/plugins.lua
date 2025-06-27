@@ -3,7 +3,6 @@
 ---@module "blink-cmp"
 
 ---@class peter.util.plugins.plugins
----@field which_key fun(spec:wk.Spec):LazyPluginSpec
 local M = {}
 
 ---Add which-key keymap groups.

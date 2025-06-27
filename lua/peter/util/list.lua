@@ -1,5 +1,4 @@
 ---@class peter.util.list
----@field uniq fun(list:any[]):any[] Remove duplicate elements from a list.
 local M = {}
 
 ---Remove duplicate elements from a list.

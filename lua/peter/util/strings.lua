@@ -1,3 +1,4 @@
+---@class peter.util.strings
 local M = {}
 
 ---Capitalise a word.

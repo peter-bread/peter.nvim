@@ -1,5 +1,4 @@
 ---@class peter.util.table
----@field without fun(tbl:table,keys:string[]):table
 local M = {}
 
 ---Return a copy of `tbl` with `keys` removed.

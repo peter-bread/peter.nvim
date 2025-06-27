@@ -1,19 +1,27 @@
----LSP Utility functions.
----@class peter.util.lsp
----@field on_attach fun(callback:fun(client:vim.lsp.Client, bufnr:integer):nil):integer
----@field on_supports_method fun(method:string, callback:fun(client:vim.lsp.Client, bufnr:integer):nil):integer
----@field delete_global_defaults fun()
----@field resolve_function fun(opts:peter.util.lsp.ResolveSpec):fun()
----@field supports_all fun(client:vim.lsp.Client, methods:string|string[]):boolean
----@field supports_any fun(client:vim.lsp.Client, methods:string|string[]):boolean
----@field set_keymap fun(client:vim.lsp.Client, bufnr:integer, lhs:string, rhs:function, opts?:peter.util.lsp.KeymapOpts)
----@field set_default_keymaps fun(client:vim.lsp.Client, bufnr:integer)
-local M = {}
+---@class peter.util.lsp.ResolveSpec
+---@field builtin peter.util.lsp.FunctionSpec vim.lsp.buf.*
+---@field snacks? peter.util.lsp.FunctionSpec Snacks.picker.*
+---
+---@alias peter.util.lsp.FunctionSpec string|peter.util.lsp.FunctionSource
+---
+---@class peter.util.lsp.FunctionSource Define a function with config.
+---@field name string Basename of function to call.
+---@field opts? table Options table to configure the function's behaviour.
 
 ---@alias peter.util.lsp.KeymapOpts vim.keymap.set.Opts|{has?:string|string[], mode?:string|string[]}
 
+---LSP Utility functions.
+---@class peter.util.lsp
+local M = {}
+
 ---Helper functions. Defined after API functions.
 local H = {}
+
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
 
 ---Run `callback` when LSP attaches.
 ---@param callback fun(client: vim.lsp.Client, bufnr: integer):nil Function to be called when LSP attaches.
@@ -59,16 +67,6 @@ function M.delete_global_defaults()
   del("n", "gO") -- document symbols
   del("i", "<C-s>") -- signature help
 end
-
----@class peter.util.lsp.ResolveSpec
----@field builtin peter.util.lsp.FunctionSpec vim.lsp.buf.*
----@field snacks? peter.util.lsp.FunctionSpec Snacks.picker.*
-
----@alias peter.util.lsp.FunctionSpec string|peter.util.lsp.FunctionSource
-
----@class peter.util.lsp.FunctionSource Define a function with config.
----@field name string Basename of function to call.
----@field opts? table Options table to configure the function's behaviour.
 
 ---Resolve LSP functions. First attempts to use plugins, and falls back to
 ---builtin functions in `vim.lsp.buf.*`.
@@ -171,6 +169,7 @@ function M.supports_any(client, methods)
   end)
 end
 
+---Create an LSP keymap.
 ---@param client vim.lsp.Client
 ---@param bufnr integer
 ---@param lhs string
@@ -299,7 +298,6 @@ end
 --[[ ---------- END OF API FUNCTIONS. START OF HELPER FUNCTIONS. ---------- ]]
 --
 --[[ ---------------------------------------------------------------------- ]]
-
 
 ---Check LSP method support.
 ---@param client vim.lsp.Client

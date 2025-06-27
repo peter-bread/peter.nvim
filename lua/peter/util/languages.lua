@@ -1,5 +1,4 @@
 ---@class peter.util.languages
----@field for_each fun(fn:fun(name:string, cfg:peter.lang.config))
 local M = {}
 
 ---Run `fn` on all language configs.

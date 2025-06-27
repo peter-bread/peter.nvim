@@ -1,5 +1,4 @@
 ---@class peter.util.buffer
----@field can_edit fun(bufnr?:integer):boolean
 local M = {}
 
 ---Check if a buffer is editable.

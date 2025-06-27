@@ -1,5 +1,4 @@
 ---@class peter.util.autocmds
----@field augroup fun(name:string):integer Create an augroup in the "Peter" namespace.
 local M = {}
 
 ---Create an augroup in the "Peter" namespace.

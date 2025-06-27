@@ -1,5 +1,4 @@
 ---@class peter.util.debug
----@field pp fun(...) Pretty-print any value.
 local M = {}
 
 ---Pretty-print any value.
