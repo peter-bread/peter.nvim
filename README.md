@@ -125,12 +125,12 @@ of these files should return a table of type `peter.lang.config`. The type is
 defined below:
 
 ```lua
----@class peter.lang.config
+---@class (exact) peter.lang.config
 ---@field lsp? string[] List of LSP servers to be enabled.
 ---@field plugins? LazyPluginSpec[] Plugins to be installed.
 ---@field ftplugin? peter.lang.config.ftplugin Buffer-specific options and config.
 
----@class peter.lang.config.ftplugin
+---@class (exact) peter.lang.config.ftplugin
 ---@field ft string|string[] Filetype(s) to run `callback` on.
 ---@field callback fun(args: vim.api.keyset.create_autocmd.callback_args)
 ```
