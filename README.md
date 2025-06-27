@@ -8,24 +8,18 @@
 
 <!-- markdownlint-disable MD033 -->
 
-<div align="center">
-  <a href="https://github.com/peter-bread/peter.nvim/issues?q=is%3Aissue+is%3Aopen+label%3AP0">
-    <img alt="GitHub Issues or Pull Requests by label"
-    src="https://img.shields.io/github/issues/peter-bread/peter.nvim/P0?style=for-the-badge&label=Priorities">
-  </a>
-</div>
+<!-- <div align="center"> -->
+<!--   <a href="https://github.com/peter-bread/peter.nvim/issues?q=is%3Aissue+is%3Aopen+label%3AP0"> -->
+<!--     <img alt="GitHub Issues or Pull Requests by label" -->
+<!--     src="https://img.shields.io/github/issues/peter-bread/peter.nvim/P0?style=for-the-badge&label=Priorities"> -->
+<!--   </a> -->
+<!-- </div> -->
 
 <!-- markdownlint-restore -->
 
-My first proper Neovim config.
-
-> [!NOTE]
-> Intended for use on MacOS and Linux.
+My modular, relatively minimal Neovim config for MacOS and Linux.
 
 ## Requirements
-
-> [!NOTE]
-> I don't think this list is exhaustive right now, hopefully one day it will be!
 
 <!-- markdownlint-disable MD013 -->
 
@@ -94,6 +88,8 @@ The entry point is the top-level [`init.lua`](./init.lua).
 
 The majority of configuration can be found in [`lua/peter/`](./lua/peter/).
 
+<!-- markdownlint-disable MD013 -->
+
 ```text
 lua/peter/
 ├── config/                   # Main configuration module
@@ -125,6 +121,8 @@ after/
 ├── ftplugin/                 # Filetype-specific behaviour (NOT from language config)
 └── lsp/                      # LSP server configurations
 ```
+
+<!-- markdownlint-restore -->
 
 ### Languages
 
