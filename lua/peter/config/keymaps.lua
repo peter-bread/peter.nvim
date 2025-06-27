@@ -126,14 +126,17 @@ do
     end, { desc = "Line Diagnostics" })
   end
 
-  -- stylua: ignore start
-  set("n", "]d", diagnostic.next, { desc = "Next Diagnostic" })
-  set("n", "[d", diagnostic.prev, { desc = "Prev Diagnostic" })
-  set("n", "]e", function() diagnostic.next({ severity = "ERROR" }) end, { desc = "Next Error" })
-  set("n", "[e", function() diagnostic.prev({ severity = "ERROR" }) end, { desc = "Prev Error" })
-  set("n", "]w", function() diagnostic.next({ severity = "WARN" }) end, { desc = "Next Warning" })
-  set("n", "[w", function() diagnostic.prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
-  -- stylua: ignore end
+  -- stylua: ignore
+  do
+    local next, prev = diagnostic.next, diagnostic.prev
+
+    set("n", "]d", next, { desc = "Next Diagnostic" })
+    set("n", "[d", prev, { desc = "Prev Diagnostic" })
+    set("n", "]e", function() next({ severity = "ERROR" }) end, { desc = "Next Error" })
+    set("n", "[e", function() prev({ severity = "ERROR" }) end, { desc = "Prev Error" })
+    set("n", "]w", function() next({ severity = "WARN" }) end, { desc = "Next Warning" })
+    set("n", "[w", function() prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
+  end
 end
 
 -- general =====================================================================
