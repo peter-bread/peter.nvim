@@ -69,6 +69,7 @@ return {
     { "<leader>ff", pick("files"), desc = "Files" },
     { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "All Files" },
     { "<leader>fr", pick("recent"), desc = "Recent" },
+    { "<leader>fb", pick("buffers"), desc = "Buffers" },
 
     -- search
     { "<leader>sg", pick("grep"), desc = "Grep" },
