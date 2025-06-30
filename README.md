@@ -257,3 +257,77 @@ can overwrite or extend these configurations in `after/lsp/<lsp_server>.lua`.
 > Currently, this is not supported in this Neovim config. This will only
 > be supported if I ever need to use one of these LSP servers, which is
 > unlikely.
+
+## Missing Functionality
+
+This config is a bit more minimal than my [previous config](https://github.com/peter-bread/peter.nvim/tree/nvim-v0.10).
+Below is a list of features that are not currently implemented in this config.
+Some of these were in my previous config, others were not.
+
+<details>
+  <summary>Linting</summary>
+
+  I haven't got round to this yet. Usually LSP + formatter is enough
+  for me, but I plan on adding this back at some point.
+
+  Plugins:
+
+  - [nvim-lint](https://github.com/mfussenegger/nvim-lint)
+
+</details>
+
+<details>
+  <summary>Git Integration</summary>
+
+  I need to decide how much git integration is needed inside Neovim. How much
+  do I need to do in Neovim vs what can I do from a terminal.
+
+  Plugins:
+  - Git
+    - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+    - [fugitive](https://github.com/tpope/vim-fugitive)
+    - [neogit](https://github.com/NeogitOrg/neogit)
+    - [diffview.nvim](https://github.com/sindrets/diffview.nvim)
+    - [mini.git](https://github.com/echasnovski/mini-git)
+    - [mini.diff](https://github.com/echasnovski/mini.diff)
+    - [snacks.lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md)
+  - GitHub
+    - [octo.nvim](https://github.com/pwntester/octo.nvim)
+
+</details>
+
+<details>
+  <summary>Statusline</summary>
+</details>
+
+<details>
+  <summary>Dashboard</summary>
+</details>
+
+
+<details>
+  <summary>flash.nvim</summary>
+</details>
+
+<details>
+  <summary>Custom snippets</summary>
+</details>
+
+<details>
+  <summary>Markdown</summary>
+</details>
+
+<!-- - bullets.vim -->
+<!-- - markview.nvim / render-markdown.nvim -->
+
+<details>
+  <summary>Debugging</summary>
+</details>
+
+<details>
+  <summary>File Explorer</summary>
+</details>
+
+<details>
+  <summary>Org-mode</summary>
+</details>
