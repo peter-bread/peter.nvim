@@ -17,7 +17,9 @@
 
 <!-- markdownlint-restore -->
 
-My modular, relatively minimal Neovim config for MacOS and Linux.
+<p align="center">
+  My modular, relatively minimal Neovim config for MacOS and Linux.
+</p>
 
 ---
 
