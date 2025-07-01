@@ -271,7 +271,6 @@ Some of these were in my previous config, others were not.
   for me, but I plan on adding this back at some point.
 
   Plugins:
-
   - [nvim-lint](https://github.com/mfussenegger/nvim-lint)
 
 </details>
@@ -298,15 +297,34 @@ Some of these were in my previous config, others were not.
 
 <details>
   <summary>Statusline</summary>
+
+  This config is aiming to be relatively minimal. Do I actually need a statusline
+  plugin or is it just aesthetically nice? I do like having diagnostic/git info so
+  I may add this.
+
+  Plugins:
+  - [lualine](https://github.com/nvim-lualine/lualine.nvim)
+
 </details>
 
 <details>
   <summary>Dashboard</summary>
-</details>
 
+  I will very likely add this soon.
+
+  Plugins:
+  - [snacks.dashboard](https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md)
+
+</details>
 
 <details>
   <summary>flash.nvim</summary>
+
+  I will very likely add this soon.
+
+  Plugins:
+  - [flash.nvim](https://github.com/folke/flash.nvim)
+
 </details>
 
 <details>
@@ -315,13 +333,31 @@ Some of these were in my previous config, others were not.
 
 <details>
   <summary>Markdown</summary>
-</details>
 
-<!-- - bullets.vim -->
-<!-- - markview.nvim / render-markdown.nvim -->
+  I would like to add a renderer and any other utilities. Are these actually
+  needed though?
+
+  Plugins:
+  - Renderer:
+    - [markview.nvim](https://github.com/OXY2DEV/markview.nvim)
+    - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+  - Utilties
+    - [bullets.vim](https://github.com/bullets-vim/bullets.vim)
+
+</details>
 
 <details>
   <summary>Debugging</summary>
+
+  If I am to add this back in, I would like to use both nvim-dap and
+  overseer.nvim. Might not implement for a while as it will probably need
+  quite a lot of setup to get it working nicely. Note: overseer.nvim integrates
+  with nvim-dap, but that is only a small feature of it.
+
+  Plugins:
+  - [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+  - [overseer.nvim](https://github.com/stevearc/overseer.nvim)
+
 </details>
 
 <details>
