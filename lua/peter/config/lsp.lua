@@ -1,11 +1,21 @@
 local lsp = require("peter.util.lsp")
-local languages = require("peter.util.languages")
 
--- enable LSPs
-languages.for_each(function(_, cfg)
-  if cfg.lsp then
-    vim.lsp.enable(cfg.lsp)
-  end
+-- Enable LSPs *after* mason.nvim install directory has been added to PATH.
+--
+-- When `vim.lsp.enable` is called, it checks whether `vim.lsp.Config.cmd` is
+-- executable. This means that `vim.lsp.Config.cmd` must be in PATH.
+--
+-- Unfortunately this is not mentioned in docs; there is likely an assumption
+-- of no lazy-loading and/or LSPs being installed via a package manager rather
+-- than through a Neovim plugin.
+require("peter.util.lazy").on_load("mason.nvim", function()
+  local languages = require("peter.util.languages")
+
+  languages.for_each(function(_, cfg)
+    if cfg.lsp then
+      vim.lsp.enable(cfg.lsp)
+    end
+  end)
 end)
 
 lsp.delete_global_defaults()
