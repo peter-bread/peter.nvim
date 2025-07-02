@@ -26,6 +26,7 @@ function M.on_load(name, fn)
   if M.is_loaded(name) then
     fn()
   else
+    -- TODO: don't create autocmd if plugin isn't included in the spec
     vim.api.nvim_create_autocmd("User", {
       pattern = "LazyLoad",
       callback = function(ev)
