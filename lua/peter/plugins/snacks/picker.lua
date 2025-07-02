@@ -4,7 +4,6 @@
 
 ---@type snacks.picker.Config
 local cfg = {
-  enabled = true,
 
   ---@diagnostic disable-next-line: unused-local
   layout = function(source)
