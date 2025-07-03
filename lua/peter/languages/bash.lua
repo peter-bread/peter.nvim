@@ -11,10 +11,10 @@ return {
 
     -- stylua: ignore
     L.mason({
-      "bashls",       -- LSP (uses shellcheck and shfmt if available)
+      "bashls",       -- LSP (uses shellcheck and shfmt if available); node/npm
       "shellcheck",   -- Linter
       "shfmt",        -- Formatter (main)
-      "shellharden",  -- Formatter (corrects unsafe quoting)
+      "shellharden",  -- Formatter (corrects unsafe quoting); cargo
     }),
 
     -- LSP will run `shfmt`, then we manually run `shellharden` after
