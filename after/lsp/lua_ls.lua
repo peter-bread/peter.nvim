@@ -8,6 +8,7 @@ return {
         enable = true,
       },
       completion = {
+        autoRequire = false,
         callSnippet = "Replace", -- or "Both"
       },
       doc = {
