@@ -5,11 +5,14 @@
 ---@type snacks.picker.Config
 local cfg = {
 
-  ---@diagnostic disable-next-line: unused-local
-  layout = function(source)
-    -- TODO: dynamic layouts based on size (vim.o.columns)
-    return "general"
-  end,
+  layout = {
+
+    ---@diagnostic disable-next-line: unused-local
+    preset = function(source)
+      -- TODO: dynamic layouts based on size (vim.o.columns)
+      return "general"
+    end,
+  },
 
   -- TODO: make more layouts for other sizes
   layouts = {
