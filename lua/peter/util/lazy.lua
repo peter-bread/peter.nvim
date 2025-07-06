@@ -1,10 +1,6 @@
 ---@class peter.util.lazy
 local M = {}
 
--- What is the difference between these?
--- local x = require("lazy.core.config").plugins[plugin]
--- local y = require("lazy.core.config").spec.plugins[plugin]
-
 --[[ ---------------------------------------------------------------------- ]]
 --
 --[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
@@ -23,20 +19,27 @@ end
 ---@param name string
 ---@param fn function
 function M.on_load(name, fn)
-  if M.is_loaded(name) then
-    fn()
-  else
-    -- TODO: don't create autocmd if plugin isn't included in the spec
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "LazyLoad",
-      callback = function(ev)
-        if ev.data == name then
-          fn()
-          return true
-        end
-      end,
-    })
+  local plugin = require("lazy.core.config").plugins[name]
+
+  -- do nothing if the plugin is not in the spec
+  if not plugin then
+    return
   end
+
+  if plugin._.loaded then
+    fn()
+    return
+  end
+
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyLoad",
+    callback = function(ev)
+      if ev.data == name then
+        fn()
+        return true
+      end
+    end,
+  })
 end
 
 return M
