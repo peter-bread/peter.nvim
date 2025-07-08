@@ -46,11 +46,11 @@ end
 ---```lua
 --- if has_extension("foo.lua") then
 ---   -- returns "lua" so does enter the conditonal block
---- done
+--- end
 ---
 --- if has_extension("bar.toml", "lua") then
 ---   -- returns nil, so does NOT enter the conditonal block.
---- done
+--- end
 ---```
 ---@param filename string
 ---@param extension? string
