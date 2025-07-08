@@ -17,6 +17,6 @@
   "nvim-treesitter": { "branch": "main", "commit": "4400990e7362e2769bb1ff96895f623deb0380fa" },
   "nvim-treesitter-textobjects": { "branch": "main", "commit": "b54cec389e98c5b0babbe618773acec927437cab" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
-  "vim-matchup": { "branch": "update-treesitter", "commit": "868f55419f45113c942eeb25870534f26f95d55b" },
+  "vim-matchup": { "branch": "master", "commit": "ea01ae7b54ed82d01aac03b796905e5ea0e28f1e" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
 }
