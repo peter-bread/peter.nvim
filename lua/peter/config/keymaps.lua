@@ -98,18 +98,7 @@ do
         return
       end
 
-      if virtual_lines_active then
-        -- state 2: focus float
-        vim.diagnostic.config({
-          virtual_lines = false,
-          virtual_text = virtual_text_config,
-        })
-
-        vim.diagnostic.open_float() -- open
-        vim.diagnostic.open_float() -- focus
-
-        virtual_lines_active = false
-      else
+      if not virtual_lines_active then
         -- state 1: switch to virtual lines if there are diagnostics on current line
         if vim.tbl_isempty(diagnostic.current_line()) then
           return
@@ -134,6 +123,17 @@ do
           end,
         })
         virtual_lines_active = true
+      else
+        -- state 2: focus float
+        vim.diagnostic.config({
+          virtual_lines = false,
+          virtual_text = virtual_text_config,
+        })
+
+        vim.diagnostic.open_float() -- open
+        vim.diagnostic.open_float() -- focus
+
+        virtual_lines_active = false
       end
     end, { desc = "Line Diagnostics" })
   end
