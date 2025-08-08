@@ -11,10 +11,6 @@ return {
     -- WARN: build from main (be careful of breaking changes)
     -- build = "cargo +nightly build --release",
 
-    dependencies = {
-      "L3MON4D3/LuaSnip", -- TODO: move into snippets.lua file for full config
-    },
-
     opts_extend = { "sources.default" },
 
     ---@type blink.cmp.Config
@@ -50,9 +46,7 @@ return {
         },
       },
 
-      snippets = {
-        preset = "luasnip",
-      },
+      snippets = { preset = "default" },
 
       completion = {
         trigger = {},
