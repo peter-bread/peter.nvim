@@ -18,6 +18,8 @@ return {
           return vim.g.lazydev_enabled
         end
 
+        -- TODO: check an environment variable
+
         local enabled_file = root .. "/.lazydev_enabled"
         local disabled_file = root .. "/.lazydev_disabled"
 
