@@ -18,7 +18,7 @@
 <!-- markdownlint-restore -->
 
 <p align="center">
-  My modular, relatively minimal Neovim config for MacOS and Linux.
+  My modular, relatively minimal* Neovim config for MacOS and Linux.
 </p>
 
 ---
@@ -369,3 +369,7 @@ Some of these were in my previous config, others were not.
 <details>
   <summary>Org-mode</summary>
 </details>
+
+## See Also
+
+- [`tiny.nvim`](https://github.com/peter-bread/tiny.nvim)
