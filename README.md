@@ -364,6 +364,10 @@ Some of these were in my previous config, others were not.
 
 <details>
   <summary>File Explorer</summary>
+
+  Plugins:
+  - [oil.nvim](https://github.com/stevearc/oil.nvim)
+
 </details>
 
 <details>
