@@ -1,7 +1,7 @@
 local keymap = require("peter.util.keymap")
 
--- 'number' and 'relativenumber' are both disabled by default so no need for
--- statuscolum.
+-- By default, 'number' and 'relativenumber' are disabled and there are no
+-- diagnostics. Therefore there is no need for 'statuscolumn'.
 vim.wo.statuscolumn = ""
 
 keymap.safe_del("n", "gO", { buffer = true })

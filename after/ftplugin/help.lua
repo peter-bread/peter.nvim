@@ -1,9 +1,10 @@
--- smaller scrolloff as help usually viewed in a horizontal split
+-- Usually viewed in a horizontal split.
 vim.wo.scrolloff = 4
 
+-- By default, 'number' and 'relativenumber' are disabled and there are no
+-- diagnostics. Therefore there is no need for 'statuscolumn'.
 vim.wo.statuscolumn = ""
 
--- use `q` to close help page
 vim.keymap.set("n", "q", "<cmd>q<cr>", {
   desc = "Quit",
   buffer = true,
