@@ -1,41 +1,39 @@
--- keymaps
-
--- abbreviation
 local set = vim.keymap.set
 
--- general =====================================================================
+-- 1. General ==================================================================
 
--- open lazy.nvim plugin manager
 set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
--- super esc
 set({ "n", "i", "s" }, "<esc>", function()
-  vim.snippet.stop() -- exit current snippet (native snippets only)
-  vim.cmd("noh") -- clear search
-  return "<esc>" -- standard esc behaviour
-end, { expr = true, desc = "Escape+" }) -- expr to make sure "<esc>" is actually evaluated
+  vim.snippet.stop() -- Exit current snippet (native snippets only).
+  vim.cmd("noh") -- Clear search.
+  return "<esc>" -- Standard esc behaviour.
+end, { expr = true, desc = "Escape+" }) -- `expr` to make sure "<esc>" is actually evaluated.
 
--- splits ======================================================================
+-- 2. Splits ===================================================================
 
--- navigate splits -------------------------------------------------------------
+-- 2.a. Navigate splits --------------------------------------------------------
+
 set("n", "<C-h>", "<C-w>h", { desc = "Focus left pane" })
 set("n", "<C-j>", "<C-w>j", { desc = "Focus lower pane" })
 set("n", "<C-k>", "<C-w>k", { desc = "Focus upper pane" })
 set("n", "<C-l>", "<C-w>l", { desc = "Focus right pane" })
 
--- open splits -----------------------------------------------------------------
+-- 2.b. Open splits ------------------------------------------------------------
+
 set("n", "<leader>-", "<C-W>s", { desc = "Split below" })
 set("n", "<leader>|", "<C-W>v", { desc = "Split right" })
 
--- resize splits ---------------------------------------------------------------
-do
-  -- height
-  set("n", "<M-=>", "<cmd>resize +2<cr>", { desc = "Increase height" }) -- taller
-  set("n", "<M-->", "<cmd>resize -2<cr>", { desc = "Decrease height" }) -- shorter
+-- 2.c. Resize splits ----------------------------------------------------------
 
-  -- width
-  -- HACK: does not work the same with all terminal emulators
-  -- I think this is due to xterm-ghostty vs xterm-256screen terminfo entries
+do
+  set("n", "<M-=>", "<cmd>resize +2<cr>", { desc = "Increase height" })
+  set("n", "<M-->", "<cmd>resize -2<cr>", { desc = "Decrease height" })
+
+  -- HACK: Keymaps using multiple modifier keys do not work the same with all
+  -- terminal emulators.
+  -- This is likely due to the xterm-ghostty and xterm-256screen terminfo entries
+  -- being different.
   local split_width_lhs
 
   if vim.list_contains({ "ghostty" }, vim.env.TERM_PROGRAM) then
@@ -45,19 +43,19 @@ do
   end
 
   -- stylua: ignore start
-  set("n", split_width_lhs.inc, "<cmd>vertical resize +2<cr>", { desc = "Increase width" }) -- wider
-  set("n", split_width_lhs.dec, "<cmd>vertical resize -2<cr>", { desc = "Decrease width" }) -- narrower
+  set("n", split_width_lhs.inc, "<cmd>vertical resize +2<cr>", { desc = "Increase width" })
+  set("n", split_width_lhs.dec, "<cmd>vertical resize -2<cr>", { desc = "Decrease width" })
   -- stylua: ignore end
 end
 
--- buffers =====================================================================
+-- 3. Buffers ==================================================================
 
--- TODO: buffer keymaps
+-- TODO: Buffer keymaps.
 
--- lines =======================================================================
+-- 4. Lines ====================================================================
 
--- move lines
--- from: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- Move lines.
+-- From: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 set("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move Line Down" })
 set("n", "<M-k>", "<cmd>m .-2<cr>==", { desc = "Move Line Up" })
 set("i", "<M-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Line Down" })
@@ -65,13 +63,13 @@ set("i", "<M-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Line Up" })
 set("v", "<M-j>", ":m '>+1<cr>gv=gv", { desc = "Move Selected Line(s) Down" })
 set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move Selected Line(s) Up" })
 
--- indenting ===================================================================
+-- 5. Indenting ================================================================
 
--- from: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- From: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 set("v", "<", "<gv")
 set("v", ">", ">gv")
 
--- diagnostics ==================================================================
+-- 6. Diagnostics ==============================================================
 
 do
   local diagnostic = require("peter.util.diagnostic")
@@ -80,26 +78,26 @@ do
     local virtual_lines_active = false
     local virtual_text_config
 
-    -- inspiration:
+    -- Inspiration:
     -- https://www.reddit.com/r/neovim/comments/1jm5atz/replacing_vimdiagnosticopen_float_with_virtual
     --
     -- This is a 2-stage keymap.
     --
     -- First press:
-    --  - disable virtual text
-    --  - enable virtual lines
+    --  - Disable virtual text.
+    --  - Enable virtual lines.
     --
     -- Second press:
-    --  - disable virtual lines
-    --  - re-enable virtual text (with correct settings)
-    --  - open and focus diagnostic float
+    --  - Disable virtual lines.
+    --  - Re-enable virtual text (with original settings).
+    --  - Open and focus diagnostic float.
     set("n", "<leader>cd", function()
       if vim.bo.buftype == "nofile" then
         return
       end
 
       if not virtual_lines_active then
-        -- state 1: switch to virtual lines if there are diagnostics on current line
+        -- State 1: Switch to virtual lines if there are diagnostics on current line.
         if vim.tbl_isempty(diagnostic.current_line()) then
           return
         end
@@ -124,29 +122,30 @@ do
         })
         virtual_lines_active = true
       else
-        -- state 2: focus float
+        -- State 2: Focus float.
         vim.diagnostic.config({
           virtual_lines = false,
           virtual_text = virtual_text_config,
         })
 
-        vim.diagnostic.open_float() -- open
-        vim.diagnostic.open_float() -- focus
+        vim.diagnostic.open_float() -- Open.
+        vim.diagnostic.open_float() -- Focus.
 
         virtual_lines_active = false
       end
     end, { desc = "Line Diagnostics" })
   end
 
-  -- stylua: ignore
   do
     local next, prev = diagnostic.next, diagnostic.prev
 
+    -- stylua: ignore start
     set("n", "]d", next, { desc = "Next Diagnostic" })
     set("n", "[d", prev, { desc = "Prev Diagnostic" })
     set("n", "]e", function() next({ severity = "ERROR" }) end, { desc = "Next Error" })
     set("n", "[e", function() prev({ severity = "ERROR" }) end, { desc = "Prev Error" })
     set("n", "]w", function() next({ severity = "WARN" }) end, { desc = "Next Warning" })
     set("n", "[w", function() prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
+    -- stylua: ignore end
   end
 end

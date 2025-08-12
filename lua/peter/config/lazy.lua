@@ -1,6 +1,3 @@
--- lazy.nvim plugin manager
-
--- bootstrap
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -27,14 +24,12 @@ vim.opt.rtp:prepend(lazypath)
 local languages = require("peter.util.languages")
 local lang_plugins = {}
 
--- get language-specific plugins
 languages.for_each(function(_, cfg)
   if cfg.plugins then
     vim.list_extend(lang_plugins, cfg.plugins)
   end
 end)
 
--- setup and configure
 require("lazy").setup({
   spec = {
     { import = "peter.plugins.core" },

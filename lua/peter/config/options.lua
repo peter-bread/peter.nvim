@@ -1,13 +1,17 @@
 -- stylua: ignore start
 
--- globals =====================================================================
+-- 1. Globals ==================================================================
 
-vim.g.mapleader      = " "      -- leader
-vim.g.maplocalleader = "\\"     -- local leader
+vim.g.mapleader      = " "
+vim.g.maplocalleader = "\\"
 
-vim.g.have_nerd_font = true     -- used for plugins that might need icons
+-- Used by plugins to see whether to render icons or fallback to ASCII.
+vim.g.have_nerd_font = true
 
-vim.g.markdown_recommended_style = 0 -- fix markdown indentation settings
+-- Fix markdown indentation settings.
+-- See `:helpg markdown_recommended_style`.
+-- See 'https://github.com/tpope/vim-markdown/commit/b78bbce3371a2eb56c89f618cd4ab2baadc9ee61'.
+vim.g.markdown_recommended_style = 0
 
 --[[
 Used to tell mini.icons if it needs to export nvim_web_devicons functions.
@@ -37,92 +41,87 @@ This option can be set in two places:
 ---@type boolean
 vim.g.needs_nvim_web_devicons = false
 
--- options =====================================================================
+-- 2. Options ==================================================================
 
 -- WARN: `vim.opt` will be deprecated.
--- Use `vim.o` where possible; only use `vim.opt` for lua tables
--- https://github.com/neovim/neovim/issues/20107
+-- Use `vim.o` where possible; only use `vim.opt` for Lua tables.
+-- See 'https://github.com/neovim/neovim/issues/20107'.
 
--- line numbers ----------------------------------------------------------------
+-- 2.a Line Numbers ------------------------------------------------------------
 
-vim.o.number          = true      -- line numbers
-vim.o.relativenumber  = true      -- relative line numbers
-
-
--- tabs and indentation --------------------------------------------------------
-
-vim.o.autoindent      = true      -- copy indent from current line when starting a new line
-vim.o.smartindent     = true      -- do smart autoindenting when starting a new line
-vim.o.expandtab       = true      -- use spaces instead of tabs
-vim.o.shiftwidth      = 2         -- size of indent
-vim.o.tabstop         = 2         -- number of spaces tabs count for
-vim.o.smarttab        = true      -- a <Tab> in front of a line inserts blanks according to 'shiftwidth'
-vim.o.shiftround      = true      -- round indent
+vim.o.number          = true                -- Line numbers.
+vim.o.relativenumber  = true                -- Relative line numbers.
 
 
--- search options --------------------------------------------------------------
+-- 2.b. Tabs and Indentation ---------------------------------------------------
 
-vim.o.ignorecase      = true      -- ignore case while searching
-vim.o.smartcase       = true      -- override the 'ignorecase' option if the search pattern contains uppercase characters
-vim.o.hlsearch        = true      -- highlight search matches
-vim.o.incsearch       = true      -- highlight search matches while typing search command
-
-
--- split windows ---------------------------------------------------------------
-
-vim.o.splitright      = true      -- vertical splits open on the right
-vim.o.splitbelow      = true      -- horizontal splits open below
+vim.o.autoindent      = true                -- Copy indent from current line when starting a new line.
+vim.o.smartindent     = true                -- Do smart autoindenting when starting a new line.
+vim.o.expandtab       = true                -- Use spaces instead of tabs.
+vim.o.shiftwidth      = 2                   -- Size of indent.
+vim.o.tabstop         = 2                   -- Number of spaces tabs count for.
+vim.o.smarttab        = true                -- A <Tab> in front of a line inserts blanks according to 'shiftwidth'.
+vim.o.shiftround      = true                -- Round indent.
 
 
--- appearance ------------------------------------------------------------------
--- basic UI layout
-vim.o.wrap            = false     -- do not wrap lines
-vim.o.breakindent     = true      -- wrapped text remains indented
-vim.o.scrolloff       = 8         -- minimal number of screen lines to keep above and below the cursor
-vim.o.signcolumn      = "yes"     -- always draw the signcolumn
+-- 2.c. Search Options ---------------------------------------------------------
+
+vim.o.ignorecase      = true                -- Ignore case while searching.
+vim.o.smartcase       = true                -- Override the 'ignorecase' option if the search pattern contains uppercase characters.
+vim.o.hlsearch        = true                -- Highlight search matches.
+vim.o.incsearch       = true                -- Highlight search matches while typing search command.
+
+
+-- 2.d. Split Windows ----------------------------------------------------------
+
+vim.o.splitright      = true                -- Vertical splits open on the right.
+vim.o.splitbelow      = true                -- Horizontal splits open below.
+
+
+-- 2.e. Appearance -------------------------------------------------------------
+
+vim.o.wrap            = false               -- Do not wrap lines.
+vim.o.breakindent     = true                -- Wrapped text remains indented.
+vim.o.scrolloff       = 8                   -- Minimal number of screen lines to keep above and below the cursor.
+vim.o.signcolumn      = "yes"               -- Always draw the signcolumn.
 
 vim.o.statuscolumn    = "%=%{v:relnum == 0 ? v:lnum : v:relnum} %s"
+                                            -- Show current line number and relative numbers in a single column.
 
--- visual enhancements
-vim.o.cursorline      = true      -- highlight current line
-vim.o.colorcolumn     = "80"      -- highlight column 80
-vim.o.termguicolors   = true      -- enable 24-bit RGB
-vim.o.background      = "dark"    -- use dark background
+vim.o.cursorline      = true                -- Highlight current line.
+-- TODO: disable colorcolumn
+vim.o.colorcolumn     = "80"                -- Highlight column 80.
+vim.o.termguicolors   = true                -- Enable 24-bit RGB.
+vim.o.background      = "dark"              -- Use dark background.
 
--- completion/menu UI
-vim.o.pumheight       = 15        -- max height of pop-up menus
+vim.o.pumheight       = 15                  -- Max height of pop-up menus.
 
--- mode/status UI
--- TODO: set to false once there is a statusline
-vim.o.showmode        = true      -- do not show current mode (not needed with statusline)
+-- TODO: Set to false once (if) there is a statusline
+vim.o.showmode        = true                -- Do not show current mode (not needed with statusline).
 
--- invisible characters
-vim.o.list            = true      -- show invisible characters (e.g. trailing spaces)
-vim.opt.listchars     = {         -- configure how invisible characters should be shown
+vim.o.list            = true                -- Show invisible characters (e.g. trailing spaces).
+vim.opt.listchars     = {                   -- Configure how invisible characters should be shown.
                           nbsp  = "+",
                           eol   = "󱞥",
                           trail = "·",
                           tab   = "  ",
                         }
 
--- other -----------------------------------------------------------------------
 
-vim.o.inccommand      = "split"   -- shows the effects of commands as you type (e.g. |:substitute|)
+-- 2.f. Other ------------------------------------------------------------------
 
--- TODO: set up proper spell-checking
-vim.opt.spelllang     = {         -- allow british and american english
+vim.o.inccommand      = "split"             -- Shows the effects of commands as you type (e.g. |:substitute|).
+
+-- TODO: Set up proper spell-checking.
+vim.opt.spelllang     = {                   -- Allow British and American English.
                           "en_gb",
                           "en_us"
                         }
 
-vim.o.undofile        = true      -- save undo history into a file
-vim.o.timeoutlen      = 300       -- time in milliseconds to wait for a mapped sequence to complete
-vim.o.confirm         = true      -- confirm saved changes before exiting buffer
+vim.o.undofile        = true                -- Save undo history into a file.
+vim.o.timeoutlen      = 300                 -- Time in milliseconds to wait for a mapped sequence to complete.
+vim.o.confirm         = true                -- Confirm saved changes before exiting buffer.
 
--- backspace over autoindent, line breaks and start of insert
-vim.o.backspace       = "indent,eol,start"
+vim.o.backspace       = "indent,eol,start"  -- Backspace over autoindent, line breaks and start of insert.
 
--- enables project-local configuration
-vim.o.exrc            = true
-
--- stylua: ignore end
+vim.o.exrc            = true                -- Enables project-local configuration.
