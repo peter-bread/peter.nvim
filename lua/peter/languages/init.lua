@@ -1,9 +1,9 @@
 ---@param file string
 ---@return boolean
 local function is_valid_module(file)
-  -- could use `vim.filetype.match({ filename = file })` but this
-  -- would allow files like `go.lua.bak`, which should not be included in
-  -- actual config as they are backups.
+  -- We could use `vim.filetype.match({ filename = file })` but this would allow
+  -- files like `go.lua.bak`, which should not be included in the actual config
+  -- as they are backups.
   return file:sub(-4) == ".lua" and file ~= "init.lua"
 end
 
