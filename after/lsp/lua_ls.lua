@@ -1,3 +1,4 @@
+-- lua-language-server
 -- https://luals.github.io/wiki/settings
 
 ---@type vim.lsp.Config
@@ -17,11 +18,11 @@ return {
       -- stylua: ignore
       hint = {
         enable      = true,
-        arrayIndex  = "Disable",  -- show indices in arrays
-        paramName   = "Disable",  -- show parameter names in function calls
-        paramType   = true,       -- show parameter types at a function definition
-        semicolon   = "Disable",  -- show semicolon at end of a statement
-        setType     = false,      -- show inferred types at assignment
+        arrayIndex  = "Disable",  -- Show indices in arrays.
+        paramName   = "Disable",  -- Show parameter names in function calls.
+        paramType   = true,       -- Show parameter types at a function definition.
+        semicolon   = "Disable",  -- Show semicolon at end of a statement.
+        setType     = false,      -- Show inferred types at assignment.
       },
       hover = {
         previewFields = 1000,
