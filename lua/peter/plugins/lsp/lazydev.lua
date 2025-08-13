@@ -1,5 +1,16 @@
 ---@module "lazydev"
 
+-- Better Lua Language Server setup for Neovim.
+-- See 'https://github.com/folke/lazydev.nvim'.
+-- See 'https://luals.github.io/wiki'.
+
+-- LazyDev can be enabled/disabled in a project in multiple ways, in this order:
+-- 1. Setting `vim.g.lazydev_enabled` in 'exrc'. See `:h 'exrc'`.
+-- 2. TODO: Setting an environment variable.
+-- 3. Creating a marker file; `.lazydev_{en|dis}abled`. If both exist, `_enabled`
+--    will be prioritised.
+-- 4. Checking if project root is in a list of known Neovim directories.
+
 local P = require("peter.util.plugins.plugins")
 
 ---@type LazyPluginSpec[]

@@ -1,14 +1,21 @@
--- Installing developer tools for Neovim.
+---@module "lazy"
+---@module "mason"
+---@module "mason-lspconfig"
 
--- TODO: evaluate mason-lspconfig.nvim and mason-tool-installer.nvim.
+-- Install developer tools (LSP, Formatter, Linter, DAP) for Neovim.
+-- See 'https://github.com/mason-org/mason.nvim'.
+-- See 'https://github.com/mason-org/mason-lspconfig.nvim'.
+-- See 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim'.
+
+-- TODO: Evaluate 'mason-lspconfig.nvim' and 'mason-tool-installer.nvim'.
 --
 -- There is definitely an argument for just simplifying and rewriting some of
 -- this logic here.
 --
--- I only need mason-lspconfig.nvim for lspconfig mappings for mason-tool-installer.nvim,
--- but I can get these directly using mason.nvim.
+-- I only need 'mason-lspconfig.nvim' for lspconfig mappings for
+-- 'mason-tool-installer.nvim', but I can get these directly using 'mason.nvim'.
 --
--- EDIT: mason-lspconfig.nvim also provides auto generated filetype mappings.
+-- EDIT: 'mason-lspconfig.nvim' also provides auto generated filetype mappings.
 
 local P = require("peter.util.plugins.plugins")
 
@@ -21,6 +28,7 @@ return {
       { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
     },
     build = ":MasonUpdate",
+    ---@type MasonSettings
     opts = {
       ui = {
         icons = {
@@ -72,16 +80,17 @@ return {
 
   -- This can hopefully be removed at some point.
   -- Currently, it is used for 2 things:
-  -- 1. in mason.nvim, provide lspconfig aliases (they appear in the mason UI
+  -- 1. in 'mason.nvim', provide lspconfig aliases (they appear in the mason UI
   --    using :Mason).
-  -- 2. in mason-tool-installer.nvim, the lspconfig aliases are used so those
+  -- 2. in 'mason-tool-installer.nvim', the lspconfig aliases are used so those
   --    names can be used when installing.
-  -- As of https://github.com/mason-org/mason-registry/pull/9774,
+  -- As of 'https://github.com/mason-org/mason-registry/pull/9774',
   -- the lspconfig names are now built into the package specs themselves.
   -- Eventually, this plugin should be deprecated.
   {
     "mason-org/mason-lspconfig.nvim",
     lazy = true,
+    ---@type MasonLspconfigSettings
     opts = { automatic_enable = false },
   },
   {
@@ -105,8 +114,8 @@ return {
 
       require("mason-tool-installer").setup(opts)
 
-      -- install async when using UI (default)
-      -- install synchronously when in headless mode (scripting)
+      -- Install async when using UI (default).
+      -- Install synchronously when in headless mode (scripting).
       local is_headless = #vim.api.nvim_list_uis() == 0
 
       vim.schedule(function()
