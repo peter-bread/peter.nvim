@@ -1,18 +1,18 @@
 ---@module "lazy"
 ---@module "which-key"
 
--- surround actions
--- https://github.com/echasnovski/mini.surround
+-- Surround actions.
+-- See 'https://github.com/echasnovski/mini.surround'.
 
 -- stylua: ignore
 local mappings = {
-  add             = "gsa", -- add surrounding
-  delete          = "gsd", -- delete surrounding
-  find            = "gsf", -- find surrounding (to the right)
-  find_left       = "gsF", -- find surrounding (to the left)
-  highlight       = "gsh", -- highlight surrounding
-  replace         = "gsr", -- replace surrounding
-  update_n_lines  = "gsn", -- update `n_lines`
+  add             = "gsa",  -- Add surrounding.
+  delete          = "gsd",  -- Delete surrounding.
+  find            = "gsf",  -- Find surrounding (to the right).
+  find_left       = "gsF",  -- Find surrounding (to the left).
+  highlight       = "gsh",  -- Highlight surrounding.
+  replace         = "gsr",  -- Replace surrounding.
+  update_n_lines  = "gsn",  -- Update `n_lines`.
 }
 
 local P = require("peter.util.plugins.plugins")

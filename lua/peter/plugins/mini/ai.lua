@@ -1,7 +1,7 @@
 ---@module "lazy"
 
--- better a/i text-objects
--- https://github.com/echasnovski/mini.ai
+-- Better a/i text-objects.
+-- See 'https://github.com/echasnovski/mini.ai'.
 
 ---@type LazyPluginSpec[]
 return {
@@ -15,9 +15,9 @@ return {
       return {
         -- stylua: ignore
         custom_textobjects = {
-          -- use builtin text-objects as they seem to handle escaped characters
+          -- Use builtin text-objects as they seem to handle escaped characters
           -- better.
-          -- continue to use `q` from mini.ai as a convenience, but use these
+          -- Continue to use `q` from 'mini.ai' as a convenience, but use these
           -- ones for more complicated strings
           -- ['"'] = false,
           -- ["'"] = false,
@@ -33,9 +33,9 @@ return {
     config = function(_, opts)
       require("mini.ai").setup(opts)
 
-      -- register new mapping descriptions.
-      -- using `on_load` instead of a plugin spec as these mappings should
-      -- only be listed once mini.ai has loaded.
+      -- Register new mapping descriptions.
+      -- Using `on_load` instead of a plugin spec as these mappings should
+      -- only be listed once 'mini.ai' has loaded.
 
       require("peter.util.lazy").on_load("which-key.nvim", function()
         local objects = {
@@ -92,7 +92,7 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
     branch = "main",
     lazy = true,
-    -- NOTE: if this plugin ever needs its own config, consider moving to its
+    -- NOTE: If this plugin ever needs its own config, consider moving to its
     -- own file.
   },
 }
