@@ -2,6 +2,9 @@
 ---@module "snacks"
 ---@module "which-key"
 
+-- Fuzzy-finder.
+-- See 'https://github.com/folke/snacks.nvim/blob/main/docs/picker.md'.
+
 ---@type snacks.picker.Config
 local cfg = {
 
@@ -9,12 +12,12 @@ local cfg = {
 
     ---@diagnostic disable-next-line: unused-local
     preset = function(source)
-      -- TODO: dynamic layouts based on size (vim.o.columns)
+      -- TODO: Dynamic layouts based on size (vim.o.columns).
       return "general"
     end,
   },
 
-  -- TODO: make more layouts for other sizes
+  -- TODO: Make more layouts for other sizes.
   layouts = {
     general = {
       layout = {
@@ -64,16 +67,16 @@ local P = require("peter.util.plugins.plugins")
 return {
   -- stylua: ignore
   P.snacks({ picker = cfg }, {
-    -- general
+    -- General.
     { "<leader>S", require("snacks").picker.pick, desc = "Search" },
 
-    -- find
+    -- Find.
     { "<leader>ff", pick("files"), desc = "Files" },
     { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "All Files" },
     { "<leader>fr", pick("recent"), desc = "Recent" },
     { "<leader>fb", pick("buffers"), desc = "Buffers" },
 
-    -- search
+    -- Search.
     { "<leader>sg", pick("grep"), desc = "Grep" },
     { "<leader>ss", pick("lsp_symbols"), desc = "LSP Symbols" },
   }),

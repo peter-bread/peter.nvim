@@ -1,4 +1,8 @@
+---@module "lazy"
 ---@module "snacks"
+
+-- Pretty `vim.notify`.
+-- See 'https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md'.
 
 local P = require("peter.util.plugins.plugins")
 
@@ -10,6 +14,7 @@ local cfg = {
   sort = { "added" },
 }
 
+---@type LazyPluginSpec[]
 return {
   P.snacks({ notifier = cfg }),
 }
