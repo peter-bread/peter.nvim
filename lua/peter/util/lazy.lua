@@ -7,7 +7,7 @@ local M = {}
 --
 --[[ ---------------------------------------------------------------------- ]]
 
----Check whether a `plugin` has been loaded by lazy.nvim.
+---Check whether a `plugin` has been loaded by 'lazy.nvim'.
 ---@param plugin string
 ---@return ({ [string]: string }|{ time: number }) | nil
 function M.is_loaded(plugin)
@@ -21,7 +21,7 @@ end
 function M.on_load(name, fn)
   local plugin = require("lazy.core.config").plugins[name]
 
-  -- do nothing if the plugin is not in the spec
+  -- Do nothing if the plugin is not in the spec.
   if not plugin then
     return
   end

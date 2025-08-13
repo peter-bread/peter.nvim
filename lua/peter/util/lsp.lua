@@ -1,3 +1,10 @@
+---LSP Utility functions.
+---@class peter.util.lsp
+local M = {}
+
+---Helper functions. Defined after API functions.
+local H = {}
+
 ---@class peter.util.lsp.ResolveSpec
 ---@field builtin peter.util.lsp.FunctionSpec vim.lsp.buf.*
 ---@field snacks? peter.util.lsp.FunctionSpec Snacks.picker.*
@@ -10,13 +17,6 @@
 
 ---@alias peter.util.lsp.KeymapOpts vim.keymap.set.Opts|{has?:string|string[], mode?:string|string[]}
 
----LSP Utility functions.
----@class peter.util.lsp
-local M = {}
-
----Helper functions. Defined after API functions.
-local H = {}
-
 --[[ ---------------------------------------------------------------------- ]]
 --
 --[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
@@ -27,7 +27,7 @@ local H = {}
 ---@param callback fun(client: vim.lsp.Client, bufnr: integer):nil Function to be called when LSP attaches.
 ---@return integer
 function M.on_attach(callback)
-  -- TODO: add optional augroup
+  -- TODO: Add optional augroup.
   return vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
       local bufnr = ev.buf
@@ -55,25 +55,25 @@ function M.on_supports_method(method, callback)
 end
 
 ---Delete global LSP keymaps.
----See: https://neovim.io/doc/user/lsp.html#lsp-defaults-disable
+---See: 'https://neovim.io/doc/user/lsp.html#lsp-defaults-disable'.
 function M.delete_global_defaults()
   local del = vim.keymap.del
 
-  del({ "n", "v" }, "gra") -- code action
-  del("n", "gri") -- implementation
-  del("n", "grn") -- rename
-  del("n", "grr") -- references
+  del({ "n", "v" }, "gra") -- Code action.
+  del("n", "gri") -- Implementation.
+  del("n", "grn") -- Rename.
+  del("n", "grr") -- References.
 
-  del("n", "gO") -- document symbols
-  del("i", "<C-s>") -- signature help
+  del("n", "gO") -- Document symbols.
+  del("i", "<C-s>") -- Signature help.
 end
 
 ---Resolve LSP functions. First attempts to use plugins, and falls back to
 ---builtin functions in `vim.lsp.buf.*`.
 ---
----Currently, only `snacks.nvim` is supported. Other plugins like `telescope.nvim`
----and `fzf-lua` will only supported if I ever decide to use them instead of
----`snacks.nvim`.
+---Currently, only 'snacks.nvim' is supported. Other plugins like 'telescope.nvim'
+---and 'fzf-lua' will only supported if I ever decide to use them instead of
+---'snacks.nvim'.
 ---
 ---Usage:
 ---
@@ -115,12 +115,12 @@ end
 --- - [`snacks.nvim`](https://github.com/folke/snacks.nvim)
 --- - [`telescope.nvim`](https://github.com/nvim-telescope/telescope.nvim)
 --- - [`fzf-lua`](https://github.com/ibhagwan/fzf-lua)
----@param opts peter.util.lsp.ResolveSpec -- TODO: proper class/type for this table
+---@param opts peter.util.lsp.ResolveSpec -- TODO: Proper class/type for this table.
 function M.resolve_function(opts)
   ---@type fun()|nil
   local fn
 
-  -- TODO: better validation
+  -- TODO: Better validation.
 
   if opts.snacks then
     local ok, snacks = pcall(require, "snacks")
@@ -188,7 +188,7 @@ function M.set_keymap(client, bufnr, lhs, rhs, opts)
     opts.desc = "LSP " .. opts.desc
   end
 
-  opts.buffer = bufnr -- buffer-specific
+  opts.buffer = bufnr
 
   if not has then
     vim.keymap.set(mode, lhs, rhs, opts)

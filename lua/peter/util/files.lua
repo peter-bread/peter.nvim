@@ -56,7 +56,7 @@ end
 ---@param extension? string
 ---@return string|nil
 function M.get_extension(filename, extension)
-  -- use () to capture extension without dot prefix
+  -- Use () to capture extension without dot prefix.
   local pattern = extension and ("%.(" .. extension .. ")$") or "%.(%w+)$"
   return filename:match(pattern)
 end

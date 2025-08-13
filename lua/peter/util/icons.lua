@@ -1,25 +1,25 @@
--- stylua: ignore
 ---@class peter.util.icons
-local icons = {
+local M = {}
 
-  diagnostics = {
-    Error = " ",
-    Warn  = " ",
-    -- Hint  = " ",
-    Hint  = " ",
-    Info  = " ",
-  },
-
-  git = {
-    added     = " ",
-    modified  = " ",
-    removed   = " ",
-
-    ignored   = " ",
-    renamed   = " ",
-  },
-
-  kinds = {},
+-- stylua: ignore
+M.diagnostics = {
+  Error = " ",
+  Warn  = " ",
+  -- Hint  = " ",
+  Hint  = " ",
+  Info  = " ",
 }
 
-return icons
+-- stylua: ignore
+M.git = {
+  added     = " ",
+  modified  = " ",
+  removed   = " ",
+  ignored   = " ",
+  renamed   = " ",
+}
+
+-- stylua: ignore
+M.kinds = {}
+
+return M
