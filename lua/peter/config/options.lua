@@ -89,8 +89,6 @@ vim.o.statuscolumn    = "%=%{v:relnum == 0 ? v:lnum : v:relnum} %s"
                                             -- Show current line number and relative numbers in a single column.
 
 vim.o.cursorline      = true                -- Highlight current line.
--- TODO: disable colorcolumn
-vim.o.colorcolumn     = "80"                -- Highlight column 80.
 vim.o.termguicolors   = true                -- Enable 24-bit RGB.
 vim.o.background      = "dark"              -- Use dark background.
 
