@@ -1,10 +1,10 @@
 ---@module "lazy"
 ---@module "which-key"
 
--- show available keymaps in a popup as you type
--- https://github.com/folke/which-key.nvim
+-- Show available keymaps in a popup as you type.
+-- See 'https://github.com/folke/which-key.nvim'.
 
--- TODO: finish `opts`
+-- TODO: Finish `opts`.
 
 ---@type LazyPluginSpec[]
 return {
@@ -22,7 +22,7 @@ return {
         {
           mode = { "n", "v" },
 
-          -- descriptions
+          -- Descriptions.
           { "f", desc = "Find next {char}" },
           { "F", desc = "Find prev {char}" },
           { "t", desc = "Till next {char}" },
@@ -30,7 +30,7 @@ return {
           { "q", desc = "Record macro" },
           { "gx", desc = "Open file/link with system handler" },
 
-          -- groups
+          -- Groups.
           { "g", group = "goto" },
           { "z", group = "fold" },
           { "]", group = "next" },

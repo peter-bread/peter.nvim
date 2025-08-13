@@ -1,6 +1,9 @@
 ---@module "lazy"
 ---@module "oil"
 
+-- File explorer.
+-- See 'https://github.com/stevearc/oil.nvim'.
+
 ---@type LazyPluginSpec[]
 return {
   {

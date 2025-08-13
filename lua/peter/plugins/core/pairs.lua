@@ -1,17 +1,16 @@
 ---@module "lazy"
 
--- autopairs
--- https://github.com/windwp/nvim-autopairs
+-- Autopairs.
+-- See 'https://github.com/windwp/nvim-autopairs'.
 --
--- currently use this instead of mini.pairs as it is more powerful OOTB
+-- Currently using this instead of 'mini.pairs' as it is more powerful OOTB.
+-- See 'https://github.com/echasnovski/mini.pairs'.
 
 ---@type LazyPluginSpec[]
 return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    opts = {
-      check_ts = true,
-    },
+    opts = { check_ts = true },
   },
 }

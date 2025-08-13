@@ -1,8 +1,8 @@
 ---@module "lazy"
 ---@diagnostic disable: missing-fields, unused-local
 
--- colorscheme
--- https://github.com/rebelot/kanagawa.nvim
+-- Colourscheme.
+-- See 'https://github.com/rebelot/kanagawa.nvim'.
 
 ---@type LazyPluginSpec[]
 return {
@@ -13,15 +13,7 @@ return {
 
     ---@type KanagawaConfig
     opts = {
-      colors = {
-        theme = {
-          all = {
-            ui = {
-              bg_gutter = "none",
-            },
-          },
-        },
-      },
+      colors = { theme = { all = { ui = { bg_gutter = "none" } } } },
 
       ---@param colors KanagawaColors
       overrides = function(colors)
@@ -29,7 +21,7 @@ return {
         local theme = colors.theme
 
         return {
-          -- dark popup menus
+          -- Dark popup menus.
           Pmenu = { bg = theme.ui.bg_p1 },
           PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
           PmenuSbar = { bg = theme.ui.bg_m1 },

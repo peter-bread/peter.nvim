@@ -1,7 +1,7 @@
 ---@module "lazy"
 
--- better matching (using %)
--- https://github.com/andymass/vim-matchup
+-- Better matching (using %).
+-- See 'https://github.com/andymass/vim-matchup'.
 
 ---@type LazyPluginSpec[]
 return {
@@ -9,7 +9,7 @@ return {
     "andymass/vim-matchup",
     event = { "BufReadPost", "BufNewFile" },
 
-    -- set options using vim.g.matchup_<option> = <value>
+    -- Set options using `vim.g.matchup_<option> = <value>`.
     init = function() end,
   },
 }

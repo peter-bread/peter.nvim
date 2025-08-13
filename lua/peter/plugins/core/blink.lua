@@ -1,6 +1,10 @@
 ---@module "lazy"
 ---@module "blink.cmp"
 
+-- Completion.
+-- See 'https://github.com/Saghen/blink.cmp'.
+-- See 'https://cmp.saghen.dev'.
+
 ---@type LazyPluginSpec[]
 return {
   {
@@ -8,7 +12,7 @@ return {
     event = "InsertEnter",
     version = "v1.*",
 
-    -- WARN: build from main (be careful of breaking changes)
+    -- WARN: Building from main branch (be careful of breaking changes).
     -- build = "cargo +nightly build --release",
 
     opts_extend = { "sources.default" },

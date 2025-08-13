@@ -1,30 +1,31 @@
 ---@module "lazy"
 ---@module "nvim-treesitter"
 
--- install tree-sitter parsers
--- https://github.com/nvim-treesitter/nvim-treesitter
+-- Install tree-sitter parsers.
+-- See 'https://github.com/nvim-treesitter/nvim-treesitter'.
+-- See 'https://tree-sitter.github.io/tree-sitter'.
 
 ---@type LazyPluginSpec[]
 return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
-    branch = "main", -- eventually this will become the default branch
+    branch = "main", -- Eventually this will become the default branch.
     build = ":TSUpdate",
 
     opts_extend = { "custom.ensure_installed" },
 
     ---@type {plugin:TSConfig,custom:table}
     opts = {
-      ---@type TSConfig Actual config for setup funcion
+      ---@type TSConfig Actual config for setup funcion.
       plugin = {
-        install_dir = vim.fn.stdpath("data") .. "/site", -- default value
+        install_dir = vim.fn.stdpath("data") .. "/site", -- Default value.
       },
 
-      ---@type table Additional data for custom config, i.e. installing parsers
+      ---@type table Additional data for custom config, i.e. installing parsers.
       custom = {
         ensure_installed = {
-          -- INFO: these should ALWAYS be installed
+          -- INFO: These should ALWAYS be installed.
           "c",
           "lua",
           "markdown",
@@ -33,7 +34,7 @@ return {
           "vim",
           "vimdoc",
 
-          -- miscellaneous parsers that do not fit into a "language" easily
+          -- Miscellaneous parsers that do not fit into a "language" easily.
           "regex",
         },
       },
@@ -59,9 +60,9 @@ return {
       -- stylua: ignore
       if #to_install > 0 then ts.install(to_install) end
 
-      -- enable treesitter highlighting if available
       local autocmds = require("peter.util.autocmds")
 
+      -- TODO: Either remove `pattern = "*"` or use autocmd from tiny.nvim.
       vim.api.nvim_create_autocmd({ "FileType" }, {
         group = autocmds.augroup("EnableTreesitterHighlighting"),
         desc = "Try to enable tree-sitter syntax highlighting",

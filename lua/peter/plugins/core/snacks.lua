@@ -1,8 +1,11 @@
 ---@module "lazy"
 ---@module "snacks"
 
--- QoL plugins
+-- Collection of QoL plugins.
+-- See 'https://github.com/folke/snacks.nvim'.
 --
+-- Each plugin is configured in its own file.
+-- These can be found in `lua/peter/plugins/snacks/<plugin>.lua`.
 
 ---@type LazyPluginSpec[]
 return {
