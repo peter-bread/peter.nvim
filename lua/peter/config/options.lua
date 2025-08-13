@@ -14,7 +14,7 @@ vim.g.have_nerd_font = true
 vim.g.markdown_recommended_style = 0
 
 --[[
-Used to tell mini.icons if it needs to export nvim_web_devicons functions.
+Used to tell 'mini.icons' if it needs to export 'nvim_web_devicons' functions.
 
 Default: `false`.
 
