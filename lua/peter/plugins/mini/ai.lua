@@ -2,6 +2,9 @@
 
 -- Better a/i text-objects.
 -- See 'https://github.com/echasnovski/mini.ai'.
+--
+-- See 'https://github.com/echasnovski/mini.ai/commit/96cd250' for `an/in`
+-- conflicts with LSP mappings in Neovim 0.12+.
 
 ---@type LazyPluginSpec[]
 return {
