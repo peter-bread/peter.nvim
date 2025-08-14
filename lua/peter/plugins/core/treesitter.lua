@@ -57,8 +57,9 @@ return {
         end)
         :totable()
 
-      -- stylua: ignore
-      if #to_install > 0 then ts.install(to_install) end
+      if #to_install > 0 and vim.fn.executable("tree-sitter") == 1 then
+        ts.install(to_install)
+      end
 
       local autocmds = require("peter.util.autocmds")
 
