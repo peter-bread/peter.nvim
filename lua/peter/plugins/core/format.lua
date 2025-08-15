@@ -2,7 +2,7 @@
 ---@module "conform"
 
 -- Formatting.
--- See 'https://github.com/stevearc/conform.nvim'>
+-- See 'https://github.com/stevearc/conform.nvim'.
 
 ---@type LazyPluginSpec[]
 return {
