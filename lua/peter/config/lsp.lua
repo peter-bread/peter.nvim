@@ -24,6 +24,10 @@ lsp.delete_global_defaults()
 lsp.on_attach(function(client, bufnr)
   lsp.set_default_keymaps(client, bufnr)
 
+  if client:supports_method("textDocument/inlayHint") then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
+
   if client:supports_method("textDocument/codeLens") then
     vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "BufWritePost" }, {
       group = autocmds.augroup("RefreshCodeLens"),
