@@ -275,22 +275,28 @@ function M.set_default_keymaps(client, bufnr)
   })
   -- stylua: ignore end
 
-  if client:supports_method("textDocument/rename") then
-    require("peter.util.lazy").on_load("which-key.nvim", function()
-      require("which-key").add({
+  do
+    local wk_specs = {}
+
+    if client:supports_method("textDocument/rename") then
+      table.insert(wk_specs, {
         mode = { "n" },
         { "<leader>c", group = "code" },
       })
-    end)
-  end
+    end
 
-  if client:supports_method("textDocument/codeAction") then
-    require("peter.util.lazy").on_load("which-key.nvim", function()
-      require("which-key").add({
+    if client:supports_method("textDocument/codeAction") then
+      table.insert(wk_specs, {
         mode = { "n", "v" },
         { "<leader>c", group = "code" },
       })
-    end)
+    end
+
+    if #wk_specs > 0 then
+      require("peter.util.lazy").on_load("which-key.nvim", function()
+        require("which-key").add(wk_specs)
+      end)
+    end
   end
 end
 
