@@ -320,16 +320,6 @@ Some of these were in my previous config, others were not.
 </details>
 
 <details>
-  <summary>flash.nvim</summary>
-
-  I will very likely add this soon.
-
-  Plugins:
-  - [flash.nvim](https://github.com/folke/flash.nvim)
-
-</details>
-
-<details>
   <summary>Custom snippets</summary>
 </details>
 
