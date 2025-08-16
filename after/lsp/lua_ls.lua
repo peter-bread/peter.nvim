@@ -1,5 +1,5 @@
--- lua-language-server
--- https://luals.github.io/wiki/settings
+-- Lua Language Server.
+-- See 'https://luals.github.io/wiki/settings'.
 
 ---@type vim.lsp.Config
 return {
