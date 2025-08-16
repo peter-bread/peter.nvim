@@ -18,18 +18,25 @@ return {
     ---@diagnostic disable-next-line: missing-fields
     opts = {},
     keys = {},
+
     init = function()
-      local toggle = require("snacks").toggle
+      vim.api.nvim_create_autocmd("User", {
+        group = require("peter.util.autocmds").augroup("SnacksInit"),
+        pattern = "VeryLazy",
+        callback = function()
+          local toggle = require("snacks").toggle
 
-      toggle.diagnostics():map("<leader>ud")
-      toggle.inlay_hints():map("<leader>uh")
+          toggle.diagnostics():map("<leader>ud")
+          toggle.inlay_hints():map("<leader>uh")
 
-      require("peter.util.lazy").on_load("which-key.nvim", function()
-        require("which-key").add({
-          mode = { "n" },
-          { "<leader>u", group = "ui" },
-        })
-      end)
+          require("peter.util.lazy").on_load("which-key.nvim", function()
+            require("which-key").add({
+              mode = { "n" },
+              { "<leader>u", group = "ui" },
+            })
+          end)
+        end,
+      })
     end,
   },
 }
