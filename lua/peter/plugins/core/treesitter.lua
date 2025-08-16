@@ -63,7 +63,7 @@ return {
 
       local autocmds = require("peter.util.autocmds")
 
-      -- TODO: Either remove `pattern = "*"` or use autocmd from tiny.nvim.
+      -- TODO: Either remove `pattern = "*"` or use autocmd from 'tiny.nvim'.
       vim.api.nvim_create_autocmd({ "FileType" }, {
         group = autocmds.augroup("EnableTreesitterHighlighting"),
         desc = "Try to enable tree-sitter syntax highlighting",

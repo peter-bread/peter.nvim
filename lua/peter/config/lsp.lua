@@ -1,7 +1,7 @@
 local lsp = require("peter.util.lsp")
 local autocmds = require("peter.util.autocmds")
 
--- Enable LSPs *after* mason.nvim install directory has been added to PATH.
+-- Enable LSPs *after* 'mason.nvim' install directory has been added to `PATH`.
 --
 -- When `vim.lsp.enable` is called, it checks whether `vim.lsp.Config.cmd` is
 -- executable. This means that `vim.lsp.Config.cmd` must be in PATH.
