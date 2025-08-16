@@ -18,6 +18,18 @@ return {
     ---@diagnostic disable-next-line: missing-fields
     opts = {},
     keys = {},
-    init = function() end,
+    init = function()
+      local toggle = require("snacks").toggle
+
+      toggle.diagnostics():map("<leader>ud")
+      toggle.inlay_hints():map("<leader>uh")
+
+      require("peter.util.lazy").on_load("which-key.nvim", function()
+        require("which-key").add({
+          mode = { "n" },
+          { "<leader>u", group = "ui" },
+        })
+      end)
+    end,
   },
 }
