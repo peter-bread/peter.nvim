@@ -269,6 +269,11 @@ function M.set_default_keymaps(client, bufnr)
     has = "textDocument/codeLens",
   })
 
+  map("<leader>cC", vim.lsp.codelens.refresh, {
+    desc = "Refresh Codelens",
+    has = "textDocument/codeLens",
+  })
+
   map("<leader>cr", vim.lsp.buf.rename, {
     desc = "Rename",
     has = "textDocument/rename",
