@@ -22,7 +22,7 @@ return {
       -- We *could* use the following:
       -- python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
       -- However, I think it's better to make actual code changes manually
-      -- with intent, e.g. with an LSP Code Action (see `:h vim.lsp.buf.code_action()`),
+      -- with intent, e.g. with an LSP Code Action (see `:h vim.lsp.buf.code_action`),
       -- rather than with a formatter that runs on every write.
     }),
   },
