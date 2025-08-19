@@ -54,6 +54,32 @@ function M.on_supports_method(method, callback)
   })
 end
 
+---Enable LSP Inlay Hints for the current buffer if the LSP supports it.
+---See `:h vim.lsp.inlay_hint.enable`.
+---@param client vim.lsp.Client
+---@param bufnr integer
+function M.try_enable_inlay_hints(client, bufnr)
+  if client:supports_method("textDocument/inlayHint") then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
+end
+
+---Enable LSP Codelens for the current buffer if the LSP supports it.
+---See `:h vim.lsp.codelens.refresh`.
+---@param client vim.lsp.Client
+---@param bufnr integer
+function M.try_enable_codelens(client, bufnr)
+  local autocmds = require("peter.util.autocmds")
+  if client:supports_method("textDocument/codeLens") then
+    vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "BufWritePost" }, {
+      group = autocmds.augroup("RefreshCodeLens"),
+      desc = "Refresh CodeLens",
+      buffer = bufnr,
+      callback = vim.lsp.codelens.refresh,
+    })
+  end
+end
+
 ---Delete global LSP keymaps.
 ---See: 'https://neovim.io/doc/user/lsp.html#lsp-defaults-disable'.
 function M.delete_global_defaults()
