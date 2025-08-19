@@ -215,8 +215,8 @@ function M.set_default_keymaps(client, bufnr)
   map("K", M.resolve_function({
     builtin = {
       name = "hover",
-      opts = { max_height = 15, border = "solid" }
-    }
+      opts = { max_height = 15, border = "solid" },
+    },
   }), {
     desc = "Hover",
     has = "textDocument/hover",
@@ -252,7 +252,7 @@ function M.set_default_keymaps(client, bufnr)
       name = "lsp_symbols",
       -- opts = { tree = false },
     },
-    builtin = "document_symbol"
+    builtin = "document_symbol",
   }), {
     desc = "Symbols",
     has = "textDocument/documentSymbol",
