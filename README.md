@@ -321,6 +321,10 @@ Some of these were in my previous config, others were not.
 
 <details>
   <summary>Custom snippets</summary>
+
+  Plugins:
+  - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
+
 </details>
 
 <details>
