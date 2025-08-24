@@ -26,27 +26,18 @@ set("n", "<leader>|", "<C-W>v", { desc = "Split right" })
 
 -- 2.c. Resize splits ----------------------------------------------------------
 
-do
-  set("n", "<M-=>", "<cmd>resize +2<cr>", { desc = "Increase height" })
-  set("n", "<M-->", "<cmd>resize -2<cr>", { desc = "Decrease height" })
+set("n", "<M-=>", "<cmd>resize +2<cr>", { desc = "Increase height" })
+set("n", "<M-->", "<cmd>resize -2<cr>", { desc = "Decrease height" })
 
-  -- HACK: Keymaps using multiple modifier keys do not work the same with all
-  -- terminal emulators.
-  -- This is likely due to the xterm-ghostty and xterm-256screen terminfo entries
-  -- being different.
-  local split_width_lhs
-
-  if vim.list_contains({ "ghostty" }, vim.env.TERM_PROGRAM) then
-    split_width_lhs = { inc = "<M-S-=>", dec = "<M-S-->" }
-  else
-    split_width_lhs = { inc = "<M-+>", dec = "<M-_>" }
-  end
-
-  -- stylua: ignore start
-  set("n", split_width_lhs.inc, "<cmd>vertical resize +2<cr>", { desc = "Increase width" })
-  set("n", split_width_lhs.dec, "<cmd>vertical resize -2<cr>", { desc = "Decrease width" })
-  -- stylua: ignore end
-end
+-- These keymaps work for terminal emulators that support the Kitty Keyboard Protocol.
+-- See 'https://sw.kovidgoyal.net/kitty/keyboard-protocol'.
+--
+-- You may need to use "<M-+>" and "<M-_>" for other terminal emulators.
+--
+-- By default, these will not work in WezTerm. Either use the `lhs` above or set
+-- `enable_kitty_keyboard = true` in your WezTerm config.
+set("n", "<M-S-=>", "<cmd>vertical resize +2<cr>", { desc = "Increase width" })
+set("n", "<M-S-->", "<cmd>vertical resize -2<cr>", { desc = "Decrease width" })
 
 -- 3. Buffers ==================================================================
 
