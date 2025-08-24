@@ -55,7 +55,7 @@ end
 -- 4. Lines ====================================================================
 
 -- Move lines.
--- From: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- From: 'https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua'.
 set("n", "<M-j>", "<cmd>m .+1<cr>==", { desc = "Move Line Down" })
 set("n", "<M-k>", "<cmd>m .-2<cr>==", { desc = "Move Line Up" })
 set("i", "<M-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Line Down" })
@@ -79,7 +79,7 @@ do
     local virtual_text_config
 
     -- Inspiration:
-    -- https://www.reddit.com/r/neovim/comments/1jm5atz/replacing_vimdiagnosticopen_float_with_virtual
+    -- 'https://www.reddit.com/r/neovim/comments/1jm5atz/replacing_vimdiagnosticopen_float_with_virtual'.
     --
     -- This is a 2-stage keymap.
     --
