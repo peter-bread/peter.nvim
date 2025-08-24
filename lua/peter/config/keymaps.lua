@@ -7,7 +7,7 @@ set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 set({ "n", "i", "s" }, "<esc>", function()
   vim.snippet.stop() -- Exit current snippet (native snippets only).
   vim.cmd("noh") -- Clear search.
-  return "<esc>" -- Standard esc behaviour.
+  return "<esc>" -- Standard <esc> behaviour.
 end, { expr = true, desc = "Escape+" }) -- `expr` to make sure "<esc>" is actually evaluated.
 
 -- 2. Splits ===================================================================
