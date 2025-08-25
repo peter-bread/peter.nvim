@@ -27,6 +27,11 @@
 
 <!-- markdownlint-disable MD013 -->
 
+- Terminal emulator that supports:
+  - Truecolor (24-bit colours)
+  - Kitty Keyboard Protocol
+  - e.g. [Ghostty](https://ghostty.org), [kitty](https://sw.kovidgoyal.net/kitty), [WezTerm](https://wezterm.org) (with `enable_kitty_keyboard = true`)
+- A Nerd Font (for icons)
 - [`git`](https://git-scm.com/)
 - [Neovim](https://neovim.io/) 0.11+ (and it's dependencies)
 - Fuzzy finding ([`snacks.picker`](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md)):
