@@ -283,7 +283,7 @@ Some of these were in my previous config, others were not.
 </details>
 
 <details>
-  <summary>Git Integration</summary>
+  <summary>Git Integration (UNFINISHED)</summary>
 
   I need to decide how much git integration is needed inside Neovim. How much
   do I need to do in Neovim vs what can I do from a terminal.
@@ -299,6 +299,11 @@ Some of these were in my previous config, others were not.
     - [snacks.lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md)
   - GitHub
     - [octo.nvim](https://github.com/pwntester/octo.nvim)
+
+  UPDATE:
+
+  Started using Neogit. It probably still needs some configuration. If I end up using a
+  statusline, I will need some other plugin to provide diff info.
 
 </details>
 
