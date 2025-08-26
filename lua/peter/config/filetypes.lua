@@ -6,7 +6,7 @@ vim.filetype.add({
   filename = {},
 
   pattern = {
-    [".*/.github/workflows/.*%.ya?ml"] = "yaml.ghaction",
+    [".*/.github/workflows/.*%.ya?ml"] = "yaml.github",
     ["~/.ssh/config.d/.*"] = "sshconfig",
   },
 })
