@@ -116,10 +116,10 @@ lua/peter/
 │   ├── init.lua                - Builds table that maps languages to configs
 │   └── lua.lua                 - Lua config (example)
 ├── plugins/                  # Plugins
-│   ├── core                    - General plugins
-│   ├── lsp                     - LSP related plugins
-│   ├── mini                    - Plugins from mini.nvim
-│   └── snacks                  - Modules from snacks.nvim
+│   ├── core/                   - General plugins
+│   ├── lsp/                    - LSP related plugins
+│   ├── mini/                   - Plugins from mini.nvim
+│   └── snacks/                 - Modules from snacks.nvim
 └── util/                     # Utility functions
 ```
 
