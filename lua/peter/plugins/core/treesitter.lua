@@ -41,14 +41,15 @@ return {
     },
 
     config = function(_, opts)
-      local ts = require("nvim-treesitter")
+      local nts = require("nvim-treesitter")
       local list = require("peter.util.list")
+      local autocmds = require("peter.util.autocmds")
 
-      ts.setup(opts.plugin)
+      nts.setup(opts.plugin)
 
       local ensure_installed = list.uniq(opts.custom.ensure_installed or {})
 
-      local already_installed = ts.get_installed()
+      local already_installed = nts.get_installed()
 
       local to_install = vim
         .iter(ensure_installed)
@@ -58,18 +59,21 @@ return {
         :totable()
 
       if #to_install > 0 and vim.fn.executable("tree-sitter") == 1 then
-        ts.install(to_install)
+        nts.install(to_install)
       end
 
-      local autocmds = require("peter.util.autocmds")
-
-      -- TODO: Either remove `pattern = "*"` or use autocmd from 'tiny.nvim'.
       vim.api.nvim_create_autocmd({ "FileType" }, {
         group = autocmds.augroup("EnableTreesitterHighlighting"),
         desc = "Try to enable tree-sitter syntax highlighting",
-        pattern = "*",
-        callback = function()
-          pcall(vim.treesitter.start)
+        callback = function(ev)
+          local filetype = ev.match
+          local lang = vim.treesitter.language.get_lang(filetype)
+          if lang and vim.treesitter.language.add(lang) then
+            -- TODO: Use Treesitter for folds and indents.
+            -- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            vim.treesitter.start(ev.buf, lang)
+          end
         end,
       })
     end,
