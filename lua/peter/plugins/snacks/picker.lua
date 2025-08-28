@@ -64,6 +64,7 @@ end
 
 local P = require("peter.util.plugins.plugins")
 
+---@type LazyPluginSpec[]
 return {
   -- stylua: ignore
   P.snacks({ picker = cfg }, {
