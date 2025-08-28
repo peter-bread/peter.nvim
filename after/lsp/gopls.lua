@@ -1,4 +1,4 @@
--- gopls
+-- gopls.
 -- See 'https://github.com/golang/tools/tree/master/gopls'.
 -- See 'https://github.com/golang/tools/blob/master/gopls/doc/index.md'.
 -- See 'https://github.com/golang/tools/blob/master/gopls/doc/settings.md'.
