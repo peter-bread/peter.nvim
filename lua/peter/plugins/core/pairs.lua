@@ -4,7 +4,7 @@
 -- See 'https://github.com/windwp/nvim-autopairs'.
 --
 -- Currently using this instead of 'mini.pairs' as it is more powerful OOTB.
--- See 'https://github.com/echasnovski/mini.pairs'.
+-- See 'https://github.com/nvim-mini/mini.pairs'.
 
 ---@type LazyPluginSpec[]
 return {

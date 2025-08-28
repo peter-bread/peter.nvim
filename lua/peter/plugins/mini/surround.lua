@@ -2,7 +2,7 @@
 ---@module "which-key"
 
 -- Surround actions.
--- See 'https://github.com/echasnovski/mini.surround'.
+-- See 'https://github.com/nvim-mini/mini.surround'.
 
 -- stylua: ignore
 local mappings = {
@@ -20,7 +20,7 @@ local P = require("peter.util.plugins.plugins")
 ---@type LazyPluginSpec[]
 return {
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     opts = {
       mappings = mappings,
     },

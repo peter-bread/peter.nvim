@@ -294,8 +294,8 @@ Some of these were in my previous config, others were not.
     - [fugitive](https://github.com/tpope/vim-fugitive)
     - [neogit](https://github.com/NeogitOrg/neogit)
     - [diffview.nvim](https://github.com/sindrets/diffview.nvim)
-    - [mini.git](https://github.com/echasnovski/mini-git)
-    - [mini.diff](https://github.com/echasnovski/mini.diff)
+    - [mini.git](https://github.com/nvim-mini/mini-git)
+    - [mini.diff](https://github.com/nvim-mini/mini.diff)
     - [snacks.lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md)
   - GitHub
     - [octo.nvim](https://github.com/pwntester/octo.nvim)

@@ -1,12 +1,12 @@
 ---@module "lazy"
 
 -- Icon provider.
--- See 'https://github.com/echasnovski/mini.icons'.
+-- See 'https://github.com/nvim-mini/mini.icons'.
 
 ---@type LazyPluginSpec[]
 return {
   {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     lazy = true,
     init = function()
       if vim.g.needs_nvim_web_devicons then
