@@ -35,6 +35,7 @@ return {
           "vimdoc",
 
           -- Miscellaneous parsers that do not fit into a "language" easily.
+          "make", -- TODO: Move this to a language file if I ever use a Makefile linter or formatter.
           "regex",
         },
       },
