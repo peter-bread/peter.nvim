@@ -12,7 +12,6 @@ local mappings = {
   find_left       = "gsF",  -- Find surrounding (to the left).
   highlight       = "gsh",  -- Highlight surrounding.
   replace         = "gsr",  -- Replace surrounding.
-  update_n_lines  = "gsn",  -- Update `n_lines`.
 }
 
 local P = require("peter.util.plugins.plugins")
@@ -32,7 +31,6 @@ return {
       { mappings.find_left,       desc = "Find Left Surrounding" },
       { mappings.highlight,       desc = "Highlight Surrounding" },
       { mappings.replace,         desc = "Replace Surrounding Surrounding" },
-      { mappings.update_n_lines,  desc = "Delete Surrounding" },
     },
   },
   P.which_key({
