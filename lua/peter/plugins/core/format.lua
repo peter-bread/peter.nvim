@@ -38,6 +38,13 @@ return {
       format_on_save = {
         timeout_ms = 500,
       },
+
+      formatters = {
+        prettier = {
+          -- Only use '.prettierignore'; do not use '.gitignore'.
+          prepend_args = { "--ignore-path", ".prettierignore" },
+        },
+      },
     },
   },
 }
