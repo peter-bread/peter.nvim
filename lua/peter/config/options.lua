@@ -1,91 +1,125 @@
--- set leader key
-vim.g.mapleader = " "
+-- stylua: ignore start
+
+-- 1. Globals ==================================================================
+
+vim.g.mapleader      = " "
 vim.g.maplocalleader = "\\"
 
+-- Used by plugins to see whether to render icons or fallback to ASCII.
 vim.g.have_nerd_font = true
 
+-- Fix markdown indentation settings.
+-- See `:helpg markdown_recommended_style`.
+-- See 'https://github.com/tpope/vim-markdown/commit/b78bbce3371a2eb56c89f618cd4ab2baadc9ee61'.
 vim.g.markdown_recommended_style = 0
 
-vim.g.private_mode_enabled = false
+--[[
+Used to tell 'mini.icons' if it needs to export 'nvim_web_devicons' functions.
 
--- WARN: `vim.opt` will be deprecated. Will need to switch to `vim.o`.
--- https://github.com/neovim/neovim/issues/20107
+Default: `false`.
 
--- pop up menu height
-vim.opt.pumheight = 15
+This option can be set in two places:
+  1. in `lua/peter/config/options.lua`
+  2. in a plugin file **BEFORE** the spec is returned. (recommended for modularity)
 
--- set line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+      Example:
+        ```lua
+        -- lua/peter/plugins/core/some-plugin.lua
 
--- tabs and indentation
-vim.opt.autoindent = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.smarttab = true
-vim.opt.shiftround = true
+        vim.g.needs_nvim_web_devicons = true
 
-vim.opt.wrap = false
+        ---@type LazyPluginSpec[]
+        return {
+          {
+            "someone/some-plugin",
+            opts = {...},
+            ...
+          },
+        }
+        ```
+]]
+---@type boolean
+vim.g.needs_nvim_web_devicons = false
 
-vim.opt.breakindent = true
+-- 2. Options ==================================================================
 
-vim.opt.confirm = true
+-- WARN: `vim.opt` will be deprecated.
+-- Use `vim.o` where possible; only use `vim.opt` for Lua tables.
+-- See 'https://github.com/neovim/neovim/issues/20107'.
 
-vim.opt.spelllang = { "en" }
+-- 2.a Line Numbers ------------------------------------------------------------
 
-vim.opt.undofile = true
+vim.o.number          = true                -- Line numbers.
+vim.o.relativenumber  = true                -- Relative line numbers.
 
--- search options
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
 
-vim.opt.signcolumn = "yes"
-vim.opt.colorcolumn = "80,120"
+-- 2.b. Tabs and Indentation ---------------------------------------------------
 
-vim.opt.timeoutlen = 300
+vim.o.autoindent      = true                -- Copy indent from current line when starting a new line.
+vim.o.smartindent     = true                -- Do smart autoindenting when starting a new line.
+vim.o.expandtab       = true                -- Use spaces instead of tabs.
+vim.o.shiftwidth      = 2                   -- Size of indent.
+vim.o.tabstop         = 2                   -- Number of spaces tabs count for.
+vim.o.smarttab        = true                -- A <Tab> in front of a line inserts blanks according to 'shiftwidth'.
+vim.o.shiftround      = true                -- Round indent.
 
--- split windows
-vim.opt.splitright = true
-vim.opt.splitbelow = true
 
--- vim.opt.fillchars = {
---   foldopen = "",
---   foldclose = "",
---   fold = " ",
---   foldsep = " ",
---   diff = "╱",
---   eob = " ",
--- }
+-- 2.c. Search Options ---------------------------------------------------------
 
-vim.opt.list = true
+vim.o.ignorecase      = true                -- Ignore case while searching.
+vim.o.smartcase       = true                -- Override the 'ignorecase' option if the search pattern contains uppercase characters.
+vim.o.hlsearch        = true                -- Highlight search matches.
+vim.o.incsearch       = true                -- Highlight search matches while typing search command.
 
-vim.opt.listchars = {
-  nbsp = "+",
-  eol = "󱞥",
-  trail = "·",
-  tab = "  ",
-}
 
-vim.opt.inccommand = "split"
+-- 2.d. Split Windows ----------------------------------------------------------
 
-vim.opt.cursorline = true
-vim.opt.termguicolors = true
-vim.opt.background = "dark"
+vim.o.splitright      = true                -- Vertical splits open on the right.
+vim.o.splitbelow      = true                -- Horizontal splits open below.
 
-vim.opt.backspace = "indent,eol,start"
 
--- do not use system clipboard on WSL
--- argument that system clipboard should never be used in (neo)vim
--- https://github.com/peter-bread/peter.nvim/issues/31
-if not vim.uv.os_uname().release:find("WSL") then
-  vim.opt.clipboard:append("unnamedplus")
-end
+-- 2.e. Appearance -------------------------------------------------------------
 
-vim.opt.scrolloff = 16
+vim.o.wrap            = false               -- Do not wrap lines.
+vim.o.breakindent     = true                -- Wrapped text remains indented.
+vim.o.scrolloff       = 8                   -- Minimal number of screen lines to keep above and below the cursor.
+vim.o.signcolumn      = "yes"               -- Always draw the signcolumn.
 
-vim.opt.exrc = true
+vim.o.statuscolumn    = "%=%{v:relnum == 0 ? v:lnum : v:relnum} %s"
+                                            -- Show current line number and relative numbers in a single column.
 
-vim.opt.statuscolumn = "%=%{v:relnum == 0 ? v:lnum : v:relnum} %s"
+vim.o.cursorline      = true                -- Highlight current line.
+vim.o.termguicolors   = true                -- Enable 24-bit RGB.
+vim.o.background      = "dark"              -- Use dark background.
+
+vim.o.pumheight       = 15                  -- Max height of pop-up menus.
+
+-- TODO: Set to false once (if) there is a statusline
+vim.o.showmode        = true                -- Do not show current mode (not needed with statusline).
+
+vim.o.list            = true                -- Show invisible characters (e.g. trailing spaces).
+vim.opt.listchars     = {                   -- Configure how invisible characters should be shown.
+                          nbsp  = "+",
+                          eol   = "󱞥",
+                          trail = "·",
+                          tab   = "  ",
+                        }
+
+
+-- 2.f. Other ------------------------------------------------------------------
+
+vim.o.inccommand      = "split"             -- Shows the effects of commands as you type (e.g. |:substitute|).
+
+-- TODO: Set up proper spell-checking.
+vim.opt.spelllang     = {                   -- Allow British and American English.
+                          "en_gb",
+                          "en_us"
+                        }
+
+vim.o.undofile        = true                -- Save undo history into a file.
+vim.o.timeoutlen      = 300                 -- Time in milliseconds to wait for a mapped sequence to complete.
+vim.o.confirm         = true                -- Confirm saved changes before exiting buffer.
+
+vim.o.backspace       = "indent,eol,start"  -- Backspace over autoindent, line breaks and start of insert.
+
+vim.o.exrc            = true                -- Enables project-local configuration.

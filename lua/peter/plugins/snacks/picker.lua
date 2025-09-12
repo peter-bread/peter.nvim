@@ -1,130 +1,90 @@
----@diagnostic disable: missing-fields, unused-local
-
+---@module "lazy"
 ---@module "snacks"
+---@module "which-key"
 
-local constants = require("peter.constants")
-local paths = constants.paths
-local picker = require("peter.util.snacks.picker")
+-- Fuzzy-finder.
+-- See 'https://github.com/folke/snacks.nvim/blob/main/docs/picker.md'.
 
 ---@type snacks.picker.Config
-local Config = {
-  enabled = true,
+local cfg = {
+
   layout = {
-    preset = "my_telescope",
-  },
-  -- TODO: use delta for git diff
-  -- previewers = {
-  --   diff = {
-  --     builtin = false,
-  --     cmd = { "delta" },
-  --   },
-  --   git = {
-  --     builtin = false,
-  --     native = true,
-  --   },
-  -- },
-  --
 
-  preview = picker.preview.file,
-
-  win = {
-    preview = {
-      wo = {
-        foldcolumn = "0",
-        relativenumber = false,
-        signcolumn = "no",
-        statuscolumn = "",
-      },
-    },
+    ---@diagnostic disable-next-line: unused-local
+    preset = function(source)
+      -- TODO: Dynamic layouts based on size (vim.o.columns).
+      return "general"
+    end,
   },
 
+  -- TODO: Make more layouts for other sizes.
   layouts = {
-    my_telescope = {
-      reverse = true,
+    general = {
       layout = {
         box = "horizontal",
-        backdrop = false,
-        width = 0.9,
-        height = 0.9,
+        width = 0.95,
+        min_width = 120,
+        height = 0.75,
         border = "solid",
-        {
+        [1] = {
           box = "vertical",
-          {
-            win = "list",
-            title = " Results ",
-            title_pos = "center",
-            border = "solid",
-          },
-          {
-            win = "input",
-            height = 1,
-            border = "solid",
-            title = "{title} {live} {flags}",
-            title_pos = "center",
-          },
-        },
-        {
-          win = "preview",
-          title = "{preview:Preview}",
-          width = 0.55,
           border = "solid",
+          title = "{title} {live} {flags}",
           title_pos = "center",
+          [1] = { win = "input", height = 1, border = "bottom" },
+          [2] = { win = "list", border = "solid", wo = { scrolloff = 4 } },
+        },
+        [2] = {
+          win = "preview",
+          title = "{preview}",
+          title_pos = "center",
+          border = "solid",
+          width = 0.6,
+          wo = {
+            relativenumber = false,
+            foldcolumn = "0",
+            signcolumn = "no",
+            statuscolumn = "%{v:lnum}",
+          },
         },
       },
     },
   },
 }
 
----Wrapper function to make config a bit cleaner
----@param source string Picker to use
----@param opts? snacks.picker.Config Picker options
+---Wrapper function to make config cleaner.
+---@param source string Picker to use.
+---@param opts? snacks.picker.Config Picker options.
 ---@return function
-local pick = function(source, opts)
+local function pick(source, opts)
   return function()
     require("snacks").picker.pick(source, opts)
   end
 end
 
+local P = require("peter.util.plugins.plugins")
+
+---@type LazyPluginSpec[]
 return {
-  {
-    "folke/snacks.nvim",
+  -- stylua: ignore
+  P.snacks({ picker = cfg }, {
+    -- General.
+    { "<leader>S", require("snacks").picker.pick, desc = "Search" },
 
-    ---@type snacks.Config
-    opts = {
-      picker = Config,
-    },
+    -- Find.
+    { "<leader>ff", pick("files"), desc = "Files" },
+    { "<leader>fF", pick("files", { hidden = true, ignored = true }), desc = "All Files" },
+    { "<leader>fr", pick("recent"), desc = "Recent" },
+    { "<leader>fb", pick("buffers"), desc = "Buffers" },
 
-    keys = {
+    -- Search.
+    { "<leader>sg", pick("grep"), desc = "Grep" },
+    { "<leader>ss", pick("lsp_symbols"), desc = "LSP Symbols" },
+  }),
 
-      -- all
-      {
-        "<leader>S",
-        function()
-          require("snacks").picker()
-        end,
-        mode = "n",
-        desc = "Search",
-      },
-
-      -- find
-      { "<leader>ff", pick("files"), desc = "Files" },
-      { "<leader>fF", picker.file.all_files, desc = "All Files" },
-      { "<leader>fr", pick("recent"), desc = "Recent" },
-      { "<leader>fb", pick("buffers"), desc = "Buffers" },
-
-      -- search
-      { "<leader>sb", pick("lines"), desc = "Buffer Lines" },
-      { "<leader>sB", pick("grep_buffers"), desc = "Grep Open Buffers" },
-      { "<leader>sg", pick("grep"), desc = "Grep" },
-      { "<leader>sk", pick("keymaps"), desc = "Keymaps" },
-      { "<leader>ss", picker.search.lsp_symbols, desc = "LSP Symbols" },
-
-      { "<leader>uC", picker.neovim.colorschemes, desc = "Colorschemes" },
-
-      -- neovim pickers
-      { "<leader>nf", picker.neovim.config_files, desc = "Config" },
-      { "<leader>np", picker.neovim.plugins, desc = "Plugins" },
-      { "<leader>nl", picker.neovim.languages, desc = "Languages" },
-    },
-  },
+  P.which_key({
+    mode = { "n" },
+    { "<leader>f", group = "find" },
+    { "<leader>s", group = "search" },
+  }),
 }

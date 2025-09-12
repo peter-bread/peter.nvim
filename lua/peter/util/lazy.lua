@@ -1,52 +1,45 @@
+---@class peter.util.lazy
 local M = {}
 
--- most functions here are from or inspired by LazyVim:
--- https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/util/init.lua
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
 
----@param name string
----@param fn fun(name:string)
-function M.on_load(name, fn)
+---Check whether a `plugin` has been loaded by 'lazy.nvim'.
+---@param plugin string
+---@return ({ [string]: string }|{ time: number }) | nil
+function M.is_loaded(plugin)
   local config = require("lazy.core.config")
-  if config.plugins[name] and config.plugins[name]._.loaded then
-    fn(name)
-  else
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "LazyLoad",
-      callback = function(event)
-        if event.data == name then
-          fn(name)
-          return true
-        end
-      end,
-    })
-  end
+  return config.plugins[plugin] and config.plugins[plugin]._.loaded
 end
 
----Get a Lazy plugin spec
----@param name string Name of plugin
----@return LazyPlugin spec Plugin spec
-function M.get_plugin(name)
-  return require("lazy.core.config").spec.plugins[name]
-end
+---Run `fn` if `name` is already loaded or when it loads.
+---@param name string
+---@param fn function
+function M.on_load(name, fn)
+  local plugin = require("lazy.core.config").plugins[name]
 
----Get a property from a plugin spec
----@param plugin_name string Name of plugin
----@param prop_name string Name of property
----@return table prop Value of the property
-function M.get_prop(plugin_name, prop_name)
-  local plugin = M.get_plugin(plugin_name)
+  -- Do nothing if the plugin is not in the spec.
   if not plugin then
-    return {}
+    return
   end
-  local Plugin = require("lazy.core.plugin")
-  return Plugin.values(plugin, prop_name)
-end
 
----Get the `opts` property from a plugin spec
----@param plugin_name string Name of plugin
----@return table opts Opts table for the plugin
-function M.opts(plugin_name)
-  return M.get_prop(plugin_name, "opts")
+  if plugin._.loaded then
+    fn()
+    return
+  end
+
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "LazyLoad",
+    callback = function(ev)
+      if ev.data == name then
+        fn()
+        return true
+      end
+    end,
+  })
 end
 
 return M

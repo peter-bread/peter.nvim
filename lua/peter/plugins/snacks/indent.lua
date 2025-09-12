@@ -1,22 +1,18 @@
----@diagnostic disable: missing-fields
-
+---@module "lazy"
 ---@module "snacks"
 
+-- Indent guides and scopes.
+-- See 'https://github.com/folke/snacks.nvim/blob/main/docs/indent.md'.
+
+local P = require("peter.util.plugins.plugins")
+
 ---@type snacks.indent.Config
-local Config = {
-  enabled = true,
-  animate = {
-    enabled = false,
-  },
+---@diagnostic disable-next-line: missing-fields
+local cfg = {
+  animate = { enabled = false },
 }
 
+---@type LazyPluginSpec[]
 return {
-  {
-    "folke/snacks.nvim",
-
-    ---@type snacks.Config
-    opts = {
-      indent = Config,
-    },
-  },
+  P.snacks({ indent = cfg }),
 }

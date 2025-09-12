@@ -1,22 +1,20 @@
----@diagnostic disable: missing-fields
-
+---@module "lazy"
 ---@module "snacks"
 
+-- Pretty `vim.notify`.
+-- See 'https://github.com/folke/snacks.nvim/blob/main/docs/notifier.md'.
+
+local P = require("peter.util.plugins.plugins")
+
 ---@type snacks.notifier.Config
-local Config = {
-  enabled = true,
+---@diagnostic disable-next-line: missing-fields
+local cfg = {
   timeout = 5000,
   style = "compact",
   sort = { "added" },
 }
 
+---@type LazyPluginSpec[]
 return {
-  {
-    "folke/snacks.nvim",
-
-    ---@type snacks.Config
-    opts = {
-      notifier = Config,
-    },
-  },
+  P.snacks({ notifier = cfg }),
 }

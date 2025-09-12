@@ -1,13 +1,19 @@
+---@class peter.util.files
 local M = {}
 
----@param filename string
----@param extension? string
----@return string
+--[[ ---------------------------------------------------------------------- ]]
+--
+--[[ ------------------- START OF PUBLIC API FUNCTIONS. ------------------- ]]
+--
+--[[ ---------------------------------------------------------------------- ]]
+
+---Remove extension from filename.
 ---
---- Remove extension from filename.
---- If `extension` is given, only remove that extension.
+---If `extension` is given, only remove that extension.
+---If the filename does not contain an extension, or does not contain
+---the given `extention`, the function will just return `filename`.
 ---
---- # Usage
+---### Usage
 ---
 ---```lua
 --- strip_extension("hello.lua") -- "hello"
@@ -15,46 +21,44 @@ local M = {}
 ---
 --- strip_extension("hello.lua", "lua") -- "hello"
 --- strip_extension("bye.toml", "lua") -- "bye.toml"
---- ```
-M.strip_extension = function(filename, extension)
+---```
+---@param filename string
+---@param extension? string
+---@return string
+function M.strip_extension(filename, extension)
   local pattern = extension and ("%." .. extension .. "$") or "%.%w+$"
-  return (filename:gsub(pattern, "")) -- only return first value
+  local new_filename = filename:gsub(pattern, "")
+  return new_filename
 end
 
----Gets the first non-nil filepath.
----Useful when checking multiple environemnt variables that may not be set.
----@param values string[][]
+---Get extension from filename.
+---
+---If called with just `filename`, check for any extension. If found, return it.
+---Else return `nil`.
+---
+---If `extension` is provided, only check for that extension.
+---
+---Since any `string` is "truthy" and `nil` is "falsy", this function can also
+---be used to check if a filename has an extension.
+---
+---### Usage
+---
+---```lua
+--- if has_extension("foo.lua") then
+---   -- returns "lua" so does enter the conditonal block
+--- end
+---
+--- if has_extension("bar.toml", "lua") then
+---   -- returns nil, so does NOT enter the conditonal block.
+--- end
+---```
+---@param filename string
+---@param extension? string
 ---@return string|nil
-M.first_non_nil_path = function(values)
-  for _, path_table in ipairs(values) do
-    local path = M.safe_concat_path(path_table)
-    if path then
-      return path
-    end
-  end
-  return nil
-end
-
----Safely concatenate a filepath
----
----Usage:
----
---- ```lua
---- -- if $XDG_CONFIG_HOME = $HOME/.config
---- safe_concat_path({ vim.fn.getenv("XDG_CONFIG_HOME"), "gh" }) -- /home/username/.config/gh
----
---- -- if $XDG_CONFIG_HOME is not set
---- safe_concat_path({ vim.fn.getenv("XDG_CONFIG_HOME"), "gh" }) -- nil
---- ```
----@param list string[]
----@return string|nil
-M.safe_concat_path = function(list)
-  for _, term in ipairs(list) do
-    if term == vim.NIL or term == nil then
-      return nil
-    end
-  end
-  return vim.fs.normalize(table.concat(list, "/"))
+function M.get_extension(filename, extension)
+  -- Use () to capture extension without dot prefix.
+  local pattern = extension and ("%.(" .. extension .. ")$") or "%.(%w+)$"
+  return filename:match(pattern)
 end
 
 return M

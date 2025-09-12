@@ -1,95 +1,101 @@
+---@module "lazy"
+
+-- Better a/i text-objects.
+-- See 'https://github.com/nvim-mini/mini.ai'.
+--
+-- See 'https://github.com/nvim-mini/mini.ai/commit/96cd250' for `an/in`
+-- conflicts with LSP mappings in Neovim 0.12+.
+
+---@type LazyPluginSpec[]
 return {
   {
-    "echasnovski/mini.ai",
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+    "nvim-mini/mini.ai",
+    dependencies = { "nvim-treesitter-textobjects" },
     event = { "BufReadPost", "BufNewFile" },
-    version = false,
+
     opts = function()
       local ai = require("mini.ai")
       return {
-        n_lines = 500,
-      -- stylua: ignore
-      custom_textobjects = {
-        o = ai.gen_spec.treesitter({
-          a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-          i = { "@block.inner", "@conditional.inner", "@loop.inner" },
-        }, {}),
-        f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-        c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
-        t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },
-        d = { "%f[%d]%d+" }, -- digits
-        e = { -- Word with case
-          {
-            "%u[%l%d]+%f[^%l%d]",
-            "%f[%S][%l%d]+%f[^%l%d]",
-            "%f[%P][%l%d]+%f[^%l%d]",
-            "^[%l%d]+%f[^%l%d]",
-          },
-          "^().*()$",
+        -- stylua: ignore
+        custom_textobjects = {
+          -- Use builtin text-objects as they seem to handle escaped characters
+          -- better.
+          -- Continue to use `q` from 'mini.ai' as a convenience, but use these
+          -- ones for more complicated strings
+          -- ['"'] = false,
+          -- ["'"] = false,
+          -- ["`"] = false,
+
+          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+          F = ai.gen_spec.function_call()
         },
-        g = function() -- Whole buffer, similar to `gg` and 'G' motion
-          local from = { line = 1, col = 1 }
-          local to = {
-            line = vim.fn.line("$"),
-            col = math.max(vim.fn.getline("$"):len(), 1),
-          }
-          return { from = from, to = to }
-        end,
-        u = ai.gen_spec.function_call(), -- u for "Usage"
-        U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
-      },
+        n_lines = 500,
       }
     end,
     config = function(_, opts)
       require("mini.ai").setup(opts)
 
+      -- Register new mapping descriptions.
+      -- Using `on_load` instead of a plugin spec as these mappings should
+      -- only be listed once 'mini.ai' has loaded.
+
       require("peter.util.lazy").on_load("which-key.nvim", function()
         local objects = {
-          { " ", desc = "whitespace" },
+          { "(", desc = "() block" },
+          { ")", desc = "() block with ws" },
+          { "[", desc = "[] block" },
+          { "]", desc = "[] block with ws" },
+          { "{", desc = "{} block" },
+          { "}", desc = "{} block with ws" },
+          { "<", desc = "< block" },
+          { ">", desc = "> block with ws" },
+
           { '"', desc = 'balanced "' },
           { "'", desc = "balanced '" },
-          { "(", desc = "balanced (" },
-          { ")", desc = "balanced ) including white-space" },
-          { "<", desc = "balanced <" },
-          { ">", desc = "balanced > including white-space" },
-          { "?", desc = "user prompt" },
-          { "U", desc = "use/call without dot in name" },
-          { "[", desc = "balanced [" },
-          { "]", desc = "balanced ] including white-space" },
-          { "_", desc = "underscore" },
           { "`", desc = "balanced `" },
+
+          { "?", desc = "user prompt" },
+
           { "a", desc = "argument" },
-          { "b", desc = "balanced )]}" },
+          { "b", desc = ")]} block" },
           { "c", desc = "class" },
-          { "d", desc = "digit(s)" },
-          { "e", desc = "word in CamelCase & snake_case" },
           { "f", desc = "function" },
-          { "g", desc = "entire file" },
-          { "i", desc = "indent" },
-          { "o", desc = "block, conditional, loop" },
-          { "q", desc = "quote `\"'" },
+          { "F", desc = "function call" },
+          { "q", desc = "quote \"'`" },
           { "t", desc = "tag" },
-          { "u", desc = "use/call function & method" },
-          { "{", desc = "balanced {" },
-          { "}", desc = "balanced } including white-space" },
         }
 
-        local ret = { mode = { "o", "x" } }
-        for prefix, name in pairs({
-          i = "inside",
-          a = "around",
-          il = "last",
-          ["in"] = "next",
-          al = "last",
-          an = "next",
-        }) do
-          ret[#ret + 1] = { prefix, group = name }
-          for _, obj in ipairs(objects) do
-            ret[#ret + 1] = { prefix .. obj[1], desc = obj.desc }
+        -- stylua: ignore
+        local prefix_groups = {
+          { prefix = "a",  group = "around" },
+          { prefix = "i",  group = "inside" },
+          { prefix = "an", group = "next" },
+          { prefix = "in", group = "next" },
+          { prefix = "al", group = "last" },
+          { prefix = "il", group = "last" },
+        }
+
+        local mappings = {
+          mode = { "o", "x" },
+        }
+
+        for _, pg in ipairs(prefix_groups) do
+          mappings[#mappings + 1] = { pg.prefix, group = pg.group }
+          for _, obj in pairs(objects) do
+            mappings[#mappings + 1] = { pg.prefix .. obj[1], desc = obj.desc }
           end
         end
-        require("which-key").add(ret, { notify = false })
+
+        require("which-key").add(mappings, { notify = false })
       end)
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    lazy = true,
+    -- NOTE: If this plugin ever needs its own config, consider moving to its
+    -- own file.
   },
 }

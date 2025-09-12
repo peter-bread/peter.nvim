@@ -1,31 +1,25 @@
+---@class peter.util.icons
 local M = {}
 
+-- stylua: ignore
 M.diagnostics = {
-  fill = {
-    Error = " ",
-    Warn = " ",
-    Hint = "󰌵 ",
-    Info = "󰋼 ",
-  },
-  line = {
-    Error = " ",
-    Warn = " ",
-    Hint = "󰌶 ",
-    Info = " ",
-  },
-  -- other = {
-  --   Error = " ",
-  --   Warn = " ",
-  --   Hint = " ",
-  --   Info = " ",
-  -- },
+  Error = " ",
+  Warn  = " ",
+  -- Hint  = " ",
+  Hint  = " ",
+  Info  = " ",
 }
 
+-- stylua: ignore
 M.git = {
-  -- nf-oct-diff-
-  added = " ",
-  removed = " ",
-  modified = " ",
+  added     = " ",
+  modified  = " ",
+  removed   = " ",
+  ignored   = " ",
+  renamed   = " ",
 }
+
+-- stylua: ignore
+M.kinds = {}
 
 return M
