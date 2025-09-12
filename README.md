@@ -1,11 +1,5 @@
 # peter.nvim
 
-> [!WARNING]
-> Currently undergoing a rewrite.
-> None of the information on this page can be considered accurate.
-
----
-
 <!-- markdownlint-disable MD033 -->
 
 <!-- <div align="center"> -->
@@ -153,7 +147,7 @@ and shown below:
 
 There is also still the option to use [`after/ftplugin/<filetype>.lua`](./after/ftplugin/)
 to set buffer-specific options. However, it can be easier to use the table approach
-above as `ftplugin.ft` *can* be a list, so you can apply the same options to
+above as `ftplugin.ft` _can_ be a list, so you can apply the same options to
 multiple filetypes while only writing the code once, for example [Haskell and
 Cabal files](https://github.com/mrcjkb/haskell-tools.nvim#zap-quick-setup).
 
@@ -274,95 +268,102 @@ Some of these were in my previous config, others were not.
 <details>
   <summary>Linting</summary>
 
-  I haven't got round to this yet. Usually LSP + formatter is enough
-  for me, but I plan on adding this back at some point.
+I haven't got round to this yet. Usually LSP + formatter is enough
+for me, but I plan on adding this back at some point.
 
-  Plugins:
-  - [nvim-lint](https://github.com/mfussenegger/nvim-lint)
+Plugins:
+
+- [nvim-lint](https://github.com/mfussenegger/nvim-lint)
 
 </details>
 
 <details>
   <summary>Git Integration (UNFINISHED)</summary>
 
-  I need to decide how much git integration is needed inside Neovim. How much
-  do I need to do in Neovim vs what can I do from a terminal.
+I need to decide how much git integration is needed inside Neovim. How much
+do I need to do in Neovim vs what can I do from a terminal.
 
-  Plugins:
-  - Git
-    - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-    - [fugitive](https://github.com/tpope/vim-fugitive)
-    - [neogit](https://github.com/NeogitOrg/neogit)
-    - [diffview.nvim](https://github.com/sindrets/diffview.nvim)
-    - [mini.git](https://github.com/nvim-mini/mini-git)
-    - [mini.diff](https://github.com/nvim-mini/mini.diff)
-    - [snacks.lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md)
-  - GitHub
-    - [octo.nvim](https://github.com/pwntester/octo.nvim)
+Plugins:
 
-  UPDATE:
+- Git
+  - [gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+  - [fugitive](https://github.com/tpope/vim-fugitive)
+  - [neogit](https://github.com/NeogitOrg/neogit)
+  - [diffview.nvim](https://github.com/sindrets/diffview.nvim)
+  - [mini.git](https://github.com/nvim-mini/mini-git)
+  - [mini.diff](https://github.com/nvim-mini/mini.diff)
+  - [snacks.lazygit](https://github.com/folke/snacks.nvim/blob/main/docs/lazygit.md)
+- GitHub
+  - [octo.nvim](https://github.com/pwntester/octo.nvim)
 
-  Started using Neogit. It probably still needs some configuration. If I end up using a
-  statusline, I will need some other plugin to provide diff info.
+UPDATE:
+
+Started using Neogit. It probably still needs some configuration. If I end up using a
+statusline, I will need some other plugin to provide diff info.
 
 </details>
 
 <details>
   <summary>Statusline</summary>
 
-  This config is aiming to be relatively minimal. Do I actually need a statusline
-  plugin or is it just aesthetically nice? I do like having diagnostic/git info so
-  I may add this.
+This config is aiming to be relatively minimal. Do I actually need a statusline
+plugin or is it just aesthetically nice? I do like having diagnostic/git info so
+I may add this.
 
-  Plugins:
-  - [lualine](https://github.com/nvim-lualine/lualine.nvim)
+Plugins:
+
+- [lualine](https://github.com/nvim-lualine/lualine.nvim)
 
 </details>
 
 <details>
   <summary>Dashboard</summary>
 
-  I will very likely add this soon.
+I will very likely add this soon.
 
-  Plugins:
-  - [snacks.dashboard](https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md)
+Plugins:
+
+- [snacks.dashboard](https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md)
 
 </details>
 
 <details>
   <summary>Custom snippets</summary>
 
-  Plugins:
-  - [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
+Plugins:
+
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
 
 </details>
 
 <details>
   <summary>Markdown</summary>
 
-  I would like to add a renderer and any other utilities. Are these actually
-  needed though?
+I would like to add a renderer and any other utilities. Are these actually
+needed though?
 
-  Plugins:
-  - Renderer:
-    - [markview.nvim](https://github.com/OXY2DEV/markview.nvim)
-    - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
-  - Utilties
-    - [bullets.vim](https://github.com/bullets-vim/bullets.vim)
+Plugins:
+
+- Renderer:
+  - [markview.nvim](https://github.com/OXY2DEV/markview.nvim)
+  - [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)
+- Utilties
+  - [bullets.vim](https://github.com/bullets-vim/bullets.vim)
 
 </details>
 
 <details>
   <summary>Debugging</summary>
 
-  If I am to add this back in, I would like to use both nvim-dap and
-  overseer.nvim. Might not implement for a while as it will probably need
-  quite a lot of setup to get it working nicely. Note: overseer.nvim integrates
-  with nvim-dap, but that is only a small feature of it.
+If I am to add this back in, I would like to use both nvim-dap and
+overseer.nvim. Might not implement for a while as it will probably need
+quite a lot of setup to get it working nicely. Note: overseer.nvim integrates
+with nvim-dap, but that is only a small feature of it.
 
-  Plugins:
-  - [nvim-dap](https://github.com/mfussenegger/nvim-dap)
-  - [overseer.nvim](https://github.com/stevearc/overseer.nvim)
+Plugins:
+
+- [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+- [overseer.nvim](https://github.com/stevearc/overseer.nvim)
 
 </details>
 
