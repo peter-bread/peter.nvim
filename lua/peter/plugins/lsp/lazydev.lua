@@ -43,7 +43,8 @@ return {
               .. root
               .. ".\nPrioritising `.lazydev_enabled`."
               .. "\nConsider removing one of these files.",
-            vim.log.levels.WARN
+            vim.log.levels.WARN,
+            { title = "LazyDev" }
           )
           return true
         end
