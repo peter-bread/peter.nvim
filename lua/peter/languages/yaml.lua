@@ -8,7 +8,8 @@ return {
 
   plugins = {
     L.treesitter({ "yaml" }),
-    L.mason({ "yamlls", "yamlfmt" }), -- TODO: Add 'actionlint' (requires 'nvim-lint')?
+    L.mason({ "yamlls", "yamlfmt", "actionlint" }),
     L.format({ yaml = { "yamlfmt" } }),
+    L.lint({ yaml = { "actionlint" } }),
   },
 }

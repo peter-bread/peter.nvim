@@ -10,7 +10,8 @@ return {
 
   plugins = {
     L.treesitter({ "lua", "luadoc" }),
-    L.mason({ "lua_ls", "stylua" }),
+    L.mason({ "lua_ls", "stylua", "selene" }),
     L.format({ lua = { "stylua" } }),
+    L.lint({ lua = { "selene" } }),
   },
 }

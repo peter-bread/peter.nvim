@@ -57,4 +57,18 @@ function M.format(formatters_by_ft)
   }
 end
 
+---Register linters by filetype.
+---Plugin [nvim-lint](https://github.com/mfussenegger/nvim-lint).
+---@param linters_by_ft table<string,string[]> Mapping of filetypes to linters.
+---@return LazyPluginSpec
+function M.lint(linters_by_ft)
+  return {
+    "mfussenegger/nvim-lint",
+    optional = true,
+    opts = {
+      linters_by_ft = linters_by_ft or {},
+    },
+  }
+end
+
 return M

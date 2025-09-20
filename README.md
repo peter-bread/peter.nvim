@@ -257,18 +257,6 @@ Below is a list of features that are not currently implemented in this config.
 Some of these were in my previous config, others were not.
 
 <details>
-  <summary>Linting</summary>
-
-I haven't got round to this yet. Usually LSP + formatter is enough
-for me, but I plan on adding this back at some point.
-
-Plugins:
-
-- [nvim-lint](https://github.com/mfussenegger/nvim-lint)
-
-</details>
-
-<details>
   <summary>Git Integration (UNFINISHED)</summary>
 
 I need to decide how much git integration is needed inside Neovim. How much
