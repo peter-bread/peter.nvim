@@ -5,7 +5,7 @@ return {
   lsp = { "marksman" },
 
   plugins = {
-    L.treesitter({ "markdown", "markdown_inline" }),
+    L.treesitter({ "markdown", "markdown_inline", "html" }),
     L.mason({
       "marksman", -- LSP.
       "prettier", -- Formatter.
