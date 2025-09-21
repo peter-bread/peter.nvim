@@ -103,8 +103,10 @@ return {
           end)
           :totable()
 
-        lint.try_lint(linters_for_ft)
-        lint.try_lint(linters_for_all_ft)
+        if vim.bo.modifiable and vim.bo.buftype ~= "prompt" then
+          lint.try_lint(linters_for_ft)
+          lint.try_lint(linters_for_all_ft)
+        end
       end
 
       local group = require("peter.util.autocmds").augroup("Linting")
@@ -123,6 +125,7 @@ return {
           return acc
         end)
 
+      -- TODO: Refactor so this keymap is available before the plugin has been loaded?
       require("snacks").toggle
         .new({
           name = "Linting",
