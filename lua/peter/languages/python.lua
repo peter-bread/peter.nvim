@@ -2,6 +2,11 @@
 
 local L = require("peter.util.plugins.languages")
 
+-- Keep an eye on other Python LSPs. There is every chance these will become better
+-- than 'basedpyright' in the future.
+-- See 'https://github.com/astral-sh/ty'.
+-- See 'https://github.com/facebook/pyrefly'.
+
 ---@type peter.lang.config
 return {
   lsp = { "basedpyright", "ruff" },
