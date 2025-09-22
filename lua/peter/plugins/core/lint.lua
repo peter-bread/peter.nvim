@@ -10,7 +10,7 @@
 ---@field linters? table<string,peter.lint.Linter> Map of linters to their properties.
 ---@field enabled_at_start? boolean Whether linting autocmd should be enabled on start. Default: `true`.
 
----Linter class extended with the `on_lint` field.
+---Linter class extended with the `condition` and `process_diagnostics` fields.
 ---@class peter.lint.Linter : lint.Linter
 ---@field condition? fun(ctx:peter.lint.ctx):any Function to dynamically enable/disable a linter, called with a context object. Returning `false` disables the linter; returning anything else or `nil` allows it.
 ---@field process_diagnostics? fun(diagnostic:vim.Diagnostic):vim.Diagnostic? Function to process diagnostics produced by a linter.
