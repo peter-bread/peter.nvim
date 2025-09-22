@@ -176,6 +176,7 @@ return {
       -- TODO: Refactor so this keymap is available before the plugin has been loaded?
       require("snacks").toggle
         .new({
+          id = "linting",
           name = "Linting",
           set = function(state)
             vim.api.nvim_clear_autocmds({ group = group })
@@ -195,7 +196,7 @@ return {
               end
             end
 
-            config.enabled = not config.enabled
+            config.enabled = state
           end,
           get = function()
             return config.enabled
