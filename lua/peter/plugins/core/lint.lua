@@ -55,7 +55,7 @@ return {
       enabled_at_start = false,
     },
 
-    ---@param opts peter.lint.Opts
+    ---@param opts peter.lint.Opts?
     config = function(_, opts)
       local lint = require("lint")
 
