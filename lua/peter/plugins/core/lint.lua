@@ -60,18 +60,15 @@ return {
       local lint = require("lint")
 
       -- Resolve `opts`.
-      local events = opts.events
-        or { "BufReadPost", "BufWritePost", "InsertLeave" }
-      local linters_by_ft = opts.linters_by_ft or {}
-      local linters = opts.linters or {}
-
-      local enabled = opts.enabled_at_start
-      if enabled == nil then
-        enabled = true
-      end
+      local config = vim.tbl_deep_extend("force", {}, {
+        events = { "BufReadPost", "BufWritePost", "InsertLeave" },
+        linters_by_ft = {},
+        linters = {},
+        enabled_at_start = true,
+      }, opts or {})
 
       -- Set linter properties.
-      for name, properties in pairs(linters) do
+      for name, properties in pairs(config.linters) do
         -- No type annotations for these helper funcions.
         -- There are very annoying conflicts between `lint.Linter` and
         -- `peter.lint.Linter`. It's easier to treat them as the same
@@ -122,9 +119,9 @@ return {
       end
 
       -- Handle special case.
-      local linters_for_all_ft = linters_by_ft["*"] or {}
-      linters_by_ft["*"] = nil
-      lint.linters_by_ft = linters_by_ft
+      local linters_for_all_ft = config.linters_by_ft["*"] or {}
+      config.linters_by_ft["*"] = nil
+      lint.linters_by_ft = config.linters_by_ft
 
       ---Function that extends builtin linter resolution logic.
       local callback = function()
@@ -162,8 +159,8 @@ return {
 
       local group = require("peter.util.autocmds").augroup("Linting")
 
-      if enabled then
-        vim.api.nvim_create_autocmd(events, {
+      if config.enabled then
+        vim.api.nvim_create_autocmd(config.events, {
           group = group,
           callback = callback,
         })
@@ -185,7 +182,7 @@ return {
 
             if state then
               -- Enable linting.
-              vim.api.nvim_create_autocmd(events, {
+              vim.api.nvim_create_autocmd(config.events, {
                 group = group,
                 callback = callback,
               })
@@ -198,10 +195,10 @@ return {
               end
             end
 
-            enabled = not enabled
+            config.enabled = not config.enabled
           end,
           get = function()
-            return enabled
+            return config.enabled
           end,
         })
         :map("<leader>ul")
