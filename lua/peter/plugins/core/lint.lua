@@ -12,7 +12,8 @@
 
 ---Linter class extended with the `on_lint` field.
 ---@class peter.lint.Linter : lint.Linter
----@field on_lint? fun(ctx:peter.lint.ctx):any Pre-lint hook called with a context object. Returning `false` disables the linter; returning `true` or `nil` allows it.
+---@field condition? fun(ctx:peter.lint.ctx):any Function to dynamically enable/disable a linter, called with a context object. Returning `false` disables the linter; returning anything else or `nil` allows it.
+---@field process_diagnostics? fun(diagnostic:vim.Diagnostic):vim.Diagnostic? Function to process diagnostics produced by a linter.
 
 ---@class peter.lint.ctx
 ---@field bufnr integer
@@ -36,7 +37,7 @@ return {
       -- Linter customisation should be done here.
       linters = {
         selene = {
-          on_lint = function(ctx)
+          condition = function(ctx)
             return vim.fs.find(
               { "selene.toml" },
               { path = ctx.filename, upward = true }
@@ -44,7 +45,7 @@ return {
           end,
         },
         actionlint = {
-          on_lint = function(ctx)
+          condition = function(ctx)
             local parent = vim.fs.dirname(ctx.filename)
             return vim.endswith(parent, "/.github/workflows")
           end,
@@ -70,10 +71,54 @@ return {
       end
 
       -- Set linter properties.
-      for linter, properties in pairs(linters) do
-        for property, details in pairs(properties) do
-          lint.linters[linter][property] = details
+      for name, properties in pairs(linters) do
+        -- No type annotations for these helper funcions.
+        -- There are very annoying conflicts between `lint.Linter` and
+        -- `peter.lint.Linter`. It's easier to treat them as the same
+        -- class (they pretty much are anyway) and forgo type annotations.
+
+        ---Modify a linter's properties.
+        local function apply_properties(linter)
+          for property, value in pairs(properties) do
+            if property ~= "process_diagnostics" then
+              linter[property] = value
+            end
+          end
+          return linter
         end
+
+        ---Wrap linter to post-process diagnostics.
+        local function wrap_if_needed(linter)
+          if properties.process_diagnostics then
+            return require("lint.util").wrap(
+              linter,
+              properties.process_diagnostics
+            )
+          end
+          return linter
+        end
+
+        local linter = lint.linters[name]
+
+        -- First apply all properties apart from `process_diagnostics`.
+        -- The linter can only be wrapped after all other properties have been
+        -- set.
+
+        if type(linter) == "table" then
+          linter = apply_properties(linter)
+          linter = wrap_if_needed(linter)
+          --
+        elseif type(linter) == "function" then
+          local original = lint.linters[name]
+          linter = function()
+            local _linter = original()
+            _linter = apply_properties(_linter)
+            return _linter
+          end
+          linter = wrap_if_needed(linter)
+        end
+
+        lint.linters[name] = linter
       end
 
       -- Handle special case.
@@ -94,12 +139,18 @@ return {
         -- This is the builtin linter resolution logic.
         local linters_for_ft = lint._resolve_linter_by_ft(ctx.ft)
 
-        -- Filter using the `on_lint` property.
+        -- Filter using the `condition` property.
         linters_for_ft = vim
           .iter(linters_for_ft)
           :filter(function(name)
-            local hook = opts.linters[name] and opts.linters[name].on_lint
-            return not hook or hook(ctx) ~= false
+            local linter = lint.linters[name] --[[@as peter.lint.Linter|fun():peter.lint.Linter]]
+
+            if type(linter) == "function" then
+              linter = linter()
+            end
+
+            local condition = linter and linter.condition
+            return not condition or condition(ctx) ~= false
           end)
           :totable()
 
@@ -119,7 +170,7 @@ return {
       end
 
       local all_linters = vim
-        .iter(linters_by_ft)
+        .iter(lint.linters_by_ft)
         :fold({}, function(acc, _, _linters)
           acc = vim.list_extend(acc, _linters)
           return acc
