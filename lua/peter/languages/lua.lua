@@ -1,5 +1,7 @@
 ---@module "conform"
 
+-- See 'https://www.lua.org/'.
+
 local L = require("peter.util.plugins.languages")
 
 -- TODO: StyLua now has an LSP mode. Investigate.

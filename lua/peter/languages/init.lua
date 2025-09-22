@@ -1,3 +1,9 @@
+-- THIS FILE DOES NOT CONTAIN THE CONFIGURATION FOR A SPECIFIC PROGRAMMING
+-- LANGUAGE.
+--
+-- THIS FILE LOADS ALL OF THE OTHER LANGUAGE CONFIG FILES INTO A SINGLE LUA
+-- MODULE THAT CAN BE ACCESSED USING `require("peter.languages")`.
+
 ---@param file string
 ---@return boolean
 local function is_valid_module(file)

@@ -1,5 +1,7 @@
 ---@module "conform"
 
+-- See 'https://www.gnu.org/software/bash/'.
+
 local L = require("peter.util.plugins.languages")
 
 ---@type peter.lang.config
