@@ -28,6 +28,7 @@ return {
 
           toggle.diagnostics():map("<leader>ud")
           toggle.inlay_hints():map("<leader>uh")
+          toggle.indent():map("<leader>ui")
 
           require("peter.util.lazy").on_load("which-key.nvim", function()
             require("which-key").add({
