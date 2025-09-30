@@ -2,9 +2,6 @@
 ---@class peter.util.lsp
 local M = {}
 
----Helper functions. Defined after API functions.
-local H = {}
-
 ---@class peter.util.lsp.ResolveSpec
 ---@field builtin peter.util.lsp.FunctionSpec vim.lsp.buf.*
 ---@field snacks? peter.util.lsp.FunctionSpec Snacks.picker.*
@@ -181,8 +178,10 @@ end
 ---@param methods string|string[]
 ---@return boolean
 function M.supports_all(client, methods)
-  return not H.check_methods(client, methods, function(supported)
-    return not supported
+  methods = type(methods) == "string" and { methods } or methods
+
+  return vim.iter(methods):all(function(method)
+    return client:supports_method(method)
   end)
 end
 
@@ -191,8 +190,10 @@ end
 ---@param methods string|string[]
 ---@return boolean
 function M.supports_any(client, methods)
-  return H.check_methods(client, methods, function(supported)
-    return supported
+  methods = type(methods) == "string" and { methods } or methods
+
+  return vim.iter(methods):any(function(method)
+    return client:supports_method(method)
   end)
 end
 
@@ -329,32 +330,6 @@ function M.set_default_keymaps(client, bufnr)
       end)
     end
   end
-end
-
---[[ ---------------------------------------------------------------------- ]]
---
---[[ ---------- END OF API FUNCTIONS. START OF HELPER FUNCTIONS. ---------- ]]
---
---[[ ---------------------------------------------------------------------- ]]
-
----Check LSP method support.
----@param client vim.lsp.Client
----@param methods string|string[]
----@param predicate fun(supported: boolean): boolean
----@return boolean
-function H.check_methods(client, methods, predicate)
-  if type(methods) == "string" then
-    methods = { methods }
-  end
-
-  for _, method in ipairs(methods) do
-    local supported = client:supports_method(method)
-    if predicate(supported) then
-      return true
-    end
-  end
-
-  return false
 end
 
 return M
