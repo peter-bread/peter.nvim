@@ -5,6 +5,8 @@ if ! command -v nvim &>/dev/null; then
   exit 1
 fi
 
+export NVIM_APPNAME="peter.nvim"
+
 # Run Neovim in headless mode:
 # 1. Install plugins
 # 2. Install Mason packages
