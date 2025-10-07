@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if ! command -v nvim &>/dev/null; then
+  echo "Error: neovim not installed" >&2
+  exit 1
+fi
+
+# Run Neovim in headless mode:
+# 1. Install plugins
+# 2. Install Mason packages
+# 3. Install treesitter parsers
+
+nvim --headless \
+  '+Lazy! restore' \
+  '+Lazy! load mason-tool-installer.nvim' \
+  '+Lazy! load nvim-treesitter' \
+  +qa
