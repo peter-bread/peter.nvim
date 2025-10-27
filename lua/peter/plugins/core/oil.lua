@@ -14,6 +14,9 @@ return {
     opts = {
       columns = { "icon", "permissions", "size", "mtime" },
       skip_confirm_for_simple_edits = true,
+      confirmation = {
+        border = "solid",
+      },
     },
   },
 }
