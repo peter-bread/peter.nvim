@@ -16,7 +16,7 @@ return {
     opts = {
       style = vim.g.have_nerd_font and "glyph" or "ascii",
 
-      -- stylua: igore start
+      -- stylua: ignore start
 
       -- Fallbacks for any other category.
       default = {},
