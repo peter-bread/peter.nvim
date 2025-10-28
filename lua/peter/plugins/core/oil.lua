@@ -19,6 +19,12 @@ return {
       confirmation = { border = "solid" },
       -- ssh = { border = "solid" },
       -- progress = { border = "solid" },
+      keymaps = {
+        ["<C-s>"] = false,
+        ["<C-h>"] = false,
+        ["<localleader>|"] = { "actions.select", opts = { vertical = true } },
+        ["<localleader>-"] = { "actions.select", opts = { horizontal = true } },
+      },
     },
   },
 }
