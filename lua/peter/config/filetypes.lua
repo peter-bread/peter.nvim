@@ -3,7 +3,9 @@ vim.filetype.add({
     ["code-snippets"] = "json",
   },
 
-  filename = {},
+  filename = {
+    [".swift-format"] = "json",
+  },
 
   pattern = {
     -- This is not needed any more.
