@@ -32,6 +32,7 @@ local header = [[
 ---@type snacks.dashboard.Item[]
 local keys = {
   {
+    icon = " ",
     key = "f",
     desc = "Find File",
     action = function()
@@ -39,6 +40,8 @@ local keys = {
     end,
   },
   {
+    -- icon = " ",
+    icon = " ",
     key = "r",
     desc = "Recent Files",
     action = function()
@@ -46,6 +49,7 @@ local keys = {
     end,
   },
   {
+    icon = "󱎸 ",
     key = "g",
     desc = "Grep",
     action = function()
@@ -53,17 +57,20 @@ local keys = {
     end,
   },
   {
+    icon = " ",
     key = "G",
     desc = "Git",
     action = ":Neogit", -- This will load Neogit.
   },
   {
+    icon = "󰒲 ",
     key = "l",
     desc = "Lazy",
     action = ":Lazy",
     enabled = package.loaded.lazy ~= nil,
   },
   {
+    icon = " ",
     key = "q",
     desc = "Quit",
     action = ":qa",
