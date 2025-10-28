@@ -7,7 +7,7 @@
 return {
   {
     "nvim-mini/mini.icons",
-    event = "VeryLazy",
+    lazy = true,
     init = function()
       if vim.g.needs_nvim_web_devicons then
         require("mini.icons").mock_nvim_web_devicons()

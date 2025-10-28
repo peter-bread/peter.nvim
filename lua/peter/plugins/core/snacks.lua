@@ -19,6 +19,8 @@ return {
     opts = {},
     keys = {},
 
+    dependencies = { "mini.icons" },
+
     init = function()
       vim.api.nvim_create_autocmd("User", {
         group = require("peter.util.autocmds").augroup("SnacksInit"),

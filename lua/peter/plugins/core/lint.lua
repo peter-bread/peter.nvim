@@ -25,7 +25,7 @@
 return {
   {
     "mfussenegger/nvim-lint",
-    dependencies = { "folke/snacks.nvim" },
+    dependencies = { "snacks.nvim" },
 
     event = { "BufReadPost" },
 
