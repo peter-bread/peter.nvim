@@ -289,17 +289,6 @@ Plugins:
 </details>
 
 <details>
-  <summary>Dashboard</summary>
-
-I will very likely add this soon.
-
-Plugins:
-
-- [snacks.dashboard](https://github.com/folke/snacks.nvim/blob/main/docs/dashboard.md)
-
-</details>
-
-<details>
   <summary>Custom snippets</summary>
 
 Plugins:
