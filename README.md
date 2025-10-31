@@ -48,30 +48,23 @@
 
 ## Install
 
-Clone the repository:
+Clone the repository and run the headless [`install`](./scripts/install)
+script. Then set `NVIM_APPNAME` to `peter.nvim`.
 
-```sh
-git clone https://github.com/peter-bread/peter.nvim.git ~/.config/nvim
+Putting this config under its own `NVIM_APPNAME` ensures that it doesn't
+conflict with any existing Neovim configs and makes it easier to switch between
+multiple configs if desired.
+
+For more info, see
+[here](https://neovim.io/doc/user/starting.html#_nvim_appname), or in Neovim,
+run `:h NVIM_APPNAME`.
+
+```bash
+git clone https://github.com/peter-bread/peter.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}/peter.nvim" &&
+  cd "${XDG_CONFIG_HOME:-$HOME/.config}/peter.nvim" &&
+  ./scripts/install &&
+  export NVIM_APPNAME="peter.nvim"
 ```
-
-If you carefully manage environment variables:
-
-```sh
-git clone https://github.com/peter-bread/peter.nvim.git "$XDG_CONFIG_HOME/$NVIM_APPNAME"
-```
-
-If you use `gh` CLI:
-
-```sh
-gh repo clone peter-bread/peter.nvim ~/.config/nvim
-```
-
-```sh
-gh repo clone peter-bread/peter.nvim "$XDG_CONFIG_HOME/$NVIM_APPNAME"
-```
-
-> [!TIP]
-> Be sure to back up any existing Neovim files.
 
 ## Structure
 
@@ -159,7 +152,6 @@ local languages = require("peter.languages")
 -- just lua config
 local lua_config = require("peter.languages").lua
 local lua_config = require("peter.languages")["lua"]
-
 ```
 
 To make working with this table easier, utility functions are provided in
@@ -178,8 +170,8 @@ return {
 
   plugins = {
     L.treesitter({ "lua", "luadoc" }), -- install parsers
-    L.mason({ "lua_ls", "stylua" }),   -- install LSP and formatter
-    L.format({ lua = { "stylua" } }),  -- register formatter
+    L.mason({ "lua_ls", "stylua" }), -- install LSP and formatter
+    L.format({ lua = { "stylua" } }), -- register formatter
   },
 
   ftplugin = {
@@ -204,8 +196,8 @@ return {
 
   plugins = {
     L.treesitter({ "lua", "luadoc" }), -- install parsers
-    L.mason({ "lua_ls", "stylua" }),   -- install LSP and formatter
-    L.format({ lua = { "stylua" } }),  -- register formatter
+    L.mason({ "lua_ls", "stylua" }), -- install LSP and formatter
+    L.format({ lua = { "stylua" } }), -- register formatter
   },
 }
 ```
