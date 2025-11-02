@@ -56,8 +56,8 @@ conflict with any existing Neovim configs and makes it easier to switch between
 multiple configs if desired.
 
 For more info, see
-[here](https://neovim.io/doc/user/starting.html#_nvim_appname), or in Neovim,
-run `:h NVIM_APPNAME`.
+[here](https://neovim.io/doc/user/starting.html#_nvim_appname), or run `:h
+NVIM_APPNAME` inside Neovim.
 
 ```bash
 git clone https://github.com/peter-bread/peter.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}/peter.nvim" &&
