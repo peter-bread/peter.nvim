@@ -22,8 +22,10 @@ return {
       keymaps = {
         ["<C-s>"] = false,
         ["<C-h>"] = false,
+        ["<C-l>"] = false,
         ["<localleader>|"] = { "actions.select", opts = { vertical = true } },
         ["<localleader>-"] = { "actions.select", opts = { horizontal = true } },
+        ["<localleader>r"] = { "actions.refresh" },
       },
     },
   },
