@@ -14,7 +14,18 @@ local cfg = {
   sort = { "added" },
 }
 
+---@type snacks.win.Config
+local style = {
+  border = "rounded", -- Needs to be explicit since `vim.o.winborder = "solid"`.
+}
+
 ---@type LazyPluginSpec[]
 return {
-  P.snacks({ notifier = cfg }),
+  P.snacks({
+    notifier = cfg,
+
+    styles = {
+      notification = style,
+    },
+  }),
 }

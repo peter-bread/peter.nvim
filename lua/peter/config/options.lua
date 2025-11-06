@@ -93,6 +93,7 @@ vim.o.termguicolors   = true                -- Enable 24-bit RGB.
 vim.o.background      = "dark"              -- Use dark background.
 
 vim.o.pumheight       = 15                  -- Max height of pop-up menus.
+vim.o.winborder       = "solid"             -- Default border style of floating windows.
 
 -- TODO: Set to false once (if) there is a statusline
 vim.o.showmode        = true                -- Do not show current mode (not needed with statusline).

@@ -65,6 +65,7 @@ return {
 
         menu = {
           winblend = vim.o.pumblend,
+          border = "none",
           draw = {
             treesitter = { "lsp" },
             columns = {

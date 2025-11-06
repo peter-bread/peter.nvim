@@ -14,11 +14,6 @@ return {
     opts = {
       columns = { "icon", "permissions", "size", "mtime" },
       skip_confirm_for_simple_edits = true,
-      float = { border = "solid" },
-      keymaps_help = { border = "solid" },
-      confirmation = { border = "solid" },
-      -- ssh = { border = "solid" },
-      -- progress = { border = "solid" },
       keymaps = {
         ["<C-s>"] = false,
         ["<C-h>"] = false,

@@ -19,6 +19,11 @@ local cfg = {
 
   -- TODO: Make more layouts for other sizes.
   layouts = {
+    -- select = {
+    --   layout = {
+    --     border = "solid",
+    --   },
+    -- },
     general = {
       layout = {
         box = "horizontal",
