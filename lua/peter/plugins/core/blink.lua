@@ -9,7 +9,7 @@
 return {
   {
     "Saghen/blink.cmp",
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdLineEnter" },
     version = "v1.*",
 
     -- WARN: Building from main branch (be careful of breaking changes).
@@ -83,6 +83,24 @@ return {
         },
 
         documentation = {},
+      },
+
+      cmdline = {
+        enabled = true,
+        keymap = {
+          preset = "cmdline",
+        },
+        completion = {
+          list = { selection = { preselect = false } },
+          menu = {
+            ---@diagnostic disable-next-line: unused-local
+            auto_show = function(ctx)
+              return vim.fn.getcmdtype() == ":"
+              -- enable for inputs as well, with:
+              -- or vim.fn.getcmdtype() == '@'
+            end,
+          },
+        },
       },
     },
   },
