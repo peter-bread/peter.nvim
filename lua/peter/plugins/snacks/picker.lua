@@ -85,6 +85,7 @@ return {
     -- Search.
     { "<leader>sg", pick("grep"), desc = "Grep" },
     { "<leader>ss", pick("lsp_symbols"), desc = "LSP Symbols" },
+    { "<leader>sS", pick("lsp_workspace_symbols"), desc = "LSP Workspace Symbols" },
   }),
 
   P.which_key({
