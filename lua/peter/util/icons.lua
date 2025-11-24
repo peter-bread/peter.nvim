@@ -22,4 +22,16 @@ M.git = {
 -- stylua: ignore
 M.kinds = {}
 
+function M.try_mock_nvim_web_devicons()
+  local ok, icons = pcall(require, "mini.icons")
+  if ok then
+    icons.mock_nvim_web_devicons()
+  else
+    vim.notify(
+      "Failed to mock nvim web devicons",
+      vim.log.levels.ERROR({ title = "Mini Icons" })
+    )
+  end
+end
+
 return M
