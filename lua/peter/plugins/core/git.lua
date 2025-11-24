@@ -1,5 +1,6 @@
 ---@module "lazy"
 ---@module "neogit"
+---@module "diffview"
 
 -- Interactive Git interface.
 -- See 'https://github.com/NeogitOrg/neogit'.
@@ -26,8 +27,56 @@ return {
   {
     "sindrets/diffview.nvim",
     lazy = true,
-    config = function()
+    ---@type DiffviewConfig
+    opts = {
+      view = {
+        --[[
+        Unless otherwise stated, the window symbols (A, B, C, D) represent
+        the following versions of a file:
+
+        In the diff_view and file_history_view:
+          • A: Old state
+          • B: New state
+
+        In the merge_tool:
+          • A: OURS (current branch)
+          • B: LOCAL (the file as it currently exists on disk)
+          • C: THEIRS (incoming branch)
+          • D: BASE (common ancestor)
+
+        {diff3_mixed}
+            Available for: merge_tool
+
+            ┌──────┬───────┐
+            │  A   │   C   │
+            │      │       │
+            ├──────┴───────┤
+            │      B       │
+            │              │
+            └──────────────┘
+
+        {diff4_mixed}
+            Available for: merge_tool
+
+            ┌────┬────┬────┐
+            │ A  │ D  │ C  │
+            │    │    │    │
+            ├────┴────┴────┤
+            │      B       │
+            │              │
+            └──────────────┘
+
+        See `:h diffview-config-view.x.layout`.
+        ]]
+        merge_tool = {
+          layout = "diff3_mixed",
+          -- layout = "diff4_mixed",
+        },
+      },
+    },
+    config = function(_, opts)
       require("peter.util.icons").try_mock_nvim_web_devicons()
+      require("diffview").setup(opts)
     end,
   },
 }
