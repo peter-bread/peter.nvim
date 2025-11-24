@@ -10,7 +10,7 @@ local P = require("peter.util.plugins.plugins")
 return {
   {
     "NeogitOrg/neogit",
-    dependencies = { "plenary.nvim" },
+    dependencies = { "plenary.nvim", "diffview.nvim" },
     cmd = "Neogit",
     keys = {
       { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
@@ -23,4 +23,11 @@ return {
     mode = { "n" },
     { "<leader>g", group = "git" },
   }),
+  {
+    "sindrets/diffview.nvim",
+    lazy = true,
+    config = function()
+      require("peter.util.icons").try_mock_nvim_web_devicons()
+    end,
+  },
 }
