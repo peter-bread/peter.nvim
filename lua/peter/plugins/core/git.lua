@@ -26,6 +26,19 @@ return {
   }),
   {
     "sindrets/diffview.nvim",
+    dependencies = {
+      {
+        -- TODO: Use GitHub version when public.
+        dir = vim.fn.getenv("HOME")
+          .. "/Developer/peter-bread/nvim-plugins/3rd-party.nvim",
+        cond = function()
+          return vim.fn.isdirectory(
+            vim.fn.getenv("HOME")
+              .. "/Developer/peter-bread/nvim-plugins/3rd-party.nvim"
+          ) == 1
+        end,
+      },
+    },
     lazy = true,
     ---@type DiffviewConfig
     opts = {
@@ -81,7 +94,7 @@ return {
             { "n", "i" },
             "<M-l>",
             function()
-              require("peter.util.diffview").toggle_layout_pair(
+              require("thirdparty.diffview").toggle_layout_pair(
                 "diff3_mixed",
                 "diff4_mixed"
               )
