@@ -11,7 +11,7 @@ local P = require("peter.util.plugins.plugins")
 return {
   {
     "NeogitOrg/neogit",
-    dependencies = { "plenary.nvim", "diffview.nvim" },
+    dependencies = { "plenary.nvim", "diffview.nvim", "mini.icons" },
     cmd = "Neogit",
     keys = {
       { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
@@ -70,7 +70,7 @@ return {
         ]]
         merge_tool = {
           -- Use 3-way diff by default.
-          -- Use <C-l><C-l> to switch to 4-way diff, <C-l> to revert to 3-way diff.
+          -- Use <M-l><M-l> to switch to 4-way diff, <M-l> to revert to 3-way diff.
           -- See keymaps below.
           layout = "diff3_mixed",
         },
@@ -79,19 +79,14 @@ return {
         view = {
           {
             { "n", "i" },
-            "<C-l>",
+            "<M-l>",
             function()
-              require("peter.util.diffview").select_layout("diff3_mixed")
+              require("peter.util.diffview").toggle_layout_pair(
+                "diff3_mixed",
+                "diff4_mixed"
+              )
             end,
-            { desc = "3-way diff" },
-          },
-          {
-            { "n", "i" },
-            "<C-l><C-l>",
-            function()
-              require("peter.util.diffview").select_layout("diff4_mixed")
-            end,
-            { desc = "4-way diff" },
+            { desc = "Toggle Merge layout" },
           },
         },
       },
