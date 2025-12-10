@@ -26,19 +26,7 @@ return {
   }),
   {
     "sindrets/diffview.nvim",
-    dependencies = {
-      {
-        -- TODO: Use GitHub version when public.
-        dir = vim.fn.getenv("HOME")
-          .. "/Developer/peter-bread/nvim-plugins/3rd-party.nvim",
-        cond = function()
-          return vim.fn.isdirectory(
-            vim.fn.getenv("HOME")
-              .. "/Developer/peter-bread/nvim-plugins/3rd-party.nvim"
-          ) == 1
-        end,
-      },
-    },
+    dependencies = { "peter-bread/3rd-party.nvim", "nvim-mini/mini.icons" },
     lazy = true,
     ---@type DiffviewConfig
     opts = {
