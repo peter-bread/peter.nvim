@@ -94,10 +94,7 @@ return {
             { "n", "i" },
             "<M-l>",
             function()
-              require("thirdparty.diffview").toggle_layout_pair(
-                "diff3_mixed",
-                "diff4_mixed"
-              )
+              require("thirdparty.diffview").cycle_merge_conflict_layouts()
             end,
             { desc = "Toggle Merge layout" },
           },
