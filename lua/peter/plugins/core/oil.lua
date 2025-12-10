@@ -12,7 +12,7 @@ return {
     keys = { { "-", "<cmd>Oil<cr>", desc = "Oil" } },
     ---@type oil.SetupOpts
     opts = {
-      columns = { "icon", "permissions", "size", "mtime" },
+      columns = { "icon", "type", "permissions", "size", "mtime" },
       skip_confirm_for_simple_edits = true,
       keymaps = {
         ["<C-s>"] = false,
