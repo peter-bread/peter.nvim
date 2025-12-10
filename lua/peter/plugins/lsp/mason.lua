@@ -96,7 +96,7 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     event = "VeryLazy",
-    dependencies = { "mason.nvim", "mason-lspconfig.nvim" },
+    dependencies = { "mason-org/mason.nvim", "mason-org/mason-lspconfig.nvim" },
     opts_extend = { "ensure_installed" },
     opts = {
       -- stylua: ignore
