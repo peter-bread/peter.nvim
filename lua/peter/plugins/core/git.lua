@@ -10,7 +10,7 @@ local P = require("peter.util.plugins.plugins")
 return {
   {
     "NeogitOrg/neogit",
-    dependencies = { "plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim" },
     cmd = "Neogit",
     keys = {
       { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
