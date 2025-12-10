@@ -10,7 +10,7 @@
 return {
   {
     "nvim-mini/mini.ai",
-    dependencies = { "nvim-treesitter-textobjects" },
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     event = { "BufReadPost", "BufNewFile" },
 
     opts = function()

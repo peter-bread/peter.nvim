@@ -19,7 +19,7 @@ return {
     opts = {},
     keys = {},
 
-    dependencies = { "mini.icons" },
+    dependencies = { "nvim-mini/mini.icons" },
 
     init = function()
       vim.api.nvim_create_autocmd("User", {
