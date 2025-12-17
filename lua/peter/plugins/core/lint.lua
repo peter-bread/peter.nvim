@@ -174,35 +174,41 @@ return {
         end)
 
       -- TODO: Refactor so this keymap is available before the plugin has been loaded?
-      require("snacks").toggle
-        .new({
-          id = "linting",
-          name = "Linting",
-          set = function(state)
-            vim.api.nvim_clear_autocmds({ group = group })
 
-            if state then
-              -- Enable linting.
-              vim.api.nvim_create_autocmd(config.events, {
-                group = group,
-                callback = callback,
-              })
-              vim.schedule(callback)
-            else
-              -- Disable linting.
-              for _, linter in ipairs(all_linters) do
-                local ns = lint.get_namespace(linter)
-                vim.diagnostic.reset(ns)
+      -- pcall snacks in case it is disabled for some reason.
+      -- This should never happen in practice.
+      local ok, snacks = pcall(require, "snacks")
+      if ok then
+        snacks.toggle
+          .new({
+            id = "linting",
+            name = "Linting",
+            set = function(state)
+              vim.api.nvim_clear_autocmds({ group = group })
+
+              if state then
+                -- Enable linting.
+                vim.api.nvim_create_autocmd(config.events, {
+                  group = group,
+                  callback = callback,
+                })
+                vim.schedule(callback)
+              else
+                -- Disable linting.
+                for _, linter in ipairs(all_linters) do
+                  local ns = lint.get_namespace(linter)
+                  vim.diagnostic.reset(ns)
+                end
               end
-            end
 
-            config.enabled = state
-          end,
-          get = function()
-            return config.enabled
-          end,
-        })
-        :map("<leader>ul")
+              config.enabled = state
+            end,
+            get = function()
+              return config.enabled
+            end,
+          })
+          :map("<leader>ul")
+      end
     end,
   },
 }
