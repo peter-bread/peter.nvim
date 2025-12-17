@@ -285,6 +285,8 @@ function M.set_default_keymaps(client, bufnr)
     has = "textDocument/documentSymbol",
   })
 
+  -- TODO: Add keymap for workspace symbols.
+
   map("<leader>ca", vim.lsp.buf.code_action, {
     desc = "Code Action",
     has = "textDocument/codeAction",
