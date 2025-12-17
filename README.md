@@ -60,7 +60,8 @@ For more info, see
 NVIM_APPNAME` inside Neovim.
 
 ```bash
-git clone https://github.com/peter-bread/peter.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}/peter.nvim" &&
+git clone https://github.com/peter-bread/peter.nvim.git \
+  "${XDG_CONFIG_HOME:-$HOME/.config}/peter.nvim" &&
   cd "${XDG_CONFIG_HOME:-$HOME/.config}/peter.nvim" &&
   ./scripts/install &&
   export NVIM_APPNAME="peter.nvim"
