@@ -10,7 +10,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
-    branch = "main", -- Eventually this will become the default branch.
     build = ":TSUpdate",
 
     opts_extend = { "custom.ensure_installed" },
@@ -75,10 +74,15 @@ return {
           local filetype = ev.match
           local lang = vim.treesitter.language.get_lang(filetype)
           if lang and vim.treesitter.language.add(lang) then
-            -- TODO: Use Treesitter for folds and indents.
-            -- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-            -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            -- Highlighting.
             vim.treesitter.start(ev.buf, lang)
+
+            -- Folding.
+            -- vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+            -- vim.wo[0][0].foldmethod = "expr"
+
+            -- Indentation (experimental).
+            -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
           end
         end,
       })

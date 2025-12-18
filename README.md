@@ -40,7 +40,7 @@
 - Language Parsers ([`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter/tree/main)):
   - `tar`
   - `curl`
-  - [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.25.0+)
+  - [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.26.1+)
   - a C compiler (e.g. `cc`, `gcc`, `clang`)
   - `node` (23.0.0+)
 
