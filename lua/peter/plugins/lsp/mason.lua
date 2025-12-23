@@ -1,29 +1,28 @@
 ---@module "lazy"
 ---@module "mason"
----@module "mason-lspconfig"
 
 -- Install developer tools (LSP, Formatter, Linter, DAP) for Neovim.
 -- See 'https://github.com/mason-org/mason.nvim'.
 -- See 'https://github.com/mason-org/mason-lspconfig.nvim'.
 -- See 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim'.
 
--- TODO: Evaluate 'mason-lspconfig.nvim' and 'mason-tool-installer.nvim'.
---
--- There is definitely an argument for just simplifying and rewriting some of
--- this logic here.
---
--- I only need 'mason-lspconfig.nvim' for lspconfig mappings for
--- 'mason-tool-installer.nvim', but I can get these directly using 'mason.nvim'.
---
--- EDIT: 'mason-lspconfig.nvim' also provides auto generated filetype mappings.
-
 local P = require("peter.util.plugins.plugins")
+
+local use_other_plugins = false
 
 ---@type LazyPluginSpec[]
 return {
   {
     "mason-org/mason.nvim",
-    lazy = true,
+    dependencies = {
+      -- TODO: Switch to actual plugin when done.
+      {
+        dir = vim.fn.getenv("HOME")
+          .. "/Developer/peter-bread/nvim-plugins/3rd-party.nvim",
+      },
+    },
+    -- TODO: Decide between lazy=false and event="VeryLazy".
+    event = "VeryLazy",
     keys = {
       { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
     },
@@ -38,6 +37,10 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require("mason").setup(opts)
+      require("thirdparty.mason-lspconfig").create_mapping()
+    end,
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
         group = require("peter.util.autocmds").augroup("MasonKeymapDesc"),
@@ -78,6 +81,8 @@ return {
     { "<leader>c", group = "code" },
   }),
 
+  -- ---------------------------------------------------------------------------
+
   -- This can hopefully be removed at some point.
   -- Currently, it is used for 2 things:
   -- 1. in 'mason.nvim', provide lspconfig aliases (they appear in the mason UI
@@ -90,12 +95,14 @@ return {
   {
     "mason-org/mason-lspconfig.nvim",
     lazy = true,
+    cond = use_other_plugins,
     ---@type MasonLspconfigSettings
     opts = { automatic_enable = false },
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     event = "VeryLazy",
+    cond = use_other_plugins,
     dependencies = { "mason-org/mason.nvim", "mason-org/mason-lspconfig.nvim" },
     opts_extend = { "ensure_installed" },
     opts = {
