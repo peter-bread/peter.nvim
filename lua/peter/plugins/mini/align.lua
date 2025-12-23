@@ -7,6 +7,7 @@
 return {
   {
     "nvim-mini/mini.align",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {},
   },
 }
