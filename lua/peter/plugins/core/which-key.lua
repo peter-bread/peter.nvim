@@ -10,6 +10,7 @@
 return {
   {
     "folke/which-key.nvim",
+    dependencies = { "peter-bread/3rd-party.nvim" },
     event = "VeryLazy",
     opts_extend = { "spec" },
 
@@ -17,6 +18,13 @@ return {
     opts = {
       preset = "modern",
       win = { border = "none" },
+      replace = {
+        key = {
+          function(key)
+            return require("thirdparty.which-key").format(key)
+          end,
+        },
+      },
       icons = { mappings = false },
       spec = {
         {
