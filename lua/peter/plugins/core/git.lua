@@ -10,6 +10,13 @@ local P = require("peter.util.plugins.plugins")
 ---@type LazyPluginSpec[]
 return {
   {
+    "esmuellert/vscode-diff.nvim",
+    enabled = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    branch = "next",
+    cmd = "CodeDiff",
+  },
+  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",
