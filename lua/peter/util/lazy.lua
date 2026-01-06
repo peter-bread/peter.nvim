@@ -7,26 +7,36 @@ local M = {}
 --
 --[[ ---------------------------------------------------------------------- ]]
 
----Check whether `plugin` is included in the final spec.
----@param plugin string
----@return boolean
-function M.is_in_spec(plugin)
-  return require("lazy.core.config").plugins[plugin] ~= nil
+---Try to get a plugin by `name`.
+---@param name string
+---@return LazyPlugin | nil
+function M.get_plugin(name)
+  return require("lazy.core.config").plugins[name]
 end
 
----Check whether a `plugin` has been loaded by 'lazy.nvim'.
----@param plugin string
+---Check whether a plugin `name` is included in the final spec.
+---@param name string
+---@return boolean
+function M.is_in_spec(name)
+  return M.get_plugin(name) ~= nil
+end
+
+---Check whether a plugin `name` has been loaded by 'lazy.nvim'.
+---@param name string
 ---@return ({ [string]: string }|{ time: number }) | nil
-function M.is_loaded(plugin)
-  local config = require("lazy.core.config")
-  return config.plugins[plugin] and config.plugins[plugin]._.loaded
+function M.is_loaded(name)
+  local plugin = M.get_plugin(name)
+
+  -- TODO: Should this distinguish between a plugin not being loaded and a
+  -- plugin not being in the spec?
+  return plugin and plugin._.loaded
 end
 
 ---Run `fn` if `name` is already loaded or when it loads.
 ---@param name string
 ---@param fn function
 function M.on_load(name, fn)
-  local plugin = require("lazy.core.config").plugins[name]
+  local plugin = M.get_plugin(name)
 
   -- Do nothing if the plugin is not in the spec.
   if not plugin then
