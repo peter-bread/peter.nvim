@@ -50,26 +50,26 @@ return {
             -- stylua: ignore
             require("which-key").add({
               mode = { "n" },
-              { "g?", desc = "Mason Toggle Help", buffer = ev.buf },
+              { "g?",    desc = "Mason Toggle Help",                       buffer = ev.buf },
 
-              { "1",  desc = "Mason All", buffer = ev.buf },
-              { "2",  desc = "Mason LSP", buffer = ev.buf },
-              { "3",  desc = "Mason DAP", buffer = ev.buf },
-              { "4",  desc = "Mason Linter", buffer = ev.buf },
-              { "5",  desc = "Mason Formatter", buffer = ev.buf },
+              { "1",     desc = "Mason All",                               buffer = ev.buf },
+              { "2",     desc = "Mason LSP",                               buffer = ev.buf },
+              { "3",     desc = "Mason DAP",                               buffer = ev.buf },
+              { "4",     desc = "Mason Linter",                            buffer = ev.buf },
+              { "5",     desc = "Mason Formatter",                         buffer = ev.buf },
 
-              { "i",  desc = "Mason Install Package", buffer = ev.buf },
-              { "X",  desc = "Mason Uninstall Package", buffer = ev.buf },
-              { "u",  desc = "Mason Update Package", buffer = ev.buf },
-              { "U",  desc = "Mason Update All Outdated Package", buffer = ev.buf },
-              { "c",  desc = "Mason Check for New Package Version", buffer = ev.buf },
-              { "C",  desc = "Mason Check New Versions (All Packages)", buffer = ev.buf },
+              { "i",     desc = "Mason Install Package",                   buffer = ev.buf },
+              { "X",     desc = "Mason Uninstall Package",                 buffer = ev.buf },
+              { "u",     desc = "Mason Update Package",                    buffer = ev.buf },
+              { "U",     desc = "Mason Update All Outdated Package",       buffer = ev.buf },
+              { "c",     desc = "Mason Check for New Package Version",     buffer = ev.buf },
+              { "C",     desc = "Mason Check New Versions (All Packages)", buffer = ev.buf },
 
-              { "<C-f>", desc = "Mason Apply Language Filter", buffer = ev.buf },
-              { "<cr>", desc = "Mason Toggle Info", buffer = ev.buf },
+              { "<C-f>", desc = "Mason Apply Language Filter",             buffer = ev.buf },
+              { "<cr>",  desc = "Mason Toggle Info",                       buffer = ev.buf },
 
-              { "<esc>", desc = "Mason Close Window", buffer = ev.buf },
-              { "q", desc = "Mason Close Window", buffer = ev.buf },
+              { "<esc>", desc = "Mason Close Window",                      buffer = ev.buf },
+              { "q",     desc = "Mason Close Window",                      buffer = ev.buf },
             })
           end)
         end,
