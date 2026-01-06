@@ -30,9 +30,10 @@ return {
     ---@type MasonSettings
     opts = {
       ui = {
+        -- stylua: ignore
         icons = {
-          package_installed = "󰸞 ",
-          package_pending = "󱥸 ",
+          package_installed   = "󰸞 ",
+          package_pending     = "󱥸 ",
           package_uninstalled = "󱎘 ",
         },
       },
