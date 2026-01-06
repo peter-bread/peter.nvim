@@ -34,7 +34,7 @@ end
 
 ---Run `fn` if `name` is already loaded or when it loads.
 ---@param name string
----@param fn function
+---@param fn fun()
 function M.on_load(name, fn)
   local plugin = M.get_plugin(name)
 
