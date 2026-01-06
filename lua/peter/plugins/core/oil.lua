@@ -21,6 +21,13 @@ return {
         ["<localleader>|"] = { "actions.select", opts = { vertical = true } },
         ["<localleader>-"] = { "actions.select", opts = { horizontal = true } },
         ["<localleader>r"] = { "actions.refresh" },
+        ["gY"] = {
+          function()
+            local dir = require("oil").get_current_dir()
+            vim.fn.setreg('"', dir)
+          end,
+          desc = "Yank current directory",
+        },
       },
     },
   },
