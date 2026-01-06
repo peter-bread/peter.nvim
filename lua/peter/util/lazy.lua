@@ -7,6 +7,13 @@ local M = {}
 --
 --[[ ---------------------------------------------------------------------- ]]
 
+---Check whether `plugin` is included in the final spec.
+---@param plugin string
+---@return boolean
+function M.is_in_spec(plugin)
+  return require("lazy.core.config").plugins[plugin] ~= nil
+end
+
 ---Check whether a `plugin` has been loaded by 'lazy.nvim'.
 ---@param plugin string
 ---@return ({ [string]: string }|{ time: number }) | nil

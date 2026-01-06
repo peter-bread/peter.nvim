@@ -61,6 +61,9 @@ local keys = {
     key = "G",
     desc = "Git",
     action = ":Neogit", -- This will load Neogit.
+    enabled = function()
+      return require("peter.util.lazy").is_in_spec("neogit")
+    end,
   },
   {
     icon = "󰒲 ",
