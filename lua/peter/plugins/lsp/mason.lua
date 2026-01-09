@@ -20,9 +20,11 @@ return {
         dir = vim.fn.getenv("HOME")
           .. "/Developer/peter-bread/nvim-plugins/3rd-party.nvim",
       },
+      "folke/snacks.nvim",
     },
     -- TODO: Decide between lazy=false and event="VeryLazy".
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    lazy = false,
     keys = {
       { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" },
     },
@@ -41,6 +43,26 @@ return {
     config = function(_, opts)
       require("mason").setup(opts)
       require("thirdparty.mason-lspconfig").create_mapping()
+
+      require("peter.util.mason").ensure_installed({
+        "lua-language-server",
+      }, { sync = false })
+
+      -- local mapping = require("thirdparty.mason-lspconfig").get_mason_map()
+      --
+      -- local function map_name(name)
+      --   return mapping.lspconfig_to_package[name] or name
+      -- end
+      --
+      -- local mr = require("mason-registry")
+      -- mr.refresh(function()
+      --   for _, tool in ipairs({ "lua_ls" }) do
+      --     local p = mr.get_package(map_name(tool))
+      --     if not p:is_installed() then
+      --       p:install()
+      --     end
+      --   end
+      -- end)
     end,
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
