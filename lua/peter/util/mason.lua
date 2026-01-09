@@ -2,14 +2,22 @@ local M = {}
 
 local mr = require("mason-registry")
 
-local log = vim.schedule_wrap(function(msg)
-  vim.notify(msg, vim.log.levels.INFO, { title = "Peter Mason" })
-  vim.api.nvim_echo({ { msg } }, false, {})
+---@param msg string
+---@param level vim.log.levels
+local _log = function(msg, level)
+  if not vim.g.is_headless then
+    vim.notify(msg, level, { title = "Mason Forge" })
+  else
+    vim.api.nvim_echo({ { msg }, { "\n" } }, false, {})
+  end
+end
+
+local log_i = vim.schedule_wrap(function(msg)
+  _log(msg, vim.log.levels.INFO)
 end)
 
-local err = vim.schedule_wrap(function(msg)
-  vim.notify(msg, vim.log.levels.ERROR, { title = "Peter Mason" })
-  vim.api.nvim_echo({ { msg } }, false, {})
+local log_e = vim.schedule_wrap(function(msg)
+  _log(msg, vim.log.levels.ERROR)
 end)
 
 -- TODO: Log when starting an install.
@@ -23,31 +31,38 @@ local function install_package(name, on_done)
   end
 
   pkg:once("install:success", function()
-    log(name .. " installed", vim.log.levels.INFO)
+    log_i(name .. " installed", vim.log.levels.INFO)
     on_done()
   end)
 
   pkg:once("install:failed", function()
-    err(name .. " failed to install")
+    log_e(name .. " failed to install")
     on_done()
   end)
 
-  pkg:install()
+  if not pkg:is_installing() then
+    pkg:install()
+  end
 end
 
--- ensure packages are installed
--- opts.sync = true  -> blocking
--- opts.sync = false -> async (default)
 function M.ensure_installed(packages, opts)
   opts = opts or {}
-  local sync = opts.sync or false
+  local sync = vim.g.is_headless
 
   local total = #packages
   local completed = 0
+  -- TODO: Count any installations that were skipped, because the package was
+  -- already installed/installing.
+  local skipped = 0
   local done = false
 
-  local function on_done()
-    completed = completed + 1
+  local function on_done(did_skip)
+    if did_skip then
+      skipped = skipped + 1
+    else
+      completed = completed + 1
+    end
+
     if completed >= total then
       done = true
     end
