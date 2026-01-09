@@ -2,7 +2,18 @@ local M = {}
 
 local mr = require("mason-registry")
 
--- installs a single package, async
+local log = vim.schedule_wrap(function(msg)
+  vim.notify(msg, vim.log.levels.INFO, { title = "Peter Mason" })
+  vim.api.nvim_echo({ { msg } }, false, {})
+end)
+
+local err = vim.schedule_wrap(function(msg)
+  vim.notify(msg, vim.log.levels.ERROR, { title = "Peter Mason" })
+  vim.api.nvim_echo({ { msg } }, false, {})
+end)
+
+-- TODO: Log when starting an install.
+
 local function install_package(name, on_done)
   local pkg = mr.get_package(name)
 
@@ -12,18 +23,12 @@ local function install_package(name, on_done)
   end
 
   pkg:once("install:success", function()
-    vim.schedule(function()
-      vim.notify(name .. " installed", vim.log.levels.INFO)
-      print(name)
-    end)
+    log(name .. " installed", vim.log.levels.INFO)
     on_done()
   end)
 
   pkg:once("install:failed", function()
-    vim.schedule(function()
-      vim.notify(name .. " installed", vim.log.levels.INFO)
-      print(name)
-    end)
+    err(name .. " failed to install")
     on_done()
   end)
 

@@ -46,6 +46,7 @@ return {
 
       require("peter.util.mason").ensure_installed({
         "lua-language-server",
+        "gopls",
       }, { sync = false })
 
       -- local mapping = require("thirdparty.mason-lspconfig").get_mason_map()
