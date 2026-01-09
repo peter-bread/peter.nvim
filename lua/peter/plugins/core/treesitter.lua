@@ -59,8 +59,7 @@ return {
         :totable()
 
       if #to_install > 0 and vim.fn.executable("tree-sitter") == 1 then
-        local is_headless = #vim.api.nvim_list_uis() == 0
-        if is_headless then
+        if vim.g.is_headless then
           nts.install(to_install):wait(300000)
         else
           nts.install(to_install)

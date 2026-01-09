@@ -41,6 +41,17 @@ This option can be set in two places:
 ---@type boolean
 vim.g.needs_nvim_web_devicons = false
 
+---Indicates whether Neovim is running in headless mode, i.e. there is no UI attached.
+---
+---When `true`, Neovim is headless. Operations should be run in a synchronous/blocking
+---fashion.
+---
+---When `false`, Neovim is not headless. Operations should be run in asynchronously.
+---
+---See `:h --headless`.
+---@type boolean
+vim.g.is_headless = #vim.api.nvim_list_uis() == 0
+
 -- 2. Options ==================================================================
 
 -- WARN: `vim.opt` will be deprecated.
