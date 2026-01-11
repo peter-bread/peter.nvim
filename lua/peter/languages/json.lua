@@ -9,7 +9,7 @@ return {
   lsp = { "jsonls" },
 
   plugins = {
-    L.treesitter({ "json", "jsonc", "json5" }),
+    L.treesitter({ "json", "json5" }),
     L.mason({ "jsonls", "prettier" }),
     L.format({ json = { "prettier" } }),
   },
