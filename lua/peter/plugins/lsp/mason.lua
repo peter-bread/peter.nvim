@@ -33,11 +33,7 @@ return {
           package_uninstalled = "󱎘 ",
         },
       },
-      ensure_installed = {
-        "lua_ls",
-        "stylua",
-        "selene",
-      },
+      ensure_installed = {},
     },
     config = function(_, opts)
       local list = require("peter.util.list")
