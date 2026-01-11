@@ -1,7 +1,8 @@
 ---@module "lazy"
 ---@module "conform"
+---@module "thirdparty"
 
----@alias peter.lang.masonPackage string|{[1]:string, version?:string, auto_update?:boolean, condition?:fun():boolean}
+---@alias peter.lang.masonPackage thirdparty.MasonPackageSpec
 ---@alias peter.lang.formatters_by_ft table<string, conform.FiletypeFormatterInternal|fun(bufnr: integer):conform.FiletypeFormatterInternal>
 
 ---@class peter.util.plugins.lang
@@ -47,7 +48,7 @@ end
 ---@return LazyPluginSpec
 function M.mason(packages)
   return {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "mason-org/mason.nvim",
     optional = true,
     opts = {
       ensure_installed = packages or {},
