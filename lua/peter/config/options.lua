@@ -46,7 +46,7 @@ vim.g.needs_nvim_web_devicons = false
 ---When `true`, Neovim is headless. Operations should be run in a synchronous/blocking
 ---fashion.
 ---
----When `false`, Neovim is not headless. Operations should be run in asynchronously.
+---When `false`, Neovim is not headless. Operations should be run asynchronously.
 ---
 ---See `:h --headless`.
 ---@type boolean
