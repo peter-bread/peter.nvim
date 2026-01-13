@@ -81,7 +81,9 @@ for t in pairs(flipped) do
 end
 table.sort(types)
 
-local file = io.open("MASON.md", "w")
+vim.fn.mkdir("docs", "p")
+
+local file = io.open("docs/mason.md", "w")
 if file then
   file:write([[# Mason
 

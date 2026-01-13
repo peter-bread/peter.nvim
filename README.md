@@ -23,7 +23,7 @@
   - [`fd`](https://github.com/sharkdp/fd)
   - [`ripgrep`](https://github.com/BurntSushi/ripgrep)
 - Installing dev tools ([`mason.nvim`](https://github.com/mason-org/mason.nvim)):
-  - For a detailed list, see [here](/MASON.md).
+  - For a detailed list, see [here](/docs/mason.md).
   - General:
     - `git`
     - `curl` or `GNU wget`
