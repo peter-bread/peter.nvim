@@ -1,0 +1,9 @@
+---
+repos:
+  - repo: local
+    hooks:
+      - id: mason-docs
+        name: Generate Mason docs
+        entry: scripts/gen-mason-docs
+        language: system
+        files: ^(lua/peter/languages/|scripts/)
