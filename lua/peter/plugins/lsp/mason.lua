@@ -23,7 +23,7 @@ return {
     },
     build = ":MasonUpdate",
     opts_extend = { "ensure_installed" },
-    ---@type MasonSettings | { ensure_installed?: thirdparty.MasonPackageSpec[] }
+    ---@type MasonSettings | thirdparty.MasonToolInstaller.Config
     opts = {
       ui = {
         -- stylua: ignore
