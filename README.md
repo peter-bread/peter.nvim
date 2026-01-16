@@ -12,6 +12,8 @@
 
 <!-- markdownlint-disable MD013 -->
 
+### For Usage
+
 - Terminal emulator that supports:
   - Truecolor (24-bit colours)
   - Kitty Keyboard Protocol
@@ -43,6 +45,10 @@
   - [`tree-sitter`](https://github.com/tree-sitter/tree-sitter) CLI (0.26.1+)
   - a C compiler (e.g. `cc`, `gcc`, `clang`)
   - `node` (23.0.0+)
+
+### For Development
+
+- [pre-commit](https://pre-commit.com/)
 
 <!-- markdownlint-restore -->
 
