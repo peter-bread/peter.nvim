@@ -9,6 +9,9 @@
 
 local P = require("peter.util.plugins.plugins")
 
+---@class peter.mason.Opts : MasonSettings
+---@field ensure_installed? thirdparty.MasonToolInstaller.PackageSpec[]
+
 ---@type LazyPluginSpec[]
 return {
   {
@@ -23,7 +26,8 @@ return {
     },
     build = ":MasonUpdate",
     opts_extend = { "ensure_installed" },
-    ---@type MasonSettings | thirdparty.MasonToolInstaller.Config
+
+    ---@type peter.mason.Opts
     opts = {
       ui = {
         -- stylua: ignore
@@ -35,18 +39,21 @@ return {
       },
       ensure_installed = {},
     },
+
+    ---@param opts peter.mason.Opts
     config = function(_, opts)
       local list = require("peter.util.list")
       opts.ensure_installed = list.uniq(opts.ensure_installed or {})
 
-      require("mason").setup(opts)
+      require("mason").setup(opts --[[@as MasonSettings]])
 
       require("thirdparty.mason-lspconfig").register_lspconfig_aliases()
 
       local installer = require("thirdparty.mason-tool-installer")
-      installer.setup(opts)
+      installer.setup(opts --[[@as thirdparty.MasonToolInstaller.Config]])
       installer.check_install(vim.g.is_headless)
     end,
+
     init = function()
       vim.api.nvim_create_user_command("MasonToolsClean", function()
         require("thirdparty.mason-tool-installer").clean()

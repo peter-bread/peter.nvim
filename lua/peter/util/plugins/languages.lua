@@ -22,9 +22,7 @@ function M.treesitter(parsers)
     "nvim-treesitter/nvim-treesitter",
     optional = true,
     opts = {
-      custom = {
-        ensure_installed = parsers or {},
-      },
+      ensure_installed = parsers or {},
     },
   }
 end

@@ -5,6 +5,9 @@
 -- See 'https://github.com/nvim-treesitter/nvim-treesitter'.
 -- See 'https://tree-sitter.github.io/tree-sitter'.
 
+---@class peter.treesitter.Config : TSConfig
+---@field ensure_installed? string[]
+
 ---@type LazyPluginSpec[]
 return {
   {
@@ -12,40 +15,35 @@ return {
     event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
     build = ":TSUpdate",
 
-    opts_extend = { "custom.ensure_installed" },
+    opts_extend = { "ensure_installed" },
 
-    ---@type {plugin:TSConfig,custom:table}
+    ---@type peter.treesitter.Config
     opts = {
-      ---@type TSConfig Actual config for setup funcion.
-      plugin = {
-        install_dir = vim.fn.stdpath("data") .. "/site", -- Default value.
-      },
+      install_dir = vim.fn.stdpath("data") .. "/site", -- Default value.
 
-      ---@type table Additional data for custom config, i.e. installing parsers.
-      custom = {
-        ensure_installed = {
-          -- INFO: These should ALWAYS be installed.
-          "c",
-          "lua",
-          "markdown",
-          "markdown_inline",
-          "query",
-          "vim",
-          "vimdoc",
+      ensure_installed = {
+        -- INFO: These should ALWAYS be installed.
+        "c",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "query",
+        "vim",
+        "vimdoc",
 
-          -- Miscellaneous parsers that do not fit into a "language" easily.
-          "make", -- TODO: Move this to a language file if I ever use a Makefile linter or formatter.
-          "regex",
-        },
+        -- Miscellaneous parsers that do not fit into a "language" easily.
+        "make", -- TODO: Move this to a language file if I ever use a Makefile linter or formatter.
+        "regex",
       },
     },
 
+    ---@param opts peter.treesitter.Config
     config = function(_, opts)
       local nts = require("nvim-treesitter")
       local list = require("peter.util.list")
       local autocmds = require("peter.util.autocmds")
 
-      nts.setup(opts.plugin)
+      nts.setup(opts --[[@as TSConfig]])
 
       local ensure_installed = list.uniq(opts.custom.ensure_installed or {})
 
