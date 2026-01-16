@@ -7,21 +7,18 @@ local M = {}
 --
 --[[ ---------------------------------------------------------------------- ]]
 
----Remove duplicate elements from a list.
----@param list any[] List to remove duplicates from.
----@return any[] new_list List with duplicates removed.
-function M.uniq(list)
-  local hash = {}
-  local ret = {}
-
-  for _, v in ipairs(list) do
-    if not hash[v] then
-      ret[#ret + 1] = v
-      hash[v] = true
-    end
-  end
-
-  return ret
+---Removes duplicate values from a list-like table without modifying the original
+---table.
+---
+---The input table is not modified. A new table is created by this function.
+---
+---For in-place deduplication, see `:h vim.list.unique`.
+---
+---@generic T
+---@param t T[]
+---@return T[] t A new, deduplicated list.
+function M.uniq_copy(t)
+  return vim.list.unique(vim.deepcopy(t))
 end
 
 return M
