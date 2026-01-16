@@ -45,7 +45,7 @@ return {
 
       nts.setup(opts --[[@as TSConfig]])
 
-      local ensure_installed = list.uniq(opts.custom.ensure_installed or {})
+      local ensure_installed = list.uniq(opts.ensure_installed or {})
 
       local already_installed = nts.get_installed()
 
