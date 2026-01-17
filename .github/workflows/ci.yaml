@@ -43,6 +43,8 @@ jobs:
           export NVIM_APPNAME="$(basename "$PWD")"
           echo "$XDG_CONFIG_HOME/$NVIM_APPNAME"
 
+          ./scripts/install
+
     # - name: Generate mason docs
     #   run: |
     #     export NVIM_APPNAME=peter.nvim
