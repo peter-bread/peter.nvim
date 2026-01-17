@@ -38,6 +38,11 @@ jobs:
           which nvim
           nvim --version
 
+      - run: |
+          export XDG_CONFIG_HOME="$(dirname "$PWD")"
+          export NVIM_APPNAME="$(basename "$PWD")"
+          echo "$XDG_CONFIG_HOME/$NVIM_APPNAME"
+
     # - name: Generate mason docs
     #   run: |
     #     export NVIM_APPNAME=peter.nvim
