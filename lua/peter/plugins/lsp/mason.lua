@@ -51,6 +51,16 @@ return {
 
       local installer = require("thirdparty.mason-tool-installer")
       installer.setup(opts --[[@as thirdparty.MasonToolInstaller.Config]])
+
+      -- Do not install packages if PETER_NVIM_NO_MASON_INSTALL=1.
+      -- This is mainly for CI pipelines.
+      if vim.env.PETER_NVIM_NO_MASON_INSTALL == "1" then
+        vim.schedule(function()
+          vim.print("Skipping mason package installation\n")
+        end)
+        return
+      end
+
       installer.check_install(vim.g.is_headless)
     end,
 

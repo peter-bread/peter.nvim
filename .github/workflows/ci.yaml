@@ -43,7 +43,7 @@ jobs:
           export NVIM_APPNAME="$(basename "$PWD")"
           echo "$XDG_CONFIG_HOME/$NVIM_APPNAME"
 
-          ./scripts/install
+          PETER_NVIM_NO_MASON_INSTALL=1 ./scripts/gen-mason-docs
 
     # - name: Generate mason docs
     #   run: |
