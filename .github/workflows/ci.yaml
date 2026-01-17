@@ -23,6 +23,9 @@ jobs:
   mason-docs:
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          echo "$PWD"
+
       - uses: actions/checkout@v6
 
       - name: Install latest stable Neovim
