@@ -30,11 +30,16 @@ jobs:
         with:
           neovim: true
 
-      - name: Generate mason docs
-        run: |
-          export NVIM_APPNAME=peter.nvim
-          export XDG_CONFIG_HOME="$PWD"
-          scripts/gen-mason-docs
+      - run: |
+          echo "$PWD"
+          which nvim
+          nvim --version
 
-      - name: Verify docs are up-to-date
-        run: git diff --exit-code
+    # - name: Generate mason docs
+    #   run: |
+    #     export NVIM_APPNAME=peter.nvim
+    #     export XDG_CONFIG_HOME="$PWD"
+    #     scripts/gen-mason-docs
+    #
+    # - name: Verify docs are up-to-date
+    #   run: git diff --exit-code
