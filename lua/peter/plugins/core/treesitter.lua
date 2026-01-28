@@ -40,12 +40,11 @@ return {
     ---@param opts peter.treesitter.Config
     config = function(_, opts)
       local nts = require("nvim-treesitter")
-      local list = require("peter.util.list")
       local autocmds = require("peter.util.autocmds")
 
       nts.setup(opts --[[@as TSConfig]])
 
-      local ensure_installed = list.uniq(opts.ensure_installed or {})
+      local ensure_installed = vim.list.unique(opts.ensure_installed or {})
 
       local already_installed = nts.get_installed()
 

@@ -42,8 +42,7 @@ return {
 
     ---@param opts peter.mason.Opts
     config = function(_, opts)
-      local list = require("peter.util.list")
-      opts.ensure_installed = list.uniq(opts.ensure_installed or {})
+      opts.ensure_installed = vim.list.unique(opts.ensure_installed or {})
 
       require("mason").setup(opts --[[@as MasonSettings]])
 
