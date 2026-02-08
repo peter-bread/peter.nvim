@@ -13,4 +13,8 @@ function M.pp(...)
   print(vim.inspect(...))
 end
 
+---Pretty-print any value.
+---@async
+M.ppp = vim.schedule_wrap(M.pp)
+
 return M
