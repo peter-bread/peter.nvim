@@ -18,6 +18,7 @@ The packages in this document are extracted from `ensure_installed` in the `maso
 
 - actionlint
 - clangd
+- just-lsp
 - lua-language-server
 - marksman
 - selene
