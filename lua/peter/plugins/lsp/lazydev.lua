@@ -23,6 +23,9 @@ return {
       library = {
         "lazy.nvim",
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = "mason.nvim", words = { "mason" } },
+        { path = "3rd-party.nvim", words = { "mason" } },
+        { path = "conform.nvim", words = { "format" } },
       },
       enabled = function(root)
         if vim.g.lazydev_enabled ~= nil then
