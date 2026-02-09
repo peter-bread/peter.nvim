@@ -20,12 +20,13 @@ return {
     ft = "lua",
     ---@type lazydev.Config
     opts = {
+      -- stylua: ignore
       library = {
         "lazy.nvim",
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        { path = "mason.nvim", words = { "mason" } },
-        { path = "3rd-party.nvim", words = { "mason" } },
-        { path = "conform.nvim", words = { "format" } },
+        { path = "${3rd}/luv/library", words = { "vim%.uv" }                    },
+        { path = "mason.nvim",         words = { "---@type peter.lang.config" } },
+        { path = "3rd-party.nvim",     words = { "---@type peter.lang.config" } },
+        { path = "conform.nvim",       words = { "---@type peter.lang.config" } },
       },
       enabled = function(root)
         if vim.g.lazydev_enabled ~= nil then
