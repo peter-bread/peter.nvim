@@ -8,7 +8,7 @@ return {
     treesitter = { "bash" },
 
     -- stylua: ignore
-    mason= {
+    mason = {
       "bashls",       -- LSP (uses shellcheck and shfmt if available); node/npm.
       "shellcheck",   -- Linter.
       "shfmt",        -- Formatter (main).
