@@ -1,24 +1,22 @@
----@module "lazy"
----@module "thirdparty"
----@module "mason"
-
 -- Install developer tools (LSP, Formatter, Linter, DAP) for Neovim.
 -- See 'https://github.com/mason-org/mason.nvim'.
 -- See 'https://github.com/mason-org/mason-lspconfig.nvim'.
 -- See 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim'.
+-- See 'https://github.com/peter-bread/3rd-party.nvim'.
 
 local P = require("peter.util.plugins.plugins")
 
----@class peter.mason.Opts : MasonSettings
----@field ensure_installed? thirdparty.MasonToolInstaller.PackageSpec[]
+---@alias peter.mason.Opts MasonSettings | thirdparty.mti.Config
 
 ---@type LazyPluginSpec[]
 return {
   {
     "mason-org/mason.nvim",
     dependencies = {
-      "peter-bread/3rd-party.nvim",
-      "folke/snacks.nvim",
+      {
+        "peter-bread/3rd-party.nvim",
+        -- dir = "/Users/petersheehan/Developer/peter-bread/nvim-plugins/3rd-party.nvim",
+      },
     },
     event = "VeryLazy",
     keys = {
@@ -37,6 +35,7 @@ return {
           package_uninstalled = "󱎘 ",
         },
       },
+      ---@type thirdparty.mti.PkgEntry[]
       ensure_installed = {},
     },
 
@@ -50,13 +49,19 @@ return {
       require("thirdparty.mason-lspconfig").register_lspconfig_aliases()
 
       local installer = require("thirdparty.mason-tool-installer")
-      installer.setup(opts --[[@as thirdparty.MasonToolInstaller.Config]])
-      installer.check_install(vim.g.is_headless)
+      installer.setup(opts --[[@as thirdparty.mti.Config]])
+      installer.check_install({ sync = vim.g.is_headless })
     end,
 
     init = function()
       vim.api.nvim_create_user_command("MasonToolsClean", function()
-        require("thirdparty.mason-tool-installer").clean()
+        local installer = require("thirdparty.mason-tool-installer")
+        installer.clean()
+      end, { force = true })
+
+      vim.api.nvim_create_user_command("MasonToolsEnsureInstalled", function()
+        local installer = require("thirdparty.mason-tool-installer")
+        installer.check_install(vim.g.is_headless)
       end, { force = true })
 
       vim.api.nvim_create_autocmd("FileType", {
