@@ -21,14 +21,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local languages = require("peter.util.languages")
-local lang_plugins = {}
-
-languages.for_each(function(_, cfg)
-  if cfg.plugins then
-    vim.list_extend(lang_plugins, cfg.plugins)
-  end
-end)
+local lang_plugins = require("peter.util.languages").extract_plugin_specs()
 
 require("lazy").setup({
   spec = {

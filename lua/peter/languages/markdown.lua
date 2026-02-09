@@ -1,17 +1,15 @@
 -- See 'https://daringfireball.net/projects/markdown/'.
 
-local L = require("peter.util.plugins.languages")
-
 ---@type peter.lang.config
 return {
   lsp = { "marksman" },
 
   plugins = {
-    L.treesitter({ "markdown", "markdown_inline", "html" }),
-    L.mason({
+    treesitter = { "markdown", "markdown_inline", "html" },
+    mason = {
       "marksman", -- LSP.
       "prettier", -- Formatter.
-    }),
-    L.format({ markdown = { "prettier" } }),
+    },
+    format = { markdown = { "prettier" } },
   },
 }

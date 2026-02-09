@@ -1,25 +1,21 @@
----@module "conform"
-
 -- See 'https://www.gnu.org/software/bash/'.
-
-local L = require("peter.util.plugins.languages")
 
 ---@type peter.lang.config
 return {
   lsp = { "bashls" },
 
   plugins = {
-    L.treesitter({ "bash" }),
+    treesitter = { "bash" },
 
     -- stylua: ignore
-    L.mason({
+    mason= {
       "bashls",       -- LSP (uses shellcheck and shfmt if available); node/npm.
       "shellcheck",   -- Linter.
       "shfmt",        -- Formatter (main).
       "shellharden",  -- Formatter (corrects unsafe quoting); cargo.
-    }),
+    },
 
     -- LSP will run `shfmt`, then we manually run `shellharden` after.
-    L.format({ sh = { lsp_format = "first", "shellharden" } }),
+    format = { sh = { lsp_format = "first", "shellharden" } },
   },
 }

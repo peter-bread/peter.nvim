@@ -176,9 +176,9 @@ return {
   lsp = { "lua_ls" }, -- enable lua language server
 
   plugins = {
-    L.treesitter({ "lua", "luadoc" }), -- install parsers
-    L.mason({ "lua_ls", "stylua" }), -- install LSP and formatter
-    L.format({ lua = { "stylua" } }), -- register formatter
+    treesitter = { "lua", "luadoc" }, -- install parsers
+    mason = { "lua_ls", "stylua" }, -- install LSP and formatter
+    format = { lua = { "stylua" } }, -- register formatter
   },
 
   ftplugin = {
@@ -202,9 +202,9 @@ return {
   lsp = { "lua_ls" }, -- enable lua language server
 
   plugins = {
-    L.treesitter({ "lua", "luadoc" }), -- install parsers
-    L.mason({ "lua_ls", "stylua" }), -- install LSP and formatter
-    L.format({ lua = { "stylua" } }), -- register formatter
+    treesitter = { "lua", "luadoc" }, -- install parsers
+    mason = { "lua_ls", "stylua" }, -- install LSP and formatter
+    format = { lua = { "stylua" } }, -- register formatter
   },
 }
 ```

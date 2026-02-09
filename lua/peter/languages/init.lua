@@ -13,9 +13,18 @@ local function is_valid_module(file)
   return file:sub(-4) == ".lua" and file ~= "init.lua"
 end
 
+---@module "mason"
+---@module "thirdparty.mason-tool-installer"
+
+---@class peter.lang.config.plugin
+---@field treesitter string[]
+---@field mason thirdparty.mti.PkgEntry[]
+---@field format peter.lang.formatters_by_ft
+---@field lint table<string, string[]>
+
 ---@class peter.lang.config
 ---@field lsp? string[] List of LSP servers to be enabled.
----@field plugins? LazyPluginSpec[] Plugins to be installed.
+---@field plugins? peter.lang.config.plugin | LazyPluginSpec[] Plugins to be installed.
 ---@field ftplugin? peter.lang.config.ftplugin Buffer-specific options and config.
 
 ---@class peter.lang.config.ftplugin

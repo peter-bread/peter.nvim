@@ -1,5 +1,3 @@
-local L = require("peter.util.plugins.languages")
-
 -- See 'https://docs.ansible.com/'.
 -- See 'https://docs.ansible.com/ansible/latest/index.html'.
 
@@ -8,13 +6,13 @@ return {
   lsp = { "ansiblels" },
 
   plugins = {
-    L.treesitter({ "yaml" }),
+    treesitter = { "yaml" },
 
     -- stylua: ignore
-    L.mason({
+    mason = {
       "ansiblels",    -- LSP (uses ansible-lint).
       "ansible-lint", -- Linter.
-    }),
+    },
 
     -- Automatically sets `filetype` to `yaml.ansible` for Ansible files.
     -- See 'https://github.com/mfussenegger/nvim-ansible'.

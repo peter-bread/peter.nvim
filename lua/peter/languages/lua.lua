@@ -1,8 +1,4 @@
----@module "conform"
-
 -- See 'https://www.lua.org/'.
-
-local L = require("peter.util.plugins.languages")
 
 -- TODO: StyLua now has an LSP mode. Investigate.
 
@@ -11,7 +7,7 @@ return {
   lsp = { "lua_ls" },
 
   plugins = {
-    L.treesitter({ "lua", "luadoc" }),
+    treesitter = { "lua", "luadoc" },
 
     -- HACK: Pin Lua Language Server to 3.16.4.
     -- See 'https://github.com/folke/lazydev.nvim/issues/136'.
@@ -24,8 +20,8 @@ return {
     --     },
     --   },
     -- }
-    L.mason({ { "lua_ls", version = "3.16.4" }, "stylua", "selene" }),
-    L.format({ lua = { "stylua" } }),
-    L.lint({ lua = { "selene" } }),
+    mason = { { "lua_ls", version = "3.16.4" }, "stylua", "selene" },
+    format = { lua = { "stylua" } },
+    lint = { lua = { "selene" } },
   },
 }

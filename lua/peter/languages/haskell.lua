@@ -1,18 +1,15 @@
 ---@diagnostic disable: unused-local
----@module "conform"
 
 -- See 'https://www.haskell.org/'.
-
-local L = require("peter.util.plugins.languages")
 
 ---@type peter.lang.config
 return {
   plugins = {
-    L.treesitter({ "haskell" }),
+    treesitter = { "haskell" },
 
-    L.format({ haskell = { lsp_format = "prefer" } }),
+    format = { haskell = { lsp_format = "prefer" } },
 
-    L.mason({
+    mason = {
       -- Only install HLS with 'mason.nvim' if it is not already installed
       -- with GHCup.
       {
@@ -21,7 +18,7 @@ return {
           return vim.fn.executable("haskell-language-server-wrapper") == 0
         end,
       },
-    }),
+    },
 
     -- See 'https://github.com/mrcjkb/haskell-tools.nvim'.
     -- This plugin should be configured by modifying `vim.g.haskell-tools`.
