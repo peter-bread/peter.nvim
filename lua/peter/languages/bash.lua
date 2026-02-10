@@ -1,6 +1,6 @@
 -- See 'https://www.gnu.org/software/bash/'.
 
----@type peter.lang.config
+---@type peter.lang.Config
 return {
   lsp = { "bashls" },
 

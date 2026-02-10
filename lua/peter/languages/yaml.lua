@@ -1,6 +1,6 @@
 -- See 'https://yaml.org/'.
 
----@type peter.lang.config
+---@type peter.lang.Config
 return {
   lsp = { "yamlls" },
 

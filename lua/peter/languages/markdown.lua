@@ -1,6 +1,6 @@
 -- See 'https://daringfireball.net/projects/markdown/'.
 
----@type peter.lang.config
+---@type peter.lang.Config
 return {
   lsp = { "marksman" },
 

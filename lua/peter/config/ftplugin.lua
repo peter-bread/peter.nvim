@@ -37,7 +37,7 @@ local function validate(ft)
   return true
 end
 
----@param ftplugin peter.lang.config.ftplugin
+---@param ftplugin peter.lang.ftplugin
 local function create_ft_autocmd(ftplugin)
   local ft = ftplugin.ft
 

@@ -1,6 +1,6 @@
 -- See 'https://www.json.org/json-en.html'.
 
----@type peter.lang.config
+---@type peter.lang.Config
 return {
   lsp = { "jsonls" },
 

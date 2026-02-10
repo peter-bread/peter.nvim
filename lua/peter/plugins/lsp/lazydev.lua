@@ -23,17 +23,17 @@ return {
       -- stylua: ignore
       library = {
         "lazy.nvim",
-        { path = "${3rd}/luv/library", words = { "vim%.uv" }                    },
-        { path = "mason.nvim",         words = { "---@type peter.lang.config" } },
-        { path = "3rd-party.nvim",     words = { "---@type peter.lang.config" } },
-        { path = "conform.nvim",       words = { "---@type peter.lang.config" } },
+        { path = "${3rd}/luv/library", words = { "vim%.uv" }     },
+        { path = "mason.nvim",         words = { "peter.lang." } },
+        { path = "3rd-party.nvim",     words = { "peter.lang." } },
+        { path = "conform.nvim",       words = { "peter.lang." } },
       },
       enabled = function(root)
         if vim.g.lazydev_enabled ~= nil then
           return vim.g.lazydev_enabled
         end
 
-        -- TODO: check an environment variable
+        -- TODO: check an environment variable.
 
         local enabled_file = root .. "/.lazydev_enabled"
         local disabled_file = root .. "/.lazydev_disabled"

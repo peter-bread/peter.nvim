@@ -5,7 +5,7 @@
 -- See 'https://github.com/astral-sh/ty'.
 -- See 'https://github.com/facebook/pyrefly'.
 
----@type peter.lang.config
+---@type peter.lang.Config
 return {
   lsp = { "basedpyright", "ruff" },
 

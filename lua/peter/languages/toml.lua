@@ -1,6 +1,6 @@
 -- See 'https://toml.io/en/'.
 
----@type peter.lang.config
+---@type peter.lang.Config
 return {
   lsp = { "taplo" },
 

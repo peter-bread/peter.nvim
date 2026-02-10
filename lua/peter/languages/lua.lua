@@ -2,7 +2,7 @@
 
 -- TODO: StyLua now has an LSP mode. Investigate.
 
----@type peter.lang.config
+---@type peter.lang.Config
 return {
   lsp = { "lua_ls" },
 

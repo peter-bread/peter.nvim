@@ -2,7 +2,7 @@
 
 -- See 'https://www.haskell.org/'.
 
----@type peter.lang.config
+---@type peter.lang.Config
 return {
   plugins = {
     treesitter = { "haskell" },

@@ -1,4 +1,4 @@
----@type peter.lang.config
+---@type peter.lang.Config
 return {
   lsp = { "dockerls" },
 

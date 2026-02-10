@@ -8,7 +8,7 @@ local M = {}
 --[[ ---------------------------------------------------------------------- ]]
 
 ---Run `fn` on all language configs.
----@param fn fun(name:string, cfg:peter.lang.config) Function to run for each language.
+---@param fn fun(name:string, cfg:peter.lang.Config) Function to run for each language.
 function M.for_each(fn)
   local ok, languages = pcall(require, "peter.languages")
   if not ok then

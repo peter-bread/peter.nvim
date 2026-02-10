@@ -13,26 +13,23 @@ local function is_valid_module(file)
   return file:sub(-4) == ".lua" and file ~= "init.lua"
 end
 
----@module "mason"
----@module "thirdparty.mason-tool-installer"
+---@class (exact) peter.lang.plugins
+---@field treesitter? string[] List of treesitter parser names.
+---@field mason? thirdparty.mti.PkgEntry[] List of mason packages.
+---@field format? peter.lang.formatters_by_ft Mapping of filetypes to formatters.
+---@field lint? table<string, string[]> Mapping of filetypes to linters.
 
----@class peter.lang.config.plugin
----@field treesitter string[]
----@field mason thirdparty.mti.PkgEntry[]
----@field format peter.lang.formatters_by_ft
----@field lint table<string, string[]>
-
----@class peter.lang.config
+---@class (exact) peter.lang.Config
 ---@field lsp? string[] List of LSP servers to be enabled.
----@field plugins? peter.lang.config.plugin | LazyPluginSpec[] Plugins to be installed.
----@field ftplugin? peter.lang.config.ftplugin Buffer-specific options and config.
+---@field plugins? peter.lang.plugins | LazyPluginSpec[] Plugins to be installed.
+---@field ftplugin? peter.lang.ftplugin Buffer-specific options and config.
 
----@class peter.lang.config.ftplugin
+---@class (exact) peter.lang.ftplugin
 ---@field ft string|string[] Filetype(s) to run `callback` on.
 ---@field callback fun(args: vim.api.keyset.create_autocmd.callback_args)
 
 ---Mapping of programming languages to their respective configurations.
----@type table<string, peter.lang.config>
+---@type table<string, peter.lang.Config>
 local M = {}
 
 local languages_dir = vim.fn.stdpath("config") .. "/lua/peter/languages"
@@ -42,7 +39,7 @@ for filename, typ in vim.fs.dir(languages_dir) do
   if typ == "file" and is_valid_module(filename) then
     local lang_name = files.strip_extension(filename)
 
-    ---@type boolean, peter.lang.config
+    ---@type boolean, peter.lang.Config
     local ok, cfg = pcall(require, "peter.languages." .. lang_name)
 
     if ok and type(cfg) == "table" then
