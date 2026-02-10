@@ -13,16 +13,16 @@ local function is_valid_module(file)
   return file:sub(-4) == ".lua" and file ~= "init.lua"
 end
 
+---@class (exact) peter.lang.Config
+---@field lsp? string[] List of LSP servers to be enabled.
+---@field plugins? peter.lang.plugins | LazyPluginSpec[] Plugins to be installed.
+---@field ftplugin? peter.lang.ftplugin Buffer-specific options and config.
+
 ---@class (exact) peter.lang.plugins
 ---@field treesitter? string[] List of treesitter parser names.
 ---@field mason? thirdparty.mti.PkgEntry[] List of mason packages.
 ---@field format? peter.lang.formatters_by_ft Mapping of filetypes to formatters.
 ---@field lint? table<string, string[]> Mapping of filetypes to linters.
-
----@class (exact) peter.lang.Config
----@field lsp? string[] List of LSP servers to be enabled.
----@field plugins? peter.lang.plugins | LazyPluginSpec[] Plugins to be installed.
----@field ftplugin? peter.lang.ftplugin Buffer-specific options and config.
 
 ---@class (exact) peter.lang.ftplugin
 ---@field ft string|string[] Filetype(s) to run `callback` on.
