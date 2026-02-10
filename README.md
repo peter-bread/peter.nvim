@@ -121,42 +121,52 @@ after/
 
 ### Languages
 
-Programming languages are managed in [`lua/peter/languages/<language>.lua`](./lua/peter/languages/).
-Each of these files should return a table of type `peter.lang.config`. The type
-is defined in [`lua/peter/languages/init.lua`](./lua/peter/languages/init.lua)
-and shown below:
+Programming languages are managed in
+[`lua/peter/languages/<language>.lua`](./lua/peter/languages/). Each of these
+files should return a table of type `peter.lang.config`. The type is defined in
+[`lua/peter/languages/init.lua`](./lua/peter/languages/init.lua) and shown
+below:
 
 ```lua
----@class (exact) peter.lang.config
+---@class (exact) peter.lang.Config
 ---@field lsp? string[] List of LSP servers to be enabled.
----@field plugins? LazyPluginSpec[] Plugins to be installed.
----@field ftplugin? peter.lang.config.ftplugin Buffer-specific options and config.
+---@field plugins? peter.lang.plugins | LazyPluginSpec[] Plugins to be installed.
+---@field ftplugin? peter.lang.ftplugin Buffer-specific options and config.
 
----@class (exact) peter.lang.config.ftplugin
+---@class (exact) peter.lang.plugins
+---@field treesitter? string[] List of treesitter parser names.
+---@field mason? thirdparty.mti.PkgEntry[] List of mason packages.
+---@field format? peter.lang.formatters_by_ft Mapping of filetypes to formatters.
+---@field lint? table<string, string[]> Mapping of filetypes to linters.
+
+---@class (exact) peter.lang.ftplugin
 ---@field ft string|string[] Filetype(s) to run `callback` on.
 ---@field callback fun(args: vim.api.keyset.create_autocmd.callback_args)
 ```
 
-There is also still the option to use [`after/ftplugin/<filetype>.lua`](./after/ftplugin/)
-to set buffer-specific options. However, it can be easier to use the table approach
-above as `ftplugin.ft` _can_ be a list, so you can apply the same options to
-multiple filetypes while only writing the code once, for example [Haskell and
-Cabal files](https://github.com/mrcjkb/haskell-tools.nvim#zap-quick-setup).
+There is also still the option to use
+[`after/ftplugin/<filetype>.lua`](./after/ftplugin/) to set buffer-specific
+options. However, it can be easier to use the table approach above as
+`ftplugin.ft` _can_ be a list, so you can apply the same options to multiple
+filetypes while only writing the code once, for example [Haskell and Cabal
+files](https://github.com/mrcjkb/haskell-tools.nvim#zap-quick-setup).
 
-When populating the `plugins` field, it is useful to use the accompanying
-utility functions, found in [`lua/peter/util/plugins/languages.lua`](./lua/peter/util/plugins/languages.lua).
-These remove some of the boilerplate code for extending the options of commonly
-used plugins.
+When populating the `plugins` field, there are common plugins you need to
+configure for most languages. Helper functions are defined in
+[`lua/peter/util/plugins/languages.lua`](./lua/peter/util/plugins/languages.lua).
+Instead of calling these directly in in the `plugins` field, you can include
+table fields with the same name (see example below).
 
-Language configs are processed in [`lua/peter/languages/init.lua`](./lua/peter/languages/init.lua).
-This builds and exposes a table which maps language names to configurations.
-This table can be accessed with:
+Language configs are processed in
+[`lua/peter/languages/init.lua`](./lua/peter/languages/init.lua). This builds
+and exposes a table which maps language names to configurations. This table can
+be accessed with:
 
 ```lua
--- whole table
+-- Whole table.
 local languages = require("peter.languages")
 
--- just lua config
+-- Just Lua config.
 local lua_config = require("peter.languages").lua
 local lua_config = require("peter.languages")["lua"]
 ```
@@ -169,21 +179,35 @@ Example config to set up the Lua programming language:
 ```lua
 -- lua/peter/languages/lua.lua
 
-local L = require("peter.util.plugins.languages")
+-- [NOT REQUIRED]
+-- Access helper functions.
+--
+-- local L = require("peter.util.plugins.languages")
 
----@type peter.lang.config
+---@type peter.lang.Config
 return {
-  lsp = { "lua_ls" }, -- enable lua language server
+  lsp = { "lua_ls" }, -- Enable Lua Language Server.
 
   plugins = {
-    treesitter = { "lua", "luadoc" }, -- install parsers
-    mason = { "lua_ls", "stylua" }, -- install LSP and formatter
-    format = { lua = { "stylua" } }, -- register formatter
+    treesitter = { "lua", "luadoc" }, -- Install parsers.
+    mason = { "lua_ls", "stylua" }, -- Install LSP and formatter.
+    format = { lua = { "stylua" } }, -- Register formatter.
+
+    -- [NOT REQUIRED]
+    -- You *can* use these functions directly, but it is better to use a table.
+    --
+    -- L.treesitter({ "lua", "luadoc" }) -- Install parsers.
+
+    -- Include some other plugin in the spec.
+    {
+      "some/plugin",
+      opts = {},
+    },
   },
 
   ftplugin = {
-    ft = "lua", -- run on lua files
-    callback = function() -- function to be executed for each lua file
+    ft = "lua", -- Run on Lua files.
+    callback = function() -- Function to be executed for each Lua file.
       vim.bo.shiftwidth = 4
     end,
   },
@@ -195,16 +219,14 @@ If you prefer to use `after/ftplugin`, you can split this config into two files:
 ```lua
 -- lua/peter/languages/lua.lua
 
-local L = require("peter.util.plugins.languages")
-
----@type peter.lang.config
+---@type peter.lang.Config
 return {
-  lsp = { "lua_ls" }, -- enable lua language server
+  lsp = { "lua_ls" }, -- Enable Lua Language Server.
 
   plugins = {
-    treesitter = { "lua", "luadoc" }, -- install parsers
-    mason = { "lua_ls", "stylua" }, -- install LSP and formatter
-    format = { lua = { "stylua" } }, -- register formatter
+    treesitter = { "lua", "luadoc" }, -- Install parsers.
+    mason = { "lua_ls", "stylua" }, -- Install LSP and formatter.
+    format = { lua = { "stylua" } }, -- Register formatter.
   },
 }
 ```
@@ -252,9 +274,10 @@ can overwrite or extend these configurations in `after/lsp/<lsp_server>.lua`.
 
 ## Missing Functionality
 
-This config is a bit more minimal than my [previous config](https://github.com/peter-bread/peter.nvim/tree/nvim-v0.10).
-Below is a list of features that are not currently implemented in this config.
-Some of these were in my previous config, others were not.
+This config is a bit more minimal than my [previous
+config](https://github.com/peter-bread/peter.nvim/tree/nvim-v0.10). Below is a
+list of features that are not currently implemented in this config. Some of
+these were in my previous config, others were not.
 
 <details>
   <summary>Git Integration (UNFINISHED)</summary>
@@ -277,8 +300,8 @@ Plugins:
 
 UPDATE:
 
-Started using Neogit. It probably still needs some configuration. If I end up using a
-statusline, I will need some other plugin to provide diff info.
+Started using Neogit. It probably still needs some configuration. If I end up
+using a statusline, I will need some other plugin to provide diff info.
 
 </details>
 
@@ -286,8 +309,8 @@ statusline, I will need some other plugin to provide diff info.
   <summary>Statusline</summary>
 
 This config is aiming to be relatively minimal. Do I actually need a statusline
-plugin or is it just aesthetically nice? I do like having diagnostic/git info so
-I may add this.
+plugin or is it just aesthetically nice? I do like having diagnostic/git info
+so I may add this.
 
 Plugins:
 
@@ -342,3 +365,7 @@ Plugins:
 ## See Also
 
 - [`tiny.nvim`](https://github.com/peter-bread/tiny.nvim)
+
+---
+
+\*It's not _that_ minimal.
