@@ -1,3 +1,5 @@
+-- See 'https://www.c-language.org/'.
+
 ---@type peter.lang.Config
 return {
   lsp = { "clangd" },

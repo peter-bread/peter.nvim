@@ -1,3 +1,5 @@
+-- See 'https://just.systems/man/en/'.
+
 ---@type peter.lang.Config
 return {
   lsp = { "just" },
