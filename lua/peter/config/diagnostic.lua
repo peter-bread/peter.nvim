@@ -14,8 +14,8 @@ vim.diagnostic.config({
     },
   },
   virtual_text = {
-    source = true,
-    spacing = 4,
     prefix = "●",
+    source = false,
+    spacing = 4,
   },
 })
