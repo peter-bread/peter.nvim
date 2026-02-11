@@ -111,10 +111,10 @@ vim.o.showmode        = true                -- Do not show current mode (not nee
 
 vim.o.list            = true                -- Show invisible characters (e.g. trailing spaces).
 vim.opt.listchars     = {                   -- Configure how invisible characters should be shown.
-                          nbsp  = "+",
-                          eol   = "󱞥",
-                          trail = "·",
-                          tab   = "  ",
+                        nbsp  = "+",
+                        eol   = "󱞥",
+                        trail = "·",
+                        tab   = "  ",
                         }
 
 
@@ -124,8 +124,8 @@ vim.o.inccommand      = "split"             -- Shows the effects of commands as 
 
 -- TODO: Set up proper spell-checking.
 vim.opt.spelllang     = {                   -- Allow British and American English.
-                          "en_gb",
-                          "en_us"
+                        "en_gb",
+                        "en_us"
                         }
 
 vim.o.undofile        = true                -- Save undo history into a file.
