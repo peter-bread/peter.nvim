@@ -1,7 +1,5 @@
 -- See 'https://www.lua.org/'.
 
--- TODO: StyLua now has an LSP mode. Investigate.
-
 ---@type peter.lang.Config
 return {
   lsp = { "lua_ls" },
