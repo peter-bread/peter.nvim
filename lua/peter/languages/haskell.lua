@@ -15,7 +15,11 @@ return {
       {
         "hls",
         condition = function()
-          return vim.fn.executable("haskell-language-server-wrapper") == 0
+          -- stylua: ignore
+          local hls_already_installed = vim.fn.executable("haskell-language-server-wrapper") == 1
+          local ghcup_installed = vim.fn.executable("ghcup") == 1
+
+          return ghcup_installed and not hls_already_installed
         end,
       },
     },
