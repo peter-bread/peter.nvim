@@ -54,16 +54,6 @@ return {
     end,
 
     init = function()
-      vim.api.nvim_create_user_command("MasonToolsClean", function()
-        local installer = require("thirdparty.mason-tool-installer")
-        installer.clean()
-      end, { force = true })
-
-      vim.api.nvim_create_user_command("MasonToolsEnsureInstalled", function()
-        local installer = require("thirdparty.mason-tool-installer")
-        installer.check_install(vim.g.is_headless)
-      end, { force = true })
-
       vim.api.nvim_create_autocmd("FileType", {
         group = require("peter.util.autocmds").augroup("MasonKeymapDesc"),
         pattern = "mason",
