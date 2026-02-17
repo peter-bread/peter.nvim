@@ -46,11 +46,14 @@ return {
 
       require("mason").setup(opts --[[@as MasonSettings]])
 
-      require("thirdparty.mason-lspconfig").register_lspconfig_aliases()
+      vim.schedule(function()
+        local lspconfig = require("thirdparty.mason-lspconfig")
+        lspconfig.register_lspconfig_aliases()
 
-      local installer = require("thirdparty.mason-tool-installer")
-      installer.setup(opts --[[@as thirdparty.mti.Config]])
-      installer.check_install({ sync = vim.g.is_headless })
+        local installer = require("thirdparty.mason-tool-installer")
+        installer.setup(opts --[[@as thirdparty.mti.Config]])
+        installer.check_install({ sync = vim.g.is_headless })
+      end)
     end,
 
     init = function()
