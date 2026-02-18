@@ -1,4 +1,5 @@
 ---@module "lazydev"
+---@module "blink-cmp"
 
 -- Better Lua Language Server setup for Neovim.
 -- See 'https://github.com/folke/lazydev.nvim'.
