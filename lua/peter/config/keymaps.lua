@@ -56,7 +56,7 @@ set("v", "<M-k>", ":m '<-2<cr>gv=gv", { desc = "Move Selected Line(s) Up" })
 
 -- 5. Indenting ================================================================
 
--- From: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- From: 'https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua'.
 set("v", "<", "<gv")
 set("v", ">", ">gv")
 
