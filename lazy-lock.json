@@ -1,5 +1,5 @@
 {
-  "3rd-party.nvim": { "branch": "main", "commit": "4a9f74ed9bd716ad6e7acb83ac8c923c234174ca" },
+  "3rd-party.nvim": { "branch": "main", "commit": "53fc5c79afc3916e5e05a551e35c9560863ce64f" },
   "SchemaStore.nvim": { "branch": "main", "commit": "55ca969ceed5209d62cbf4c20cef023ff188b6c5" },
   "blink.cmp": { "branch": "main", "commit": "4b18c32adef2898f95cdef6192cbd5796c1a332d" },
   "conform.nvim": { "branch": "master", "commit": "c2526f1cde528a66e086ab1668e996d162c75f4f" },
@@ -14,7 +14,7 @@
   "mini.align": { "branch": "main", "commit": "94a80efd1979839121bf011c856acb0459598433" },
   "mini.icons": { "branch": "main", "commit": "68c178e0958d95b3977a771f3445429b1bded985" },
   "mini.surround": { "branch": "main", "commit": "01dd2620e50ebc0f28f7d4ea2db6f846f1540c95" },
-  "neogit": { "branch": "master", "commit": "df323856553d4c5e5c41117606c63f628b24a3b0" },
+  "neogit": { "branch": "master", "commit": "22433eae87236c217e0810c836fa5e529c043d4c" },
   "nvim-ansible": { "branch": "main", "commit": "c7f595d568b588942d4d0c37b5cd6cae3764a148" },
   "nvim-autopairs": { "branch": "master", "commit": "59bce2eef357189c3305e25bc6dd2d138c1683f5" },
   "nvim-lint": { "branch": "master", "commit": "486474c2ace8d78d28995074dbdbe29011bc63d0" },
