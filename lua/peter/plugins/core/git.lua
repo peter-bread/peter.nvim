@@ -22,7 +22,9 @@ return {
       { "<C-x>g", "<cmd>Neogit<cr>", desc = "Neogit" }, -- Cheeky.
     },
     ---@type NeogitConfig
-    opts = {},
+    opts = {
+      graph_style = "kitty",
+    },
   },
   P.which_key({
     mode = { "n" },
