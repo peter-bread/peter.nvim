@@ -8,7 +8,8 @@ set({ "n", "i", "s" }, "<esc>", function()
   vim.snippet.stop() -- Exit current snippet (native snippets only).
   vim.cmd("noh") -- Clear search.
   return "<esc>" -- Standard <esc> behaviour.
-end, { expr = true, desc = "Escape" }) -- `expr` to make sure "<esc>" is actually evaluated.
+end, { expr = true, desc = "Escape" }) -- Use `expr` to make sure "<esc>" is
+--                                          actually evaluated.
 
 -- 2. Splits ===================================================================
 
@@ -29,8 +30,8 @@ set("n", "<leader>|", "<C-W>v", { desc = "Split right" })
 set("n", "<M-=>", "<cmd>resize +2<cr>", { desc = "Increase height" })
 set("n", "<M-->", "<cmd>resize -2<cr>", { desc = "Decrease height" })
 
--- These keymaps work for terminal emulators that support the Kitty Keyboard Protocol.
--- See 'https://sw.kovidgoyal.net/kitty/keyboard-protocol'.
+-- These keymaps work for terminal emulators that support the Kitty Keyboard
+-- Protocol. See 'https://sw.kovidgoyal.net/kitty/keyboard-protocol'.
 --
 -- You may need to use "<M-+>" and "<M-_>" for other terminal emulators.
 --
