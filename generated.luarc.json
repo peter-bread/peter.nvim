@@ -1,0 +1,42 @@
+{
+  "workspace": {
+    "library": [
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/3rd-party.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/SchemaStore.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/blink.cmp/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/conform.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/diffview.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/flash.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/haskell-tools.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/kanagawa.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/lazy.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/mason.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/mini.ai/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/mini.align/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/mini.icons/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/mini.surround/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/neogit/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/nvim-ansible/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/nvim-autopairs/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/nvim-lint/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/nvim-treesitter/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/nvim-treesitter-textobjects/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/oil.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/plenary.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/snacks.nvim/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/vim-matchup/lua",
+      "/Users/petersheehan/.local/share/peter.nvim/lazy/which-key.nvim/lua",
+      "/opt/homebrew/Cellar/neovim/0.11.4/share/nvim/runtime/lua",
+      "/Users/petersheehan/.config/peter.nvim/lua",
+      "$HOME/LLS_Addons/luvit-meta"
+    ],
+    "ignoreDir": ["/lua", "./temp"],
+    "checkThirdParty": false
+  },
+  "runtime": {
+    "version": "LuaJIT",
+    "path": ["?.lua", "?/init.lua"],
+    "pathStrict": true
+  },
+  "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/refs/heads/master/setting/schema.json"
+}
