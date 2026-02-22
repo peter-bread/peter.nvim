@@ -2,7 +2,8 @@
 
 ---@type peter.lang.Config
 return {
-  lsp = { "lua_ls" },
+  -- lsp = { "lua_ls" },
+  lsp = { "emmylua_ls" },
 
   plugins = {
     treesitter = { "lua", "luadoc" },
