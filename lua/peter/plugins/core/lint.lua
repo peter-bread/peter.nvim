@@ -59,13 +59,16 @@ return {
     config = function(_, opts)
       local lint = require("lint")
 
-      -- Resolve `opts`.
-      local config = vim.tbl_deep_extend("force", {}, {
+      ---@type peter.lint.Opts
+      local defaults = {
         events = { "BufReadPost", "BufWritePost", "InsertLeave" },
         linters_by_ft = {},
         linters = {},
         enabled_at_start = true,
-      }, opts or {})
+      }
+
+      -- Resolve `opts`.
+      local config = vim.tbl_deep_extend("force", {}, defaults, opts or {})
 
       -- Set linter properties.
       for name, properties in pairs(config.linters) do
@@ -159,11 +162,17 @@ return {
 
       local group = require("peter.util.autocmds").augroup("Linting")
 
-      if config.enabled then
+      -- Stores current state of linting.
+      --
+      -- As mentioned below, I want to refactor some of this.
+      local is_enabled = false
+
+      if config.enabled_at_start then
         vim.api.nvim_create_autocmd(config.events, {
           group = group,
           callback = callback,
         })
+        is_enabled = true
       end
 
       local all_linters = vim
@@ -201,10 +210,10 @@ return {
                 end
               end
 
-              config.enabled = state
+              is_enabled = state
             end,
             get = function()
-              return config.enabled
+              return is_enabled
             end,
           })
           :map("<leader>ul")
