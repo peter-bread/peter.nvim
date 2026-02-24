@@ -45,6 +45,11 @@ function M.extract_plugin_specs()
 
   return vim
     .iter(LANG_MOD)
+    :filter(function(_, cfg)
+      -- Maybe just use this:
+      -- return cfg.plugins
+      return cfg.plugins ~= nil and type(cfg.plugins) == "table"
+    end)
     :map(function(name, cfg)
       promote_known_plugins(cfg)
       return name, cfg
