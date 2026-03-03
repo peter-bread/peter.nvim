@@ -2,17 +2,19 @@
 ---@class peter.util.lsp
 local M = {}
 
----@class peter.util.lsp.ResolveSpec
+---@class (exact) peter.util.lsp.ResolveSpec
 ---@field builtin peter.util.lsp.FunctionSpec vim.lsp.buf.*
 ---@field snacks? peter.util.lsp.FunctionSpec Snacks.picker.*
 ---
 ---@alias peter.util.lsp.FunctionSpec string|peter.util.lsp.FunctionSource
 ---
----@class peter.util.lsp.FunctionSource Define a function with config.
+---@class (exact) peter.util.lsp.FunctionSource Define a function with config.
 ---@field name string Basename of function to call.
 ---@field opts? table Options table to configure the function's behaviour.
 
----@alias peter.util.lsp.KeymapOpts vim.keymap.set.Opts|{has?:string|string[], mode?:string|string[]}
+---@class (exact) peter.util.lsp.KeymapOpts : vim.keymap.set.Opts
+---@field has? string|string[]
+---@field mode? string|string[]
 
 --[[ ---------------------------------------------------------------------- ]]
 --
@@ -202,7 +204,7 @@ end
 ---@param bufnr integer
 ---@param lhs string
 ---@param rhs function
----@param opts? vim.keymap.set.Opts|{has?:string|string[], mode?:string|string[]}
+---@param opts? peter.util.lsp.KeymapOpts
 function M.set_keymap(client, bufnr, lhs, rhs, opts)
   opts = opts or {}
 
