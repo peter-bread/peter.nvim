@@ -1,21 +1,22 @@
 ---@module "lazy"
+---@module "lint"
 ---@diagnostic disable: missing-fields
 
 -- Linting.
 -- See 'https://github.com/mfussenegger/nvim-lint'.
 
----@class peter.lint.Opts
+---@class (exact) peter.lint.Opts
 ---@field events? string[] Events to trigger linting. Default: `{ "BufReadPost", "BufWritePost", "InsertLeave" }`.
 ---@field linters_by_ft? table<string,string[]> Map of filetypes to list of linters to run. Use `["*"]` for linters to run on *all* filetypes, for example 'cspell'.
 ---@field linters? table<string,peter.lint.Linter> Map of linters to their properties.
 ---@field enabled_at_start? boolean Whether linting autocmd should be enabled on start. Default: `true`.
 
 ---Linter class extended with the `condition` and `process_diagnostics` fields.
----@class peter.lint.Linter : lint.Linter
+---@class (exact) peter.lint.Linter : lint.Linter
 ---@field condition? fun(ctx:peter.lint.ctx):any Function to dynamically enable/disable a linter, called with a context object. Returning `false` disables the linter; returning anything else or `nil` allows it.
 ---@field process_diagnostics? fun(diagnostic:vim.Diagnostic):vim.Diagnostic? Function to process diagnostics produced by a linter.
 
----@class peter.lint.ctx
+---@class (exact) peter.lint.ctx
 ---@field bufnr integer
 ---@field filename string
 ---@field cwd string

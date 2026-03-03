@@ -1,7 +1,7 @@
 ---@class peter.util.version
 local M = {}
 
----@class peter.util.version.string.Opts
+---@class (exact) peter.util.version.string.Opts
 ---@field prefix? boolean If true, prepend version number with a "v".
 
 --[[ ---------------------------------------------------------------------- ]]

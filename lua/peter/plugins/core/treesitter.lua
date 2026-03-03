@@ -5,7 +5,7 @@
 -- See 'https://github.com/nvim-treesitter/nvim-treesitter'.
 -- See 'https://tree-sitter.github.io/tree-sitter'.
 
----@class peter.treesitter.Config : TSConfig
+---@class (exact) peter.treesitter.Config : TSConfig
 ---@field ensure_installed? string[]
 
 ---@type LazyPluginSpec[]
