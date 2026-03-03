@@ -209,23 +209,18 @@ function M.set_keymap(client, bufnr, lhs, rhs, opts)
   local mode = opts.mode or "n"
   local has = opts.has or nil
 
-  opts.mode = nil
-  opts.has = nil
+  if has and not M.supports_all(client, has) then
+    return
+  end
+
+  local tables = require("peter.util.tables")
+  tables.without_keys(opts, { "mode", "has" })
 
   if opts.desc then
     opts.desc = "LSP " .. opts.desc
   end
 
   opts.buffer = bufnr
-
-  if not has then
-    vim.keymap.set(mode, lhs, rhs, opts)
-    return
-  end
-
-  if not M.supports_all(client, has) then
-    return
-  end
 
   vim.keymap.set(mode, lhs, rhs, opts)
 end
