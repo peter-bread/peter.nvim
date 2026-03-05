@@ -239,7 +239,8 @@ function M.set_default_keymaps(client, bufnr)
   map("K", M.resolve_function({
     builtin = {
       name = "hover",
-      opts = { max_height = 15, border = "solid" },
+      ---@type vim.lsp.buf.hover.Opts
+      opts = { max_height = 15 },
     },
   }), {
     desc = "Hover",
