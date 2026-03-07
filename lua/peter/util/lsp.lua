@@ -301,6 +301,19 @@ function M.set_default_keymaps(client, bufnr)
     has = "textDocument/codeLens",
   })
 
+  map("<leader>ch", function()
+    vim.lsp.buf.clear_references()
+    vim.lsp.buf.document_highlight()
+  end, {
+    desc = "Highlight References",
+    has = "textDocument/documentHighlight",
+  })
+
+  map("<leader>cH", vim.lsp.buf.clear_references, {
+    desc = "Clear References",
+    has = "textDocument/documentHighlight",
+  })
+
   map("<leader>cr", vim.lsp.buf.rename, {
     desc = "Rename",
     has = "textDocument/rename",
