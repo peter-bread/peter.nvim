@@ -124,7 +124,7 @@ after/
 Programming languages are managed in
 [`lua/peter/languages/<language>.lua`](./lua/peter/languages/). Each of these
 files should return a table of type `peter.lang.config`. The type is defined in
-[`lua/peter/languages/init.lua`](./lua/peter/languages/init.lua) and shown
+[`lua/peter/languages.lua`](./lua/peter/languages.lua) and shown
 below:
 
 ```lua
@@ -158,9 +158,9 @@ Instead of calling these directly in in the `plugins` field, you can include
 table fields with the same name (see example below).
 
 Language configs are processed in
-[`lua/peter/languages/init.lua`](./lua/peter/languages/init.lua). This builds
-and exposes a table which maps language names to configurations. This table can
-be accessed with:
+[`lua/peter/languages.lua`](./lua/peter/languages.lua). This builds and exposes
+a table which maps language names to configurations. This table can be accessed
+with:
 
 ```lua
 -- Whole table.

@@ -1,6 +1,3 @@
--- THIS FILE DOES NOT CONTAIN THE CONFIGURATION FOR A SPECIFIC PROGRAMMING
--- LANGUAGE.
---
 -- THIS FILE LOADS ALL OF THE OTHER LANGUAGE CONFIG FILES INTO A SINGLE LUA
 -- MODULE THAT CAN BE ACCESSED USING `require("peter.languages")`.
 
@@ -10,7 +7,7 @@ local function is_valid_module(file)
   -- We could use `vim.filetype.match({ filename = file })` but this would allow
   -- files like `go.lua.bak`, which should not be included in the actual config
   -- as they are backups.
-  return file:sub(-4) == ".lua" and file ~= "init.lua"
+  return file:sub(-4) == ".lua"
 end
 
 ---@class (exact) peter.lang.Config
