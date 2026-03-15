@@ -93,20 +93,20 @@ lua/peter/
 │   ├── filetypes.lua           - Add custom filetypes
 │   ├── ftplugin.lua            - Set up filetype-specific behaviour (from language config)
 │   ├── globals.lua             - Global functions (for debugging only)
-│   ├── init.lua                - Entry point for config module
 │   ├── keymaps.lua             - Set keymaps
 │   ├── lazy.lua                - Bootstrap and configure lazy.nvim plugin manager
 │   ├── lsp.lua                 - Set up LSP (from language config)
 │   └── options.lua             - Set global variables and options
 ├── languages/                # Language configs
-│   ├── init.lua                - Builds table that maps languages to configs
 │   └── lua.lua                 - Lua config (example)
 ├── plugins/                  # Plugins
 │   ├── core/                   - General plugins
 │   ├── lsp/                    - LSP related plugins
 │   ├── mini/                   - Plugins from mini.nvim
 │   └── snacks/                 - Modules from snacks.nvim
-└── util/                     # Utility functions
+├── util/                     # Utility modules
+├── config.lua                # Entry point for config module
+└── languages.lua             # Entry point for languages module; builds table that maps languages to configs
 ```
 
 There is additional configuration in [`after/`](./after/).
