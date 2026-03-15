@@ -33,12 +33,12 @@ function M.prev(opts)
   return M.jump(H.jump_opts(-vim.v.count1, opts))
 end
 
----Get diagnostics for current line.
+---Get diagnostics for the current line in the current buffer (in the current
+---window).
 ---@return vim.Diagnostic[]
-function M.current_line()
-  local bufnr = vim.api.nvim_get_current_buf()
+function M.line_diagnostics()
   local line = vim.api.nvim_win_get_cursor(0)[1] - 1
-  return vim.diagnostic.get(bufnr, { lnum = line })
+  return vim.diagnostic.get(0, { lnum = line })
 end
 
 --[[ ---------------------------------------------------------------------- ]]
