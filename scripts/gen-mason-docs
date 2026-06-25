@@ -2,4 +2,8 @@
 
 set -e
 
-nvim --headless '+Lazy! restore mason.nvim' '+luafile scripts/gen-mason-docs.lua' +qa
+nvim --headless \
+  '+Lazy! restore mason.nvim' \
+  '+Lazy! load mason.nvim' \
+  '+luafile scripts/gen-mason-docs.lua' \
+  +qa
