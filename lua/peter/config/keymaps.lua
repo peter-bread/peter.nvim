@@ -63,73 +63,11 @@ set("v", ">", ">gv")
 
 -- 6. Diagnostics ==============================================================
 
+set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+
 do
   local diagnostic = require("peter.util.diagnostic")
-
-  do
-    local virtual_lines_active = false
-    local virtual_text_config
-
-    -- Inspiration:
-    -- 'https://www.reddit.com/r/neovim/comments/1jm5atz/replacing_vimdiagnosticopen_float_with_virtual'.
-    --
-    -- This is a 2-stage keymap.
-    --
-    -- First press:
-    --  - Disable virtual text.
-    --  - Enable virtual lines.
-    --
-    -- Second press:
-    --  - Disable virtual lines.
-    --  - Re-enable virtual text (with original settings).
-    --  - Open and focus diagnostic float.
-    set("n", "<leader>cd", function()
-      if vim.bo.buftype == "nofile" then
-        return
-      end
-
-      if not virtual_lines_active then
-        -- State 1: Switch to virtual lines if there are diagnostics on current line.
-        if vim.tbl_isempty(diagnostic.current_line()) then
-          return
-        end
-
-        virtual_text_config = vim.diagnostic.config().virtual_text
-
-        vim.diagnostic.config({
-          virtual_lines = { current_line = true },
-          virtual_text = false,
-        })
-
-        vim.api.nvim_create_autocmd("CursorMoved", {
-          group = require("peter.util.autocmds").augroup("LineDiagnostics"),
-          callback = function()
-            vim.diagnostic.config({
-              virtual_lines = false,
-              virtual_text = virtual_text_config,
-            })
-            virtual_lines_active = false
-            return true
-          end,
-        })
-        virtual_lines_active = true
-      else
-        -- State 2: Focus float.
-        vim.diagnostic.config({
-          virtual_lines = false,
-          virtual_text = virtual_text_config,
-        })
-
-        vim.diagnostic.open_float() -- Open.
-        vim.diagnostic.open_float() -- Focus.
-
-        virtual_lines_active = false
-      end
-    end, { desc = "Line Diagnostics" })
-  end
-
-  do
-    local next, prev = diagnostic.next, diagnostic.prev
+  local next, prev = diagnostic.next, diagnostic.prev
 
     -- stylua: ignore start
     set("n", "]d", next, { desc = "Next Diagnostic" })
@@ -138,6 +76,5 @@ do
     set("n", "[e", function() prev({ severity = "ERROR" }) end, { desc = "Prev Error" })
     set("n", "]w", function() next({ severity = "WARN" }) end, { desc = "Next Warning" })
     set("n", "[w", function() prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
-    -- stylua: ignore end
-  end
+  -- stylua: ignore end
 end
