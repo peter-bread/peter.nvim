@@ -20,6 +20,10 @@ return {
         local palette = colors.palette
         local theme = colors.theme
 
+        local get = function(name)
+          return vim.api.nvim_get_hl(0, { name = name })
+        end
+
         -- stylua: ignore
         return {
           -- Dark popup menus.
@@ -27,6 +31,13 @@ return {
           PmenuSel                  = { fg = "NONE",    bg = theme.ui.bg_p2 },
           PmenuSbar                 = {                 bg = theme.ui.bg_m1 },
           PmenuThumb                = {                 bg = theme.ui.bg_p2 },
+
+          ["@diff.plus"]            = { fg = "#3a5ea1",         bg = "#15223a" },
+          diffAdded                 = { fg = "#3a5ea1",         bg = "#15223a" },
+          diffNewFile               = { fg = get("Special").fg, bg = "#15223a" },
+          ["@diff.minus"]           = { fg = "#946359",         bg = "#2d1e1b" },
+          diffRemoved               = { fg = "#946359",         bg = "#2d1e1b" },
+          diffOldFile               = { fg = get("Special").fg, bg = "#2d1e1b" },
 
           -- Neogit Diff (better for colourblindness).
           NeogitDiffAdd             = { fg = "#3a5ea1", bg = "#15223a" },
