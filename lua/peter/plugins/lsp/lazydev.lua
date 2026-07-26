@@ -14,6 +14,10 @@
 
 local P = require("peter.util.plugins.plugins")
 
+if true then
+  return {}
+end
+
 ---@type LazyPluginSpec[]
 return {
   {
