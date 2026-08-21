@@ -24,6 +24,7 @@ return {
     ---@type NeogitConfig
     opts = {
       graph_style = "kitty",
+      treesitter_diff_highlight = true,
     },
   },
   P.which_key({
