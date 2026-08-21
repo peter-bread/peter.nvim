@@ -6,7 +6,7 @@ return {
 
   plugins = {
     treesitter = { "go", "gomod", "gosum", "gowork", "gotmpl" },
-    mason = { "gopls", "gofumpt", "goimports" },
-    format = { go = { "goimports", "gofumpt" } },
+    mason = { "gopls", "goimports" },
+    format = { go = { "goimports", lsp_format = "last" } },
   },
 }
