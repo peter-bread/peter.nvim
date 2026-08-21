@@ -74,7 +74,9 @@ function M.try_enable_codelens(client, bufnr)
       group = autocmds.augroup("RefreshCodeLens"),
       desc = "Refresh CodeLens",
       buffer = bufnr,
-      callback = vim.lsp.codelens.refresh,
+      callback = function()
+        vim.lsp.codelens.enable(true)
+      end,
     })
   end
 end
@@ -296,7 +298,7 @@ function M.set_default_keymaps(client, bufnr)
     has = "textDocument/codeLens",
   })
 
-  map("<leader>cC", vim.lsp.codelens.refresh, {
+  map("<leader>cC", function() vim.lsp.codelens.enable(true) end, {
     desc = "Refresh Codelens",
     has = "textDocument/codeLens",
   })
