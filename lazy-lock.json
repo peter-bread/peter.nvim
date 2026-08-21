@@ -14,7 +14,7 @@
   "mini.align": { "branch": "main", "commit": "77d7446b9f2452193f13ced9fb73a8b3aa4a4f4d" },
   "mini.icons": { "branch": "main", "commit": "98faae31e9be1cc054ae63485e58ceb185efcad0" },
   "mini.surround": { "branch": "main", "commit": "8d5d0c5aa92449368ac251e85451d79d8f69d296" },
-  "neogit": { "branch": "master", "commit": "22433eae87236c217e0810c836fa5e529c043d4c" },
+  "neogit": { "branch": "master", "commit": "37e0f22a2345bad1bffe01b31970885882f46275" },
   "nvim-ansible": { "branch": "main", "commit": "c7f595d568b588942d4d0c37b5cd6cae3764a148" },
   "nvim-autopairs": { "branch": "master", "commit": "7b9923abad60b903ece7c52940e1321d39eccc79" },
   "nvim-lint": { "branch": "master", "commit": "0370fe965697aa8f04252a1562441bdc13723cd1" },
