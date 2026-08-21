@@ -6,6 +6,11 @@
 -- See 'https://github.com/nvim-mini/mini.ai/commit/96cd250' for `an/in`
 -- conflicts with LSP mappings in Neovim 0.12+.
 
+-- TODO: Deal with these when upgrading to Neovim 0.12 and 0.13 respectively.
+-- 4ce4c35 docs(ai): document workarounds for `al` / `il` conflicts on Neovim>=0.13 (3 months ago)
+-- a783ce6 docs(ALL): add `vim.pack` and remove 'vim-plug' installation methods (3 months ago)
+-- 7e10ce8 docs(ai): better document workarounds for `v_an` / `v_in` conflicts (4 months ago)
+
 ---@type LazyPluginSpec[]
 return {
   {
