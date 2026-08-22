@@ -69,7 +69,7 @@ do
 
         -- No more progress; the LSP is idle.
         active_tokens_by_client[client_id] = nil
-        vim.lsp.codelens.refresh()
+        vim.lsp.codelens.enable(true)
       end
     end,
   })
