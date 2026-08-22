@@ -24,10 +24,11 @@ return {
       -- stylua: ignore
       library = {
         "lazy.nvim",
-        { path = "${3rd}/luv/library", words = { "vim%.uv" }     },
-        { path = "mason.nvim",         words = { "peter.lang." } },
-        { path = "3rd-party.nvim",     words = { "peter.lang." } },
-        { path = "conform.nvim",       words = { "peter.lang." } },
+        { path = "${3rd}/luv/library", words = { "vim%.uv" }                      },
+        { path = "mason.nvim",         words = { "peter.lang." }                  },
+        { path = "3rd-party.nvim",     words = { "peter.lang." }                  },
+        { path = "conform.nvim",       words = { "peter.lang." }                  },
+        { path = "nvim-lspconfig",     words = { "---@type lspconfig.settings." } },
       },
       enabled = function(root)
         if vim.g.lazydev_enabled ~= nil then

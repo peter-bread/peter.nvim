@@ -3,6 +3,7 @@
 
 ---@type vim.lsp.Config
 return {
+  ---@type lspconfig.settings.jsonls
   settings = {
     json = {
       validate = { enable = true },

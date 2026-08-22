@@ -9,4 +9,7 @@ return {
     -- Defer to '(based)pyright' for this.
     client.server_capabilities.hoverProvider = false
   end,
+
+  ---@type lspconfig.settings.ruff
+  settings = {},
 }
