@@ -68,13 +68,15 @@ set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line diagnostics" })
 do
   local diagnostic = require("peter.util.diagnostic")
   local next, prev = diagnostic.next, diagnostic.prev
+  local ERROR = vim.diagnostic.severity.ERROR
+  local WARN = vim.diagnostic.severity.ERROR
 
     -- stylua: ignore start
     set("n", "]d", next, { desc = "Next Diagnostic" })
     set("n", "[d", prev, { desc = "Prev Diagnostic" })
-    set("n", "]e", function() next({ severity = "ERROR" }) end, { desc = "Next Error" })
-    set("n", "[e", function() prev({ severity = "ERROR" }) end, { desc = "Prev Error" })
-    set("n", "]w", function() next({ severity = "WARN" }) end, { desc = "Next Warning" })
-    set("n", "[w", function() prev({ severity = "WARN" }) end, { desc = "Prev Warning" })
+    set("n", "]e", function() next({ severity = ERROR }) end, { desc = "Next Error" })
+    set("n", "[e", function() prev({ severity = ERROR }) end, { desc = "Prev Error" })
+    set("n", "]w", function() next({ severity = WARN }) end, { desc = "Next Warning" })
+    set("n", "[w", function() prev({ severity = WARN }) end, { desc = "Prev Warning" })
   -- stylua: ignore end
 end
