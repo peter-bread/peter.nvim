@@ -2,7 +2,7 @@ local set = vim.keymap.set
 
 -- 1. General ==================================================================
 
-set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+set("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 set({ "n", "i", "s" }, "<esc>", function()
   vim.snippet.stop() -- Exit current snippet (native snippets only).
