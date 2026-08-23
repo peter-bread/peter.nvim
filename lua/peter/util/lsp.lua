@@ -91,6 +91,7 @@ function M.delete_global_defaults()
   del("n", "grn") -- Rename.
   del("n", "grr") -- References.
   del("n", "grt") -- Type definition.
+  del("n", "grx") -- Run codelens.
 
   del("n", "gO") -- Document symbols.
   del("i", "<C-s>") -- Signature help.
