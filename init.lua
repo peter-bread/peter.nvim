@@ -1,6 +1,6 @@
-if vim.fn.has("nvim-0.11") ~= 1 then
+if vim.fn.has("nvim-0.12") ~= 1 then
   vim.notify_once(
-    "peter.nvim requires Neovim 0.11 or above. "
+    "peter.nvim requires Neovim 0.12 or above. "
       .. "Current version: "
       .. require("peter.util.version").string()
       .. ". "
