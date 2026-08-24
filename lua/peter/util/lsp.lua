@@ -64,20 +64,12 @@ function M.try_enable_inlay_hints(client, bufnr)
 end
 
 ---Enable LSP Codelens for the current buffer if the LSP supports it.
----See `:h vim.lsp.codelens.refresh`.
+---See `:h vim.lsp.codelens.enable`.
 ---@param client vim.lsp.Client
 ---@param bufnr integer
 function M.try_enable_codelens(client, bufnr)
-  local autocmds = require("peter.util.autocmds")
   if client:supports_method("textDocument/codeLens") then
-    vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "BufWritePost" }, {
-      group = autocmds.augroup("RefreshCodeLens"),
-      desc = "Refresh CodeLens",
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.codelens.enable(true)
-      end,
-    })
+    vim.lsp.codelens.enable(true, { bufnr = bufnr })
   end
 end
 
