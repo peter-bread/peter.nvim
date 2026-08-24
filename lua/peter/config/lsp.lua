@@ -1,5 +1,4 @@
 local lsp = require("peter.util.lsp")
-local autocmds = require("peter.util.autocmds")
 
 -- Enable LSPs *after* 'mason.nvim' install directory has been added to `PATH`.
 --
@@ -27,50 +26,52 @@ lsp.on_attach(function(client, bufnr)
   lsp.try_enable_codelens(client, bufnr)
 end)
 
-do
-  -- Store active progress tokens for all running clients.
-  local active_tokens_by_client = {}
-
-  vim.api.nvim_create_autocmd("LspProgress", {
-    group = autocmds.augroup("LspProgressCodeLens"),
-    desc = "Refresh CodeLens whenever the LSP becomes idle",
-    callback = function(ev)
-      local client_id = ev.data.client_id
-      local client = vim.lsp.get_client_by_id(client_id)
-
-      if not client or not client:supports_method("textDocument/codeLens") then
-        return
-      end
-
-      local value = ev.data.params.value
-      local token = ev.data.params.token
-
-      if not (value and token) then
-        return
-      end
-
-      -- stylua: ignore
-      active_tokens_by_client[client_id] = active_tokens_by_client[client_id] or {}
-
-      -- Active tokens for the current client.
-      local active_tokens = active_tokens_by_client[client_id]
-
-      if value.kind == "begin" then
-        active_tokens[token] = true
-      elseif value.kind == "end" then
-        active_tokens[token] = nil
-
-        -- Check if all tokens are done.
-        for _, active in pairs(active_tokens) do
-          if active then
-            return
-          end
-        end
-
-        -- No more progress; the LSP is idle.
-        active_tokens_by_client[client_id] = nil
-        vim.lsp.codelens.enable(true)
-      end
-    end,
-  })
-end
+-- do
+--   local autocmds = require("peter.util.autocmds")
+--
+--   -- Store active progress tokens for all running clients.
+--   local active_tokens_by_client = {}
+--
+--   vim.api.nvim_create_autocmd("LspProgress", {
+--     group = autocmds.augroup("LspProgressCodeLens"),
+--     desc = "Refresh CodeLens whenever the LSP becomes idle",
+--     callback = function(ev)
+--       local client_id = ev.data.client_id
+--       local client = vim.lsp.get_client_by_id(client_id)
+--
+--       if not client or not client:supports_method("textDocument/codeLens") then
+--         return
+--       end
+--
+--       local value = ev.data.params.value
+--       local token = ev.data.params.token
+--
+--       if not (value and token) then
+--         return
+--       end
+--
+--       -- stylua: ignore
+--       active_tokens_by_client[client_id] = active_tokens_by_client[client_id] or {}
+--
+--       -- Active tokens for the current client.
+--       local active_tokens = active_tokens_by_client[client_id]
+--
+--       if value.kind == "begin" then
+--         active_tokens[token] = true
+--       elseif value.kind == "end" then
+--         active_tokens[token] = nil
+--
+--         -- Check if all tokens are done.
+--         for _, active in pairs(active_tokens) do
+--           if active then
+--             return
+--           end
+--         end
+--
+--         -- No more progress; the LSP is idle.
+--         active_tokens_by_client[client_id] = nil
+--         vim.lsp.codelens.enable(true)
+--       end
+--     end,
+--   })
+-- end
