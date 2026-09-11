@@ -67,7 +67,7 @@ local keys = {
   },
   {
     icon = "󰒲 ",
-    key = "l",
+    key = "L",
     desc = "Lazy",
     action = ":Lazy",
     enabled = package.loaded.lazy ~= nil,
